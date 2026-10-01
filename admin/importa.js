@@ -182,5 +182,33 @@
     return { ...r, ...(s || {}) };
   }
 
-  window.FDVImporta = { leggi };
+  /* ---------- riferimenti biblici (stessa logica di _build/bibbia.py) ---------- */
+  const LIBRI = { Genesi: 'Genesi', Esodo: 'Esodo', Levitico: 'Levitico', Numeri: 'Numeri', Deuteronomio: 'Deuteronomio', 'Giosuè': 'Giosuè', Giudici: 'Giudici', Rut: 'Rut',
+    Samuele: 'Samuele', Re: 'Re', Cronache: 'Cronache', Esdra: 'Esdra', Neemia: 'Neemia', Ester: 'Ester', Giobbe: 'Giobbe', Salmi: 'Salmi', Salmo: 'Salmi', Proverbi: 'Proverbi',
+    Ecclesiaste: 'Ecclesiaste', Qoelet: 'Ecclesiaste', 'Cantico dei Cantici': 'Cantico dei Cantici', Isaia: 'Isaia', Geremia: 'Geremia', Lamentazioni: 'Lamentazioni',
+    Ezechiele: 'Ezechiele', Daniele: 'Daniele', Osea: 'Osea', Gioele: 'Gioele', Amos: 'Amos', Abdia: 'Abdia', Giona: 'Giona', Michea: 'Michea', Naum: 'Naum', Abacuc: 'Abacuc',
+    Sofonia: 'Sofonia', Aggeo: 'Aggeo', Zaccaria: 'Zaccaria', Malachia: 'Malachia', Matteo: 'Matteo', Marco: 'Marco', Luca: 'Luca', Giovanni: 'Giovanni', Atti: 'Atti',
+    Romani: 'Romani', Corinzi: 'Corinzi', Galati: 'Galati', Efesini: 'Efesini', Filippesi: 'Filippesi', Colossesi: 'Colossesi', Tessalonicesi: 'Tessalonicesi',
+    Timoteo: 'Timoteo', Tito: 'Tito', Filemone: 'Filemone', Ebrei: 'Ebrei', Giacomo: 'Giacomo', Pietro: 'Pietro', Giuda: 'Giuda', Apocalisse: 'Apocalisse' };
+  const AMBIGUI = new Set(['Rut', 'Re', 'Giona', 'Amos', 'Marco', 'Luca', 'Giovanni', 'Tito', 'Pietro', 'Giacomo', 'Giuda', 'Daniele', 'Michea', 'Naum', 'Abdia', 'Osea', 'Gioele',
+    'Aggeo', 'Zaccaria', 'Malachia', 'Esdra', 'Neemia', 'Ester', 'Giobbe', 'Timoteo', 'Filemone', 'Isaia', 'Geremia', 'Ezechiele', 'Matteo', 'Atti', 'Samuele', 'Cronache']);
+  const NUMERATI = new Set(['Samuele', 'Re', 'Cronache', 'Corinzi', 'Tessalonicesi', 'Timoteo', 'Pietro', 'Giovanni']);
+  const nomi = Object.keys(LIBRI).sort((a, b) => b.length - a.length).map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const RE_RIF = new RegExp(`(?<![\\p{L}\\d])(?:([123]|I{1,3})\\s*)?(${nomi.join('|')})\\s+(\\d{1,3})(?:\\s*[:,]\\s*(\\d{1,3}(?:\\s*[-–]\\s*\\d{1,3})?(?:\\s*[.,;]\\s*\\d{1,3}(?:\\s*[-–]\\s*\\d{1,3})?)*))?(?!\\d)`, 'gu');
+  function brani(testo) {
+    const out = [];
+    for (const m of String(testo || '').matchAll(RE_RIF)) {
+      const libro = LIBRI[m[2]]; const num = { I: '1', II: '2', III: '3' }[m[1]] || m[1] || '';
+      const vv = (m[4] || '').replace(/\s+/g, '').replace(/–/g, '-').replace(/[.,;]+$/, '');
+      if (AMBIGUI.has(m[2]) && !vv) continue;
+      if (NUMERATI.has(libro) && !num && libro !== 'Giovanni') continue;
+      if (num && !NUMERATI.has(libro)) continue;
+      const rif = `${num ? num + ' ' : ''}${libro} ${m[3]}${vv ? ':' + vv : ''}`;
+      if (!out.includes(rif)) out.push(rif);
+    }
+    // "Filippesi 4" è superfluo se c'è già "Filippesi 4:6-7"
+    return out.filter((r) => r.includes(':') || !out.some((x) => x !== r && x.startsWith(r + ':')));
+  }
+
+  window.FDVImporta = { leggi, brani };
 })();

@@ -6,7 +6,7 @@
   const toastEl = document.querySelector('.adm-toast');
   const dlg = document.getElementById('dlg');
   const barUser = document.querySelector('.adm-bar__user');
-  let io = null, categorie = [], editor = null;
+  let io = null, categorie = [], autori = [], editor = null;
   let giro = 0;   // cresce a ogni cambio di pagina: una pagina che finisce di caricare tardi non sovrascrive quella nuova
   const anteprimeLocali = new Map();   // immagini appena caricate: percorso -> dataURL (non ancora online)
 
@@ -131,7 +131,7 @@
   function cornice(attiva, contenuto) {
     barUser.hidden = false;
     barUser.querySelector('[data-io-nome]').textContent = `${io.nome} · ${io.ruolo === 'superadmin' ? 'responsabile' : 'autore'}`;
-    const tabs = [['articoli', 'Articoli'], ['categorie', 'Categorie'], ...(io.ruolo === 'superadmin' ? [['utenti', 'Utenti']] : [])];
+    const tabs = [['articoli', 'Articoli'], ['categorie', 'Categorie'], ['autori', 'Autori'], ...(io.ruolo === 'superadmin' ? [['utenti', 'Utenti']] : [])];
     vista.innerHTML = `<nav class="adm-tabs" aria-label="Sezioni del pannello">${tabs.map(([k, t]) => `<a href="#${k}" ${k === attiva ? 'aria-current="page"' : ''}>${t}</a>`).join('')}</nav><div class="adm-view">${contenuto}</div>`;
   }
 
@@ -169,7 +169,7 @@
     const mio = giro;
     const nuovo = !slug;
     cornice('articoli', `<div class="adm-head"><a class="adm-link" href="#articoli">← Tutti gli articoli</a></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
-    const a = nuovo ? { titolo: '', sottotitolo: '', autore: io.nome, data: oggi(), categoria: '', sottocategoria: '', immagine: '', immagine_alt: '', stato: 'bozza', testo: '' } : await api('/api/articoli/' + slug);
+    const a = nuovo ? { brani: '', immagine_credito: '', titolo: '', sottotitolo: '', autore: io.nome, data: oggi(), categoria: '', sottocategoria: '', immagine: '', immagine_alt: '', stato: 'bozza', testo: '' } : await api('/api/articoli/' + slug);
     if (mio !== giro) return;
     const opzCat = categorie.map((c) => `<option value="${c.slug}" ${c.slug === a.categoria ? 'selected' : ''}>${esc(c.nome)}</option>`).join('');
     vista.querySelector('.adm-card').outerHTML = `<form class="adm-editor" id="f-art" novalidate>
@@ -196,7 +196,8 @@
               <label><input type="radio" name="stato" value="bozza" ${a.stato !== 'pubblicato' ? 'checked' : ''}> Bozza <small>(non visibile sul sito)</small></label>
               <label><input type="radio" name="stato" value="pubblicato" ${a.stato === 'pubblicato' ? 'checked' : ''}> Pubblicato</label></fieldset>
             <label class="adm-field"><span>Data</span><input type="date" name="data" value="${esc(a.data)}"></label>
-            <label class="adm-field"><span>Autore</span><input name="autore" maxlength="80" value="${esc(a.autore)}"></label>
+            <label class="adm-field"><span>Autore <small>(scegli dall'elenco o scrivi un nome)</small></span><input name="autore" maxlength="80" value="${esc(a.autore)}" list="elenco-autori" autocomplete="off"></label>
+            <datalist id="elenco-autori">${autori.map((x) => `<option value="${esc(x.nome)}">`).join('')}</datalist>
             <p class="adm-errore" aria-live="assertive"></p>
             <button class="btn btn--sun adm-wide" data-salva>Salva</button>
           </div>
@@ -206,12 +207,19 @@
             <label class="adm-field"><span>Sottocategoria *</span><select name="sottocategoria" required></select></label>
           </div>
           <div class="adm-card">
+            <h2 class="adm-h3">Brani biblici</h2>
+            <label class="adm-field"><span>Brani citati <small>(separati da ; — es. Filippesi 4:6-7; Salmo 23)</small></span><input name="brani" maxlength="400" value="${esc(a.brani || '')}"></label>
+            <button type="button" class="btn btn--outline adm-wide" data-rileva-brani>Trova i brani nel testo</button>
+            <p class="adm-muted adm-small">Servono per il riquadro "Brani citati" e per collegare le predicazioni sugli stessi passi.</p>
+          </div>
+          <div class="adm-card">
             <h2 class="adm-h3">Immagine di copertina</h2>
             <div class="adm-cover">${a.immagine ? `<img src="${esc(srcAnteprima(a.immagine))}" alt="">` : '<span class="adm-muted">Nessuna immagine</span>'}</div>
             <input type="hidden" name="immagine" value="${esc(a.immagine)}">
             <label class="btn btn--outline adm-wide adm-file">Scegli immagine<input type="file" accept="image/*" data-cover hidden></label>
             ${a.immagine ? '<button type="button" class="adm-link adm-link--danger" data-togli-cover>Togli immagine</button>' : ''}
             <label class="adm-field"><span>Descrizione dell'immagine <small>(per chi non vede)</small></span><input name="immagine_alt" maxlength="200" value="${esc(a.immagine_alt)}"></label>
+            <label class="adm-field"><span>Crediti della foto <small>(chi l'ha scattata, se non è vostra)</small></span><input name="immagine_credito" maxlength="200" value="${esc(a.immagine_credito || '')}"></label>
           </div>
         </aside>
       </div></form>`;
@@ -258,6 +266,15 @@
     f.querySelector('[data-togli-cover]')?.addEventListener('click', () => { f.immagine.value = ''; f.querySelector('.adm-cover').innerHTML = '<span class="adm-muted">Nessuna immagine</span>'; });
 
     let modificato = false;
+    const rilevaBrani = (forza) => {
+      const trovati = window.FDVImporta.brani(`${f.titolo.value}\n${f.sottotitolo.value}\n${editor.value()}`);
+      if (forza || !f.brani.value.trim()) f.brani.value = trovati.join('; ');
+      return trovati;
+    };
+    f.querySelector('[data-rileva-brani]').addEventListener('click', () => {
+      const t = rilevaBrani(true); modificato = true;
+      toast(t.length ? `Trovati ${t.length} ${t.length === 1 ? 'brano' : 'brani'}: ${t.join(', ')}` : 'Nel testo non ho trovato riferimenti biblici (es. "Giovanni 3:16").');
+    });
     // importazione da file
     const zona = f.querySelector('[data-import]'); const inFile = f.querySelector('[data-import-file]'); const esito = f.querySelector('[data-import-esito]');
     zona.addEventListener('click', () => inFile.click());
@@ -292,6 +309,7 @@
           if (!f.immagine.value) { f.immagine.value = copertina; f.querySelector('.adm-cover').innerHTML = `<img src="${esc(srcAnteprima(copertina))}" alt="">`; }
         }
         editor.value(testo);
+        const braniTrovati = rilevaBrani(true);
         let cat = '';
         if (r.categoria) {
           f.categoria.value = r.categoria; a.sottocategoria = r.sottocategoria; riempiSotto(); f.sottocategoria.value = r.sottocategoria;
@@ -302,7 +320,7 @@
         esito.dataset.tipo = 'ok';
         esito.innerHTML = `<strong>Ho letto "${esc(file.name)}".</strong> Controlla tutto e poi premi Salva.
           <ul><li>Titolo: <em>${esc(r.titolo || '—')}</em></li>${r.sottotitolo ? `<li>Sottotitolo: <em>${esc(r.sottotitolo)}</em></li>` : ''}${r.autore ? `<li>Autore: ${esc(r.autore)}</li>` : ''}
-          <li>Testo: circa ${parole} parole</li>${r.immagini.length ? `<li>Immagini: ${r.immagini.length}${copertina ? ' (la prima è la copertina)' : ''}</li>` : ''}
+          <li>Testo: circa ${parole} parole</li>${braniTrovati.length ? `<li>Brani biblici: ${esc(braniTrovati.join(', '))}</li>` : ''}${r.immagini.length ? `<li>Immagini: ${r.immagini.length}${copertina ? ' (la prima è la copertina)' : ''}</li>` : ''}
           <li>${cat ? `Categoria suggerita: <strong>${esc(cat)}</strong>` : 'Categoria: non sono riuscito a indovinarla, sceglila tu'}</li></ul>
           ${r.avvisi.length ? `<p class="adm-muted">${r.avvisi.map(esc).join('<br>')}</p>` : ''}`;
         f.titolo.focus();
@@ -319,6 +337,7 @@
     f.addEventListener('submit', (e) => {
       e.preventDefault();
       const err = f.querySelector('.adm-errore'); err.textContent = '';
+      if (!f.brani.value.trim()) rilevaBrani(false);
       const dati = Object.fromEntries(new FormData(f)); dati.testo = editor.value();
       if (!dati.titolo.trim()) { err.textContent = 'Manca il titolo.'; f.titolo.focus(); return; }
       if (!dati.categoria || !dati.sottocategoria) { err.textContent = 'Scegli categoria e sottocategoria.'; f.categoria.focus(); return; }
@@ -371,6 +390,56 @@
       else if (t.matches('[data-salva-cat]')) {
         dati.forEach((c) => { c.sotto = c.sotto.filter((s) => s.nome.trim()); });
         await conAttesa(t, 'Salvo…', async () => { categorie = await api('/api/categorie', { method: 'PUT', body: dati }); dati = JSON.parse(JSON.stringify(categorie)); disegna(); toast('Categorie salvate. Saranno sul sito tra circa 2 minuti.'); });
+      }
+    });
+  }
+
+  async function vistaAutori() {
+    cornice('autori', `<div class="adm-head"><h1>Autori</h1><button class="btn btn--sun" type="button" data-nuovo-autore>+ Nuovo autore</button></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
+    const mio = giro;
+    autori = await api('/api/autori');
+    if (mio !== giro) return;
+    const box = vista.querySelector('.adm-view .adm-card');
+    const disegna = () => {
+      box.innerHTML = `<p class="adm-muted">Chi scrive gli articoli. In fondo a ogni articolo compare il riquadro dell'autore con foto, ruolo e una breve presentazione. Nell'articolo basta scrivere lo stesso nome nel campo "Autore".</p>
+        ${autori.length ? `<ul class="adm-list">${autori.map((x, i) => `<li>
+          <div class="adm-autore">${x.foto ? `<img src="${esc(srcAnteprima(x.foto))}" alt="">` : `<span>${esc(x.nome.split(' ').slice(0, 2).map((w) => w[0]).join(''))}</span>`}
+            <div><strong>${esc(x.nome)}</strong><br><span class="adm-muted">${esc(x.ruolo || 'Senza ruolo')}</span></div></div>
+          <span></span>
+          <div class="adm-row-actions"><button class="adm-link" type="button" data-mod-autore="${i}">Modifica</button><button class="adm-link adm-link--danger" type="button" data-del-autore="${i}">Elimina</button></div></li>`).join('')}</ul>`
+          : '<div class="adm-empty"><p class="adm-muted">Nessun autore ancora.</p></div>'}`;
+    };
+    disegna();
+    const salva = async (nuovi, msg) => { autori = await api('/api/autori', { method: 'PUT', body: nuovi }); disegna(); toast(msg); };
+    const modulo = (x) => new Promise((resolve) => {
+      const form = dlg.querySelector('form'); let foto = x.foto || '';
+      form.innerHTML = `<h2>${x.nome ? 'Modifica autore' : 'Nuovo autore'}</h2>
+        <div class="adm-autore-foto"><div class="adm-autore-anteprima">${foto ? `<img src="${esc(srcAnteprima(foto))}" alt="">` : '<span>Foto</span>'}</div>
+          <label class="btn btn--outline adm-file">Scegli foto<input type="file" accept="image/*" data-foto-autore hidden></label></div>
+        <label class="adm-field"><span>Nome e cognome</span><input name="nome" required maxlength="80" value="${esc(x.nome || '')}"></label>
+        <label class="adm-field"><span>Ruolo <small>(es. Pastore, Responsabile giovani)</small></span><input name="ruolo" maxlength="100" value="${esc(x.ruolo || '')}"></label>
+        <label class="adm-field"><span>Breve presentazione <small>(2-3 frasi)</small></span><textarea name="bio" rows="4" maxlength="700">${esc(x.bio || '')}</textarea></label>
+        <div class="adm-actions"><button class="btn btn--outline" value="annulla" formnovalidate>Annulla</button><button class="btn" value="ok">Salva</button></div>`;
+      form.querySelector('[data-foto-autore]').addEventListener('change', async (e) => {
+        const file = e.target.files[0]; if (!file) return;
+        const prev = form.querySelector('.adm-autore-anteprima'); prev.innerHTML = '<span>…</span>';
+        try {
+          const dataUrl = await preparaImmagine(file, 500);
+          const { path } = await api('/api/immagini', { method: 'POST', body: { base64: dataUrl, nome: form.nome.value || 'autore', articolo: 'autori' } });
+          anteprimeLocali.set(path, dataUrl); foto = path; prev.innerHTML = `<img src="${esc(dataUrl)}" alt="">`;
+        } catch (ex) { prev.innerHTML = '<span>Foto</span>'; toast(ex.message, 'errore'); }
+      });
+      dlg.onclose = () => resolve(dlg.returnValue === 'ok' ? { ...Object.fromEntries(new FormData(form)), foto } : null);
+      dlg.returnValue = ''; dlg.showModal(); form.nome.focus();
+    });
+    vista.querySelector('.adm-view').addEventListener('click', async (e) => {
+      const t = e.target;
+      if (t.matches('[data-nuovo-autore]')) { const r = await modulo({}); if (r) await conAttesa(t, 'Salvo…', () => salva([...autori, r], 'Autore aggiunto.')); }
+      else if (t.matches('[data-mod-autore]')) { const i = +t.dataset.modAutore; const r = await modulo(autori[i]); if (r) await conAttesa(t, 'Salvo…', () => salva(autori.map((x, k) => (k === i ? r : x)), 'Autore aggiornato. Le pagine degli articoli si aggiornano tra circa 2 minuti.')); }
+      else if (t.matches('[data-del-autore]')) {
+        const i = +t.dataset.delAutore;
+        if (await chiedi({ titolo: 'Eliminare l\'autore?', testo: `Il riquadro di ${autori[i].nome} non comparirà più negli articoli (gli articoli restano).`, ok: 'Elimina', pericolo: true }))
+          await conAttesa(t, '…', () => salva(autori.filter((_, k) => k !== i), 'Autore eliminato.'));
       }
     });
   }
@@ -444,6 +513,7 @@
       if (h === 'nuovo') await vistaEditor(null);
       else if (h.startsWith('modifica/')) await vistaEditor(h.split('/')[1]);
       else if (h === 'categorie') await vistaCategorie();
+      else if (h === 'autori') await vistaAutori();
       else if (h === 'utenti') await vistaUtenti();
       else await vistaArticoli();
       vista.focus({ preventScroll: true });
@@ -460,7 +530,7 @@
         }
         io = (await api('/api/io')).utente;
       }
-      categorie = await api('/api/categorie');
+      [categorie, autori] = await Promise.all([api('/api/categorie'), api('/api/autori')]);
       await instrada();
     } catch (e) { if (!io) vista.innerHTML = `<section class="adm-card adm-auth"><h1>Pannello non disponibile</h1><p class="adm-alert">${esc(e.message)}</p></section>`; }
   }

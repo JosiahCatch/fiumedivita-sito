@@ -106,3 +106,12 @@ body.admin { background: var(--c-tint); min-height: 100vh; }
 .adm-import-esito[data-tipo="errore"] { border-left-color: #B42318; color: #B42318; font-weight: 600; }
 .adm-import-esito ul { margin: 8px 0 0; padding-left: 1.2em; }
 .adm-import-esito p { margin: 8px 0 0; }
+
+.adm-small { font-size: .85rem; margin: 8px 0 0; }
+.adm-field textarea { font: 400 1rem/1.5 var(--f-body); color: var(--c-ink); border: 1.5px solid var(--c-line); border-radius: var(--r-sm); padding: 11px 12px; width: 100%; resize: vertical; }
+.adm-field textarea:focus { outline: 0; border-color: var(--c-primary); box-shadow: 0 0 0 3px var(--c-tint); }
+.adm-autore { display: flex; align-items: center; gap: 12px; }
+.adm-autore img, .adm-autore > span { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: grid; place-items: center; background: var(--c-primary); color: #fff; font: 700 .95rem var(--f-head); flex: none; }
+.adm-autore-foto { display: flex; align-items: center; gap: var(--s-4); margin-bottom: var(--s-4); }
+.adm-autore-anteprima { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; background: var(--c-tint); display: grid; place-items: center; color: var(--c-muted); flex: none; }
+.adm-autore-anteprima img { width: 100%; height: 100%; object-fit: cover; }
