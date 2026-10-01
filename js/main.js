@@ -175,7 +175,7 @@
   });
 
   /* ---- Ricerca condivisa: parole (senza accenti, per radice) e brani biblici con versetti ---- */
-  const fdvNorm = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const fdvNorm = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/['\u2019]/g, ' ').trim();
   const fdvCreaRicerca = (testo) => {
     const q = fdvNorm(testo);
     if (!q) return null;
@@ -187,8 +187,9 @@
       return +r[3] >= +m[3] && +r[3] <= +(m[4] || m[3]);
     });
     // radice della parola: "perdono" trova anche perdonare, perdonati
-    const parole = q.split(/\s+/).map((w) => (w.length >= 5 ? w.replace(/[aeiou]$/, '') : w));
-    return (el) => contiene(el.dataset.ref) || parole.every((w) => (el.dataset.cerca || '').includes(w));
+    const parole = q.split(/\s+/).map((w) => (w.length >= 6 ? w.replace(/[aeiou]$/, '') : w));
+    // ogni parola deve essere l'inizio di una parola del testo: "giona" non trova "prigione"
+    return (el) => contiene(el.dataset.ref) || parole.every((w) => (' ' + (el.dataset.cerca || '')).includes(' ' + w));
   };
   const fdvUrlCerca = (valore) => {
     try { const u = new URL(location.href); if (valore) u.searchParams.set('cerca', valore); else u.searchParams.delete('cerca'); history.replaceState(null, '', u); } catch (e) {}
