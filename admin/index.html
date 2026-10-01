@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pannello articoli · Fiume di Vita</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde@2.20.0/dist/easymde.min.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin">
+<a class="skip-link" href="#vista">Vai al contenuto</a>
+
+<header class="adm-bar">
+  <a class="brand" href="../index.html" aria-label="Vai al sito">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 3C32 3 11 27.5 11 40.5 11 52.4 20.4 61 32 61s21-8.6 21-20.5C53 27.5 32 3 32 3Z" fill="var(--c-primary)"/><path d="M32 34.5c0-7.2 4.2-12.6 11-13.6 0 7.3-4.4 12.6-11 13.6Z" fill="var(--c-life)"/><path d="M17.5 41.5c4.8-4.2 9.7-4.2 14.5 0s9.7 4.2 14.5 0" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/><path d="M21 50c3.7-3.3 7.3-3.3 11 0s7.3 3.3 11 0" fill="none" stroke="var(--c-sun)" stroke-width="3.6" stroke-linecap="round"/></svg>
+    <span class="brand-word">fiume<i>di</i>vita</span>
+  </a>
+  <span class="adm-bar__title">Pannello articoli</span>
+  <div class="adm-bar__user" hidden>
+    <span data-io-nome></span>
+    <button class="adm-link" type="button" data-azione="password">Cambia password</button>
+    <button class="adm-link" type="button" data-azione="esci">Esci</button>
+  </div>
+</header>
+
+<main id="vista" class="adm-main" tabindex="-1">
+  <p class="adm-caricamento">Caricamento…</p>
+</main>
+
+<div class="adm-toast" role="status" aria-live="polite"></div>
+
+<dialog class="adm-dialog" id="dlg"><form method="dialog" class="adm-dialog__box"></form></dialog>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/easymde@2.20.0/dist/easymde.min.js" defer></script>
+<script src="admin.js" defer></script>
+</body>
+</html>

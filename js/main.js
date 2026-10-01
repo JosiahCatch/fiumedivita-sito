@@ -174,6 +174,46 @@
     iframe.focus();
   });
 
+  /* ---- Articoli: filtri per categoria / sottocategoria (#categoria/sottocategoria) e ricerca ---- */
+  const aBox = document.querySelector('[data-articoli]');
+  if (aBox) {
+    const cards = [...document.querySelectorAll('.agrid .acard')];
+    const vuoto = document.querySelector('.aempty');
+    const cerca = aBox.querySelector('[data-acerca]');
+    let cat = '', sub = '';
+    const applica = (aggiornaHash) => {
+      aBox.querySelectorAll('[data-fcat]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fcat === cat)));
+      aBox.querySelectorAll('[data-sub-of]').forEach((d) => { d.hidden = d.dataset.subOf !== cat; });
+      aBox.querySelectorAll('[data-desc-of]').forEach((d) => { d.hidden = d.dataset.descOf !== cat; });
+      aBox.querySelectorAll(`[data-sub-of="${cat}"] [data-fsub]`).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fsub === sub)));
+      const q = (cerca?.value || '').trim().toLowerCase();
+      let n = 0;
+      cards.forEach((c) => { const ok = (!cat || c.dataset.cat === cat) && (!sub || c.dataset.sub === sub) && (!q || c.dataset.t.includes(q)); c.hidden = !ok; n += ok; });
+      if (vuoto) vuoto.hidden = n > 0;
+      if (aggiornaHash) history.replaceState(null, '', cat ? `#${cat}${sub ? '/' + sub : ''}` : location.pathname);
+    };
+    const daHash = () => { [cat = '', sub = ''] = location.hash.slice(1).split('/'); applica(false); };
+    document.addEventListener('click', (e) => {
+      const bc = e.target.closest('[data-fcat]'); const bs = e.target.closest('[data-fsub]');
+      if (bc) { cat = bc.dataset.fcat; sub = ''; applica(true); }
+      if (bs) { sub = bs.dataset.fsub; applica(true); }
+    });
+    cerca?.addEventListener('input', () => applica(false));
+    window.addEventListener('hashchange', daHash);
+    daHash();
+  }
+
+  /* ---- Articolo: condivisione ---- */
+  document.querySelectorAll('[data-share]').forEach((box) => {
+    const wa = box.querySelector('[data-share-wa]');
+    if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(box.dataset.titolo + ' ' + location.href);
+    box.querySelector('[data-share-copia]')?.addEventListener('click', async (e) => {
+      try { await navigator.clipboard.writeText(location.href); e.target.textContent = 'Link copiato ✓'; }
+      catch { e.target.textContent = location.href; }
+      setTimeout(() => { e.target.textContent = 'Copia il link'; }, 2500);
+    });
+  });
+
   /* ---- Anno nel footer ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
