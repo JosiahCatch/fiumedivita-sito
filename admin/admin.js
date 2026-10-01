@@ -7,6 +7,7 @@
   const dlg = document.getElementById('dlg');
   const barUser = document.querySelector('.adm-bar__user');
   let io = null, categorie = [], editor = null;
+  let giro = 0;   // cresce a ogni cambio di pagina: una pagina che finisce di caricare tardi non sovrascrive quella nuova
   const anteprimeLocali = new Map();   // immagini appena caricate: percorso -> dataURL (non ancora online)
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -138,7 +139,9 @@
 
   async function vistaArticoli() {
     cornice('articoli', `<div class="adm-head"><h1>Articoli</h1><div class="adm-row-actions"><a class="btn btn--outline" href="#nuovo">Importa da Word o PDF</a><a class="btn btn--sun" href="#nuovo">+ Nuovo articolo</a></div></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
+    const mio = giro;
     const lista = await api('/api/articoli');
+    if (mio !== giro) return;
     const box = vista.querySelector('.adm-card');
     if (!lista.length) { box.innerHTML = `<div class="adm-empty"><h2>Ancora nessun articolo</h2><p class="adm-muted">Scrivi il primo: puoi salvarlo come bozza e pubblicarlo quando è pronto.</p><a class="btn btn--sun" href="#nuovo">Scrivi il primo articolo</a></div>`; return; }
     box.innerHTML = `<label class="adm-field adm-search"><span class="visually-hidden">Cerca</span><input type="search" placeholder="Cerca per titolo…" data-cerca></label>
@@ -163,9 +166,11 @@
   }
 
   async function vistaEditor(slug) {
+    const mio = giro;
     const nuovo = !slug;
     cornice('articoli', `<div class="adm-head"><a class="adm-link" href="#articoli">← Tutti gli articoli</a></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
     const a = nuovo ? { titolo: '', sottotitolo: '', autore: io.nome, data: oggi(), categoria: '', sottocategoria: '', immagine: '', immagine_alt: '', stato: 'bozza', testo: '' } : await api('/api/articoli/' + slug);
+    if (mio !== giro) return;
     const opzCat = categorie.map((c) => `<option value="${c.slug}" ${c.slug === a.categoria ? 'selected' : ''}>${esc(c.nome)}</option>`).join('');
     vista.querySelector('.adm-card').outerHTML = `<form class="adm-editor" id="f-art" novalidate>
       <h1>${nuovo ? 'Nuovo articolo' : 'Modifica articolo'}</h1>
@@ -330,7 +335,9 @@
 
   async function vistaCategorie() {
     cornice('categorie', `<div class="adm-head"><h1>Categorie</h1></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
+    const mio = giro;
     categorie = await api('/api/categorie');
+    if (mio !== giro) return;
     let dati = JSON.parse(JSON.stringify(categorie));
     const box = vista.querySelector('.adm-card');
     const disegna = () => {
@@ -374,6 +381,7 @@
     const box = vista.querySelector('.adm-card');
     const disegna = async () => {
       const lista = await api('/api/utenti');
+      if (!box.isConnected) return;
       box.innerHTML = `<p class="adm-muted">Crea un nome utente e una password per ogni persona che scriverà articoli, poi comunicaglieli di persona. Ognuno potrà cambiare la propria password.</p>
       <ul class="adm-list">${lista.map((u) => `<li>
         <div><strong>${esc(u.nome)}</strong> <span class="adm-muted">@${esc(u.username)}</span><br><span class="adm-muted">${u.ruolo === 'superadmin' ? 'Responsabile del sito (gestisce gli utenti)' : 'Autore'}</span></div>
@@ -431,6 +439,7 @@
     if (editor) { editor.toTextArea(); editor = null; }
     window.onbeforeunload = null;
     const h = location.hash.slice(1);
+    giro++;
     try {
       if (h === 'nuovo') await vistaEditor(null);
       else if (h.startsWith('modifica/')) await vistaEditor(h.split('/')[1]);
