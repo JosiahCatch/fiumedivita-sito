@@ -343,6 +343,21 @@ body:not(.has-hero) .page-hero { /* header solido sopra */ }
 .sermon .who { color: var(--c-muted); font-size: .95rem; margin: 0; }
 .section--deep .sermon .who { color: #A9BFC6; }
 .sermon .ref { font: 600 .8125rem/1 var(--f-head); letter-spacing: .08em; text-transform: uppercase; color: var(--c-water); }
+.sermon__info { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
+.sermon-list { margin-top: 64px; }
+/* Telefono: le predicazioni in homepage diventano righe compatte (miniatura + testo) */
+@media (max-width: 640px) {
+  .featured__desc { display: none; }
+  .sermon-list { margin-top: var(--s-5); gap: var(--s-4); }
+  .sermon-list .sermon { display: grid; grid-template-columns: 42% 1fr; gap: var(--s-3); align-items: center; }
+  .sermon-list .sermon__info { gap: 6px; }
+  .sermon-list .sermon h3 { font-size: 1rem; line-height: 1.25; }
+  .sermon-list .sermon .who { font-size: .85rem; }
+  .sermon-list .sermon .ref { font-size: .72rem; }
+  .sermon-list .yt { border-radius: var(--r-sm); }
+  .sermon-list .yt--sm .yt__play span { width: 38px; height: 38px; }
+  .sermon-list .yt--sm .yt__play svg { width: 16px; height: 16px; margin-left: 2px; }
+}
 
 .filter-bar { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-6); }
 .chip { min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); border: 1.5px solid var(--c-line); background: var(--c-surface); color: var(--c-ink); font: 600 .95rem/1 var(--f-head); cursor: pointer; transition: all .2s; }
