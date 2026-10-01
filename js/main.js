@@ -174,23 +174,60 @@
     iframe.focus();
   });
 
+  /* ---- Ricerca condivisa: parole (senza accenti, per radice) e brani biblici con versetti ---- */
+  const fdvNorm = (t) => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const fdvCreaRicerca = (testo) => {
+    const q = fdvNorm(testo);
+    if (!q) return null;
+    const r = q.match(/^((?:[1-3]\s?)?[a-z]+)\s+(\d{1,3})(?::(\d{1,3}))?$/);   // "filippesi 4:7"
+    const contiene = (refCard) => !!r && (refCard || '').split(/;\s*/).some((parte) => {
+      const m = parte.match(/((?:[1-3]\s)?[a-z]+)\s+(\d+)(?::(\d+)(?:-(\d+))?)?/);
+      if (!m || m[1].replace(/\s/g, '') !== r[1].replace(/\s/g, '') || +m[2] !== +r[2]) return false;
+      if (!r[3] || !m[3]) return true;
+      return +r[3] >= +m[3] && +r[3] <= +(m[4] || m[3]);
+    });
+    // radice della parola: "perdono" trova anche perdonare, perdonati
+    const parole = q.split(/\s+/).map((w) => (w.length >= 5 ? w.replace(/[aeiou]$/, '') : w));
+    return (el) => contiene(el.dataset.ref) || parole.every((w) => (el.dataset.cerca || '').includes(w));
+  };
+  const fdvUrlCerca = (valore) => {
+    try { const u = new URL(location.href); if (valore) u.searchParams.set('cerca', valore); else u.searchParams.delete('cerca'); history.replaceState(null, '', u); } catch (e) {}
+  };
+
   /* ---- Articoli: filtri per categoria / sottocategoria (#categoria/sottocategoria) e ricerca ---- */
   const aBox = document.querySelector('[data-articoli]');
   if (aBox) {
     const cards = [...document.querySelectorAll('.agrid .acard')];
     const vuoto = document.querySelector('.aempty');
+    const vuotoTesto = vuoto?.querySelector('[data-aempty-testo]');
     const cerca = aBox.querySelector('[data-acerca]');
+    const pulisci = aBox.querySelector('[data-acerca-clear]');
+    const esito = aBox.querySelector('[data-acerca-esito]');
+    const nomeCat = (slug) => aBox.querySelector(`[data-fcat="${slug}"]`)?.childNodes[0].textContent.trim() || '';
     let cat = '', sub = '';
     const applica = (aggiornaHash) => {
       aBox.querySelectorAll('[data-fcat]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fcat === cat)));
       aBox.querySelectorAll('[data-sub-of]').forEach((d) => { d.hidden = d.dataset.subOf !== cat; });
       aBox.querySelectorAll('[data-desc-of]').forEach((d) => { d.hidden = d.dataset.descOf !== cat; });
       aBox.querySelectorAll(`[data-sub-of="${cat}"] [data-fsub]`).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fsub === sub)));
-      const q = (cerca?.value || '').trim().toLowerCase();
-      let n = 0;
-      cards.forEach((c) => { const ok = (!cat || c.dataset.cat === cat) && (!sub || c.dataset.sub === sub) && (!q || c.dataset.t.includes(q)); c.hidden = !ok; n += ok; });
-      if (vuoto) vuoto.hidden = n > 0;
-      if (aggiornaHash) history.replaceState(null, '', cat ? `#${cat}${sub ? '/' + sub : ''}` : location.pathname);
+      const testo = (cerca?.value || '').trim();
+      const trova = fdvCreaRicerca(testo);
+      let n = 0, altrove = 0;
+      cards.forEach((c) => {
+        const inSezione = (!cat || c.dataset.cat === cat) && (!sub || c.dataset.sub === sub);
+        const corrisponde = !trova || trova(c);
+        c.hidden = !(inSezione && corrisponde); n += inSezione && corrisponde; altrove += !inSezione && corrisponde;
+      });
+      if (pulisci) pulisci.hidden = !testo;
+      if (esito) esito.textContent = testo && n ? `${n} ${n === 1 ? 'articolo trovato' : 'articoli trovati'} per “${testo}”${cat ? ` in ${nomeCat(cat)}` : ''}` : '';
+      if (vuoto) {
+        vuoto.hidden = n > 0;
+        if (vuotoTesto) vuotoTesto.textContent = !testo ? 'Nessun articolo in questa sezione, per ora.'
+          : altrove ? `Qui non ci sono articoli per “${testo}”, ma ${altrove === 1 ? "ce n'è uno in un'altra sezione" : `ce ne sono ${altrove} in altre sezioni`}.`
+          : `Nessun articolo trovato per “${testo}”. Prova con un'altra parola o con un libro della Bibbia.`;
+        const tutti = vuoto.querySelector('[data-aempty-tutti]'); if (tutti) tutti.hidden = !cat && !sub;
+      }
+      if (aggiornaHash) history.replaceState(null, '', location.pathname + location.search + (cat ? `#${cat}${sub ? '/' + sub : ''}` : ''));
     };
     const daHash = () => { [cat = '', sub = ''] = location.hash.slice(1).split('/'); applica(false); };
     document.addEventListener('click', (e) => {
@@ -198,7 +235,12 @@
       if (bc) { cat = bc.dataset.fcat; sub = ''; applica(true); }
       if (bs) { sub = bs.dataset.fsub; applica(true); }
     });
-    cerca?.addEventListener('input', () => applica(false));
+    let tempo;
+    cerca?.addEventListener('input', () => { clearTimeout(tempo); tempo = setTimeout(() => { fdvUrlCerca(cerca.value.trim()); applica(false); }, 120); });
+    cerca?.addEventListener('keydown', (e) => { if (e.key === 'Escape') { cerca.value = ''; fdvUrlCerca(''); applica(false); } });
+    pulisci?.addEventListener('click', () => { cerca.value = ''; fdvUrlCerca(''); applica(false); cerca.focus(); });
+    const iniziale = new URLSearchParams(location.search).get('cerca');
+    if (iniziale && cerca) cerca.value = iniziale;
     window.addEventListener('hashchange', daHash);
     daHash();
   }
@@ -226,33 +268,21 @@
     const tablistP = document.querySelector('[role="tablist"]');
     const pannelli = [...document.querySelectorAll('[role="tabpanel"]')];
     const tutte = [...document.querySelectorAll('[role="tabpanel"] .sermon[data-cerca]')];
-    const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
-    // "filippesi 4:7" -> libro, capitolo, versetto; trova anche "Filippesi 4:6-9"
-    const RIF = /^((?:[1-3]\s?)?[a-z]+)\s+(\d{1,3})(?::(\d{1,3}))?$/;
-    const contiene = (refCard, libro, cap, v) => refCard.split(/;\s*/).some((parte) => {
-      const m = parte.match(/((?:[1-3]\s)?[a-z]+)\s+(\d+)(?::(\d+)(?:-(\d+))?)?/);
-      if (!m || m[1].replace(/\s/g, '') !== libro.replace(/\s/g, '') || +m[2] !== cap) return false;
-      if (!v || !m[3]) return true;
-      return v >= +m[3] && v <= +(m[4] || m[3]);
-    });
     let tempo;
     const cerca = () => {
-      const q = norm(input.value);
-      pulisci.hidden = !q;
-      try { const u = new URL(location.href); if (q) u.searchParams.set('cerca', input.value.trim()); else u.searchParams.delete('cerca'); history.replaceState(null, '', u); } catch (e) {}
-      if (!q) {
+      const trova = fdvCreaRicerca(input.value);
+      pulisci.hidden = !trova;
+      fdvUrlCerca(input.value.trim());
+      if (!trova) {
         box.hidden = true; tablistP.hidden = false; esito.textContent = '';
         const sel = tablistP.querySelector('[aria-selected="true"]');
         pannelli.forEach((p) => { p.hidden = p.id !== sel?.getAttribute('aria-controls'); });
         return;
       }
-      const r = q.match(RIF);
-      // radice della parola: "perdono" trova anche perdonare, perdonati
-      const parole = q.split(/\s+/).map((w) => (w.length >= 5 ? w.replace(/[aeiou]$/, '') : w));
       const visti = new Set();
       const trovate = tutte.filter((c) => {
         if (visti.has(c.dataset.vid)) return false;
-        const ok = (r && contiene(c.dataset.ref, r[1], +r[2], r[3] ? +r[3] : 0)) || parole.every((w) => c.dataset.cerca.includes(w));
+        const ok = trova(c);
         if (ok) visti.add(c.dataset.vid);
         return ok;
       });
