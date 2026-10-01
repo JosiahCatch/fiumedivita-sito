@@ -796,3 +796,22 @@ a.yt { text-decoration: none; }
 .acard { cursor: pointer; }
 .acard a.stretched:focus-visible { outline: 0; }
 .acard:has(a.stretched:focus-visible) { outline: 3px solid var(--c-sun); outline-offset: 3px; }
+
+/* ---------- Predicazioni: ricerca ---------- */
+.pcerca { margin: 0 0 var(--s-5); max-width: 640px; }
+.pcerca__label { display: block; font: 650 1rem/1.3 var(--f-head); color: var(--c-ink); margin-bottom: .5rem; }
+.pcerca__box { position: relative; display: flex; align-items: center; }
+.pcerca__box > svg { position: absolute; left: 16px; width: 20px; height: 20px; color: var(--c-muted); pointer-events: none; }
+.pcerca__box input { width: 100%; min-height: 54px; padding: 0 52px 0 48px; border: 1.5px solid var(--c-line); border-radius: var(--r-pill); background: var(--c-surface); font: 400 1.05rem var(--f-body); color: var(--c-ink); }
+.pcerca__box input:focus { outline: 0; border-color: var(--c-primary); box-shadow: 0 0 0 3px var(--c-tint); }
+.pcerca__box input::-webkit-search-cancel-button { display: none; }
+.pcerca__clear { position: absolute; right: 6px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--c-muted); cursor: pointer; display: grid; place-items: center; }
+.pcerca__clear:hover { background: var(--c-tint); color: var(--c-ink); }
+.pcerca__clear svg { width: 20px; height: 20px; transform: rotate(45deg); }
+.pcerca__clear[hidden] { display: none; }
+.pcerca__esito { margin: .6rem 0 0; min-height: 1.4em; color: var(--c-muted); font-size: .95rem; }
+.pcerca__serie { font-size: .85rem; color: var(--c-muted); }
+.pcerca-risultati { margin-top: var(--s-4); }
+.pcerca-vuoto p { color: var(--c-muted); max-width: 52ch; }
+.pcerca-vuoto strong { color: var(--c-ink); }
+.tabs[hidden] { display: none; }

@@ -214,6 +214,65 @@
     });
   });
 
+  /* ---- Predicazioni: ricerca per parola, brano o predicatore ---- */
+  const pForm = document.querySelector('[data-pcerca]');
+  if (pForm) {
+    const input = pForm.querySelector('input');
+    const pulisci = pForm.querySelector('[data-pcerca-clear]');
+    const esito = pForm.querySelector('[data-pcerca-esito]');
+    const box = document.querySelector('[data-pcerca-risultati]');
+    const griglia = box.querySelector('.grid');
+    const vuoto = box.querySelector('.pcerca-vuoto');
+    const tablistP = document.querySelector('[role="tablist"]');
+    const pannelli = [...document.querySelectorAll('[role="tabpanel"]')];
+    const tutte = [...document.querySelectorAll('[role="tabpanel"] .sermon[data-cerca]')];
+    const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+    // "filippesi 4:7" -> libro, capitolo, versetto; trova anche "Filippesi 4:6-9"
+    const RIF = /^((?:[1-3]\s?)?[a-z]+)\s+(\d{1,3})(?::(\d{1,3}))?$/;
+    const contiene = (refCard, libro, cap, v) => refCard.split(/;\s*/).some((parte) => {
+      const m = parte.match(/((?:[1-3]\s)?[a-z]+)\s+(\d+)(?::(\d+)(?:-(\d+))?)?/);
+      if (!m || m[1].replace(/\s/g, '') !== libro.replace(/\s/g, '') || +m[2] !== cap) return false;
+      if (!v || !m[3]) return true;
+      return v >= +m[3] && v <= +(m[4] || m[3]);
+    });
+    let tempo;
+    const cerca = () => {
+      const q = norm(input.value);
+      pulisci.hidden = !q;
+      try { const u = new URL(location.href); if (q) u.searchParams.set('cerca', input.value.trim()); else u.searchParams.delete('cerca'); history.replaceState(null, '', u); } catch (e) {}
+      if (!q) {
+        box.hidden = true; tablistP.hidden = false; esito.textContent = '';
+        const sel = tablistP.querySelector('[aria-selected="true"]');
+        pannelli.forEach((p) => { p.hidden = p.id !== sel?.getAttribute('aria-controls'); });
+        return;
+      }
+      const r = q.match(RIF);
+      // radice della parola: "perdono" trova anche perdonare, perdonati
+      const parole = q.split(/\s+/).map((w) => (w.length >= 5 ? w.replace(/[aeiou]$/, '') : w));
+      const visti = new Set();
+      const trovate = tutte.filter((c) => {
+        if (visti.has(c.dataset.vid)) return false;
+        const ok = (r && contiene(c.dataset.ref, r[1], +r[2], r[3] ? +r[3] : 0)) || parole.every((w) => c.dataset.cerca.includes(w));
+        if (ok) visti.add(c.dataset.vid);
+        return ok;
+      });
+      tablistP.hidden = true; pannelli.forEach((p) => { p.hidden = true; }); box.hidden = false;
+      griglia.replaceChildren(...trovate.map((c) => {
+        const copia = c.cloneNode(true);
+        const etichetta = document.createElement('span'); etichetta.className = 'pcerca__serie'; etichetta.textContent = c.dataset.serie;
+        copia.append(etichetta);
+        return copia;
+      }));
+      vuoto.hidden = trovate.length > 0;
+      esito.textContent = trovate.length ? `${trovate.length} ${trovate.length === 1 ? 'predicazione trovata' : 'predicazioni trovate'} per “${input.value.trim()}”` : '';
+    };
+    input.addEventListener('input', () => { clearTimeout(tempo); tempo = setTimeout(cerca, 120); });
+    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') { input.value = ''; cerca(); } });
+    pulisci.addEventListener('click', () => { input.value = ''; cerca(); input.focus(); });
+    const iniziale = new URLSearchParams(location.search).get('cerca');
+    if (iniziale) { input.value = iniziale; cerca(); }
+  }
+
   /* ---- Anno nel footer ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
