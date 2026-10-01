@@ -5,10 +5,10 @@
 
   /* ---- Palette (anteprima proposte: ?palette=a|b|c|d) ---- */
   const PALETTES = ['a', 'b', 'c', 'd'];
+  try { localStorage.removeItem('fdv-palette'); } catch (e) {}   // vecchie scelte salvate: non devono più cambiare il sito
   const setPalette = (p) => {
     if (p === 'a') root.removeAttribute('data-palette');
     else root.setAttribute('data-palette', p);
-    try { localStorage.setItem('fdv-palette', p); } catch (e) {}
     document.querySelectorAll('[data-set-palette]').forEach((el) => {
       const on = el.dataset.setPalette === p;
       el.setAttribute('aria-pressed', String(on));
@@ -16,10 +16,7 @@
     });
   };
   const qp = new URLSearchParams(location.search).get('palette');
-  let saved = null;
-  try { saved = localStorage.getItem('fdv-palette'); } catch (e) {}
-  const initial = PALETTES.includes(qp) ? qp : (PALETTES.includes(saved) ? saved : 'a');
-  setPalette(initial);
+  setPalette(PALETTES.includes(qp) ? qp : 'a');
   document.addEventListener('click', (e) => {
     const b = e.target.closest('[data-set-palette]');
     if (b) setPalette(b.dataset.setPalette);
@@ -86,9 +83,12 @@
     iframe.title = btn.getAttribute('aria-label') || 'Video';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     iframe.allowFullscreen = true;
-    btn.replaceChildren(iframe);
-    btn.removeAttribute('data-id');
-    btn.style.cursor = 'default';
+    // il player prende il posto del pulsante (un iframe dentro un <button> non è valido e confonde i lettori di schermo)
+    const player = document.createElement('div');
+    player.className = btn.className;
+    player.append(iframe);
+    btn.replaceWith(player);
+    iframe.focus();
   });
 
   /* ---- Cambio lingua del video nello stesso player ---- */
@@ -101,7 +101,7 @@
     if (iframe) { iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`; return; }
     player.dataset.id = id;
     const img = player.querySelector('img');
-    if (img) img.src = `https://i.ytimg.com/vi/${id}/sddefault.jpg`;
+    if (img) { img.removeAttribute('srcset'); img.src = `https://i.ytimg.com/vi/${id}/sddefault.jpg`; }
   }));
 
   /* ---- Scroller orizzontali con frecce ---- */
@@ -140,7 +140,12 @@
       if (e.key === 'End') n = tabs.length - 1;
       if (n !== null) { e.preventDefault(); select(tabs[n], true); }
     });
-    const fromHash = () => { const t = tabs.find((x) => '#' + x.dataset.tab === location.hash); if (t) select(t); };
+    const fromHash = () => {
+      const t = tabs.find((x) => '#' + x.dataset.tab === location.hash);
+      if (!t) return;
+      select(t);
+      tablist.scrollIntoView({ block: 'start', behavior: 'auto' });   // il contenuto della playlist è subito visibile
+    };
     fromHash();
     window.addEventListener('hashchange', fromHash);
   }
@@ -302,6 +307,17 @@
     pulisci.addEventListener('click', () => { input.value = ''; cerca(); input.focus(); });
     const iniziale = new URLSearchParams(location.search).get('cerca');
     if (iniziale) { input.value = iniziale; cerca(); }
+  }
+
+  /* ---- WhatsApp fisso: nascosto quando non serve (copre pulsanti e testi) ---- */
+  const fab = document.querySelector('.fab');
+  if (fab && 'IntersectionObserver' in window) {
+    const visibili = new Set();
+    const fio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) visibili.add(en.target); else visibili.delete(en.target); });
+      fab.classList.toggle('is-hidden', visibili.size > 0);
+    });
+    document.querySelectorAll('a[href^="https://wa.me"]:not(.fab), .map, .site-footer').forEach((el) => fio.observe(el));
   }
 
   /* ---- Anno nel footer ---- */

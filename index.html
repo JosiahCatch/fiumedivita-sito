@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=d21c9dd1">
+<link rel="stylesheet" href="css/style.css?v=55db2616">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Church","name":"Fiume di Vita","alternateName":"Chiesa Evangelica Pozzuoli - Fiume di Vita",
 "address":{"@type":"PostalAddress","streetAddress":"Via Casalanno, 85","addressLocality":"Pozzuoli","addressRegion":"NA","addressCountry":"IT"},
@@ -41,7 +41,7 @@
   <path d="M17.5 41.5c4.8-4.2 9.7-4.2 14.5 0s9.7 4.2 14.5 0" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
   <path d="M21 50c3.7-3.3 7.3-3.3 11 0s7.3 3.3 11 0" fill="none" stroke="var(--c-sun)" stroke-width="3.6" stroke-linecap="round"/>
 </svg><span class="brand-word">fiume<i>di</i>vita</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu"><svg class=nav-toggle__open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class=nav-toggle__close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <nav class="site-nav" id="site-nav" aria-label="Principale">
       <ul class="nav-list">
         <li><a href="chi-siamo.html">Chi siamo</a></li>
@@ -55,9 +55,12 @@
     </nav>
   </div>
 </header>
-<main id="main">
+<main id="main" tabindex="-1">
 <section class="hero">
-  <div class="hero__media"><img src="assets/img/generale-15-hd.webp" srcset="assets/img/generale-15-md.webp 1200w, assets/img/generale-15-lg.webp 1700w, assets/img/generale-15-hd.webp 2400w" sizes="(max-width: 700px) 190vw, 100vw" alt="La comunità di Fiume di Vita riunita sotto il porticato" fetchpriority="high"></div>
+  <div class="hero__media"><picture>
+    <source media="(max-width: 700px)" srcset="assets/img/generale-15-mob-sm.webp 640w, assets/img/generale-15-mob.webp 1080w" sizes="100vw">
+    <img src="assets/img/generale-15-lg.webp" srcset="assets/img/generale-15-md.webp 1200w, assets/img/generale-15-lg.webp 1700w, assets/img/generale-15-hd.webp 2400w" sizes="100vw" alt="La comunità di Fiume di Vita riunita sotto il porticato" fetchpriority="high">
+  </picture></div>
   <div class="container hero__content">
     <span class="eyebrow" style="color:var(--c-sun)">Chiesa evangelica · Pozzuoli</span>
     <h1>Una famiglia nel cuore di <span class="accent">Pozzuoli.</span></h1>
@@ -106,7 +109,7 @@
   <div class="container">
     <div class="featured">
       <div class="reveal"><button class="yt" data-id="bgqMGBSZAqQ" aria-label="Guarda: Pace oltre ogni intelligenza">
-  <img src="https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp" srcset="https://i.ytimg.com/vi/bgqMGBSZAqQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/bgqMGBSZAqQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/bgqMGBSZAqQ/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button></div>
       <div class="reveal" style="--d:.1s">
@@ -123,7 +126,7 @@
     <div class="grid grid-3 sermon-list">
       <article class="sermon reveal">
   <button class="yt yt--sm" data-id="tVdUkKozWus" aria-label="Guarda: Rallegratevi sempre nel Signore">
-  <img src="https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp" srcset="https://i.ytimg.com/vi/tVdUkKozWus/mqdefault.jpg 320w, https://i.ytimg.com/vi/tVdUkKozWus/hqdefault.jpg 480w, https://i.ytimg.com/vi/tVdUkKozWus/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="sermon__info">
@@ -133,7 +136,7 @@
   </div>
 </article><article class="sermon reveal">
   <button class="yt yt--sm" data-id="T-N96DDAwkE" aria-label="Guarda: Giusti per fede">
-  <img src="https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp" srcset="https://i.ytimg.com/vi/T-N96DDAwkE/mqdefault.jpg 320w, https://i.ytimg.com/vi/T-N96DDAwkE/hqdefault.jpg 480w, https://i.ytimg.com/vi/T-N96DDAwkE/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="sermon__info">
@@ -143,7 +146,7 @@
   </div>
 </article><article class="sermon reveal">
   <button class="yt yt--sm" data-id="oIXgFedOV6w" aria-label="Guarda: Adoperatevi con timore e tremore">
-  <img src="https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp" srcset="https://i.ytimg.com/vi/oIXgFedOV6w/mqdefault.jpg 320w, https://i.ytimg.com/vi/oIXgFedOV6w/hqdefault.jpg 480w, https://i.ytimg.com/vi/oIXgFedOV6w/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="sermon__info">
@@ -220,32 +223,32 @@
     <div class="stories">
       <article class="story story--big reveal">
   <button class="yt" data-id="-bn-kulV4iw" aria-label="Guarda: La storia di Gigi — Nati di nuovo">
-  <img src="https://i.ytimg.com/vi_webp/-bn-kulV4iw/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/-bn-kulV4iw/maxresdefault.webp" srcset="https://i.ytimg.com/vi/-bn-kulV4iw/mqdefault.jpg 320w, https://i.ytimg.com/vi/-bn-kulV4iw/hqdefault.jpg 480w, https://i.ytimg.com/vi/-bn-kulV4iw/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/-bn-kulV4iw/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="story__body"><span class="story__tag">Nati di nuovo</span><h3>La storia di Gigi</h3></div>
 </article>
       <div class="stories__grid"><article class="story reveal">
   <button class="yt yt--sm" data-id="LifjToTklk4" aria-label="Guarda: Hans — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/LifjToTklk4/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/LifjToTklk4/maxresdefault.webp" srcset="https://i.ytimg.com/vi/LifjToTklk4/mqdefault.jpg 320w, https://i.ytimg.com/vi/LifjToTklk4/hqdefault.jpg 480w, https://i.ytimg.com/vi/LifjToTklk4/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/LifjToTklk4/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Hans</h3></div>
 </article><article class="story reveal">
   <button class="yt yt--sm" data-id="F9zjP8wGIqM" aria-label="Guarda: Rosario e Imma — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/F9zjP8wGIqM/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/F9zjP8wGIqM/maxresdefault.webp" srcset="https://i.ytimg.com/vi/F9zjP8wGIqM/mqdefault.jpg 320w, https://i.ytimg.com/vi/F9zjP8wGIqM/hqdefault.jpg 480w, https://i.ytimg.com/vi/F9zjP8wGIqM/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/F9zjP8wGIqM/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Rosario e Imma</h3></div>
 </article><article class="story reveal">
   <button class="yt yt--sm" data-id="8LLRVKMcJaE" aria-label="Guarda: Michele — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/8LLRVKMcJaE/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/8LLRVKMcJaE/maxresdefault.webp" srcset="https://i.ytimg.com/vi/8LLRVKMcJaE/mqdefault.jpg 320w, https://i.ytimg.com/vi/8LLRVKMcJaE/hqdefault.jpg 480w, https://i.ytimg.com/vi/8LLRVKMcJaE/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/8LLRVKMcJaE/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Michele</h3></div>
 </article><article class="story reveal">
   <button class="yt yt--sm" data-id="OT9Fo7Zbgwo" aria-label="Guarda: La storia di Antonio — Nati di nuovo">
-  <img src="https://i.ytimg.com/vi_webp/OT9Fo7Zbgwo/maxresdefault.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+  <img src="https://i.ytimg.com/vi_webp/OT9Fo7Zbgwo/maxresdefault.webp" srcset="https://i.ytimg.com/vi/OT9Fo7Zbgwo/mqdefault.jpg 320w, https://i.ytimg.com/vi/OT9Fo7Zbgwo/hqdefault.jpg 480w, https://i.ytimg.com/vi/OT9Fo7Zbgwo/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/OT9Fo7Zbgwo/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
   <div class="story__body"><span class="story__tag">Nati di nuovo</span><h3>La storia di Antonio</h3></div>
@@ -296,7 +299,7 @@
         <p class="lead">Riflessioni sulla Bibbia, sulla famiglia, sul lavoro e sulle domande della vita.</p></div>
       <a class="btn btn--outline" href="articoli.html">Tutti gli articoli</a>
     </div>
-    <div class="grid grid-3 agrid"><article class="acard" data-cat="vita-cristiana" data-sub="preghiera" data-ref="filippesi 4:6-7; filippesi 4:8" data-cerca="la pace che supera ogni intelligenza tre passi da filippesi 4 per quando l ansia bussa alla porta redazione fiume di vita vita cristiana preghiera filippesi 4:6 7 filippesi 4:8 bollette, esami, salute, figli, lavoro: l ansia trova sempre una porta da cui entrare. l apostolo paolo scrive ai credenti di filippi da una prigione, eppure la sua lettera e piena di gioia. nel capitolo 4 ci lascia un invito che vale anche per noi, oggi, a pozzuoli. non angustiatevi di nulla, ma in ogni cosa fate conoscere le vostre richieste a dio in preghiere e suppliche, accompagnate da ringraziamenti; e la pace di dio, che supera ogni intelligenza, custodira i vostri cuori e i vostri pensieri in cristo gesu. filippesi 4:6 7 1\. porta tutto a dio in preghiera paolo non dice di far finta che i problemi non esistano. dice di portarli a dio, in ogni cosa . la preghiera non e l ultima spiaggia quando tutto il resto ha fallito: e il primo passo. possiamo parlare a dio con parole semplici, come un figlio parla al padre. 2\. ringrazia, anche oggi le richieste vanno accompagnate da ringraziamenti. ringraziare sposta lo sguardo da cio che manca a cio che dio ha gia fatto. prova a farlo questa sera, prima di dormire: ricorda tre cose belle di oggi affida a dio quella che ti preoccupa di piu ringrazialo perche ti ascolta 3\. riempi la mente di cio che e vero subito dopo paolo aggiunge: tutte le cose vere, onorevoli, giuste, pure, amabili, di buona fama, quelle occupino i vostri pensieri. la pace di dio non e solo un sentimento: e il frutto di una mente che si nutre della sua parola. non sei solo in questo cammino. ogni domenica alle 10:15 ci ritroviamo per pregare, lodare dio e ascoltare la bibbia insieme. c e un posto anche per te.">
+    <div class="grid agrid agrid--few"><article class="acard acard--big" data-cat="vita-cristiana" data-sub="preghiera" data-ref="filippesi 4:6-7; filippesi 4:8" data-cerca="la pace che supera ogni intelligenza tre passi da filippesi 4 per quando l ansia bussa alla porta redazione fiume di vita vita cristiana preghiera filippesi 4:6 7 filippesi 4:8 bollette, esami, salute, figli, lavoro: l ansia trova sempre una porta da cui entrare. l apostolo paolo scrive ai credenti di filippi da una prigione, eppure la sua lettera e piena di gioia. nel capitolo 4 ci lascia un invito che vale anche per noi, oggi, a pozzuoli. non angustiatevi di nulla, ma in ogni cosa fate conoscere le vostre richieste a dio in preghiere e suppliche, accompagnate da ringraziamenti; e la pace di dio, che supera ogni intelligenza, custodira i vostri cuori e i vostri pensieri in cristo gesu. filippesi 4:6 7 1\. porta tutto a dio in preghiera paolo non dice di far finta che i problemi non esistano. dice di portarli a dio, in ogni cosa . la preghiera non e l ultima spiaggia quando tutto il resto ha fallito: e il primo passo. possiamo parlare a dio con parole semplici, come un figlio parla al padre. 2\. ringrazia, anche oggi le richieste vanno accompagnate da ringraziamenti. ringraziare sposta lo sguardo da cio che manca a cio che dio ha gia fatto. prova a farlo questa sera, prima di dormire: ricorda tre cose belle di oggi affida a dio quella che ti preoccupa di piu ringrazialo perche ti ascolta 3\. riempi la mente di cio che e vero subito dopo paolo aggiunge: tutte le cose vere, onorevoli, giuste, pure, amabili, di buona fama, quelle occupino i vostri pensieri. la pace di dio non e solo un sentimento: e il frutto di una mente che si nutre della sua parola. non sei solo in questo cammino. ogni domenica alle 10:15 ci ritroviamo per pregare, lodare dio e ascoltare la bibbia insieme. c e un posto anche per te.">
   <div class="acard__media"><img src="assets/articoli/la-pace-che-supera-ogni-intelligenza/pace-golfo-di-pozzuoli.webp" alt="Il mare calmo del golfo di Pozzuoli al tramonto, con il Castello di Baia" loading="lazy" decoding="async"></div>
   <div class="acard__body">
     <span class="acard__tag">Vita cristiana · Preghiera</span>
@@ -314,7 +317,7 @@
     <h2>Vita insieme</h2>
   </div>
   <div class="marquee-wrap">
-  <div class="marquee" aria-label="Foto della nostra comunità" role="region">
+  <div class="marquee" aria-label="Foto della nostra comunità" role="region" tabindex="0">
     <div class="marquee__track"><img src="assets/img/generale-17-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-12-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-3-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/giovanissimi-4-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-7-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/calcetto-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-16-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/chiesa-in-casa-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-19-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-6-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/donne-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-5-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-17-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-12-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-3-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/giovanissimi-4-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-7-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/calcetto-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-16-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/chiesa-in-casa-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-19-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-6-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/donne-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-5-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
   </div>
   <button class="marquee-toggle" type="button" data-marquee-toggle aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>Metti in pausa</span></button>
@@ -368,6 +371,7 @@
           <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="ministeri.html">Ministeri</a></li>
           <li><a href="predicazioni.html">Predicazioni</a></li>
+          <li><a href="articoli.html">Articoli</a></li>
           <li><a href="eventi.html">Eventi</a></li>
           <li><a href="centro.html">Il Centro</a></li>
         </ul>
@@ -391,12 +395,12 @@
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> Fiume di Vita · Chiesa evangelica a Pozzuoli</span>
-      <span class="footer-links"><a href="admin/">Area riservata</a> · <a href="#main">Torna su ↑</a></span>
+      <span class="footer-links"><a href="admin/">Area riservata</a><a href="#main">Torna su ↑</a></span>
     </div>
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=eba029f1" defer></script>
+<script src="js/main.js?v=14b35051" defer></script>
 
 </body>
 </html>

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=d21c9dd1">
+<link rel="stylesheet" href="css/style.css?v=55db2616">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://josiahcatch.github.io/fiumedivita-sito/brand.html">
 <meta property="og:url" content="https://josiahcatch.github.io/fiumedivita-sito/brand.html">
@@ -35,7 +35,7 @@
   <path d="M17.5 41.5c4.8-4.2 9.7-4.2 14.5 0s9.7 4.2 14.5 0" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/>
   <path d="M21 50c3.7-3.3 7.3-3.3 11 0s7.3 3.3 11 0" fill="none" stroke="var(--c-sun)" stroke-width="3.6" stroke-linecap="round"/>
 </svg><span class="brand-word">fiume<i>di</i>vita</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu"><svg class=nav-toggle__open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class=nav-toggle__close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <nav class="site-nav" id="site-nav" aria-label="Principale">
       <ul class="nav-list">
         <li><a href="chi-siamo.html">Chi siamo</a></li>
@@ -49,12 +49,12 @@
     </nav>
   </div>
 </header>
-<main id="main">
+<main id="main" tabindex="-1">
 <section class="page-hero">
   <div class="container">
     <span class="eyebrow">Identità visiva · proposta</span>
     <h1>Logo e colori di <span class="accent">Fiume di Vita</span></h1>
-    <p class="lead">Tre proposte di simbolo e quattro palette. Scegli quella che senti più vostra: il pulsante “Applica al sito” cambia i colori di tutte le pagine (resta memorizzato nel tuo browser).</p>
+    <p class="lead">Tre proposte di simbolo e quattro palette. Scegli quella che senti più vostra: il pulsante “Prova in questa pagina” cambia i colori qui, “Vedi la home” apre la home con quei colori.</p>
   </div>
 </section>
 <section class="section">
@@ -111,19 +111,19 @@
     <div class="grid grid-2"><div class="palette-option reveal">
   <h3>A · Fiume</h3><p style="color:var(--c-muted)">Blu fiume, acqua viva, verde vita e un sole caldo. Fresco e giovane, ma accogliente.</p>
   <div class="swatches" style="margin:16px 0 20px"><div class="swatch"><i style="background:#0E5A73"></i><span>Fiume<br><code>#0E5A73</code></span></div><div class="swatch"><i style="background:#0A2E3D"></i><span>Profondo<br><code>#0A2E3D</code></span></div><div class="swatch"><i style="background:#3FB6B2"></i><span>Acqua<br><code>#3FB6B2</code></span></div><div class="swatch"><i style="background:#7CC768"></i><span>Vita<br><code>#7CC768</code></span></div><div class="swatch"><i style="background:#F4B544"></i><span>Sole<br><code>#F4B544</code></span></div><div class="swatch"><i style="background:#FBF7F0"></i><span>Sabbia<br><code>#FBF7F0</code></span></div></div>
-  <div class="btn-row"><button class="btn" data-set-palette="a" aria-pressed="false">Applica al sito</button><a class="btn btn--outline" href="index.html?palette=a">Vedi la home</a></div>
+  <div class="btn-row"><button class="btn" data-set-palette="a" aria-pressed="false">Prova in questa pagina</button><a class="btn btn--outline" href="index.html?palette=a">Vedi la home</a></div>
 </div><div class="palette-option reveal">
   <h3>B · Mediterraneo</h3><p style="color:var(--c-muted)">Il blu del golfo di Pozzuoli con il terracotta del tufo flegreo. Più deciso e solare.</p>
   <div class="swatches" style="margin:16px 0 20px"><div class="swatch"><i style="background:#1747A6"></i><span>Cobalto<br><code>#1747A6</code></span></div><div class="swatch"><i style="background:#0C1F47"></i><span>Notte<br><code>#0C1F47</code></span></div><div class="swatch"><i style="background:#22B8CF"></i><span>Golfo<br><code>#22B8CF</code></span></div><div class="swatch"><i style="background:#5FBFA0"></i><span>Salvia<br><code>#5FBFA0</code></span></div><div class="swatch"><i style="background:#E8663D"></i><span>Tufo<br><code>#E8663D</code></span></div><div class="swatch"><i style="background:#F7F4EE"></i><span>Calce<br><code>#F7F4EE</code></span></div></div>
-  <div class="btn-row"><button class="btn" data-set-palette="b" aria-pressed="false">Applica al sito</button><a class="btn btn--outline" href="index.html?palette=b">Vedi la home</a></div>
+  <div class="btn-row"><button class="btn" data-set-palette="b" aria-pressed="false">Prova in questa pagina</button><a class="btn btn--outline" href="index.html?palette=b">Vedi la home</a></div>
 </div><div class="palette-option reveal">
   <h3>C · Giardino</h3><p style="color:var(--c-muted)">Verdi profondi e un corallo vivace: crescita, natura e calore familiare.</p>
   <div class="swatches" style="margin:16px 0 20px"><div class="swatch"><i style="background:#1F5C45"></i><span>Bosco<br><code>#1F5C45</code></span></div><div class="swatch"><i style="background:#12352A"></i><span>Radice<br><code>#12352A</code></span></div><div class="swatch"><i style="background:#4FB3A9"></i><span>Ruscello<br><code>#4FB3A9</code></span></div><div class="swatch"><i style="background:#8CCF6B"></i><span>Germoglio<br><code>#8CCF6B</code></span></div><div class="swatch"><i style="background:#F28C6B"></i><span>Corallo<br><code>#F28C6B</code></span></div><div class="swatch"><i style="background:#F6F7F1"></i><span>Lino<br><code>#F6F7F1</code></span></div></div>
-  <div class="btn-row"><button class="btn" data-set-palette="c" aria-pressed="false">Applica al sito</button><a class="btn btn--outline" href="index.html?palette=c">Vedi la home</a></div>
+  <div class="btn-row"><button class="btn" data-set-palette="c" aria-pressed="false">Prova in questa pagina</button><a class="btn btn--outline" href="index.html?palette=c">Vedi la home</a></div>
 </div><div class="palette-option reveal">
   <h3>D · Austin</h3><p style="color:var(--c-muted)">Ispirata ad austinstone.org: antracite e bianco, grigio chiaro e un blu acceso come unico colore. Pulita e moderna.</p>
   <div class="swatches" style="margin:16px 0 20px"><div class="swatch"><i style="background:#282828"></i><span>Antracite<br><code>#282828</code></span></div><div class="swatch"><i style="background:#00A3E1"></i><span>Blu<br><code>#00A3E1</code></span></div><div class="swatch"><i style="background:#F4F4F4"></i><span>Grigio chiaro<br><code>#F4F4F4</code></span></div><div class="swatch"><i style="background:#5E5E5E"></i><span>Testo<br><code>#5E5E5E</code></span></div><div class="swatch"><i style="background:#35B887"></i><span>Verde<br><code>#35B887</code></span></div><div class="swatch"><i style="background:#FFFFFF"></i><span>Bianco<br><code>#FFFFFF</code></span></div></div>
-  <div class="btn-row"><button class="btn" data-set-palette="d" aria-pressed="false">Applica al sito</button><a class="btn btn--outline" href="index.html?palette=d">Vedi la home</a></div>
+  <div class="btn-row"><button class="btn" data-set-palette="d" aria-pressed="false">Prova in questa pagina</button><a class="btn btn--outline" href="index.html?palette=d">Vedi la home</a></div>
 </div></div>
   </div>
 </section>
@@ -162,6 +162,7 @@
           <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="ministeri.html">Ministeri</a></li>
           <li><a href="predicazioni.html">Predicazioni</a></li>
+          <li><a href="articoli.html">Articoli</a></li>
           <li><a href="eventi.html">Eventi</a></li>
           <li><a href="centro.html">Il Centro</a></li>
         </ul>
@@ -185,12 +186,12 @@
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> Fiume di Vita · Chiesa evangelica a Pozzuoli</span>
-      <span class="footer-links"><a href="admin/">Area riservata</a> · <a href="#main">Torna su ↑</a></span>
+      <span class="footer-links"><a href="admin/">Area riservata</a><a href="#main">Torna su ↑</a></span>
     </div>
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=eba029f1" defer></script>
+<script src="js/main.js?v=14b35051" defer></script>
 
 </body>
 </html>
