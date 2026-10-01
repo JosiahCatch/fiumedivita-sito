@@ -790,3 +790,9 @@ a.yt { text-decoration: none; }
 .lx-text .lx-avatar { border-radius: 50%; max-height: none; }            /* vince su .lx-text img */
 .lx-sermons { max-width: 54rem; }
 .lx-band .lx-sermons + * { margin-top: 0; }
+
+/* card articolo: tutta la card apre l'articolo (foto compresa) */
+.acard a.stretched::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.acard { cursor: pointer; }
+.acard a.stretched:focus-visible { outline: 0; }
+.acard:has(a.stretched:focus-visible) { outline: 3px solid var(--c-sun); outline-offset: 3px; }
