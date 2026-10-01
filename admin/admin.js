@@ -137,7 +137,7 @@
   const nomeCat = (c, s) => { const C = categorie.find((x) => x.slug === c); const S = C?.sotto.find((x) => x.slug === s); return C ? `${C.nome} › ${S ? S.nome : '?'}` : '—'; };
 
   async function vistaArticoli() {
-    cornice('articoli', `<div class="adm-head"><h1>Articoli</h1><a class="btn btn--sun" href="#nuovo">+ Nuovo articolo</a></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
+    cornice('articoli', `<div class="adm-head"><h1>Articoli</h1><div class="adm-row-actions"><a class="btn btn--outline" href="#nuovo">Importa da Word o PDF</a><a class="btn btn--sun" href="#nuovo">+ Nuovo articolo</a></div></div><div class="adm-card"><p class="adm-muted">Caricamento…</p></div>`);
     const lista = await api('/api/articoli');
     const box = vista.querySelector('.adm-card');
     if (!lista.length) { box.innerHTML = `<div class="adm-empty"><h2>Ancora nessun articolo</h2><p class="adm-muted">Scrivi il primo: puoi salvarlo come bozza e pubblicarlo quando è pronto.</p><a class="btn btn--sun" href="#nuovo">Scrivi il primo articolo</a></div>`; return; }
@@ -170,11 +170,19 @@
     vista.querySelector('.adm-card').outerHTML = `<form class="adm-editor" id="f-art" novalidate>
       <h1>${nuovo ? 'Nuovo articolo' : 'Modifica articolo'}</h1>
       <div class="adm-grid">
-        <div class="adm-col-main adm-card">
+        <div class="adm-col-main">
+        <div class="adm-import" data-import tabindex="0" role="button" aria-label="Importa l'articolo da un file Word, PDF o di testo">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>
+          <div><strong>Hai già l'articolo in un file?</strong><span>Trascinalo qui o clicca per sceglierlo: Word (.docx), PDF o testo. Titolo, testo, immagini e categoria vengono compilati da soli.</span></div>
+          <input type="file" accept=".docx,.pdf,.txt,.md,.doc,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" data-import-file hidden>
+        </div>
+        <div class="adm-import-esito" data-import-esito hidden></div>
+        <div class="adm-card">
           <label class="adm-field"><span>Titolo *</span><input name="titolo" required maxlength="160" value="${esc(a.titolo)}" class="adm-input-big"></label>
           <label class="adm-field"><span>Sottotitolo <small>(una frase che invoglia a leggere)</small></span><input name="sottotitolo" maxlength="280" value="${esc(a.sottotitolo)}"></label>
           <div class="adm-field"><span>Testo *</span><textarea name="testo" id="testo">${esc(a.testo)}</textarea>
             <small class="adm-muted">Usa i pulsanti per titoletti, grassetto, citazioni ed elenchi. Il pulsante con la montagna inserisce un'immagine.</small></div>
+        </div>
         </div>
         <aside class="adm-col-side">
           <div class="adm-card">
@@ -244,8 +252,61 @@
     });
     f.querySelector('[data-togli-cover]')?.addEventListener('click', () => { f.immagine.value = ''; f.querySelector('.adm-cover').innerHTML = '<span class="adm-muted">Nessuna immagine</span>'; });
 
-    // avviso se si esce senza salvare
     let modificato = false;
+    // importazione da file
+    const zona = f.querySelector('[data-import]'); const inFile = f.querySelector('[data-import-file]'); const esito = f.querySelector('[data-import-esito]');
+    zona.addEventListener('click', () => inFile.click());
+    zona.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inFile.click(); } });
+    ['dragenter', 'dragover'].forEach((t) => zona.addEventListener(t, (e) => { e.preventDefault(); zona.classList.add('is-over'); }));
+    ['dragleave', 'drop'].forEach((t) => zona.addEventListener(t, (e) => { e.preventDefault(); zona.classList.remove('is-over'); }));
+    zona.addEventListener('drop', (e) => { const file = e.dataTransfer.files[0]; if (file) importa(file); });
+    inFile.addEventListener('change', () => { if (inFile.files[0]) importa(inFile.files[0]); inFile.value = ''; });
+    async function importa(file) {
+      if ((f.titolo.value.trim() || editor.value().trim()) && !(await chiedi({ titolo: 'Sostituire il contenuto?', testo: 'Il titolo e il testo che hai già scritto verranno sostituiti con quelli del file.', ok: 'Sostituisci' }))) return;
+      zona.classList.add('is-busy'); esito.hidden = false; esito.dataset.tipo = 'info'; esito.textContent = `Leggo "${file.name}"…`;
+      try {
+        const r = await window.FDVImporta.leggi(file, categorie);
+        f.titolo.value = r.titolo || ''; f.sottotitolo.value = r.sottotitolo || '';
+        if (r.autore) f.autore.value = r.autore;
+        let testo = r.testo, copertina = '';
+        if (r.immagini.length) {
+          esito.textContent = `Preparo ${r.immagini.length} ${r.immagini.length === 1 ? 'immagine' : 'immagini'}…`;
+          const pronte = [];
+          for (const [i, d] of r.immagini.entries()) {
+            const blob = await (await fetch(d)).blob();
+            pronte.push({ base64: await preparaImmagine(new File([blob], `immagine-${i + 1}`, { type: blob.type })), nome: `${slugify(r.titolo).slice(0, 40) || 'articolo'}-${i + 1}` });
+          }
+          esito.textContent = 'Carico le immagini…';
+          const { paths } = await api('/api/immagini', { method: 'POST', body: { immagini: pronte, articolo: slugify(r.titolo) || 'bozza' } });
+          paths.forEach((pth, i) => anteprimeLocali.set(pth, pronte[i].base64));
+          // la prima immagine diventa la copertina; se sta proprio all'inizio del testo, non la ripetiamo nel testo
+          copertina = paths[0];
+          const pos = testo.indexOf('⟦IMG 0⟧');
+          if (pos >= 0 && pos < 300) testo = testo.replace('⟦IMG 0⟧', '');
+          testo = testo.replace(/⟦IMG (\d+)⟧/g, (_, n) => `![](${paths[+n]})`).replace(/\n{3,}/g, '\n\n').trim();
+          if (!f.immagine.value) { f.immagine.value = copertina; f.querySelector('.adm-cover').innerHTML = `<img src="${esc(srcAnteprima(copertina))}" alt="">`; }
+        }
+        editor.value(testo);
+        let cat = '';
+        if (r.categoria) {
+          f.categoria.value = r.categoria; a.sottocategoria = r.sottocategoria; riempiSotto(); f.sottocategoria.value = r.sottocategoria;
+          cat = nomeCat(r.categoria, r.sottocategoria);
+        }
+        modificato = true;
+        const parole = (testo.match(/[\p{L}\d]+/gu) || []).length;
+        esito.dataset.tipo = 'ok';
+        esito.innerHTML = `<strong>Ho letto "${esc(file.name)}".</strong> Controlla tutto e poi premi Salva.
+          <ul><li>Titolo: <em>${esc(r.titolo || '—')}</em></li>${r.sottotitolo ? `<li>Sottotitolo: <em>${esc(r.sottotitolo)}</em></li>` : ''}${r.autore ? `<li>Autore: ${esc(r.autore)}</li>` : ''}
+          <li>Testo: circa ${parole} parole</li>${r.immagini.length ? `<li>Immagini: ${r.immagini.length}${copertina ? ' (la prima è la copertina)' : ''}</li>` : ''}
+          <li>${cat ? `Categoria suggerita: <strong>${esc(cat)}</strong>` : 'Categoria: non sono riuscito a indovinarla, sceglila tu'}</li></ul>
+          ${r.avvisi.length ? `<p class="adm-muted">${r.avvisi.map(esc).join('<br>')}</p>` : ''}`;
+        f.titolo.focus();
+      } catch (ex) {
+        esito.dataset.tipo = 'errore'; esito.textContent = ex.message;
+      } finally { zona.classList.remove('is-busy'); }
+    }
+
+    // avviso se si esce senza salvare
     f.addEventListener('input', () => { modificato = true; });
     editor.codemirror.on('change', () => { modificato = true; });
     window.onbeforeunload = () => (modificato ? true : undefined);
