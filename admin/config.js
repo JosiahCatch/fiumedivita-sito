@@ -1,5 +1,5 @@
-// Indirizzi usati dal pannello. ADMIN_API viene impostato dopo aver pubblicato il servizio su Cloudflare.
+// Indirizzi usati dal pannello: servizio di login su Cloudflare e sito pubblicato.
 window.FDV_CONFIG = {
-  ADMIN_API: "DA_IMPOSTARE",
+  ADMIN_API: "https://fiumedivita-admin.fiumedivita.workers.dev",
   SITO: "https://josiahcatch.github.io/fiumedivita-sito/",
 };
