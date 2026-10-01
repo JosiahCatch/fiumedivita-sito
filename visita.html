@@ -14,10 +14,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=55db2616">
+<link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=a322f1d3">
 <link rel="canonical" href="https://josiahcatch.github.io/fiumedivita-sito/visita.html">
 <meta property="og:url" content="https://josiahcatch.github.io/fiumedivita-sito/visita.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -56,7 +55,7 @@
     <span class="eyebrow">Sono nuovo</span>
     <h1>Benvenuto a <span class="accent">casa.</span></h1>
     <p class="lead">Andare in una chiesa nuova può mettere un po' di emozione. Ecco tutto quello che c'è da sapere per la tua prima domenica con noi.</p>
-    <div class="btn-row" style="margin-top:24px"><a class="btn btn--sun" href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Avvisaci che vieni</a><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Indicazioni</a></div>
+    <div class="btn-row u-mt-5"><a class="btn btn--sun" href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Avvisaci che vieni</a><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Indicazioni</a></div>
   </div>
 </section>
 <section class="section">
@@ -79,7 +78,7 @@
     <div class="reveal">
       <span class="eyebrow">Orari e luogo</span>
       <h2>Dove e quando</h2>
-      <div class="contact-box" style="margin-top:24px">
+      <div class="contact-box u-mt-5">
         <div class="contact-line"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><strong>Ogni domenica alle 10:15</strong><span>Caffè e accoglienza dalle 10:00</span></span></div>
         <a class="contact-line" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong>Via Casalanno, 85 — Pozzuoli (NA)</strong><span>Apri in Google Maps</span></span></a>
         <a class="contact-line" href="https://wa.me/393755480132" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span><strong>Hai domande?</strong><span>Scrivici su WhatsApp al 375 548 0132</span></span></a>
@@ -97,12 +96,12 @@
 </section>
 
 <section class="section">
-  <div class="container split" style="align-items:start">
+  <div class="container split split--top">
     <div class="reveal">
       <span class="eyebrow">Bambini</span>
       <h2>I tuoi figli saranno in buone mani</h2>
       <p class="lead">Durante il culto i bambini partecipano alla scuola domenicale: storie della Bibbia, canti, giochi e attività pensate per la loro età.</p>
-      <img style="border-radius:18px;margin-top:24px;aspect-ratio:4/3;object-fit:cover;width:100%" src="assets/img/generale-14.webp" srcset="assets/img/generale-14-sm.webp 640w, assets/img/generale-14.webp 1218w" sizes="(max-width: 880px) 100vw, 50vw" alt="Bambini che giocano all&#x27;aperto" loading="lazy" decoding="async">
+      <img class="photo u-mt-5" src="assets/img/generale-14.webp" srcset="assets/img/generale-14-sm.webp 640w, assets/img/generale-14.webp 1218w" sizes="(max-width: 880px) 100vw, 50vw" alt="Bambini che giocano all&#x27;aperto" loading="lazy" decoding="async">
     </div>
     <div class="reveal" style="--d:.1s">
       <span class="eyebrow">Domande frequenti</span>

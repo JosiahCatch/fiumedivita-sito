@@ -14,10 +14,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=55db2616">
+<link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=a322f1d3">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Church","name":"Fiume di Vita","alternateName":"Chiesa Evangelica Pozzuoli - Fiume di Vita",
 "address":{"@type":"PostalAddress","streetAddress":"Via Casalanno, 85","addressLocality":"Pozzuoli","addressRegion":"NA","addressCountry":"IT"},
@@ -62,7 +61,7 @@
     <img src="assets/img/generale-15-lg.webp" srcset="assets/img/generale-15-md.webp 1200w, assets/img/generale-15-lg.webp 1700w, assets/img/generale-15-hd.webp 2400w" sizes="100vw" alt="La comunità di Fiume di Vita riunita sotto il porticato" fetchpriority="high">
   </picture></div>
   <div class="container hero__content">
-    <span class="eyebrow" style="color:var(--c-sun)">Chiesa evangelica · Pozzuoli</span>
+    <span class="eyebrow eyebrow--sun">Chiesa evangelica · Pozzuoli</span>
     <h1>Una famiglia nel cuore di <span class="accent">Pozzuoli.</span></h1>
     <p>Siamo una chiesa dove puoi conoscere Gesù, trovare amicizie vere e un posto a cui appartenere. Così come sei.</p>
     <div class="btn-row">
@@ -116,8 +115,8 @@
         <span class="series-chip">Serie attuale: <b>Filippesi</b></span>
         <h2>Pace oltre ogni intelligenza</h2>
         <p class="lead">Filippesi 4:6-9 · Josiah Catchpole</p>
-        <p class="featured__desc" style="color:#B9CDD3">Un viaggio nella lettera della gioia: come vivere con pace e speranza anche quando la vita è difficile.</p>
-        <div class="btn-row" style="margin-top:24px">
+        <p class="featured__desc">Un viaggio nella lettera della gioia: come vivere con pace e speranza anche quando la vita è difficile.</p>
+        <div class="btn-row u-mt-5">
           <a class="btn btn--sun" href="predicazioni.html">Tutte le predicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
           <a class="btn btn--ghost" href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Canale YouTube</a>
         </div>
@@ -132,7 +131,7 @@
   <div class="sermon__info">
     <span class="ref">Filippesi 4:4-9</span>
     <h3>Rallegratevi sempre nel Signore</h3>
-    <p class="who">Lorenzo Piol · <span style="white-space:nowrap">29 set 2026</span></p>
+    <p class="who">Lorenzo Piol · <span class="nowrap">29 set 2026</span></p>
   </div>
 </article><article class="sermon reveal">
   <button class="yt yt--sm" data-id="T-N96DDAwkE" aria-label="Guarda: Giusti per fede">
@@ -142,7 +141,7 @@
   <div class="sermon__info">
     <span class="ref">Filippesi 3:1-11</span>
     <h3>Giusti per fede</h3>
-    <p class="who">Alec Catchpole · <span style="white-space:nowrap">29 set 2026</span></p>
+    <p class="who">Alec Catchpole · <span class="nowrap">29 set 2026</span></p>
   </div>
 </article><article class="sermon reveal">
   <button class="yt yt--sm" data-id="oIXgFedOV6w" aria-label="Guarda: Adoperatevi con timore e tremore">
@@ -152,7 +151,7 @@
   <div class="sermon__info">
     <span class="ref">Filippesi 2:1-18</span>
     <h3>Adoperatevi con timore e tremore</h3>
-    <p class="who">Stefano Bonavolta · <span style="white-space:nowrap">7 set 2026</span></p>
+    <p class="who">Stefano Bonavolta · <span class="nowrap">7 set 2026</span></p>
   </div>
 </article>
     </div>
@@ -188,17 +187,17 @@
 </a><a class="mcard" href="ministero-donne.html">
   <img src="assets/img/donne-3.webp" srcset="assets/img/donne-3-sm.webp 640w, assets/img/donne-3.webp 1218w" sizes="(max-width: 640px) 80vw, 25vw" alt="" loading="lazy" decoding="async">
   <div class="mcard__body"><span class="mcard__tag">Donne</span><h3>Donne</h3><p>Incoraggiarsi, pregare e studiare la Parola insieme.</p></div>
-</a><a class="mcard" href="ministero-uomini.html" style="background:linear-gradient(160deg,var(--c-primary),var(--c-deep))">
-  <div class="mcard__body" style="align-self:stretch;display:flex;flex-direction:column;justify-content:space-between">
-    <span style="color:var(--c-sun);width:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+</a><a class="mcard mcard--art" href="ministero-uomini.html">
+  <div class="mcard__body">
+    <span class="mcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
     <div><span class="mcard__tag">Uomini</span><h3>Uomini</h3><p>Uomini che si sostengono nella fede e nella vita.</p></div>
   </div>
 </a><a class="mcard" href="ministero-calcetto.html">
   <img src="assets/img/calcetto-2.webp" srcset="assets/img/calcetto-2-sm.webp 640w, assets/img/calcetto-2.webp 1218w" sizes="(max-width: 640px) 80vw, 25vw" alt="" loading="lazy" decoding="async">
   <div class="mcard__body"><span class="mcard__tag">Sport</span><h3>Calcetto</h3><p>La partita della settimana, aperta a tutti.</p></div>
-</a><a class="mcard" href="ministero-inglese.html" style="background:linear-gradient(160deg,var(--c-primary),var(--c-deep))">
-  <div class="mcard__body" style="align-self:stretch;display:flex;flex-direction:column;justify-content:space-between">
-    <span style="color:var(--c-sun);width:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
+</a><a class="mcard mcard--art" href="ministero-inglese.html">
+  <div class="mcard__body">
+    <span class="mcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
     <div><span class="mcard__tag">Lingue</span><h3>Inglese</h3><p>Incontri in inglese, per chi lo parla e chi lo impara.</p></div>
   </div>
 </a><a class="mcard" href="ministero-aiuto-bisognosi.html">
@@ -206,7 +205,7 @@
   <div class="mcard__body"><span class="mcard__tag">Servizio</span><h3>Aiuto ai bisognosi</h3><p>Beni di prima necessità per chi è in difficoltà.</p></div>
 </a>
     </div>
-    <p style="margin-top:24px"><a class="link-arrow" href="ministeri.html">Vedi tutti i ministeri <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
+    <p class="u-mt-5"><a class="link-arrow" href="ministeri.html">Vedi tutti i ministeri <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
   </div>
 </section>
 
@@ -279,7 +278,7 @@
     <div class="centro-teaser reveal">
       <img src="assets/img/costruzione-6.webp" srcset="assets/img/costruzione-6-sm.webp 640w, assets/img/costruzione-6.webp 1218w" sizes="100vw" alt="La struttura del nuovo centro in costruzione" loading="lazy" decoding="async">
       <div class="centro-teaser__body">
-        <span class="eyebrow" style="color:var(--c-sun)">Il nostro progetto</span>
+        <span class="eyebrow eyebrow--sun">Il nostro progetto</span>
         <h2>Stiamo costruendo un centro nel cuore di Pozzuoli</h2>
         <p>Un luogo aperto alla città: per il culto, per i ragazzi, per le famiglie e per chi ha bisogno. Mattone dopo mattone, lo vediamo prendere forma.</p>
         <div class="progress todo" aria-label="Avanzamento dei lavori">
@@ -312,7 +311,7 @@
 </section>
 
 <section class="section section--tight section--white">
-  <div class="container" style="margin-bottom:32px">
+  <div class="container u-mb-6">
     <span class="eyebrow">La nostra comunità</span>
     <h2>Vita insieme</h2>
   </div>
@@ -330,7 +329,7 @@
       <span class="eyebrow">Vieni a trovarci</span>
       <h2>Ci vediamo domenica?</h2>
       <p class="lead">Non serve conoscere nessuno, né sapere cosa dire. Vieni così come sei: ti accoglieremo con un caffè e un sorriso.</p>
-      <div class="contact-box" style="margin-top:32px">
+      <div class="contact-box u-mt-6">
         <a class="contact-line" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong>Via Casalanno, 85 — Pozzuoli (NA)</strong><span>Apri le indicazioni stradali</span></span></a>
         <a class="contact-line" href="https://wa.me/393755480132" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span><strong>Scrivici su WhatsApp</strong><span>Rispondiamo volentieri a ogni domanda</span></span></a>
         <a class="contact-line" href="tel:+393755480132"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><strong>375 548 0132</strong><span>Chiamaci</span></span></a>

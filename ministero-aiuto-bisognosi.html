@@ -14,10 +14,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=55db2616">
+<link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=a322f1d3">
 <link rel="canonical" href="https://josiahcatch.github.io/fiumedivita-sito/ministero-aiuto-bisognosi.html">
 <meta property="og:url" content="https://josiahcatch.github.io/fiumedivita-sito/ministero-aiuto-bisognosi.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -56,7 +55,7 @@
     <nav class="crumbs" aria-label="Percorso"><a href="ministeri.html">Ministeri</a><span aria-hidden="true">/</span><span aria-current="page">Aiuto ai bisognosi</span></nav><span class="eyebrow">Servizio</span>
     <h1>Aiuto ai bisognosi</h1>
     <p class="lead">L'amore di Dio si vede anche nei fatti.</p>
-    <div class="btn-row" style="margin-top:24px"><a class="btn btn--sun" href="https://wa.me/393755480132?text=Ciao%21%20Vorrei%20informazioni%20su%20Aiuto%20ai%20bisognosi%20di%20Fiume%20di%20Vita." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp</a></div>
+    <div class="btn-row u-mt-5"><a class="btn btn--sun" href="https://wa.me/393755480132?text=Ciao%21%20Vorrei%20informazioni%20su%20Aiuto%20ai%20bisognosi%20di%20Fiume%20di%20Vita." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp</a></div>
   </div>
 </section>
 <div class="info-strip">
@@ -91,11 +90,11 @@
 
 
 <section class="section">
-  <div class="container split" style="align-items:start">
+  <div class="container split split--top">
     <div class="reveal">
       <span class="eyebrow">Come partecipare</span>
       <h2>Vuoi unirti a noi?</h2>
-      <ol class="timeline" style="margin-top:32px">
+      <ol class="timeline u-mt-6">
         <li><h3>Scrivici</h3><p>Mandaci un messaggio su WhatsApp: ti diamo tutte le informazioni.</p></li>
         <li><h3>Ti presentiamo il gruppo</h3><p>Ti mettiamo in contatto con chi segue il ministero, così saprai chi ti aspetta.</p></li>
         <li><h3>Vieni a trovarci</h3><p>Partecipa al primo incontro: nessun impegno, solo il piacere di conoscerti.</p></li>
@@ -103,11 +102,11 @@
     </div>
     <div class="reveal" style="--d:.1s">
       <div class="contact-card todo">
-        <div class="person__photo" style="width:96px;height:96px;margin:0"><span style="font-size:1.6rem">FV</span></div>
+        <div class="person__photo"><span>FV</span></div>
         <div>
           <span class="card__meta">Referente</span>
-          <h3 style="margin:4px 0">Nome e cognome</h3>
-          <p style="color:var(--c-muted);margin:0 0 16px">Responsabile · Aiuto ai bisognosi</p>
+          <h3>Nome e cognome</h3>
+          <p class="contact-card__role">Responsabile · Aiuto ai bisognosi</p>
           <a class="btn btn--sun" href="https://wa.me/393755480132?text=Ciao%21%20Vorrei%20informazioni%20su%20Aiuto%20ai%20bisognosi%20di%20Fiume%20di%20Vita." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp</a>
         </div>
       </div>
@@ -139,21 +138,21 @@
 </a><a class="mcard" href="ministero-donne.html">
   <img src="assets/img/donne-3.webp" srcset="assets/img/donne-3-sm.webp 640w, assets/img/donne-3.webp 1218w" sizes="(max-width: 640px) 80vw, 25vw" alt="" loading="lazy" decoding="async">
   <div class="mcard__body"><span class="mcard__tag">Donne</span><h3>Donne</h3><p>Incoraggiarsi, pregare e studiare la Parola insieme.</p></div>
-</a><a class="mcard" href="ministero-uomini.html" style="background:linear-gradient(160deg,var(--c-primary),var(--c-deep))">
-  <div class="mcard__body" style="align-self:stretch;display:flex;flex-direction:column;justify-content:space-between">
-    <span style="color:var(--c-sun);width:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+</a><a class="mcard mcard--art" href="ministero-uomini.html">
+  <div class="mcard__body">
+    <span class="mcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
     <div><span class="mcard__tag">Uomini</span><h3>Uomini</h3><p>Uomini che si sostengono nella fede e nella vita.</p></div>
   </div>
 </a><a class="mcard" href="ministero-calcetto.html">
   <img src="assets/img/calcetto-2.webp" srcset="assets/img/calcetto-2-sm.webp 640w, assets/img/calcetto-2.webp 1218w" sizes="(max-width: 640px) 80vw, 25vw" alt="" loading="lazy" decoding="async">
   <div class="mcard__body"><span class="mcard__tag">Sport</span><h3>Calcetto</h3><p>La partita della settimana, aperta a tutti.</p></div>
-</a><a class="mcard" href="ministero-inglese.html" style="background:linear-gradient(160deg,var(--c-primary),var(--c-deep))">
-  <div class="mcard__body" style="align-self:stretch;display:flex;flex-direction:column;justify-content:space-between">
-    <span style="color:var(--c-sun);width:56px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
+</a><a class="mcard mcard--art" href="ministero-inglese.html">
+  <div class="mcard__body">
+    <span class="mcard__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></span>
     <div><span class="mcard__tag">Lingue</span><h3>Inglese</h3><p>Incontri in inglese, per chi lo parla e chi lo impara.</p></div>
   </div>
 </a></div>
-    <p style="margin-top:24px"><a class="link-arrow" href="ministeri.html">Tutti i ministeri <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
+    <p class="u-mt-5"><a class="link-arrow" href="ministeri.html">Tutti i ministeri <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></p>
   </div>
 </section>
 </main>

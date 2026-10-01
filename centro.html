@@ -14,10 +14,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=55db2616">
+<link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=a322f1d3">
 <link rel="canonical" href="https://josiahcatch.github.io/fiumedivita-sito/centro.html">
 <meta property="og:url" content="https://josiahcatch.github.io/fiumedivita-sito/centro.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -56,7 +55,7 @@
     <span class="eyebrow">Il Centro</span>
     <h1>Un centro nel cuore di <span class="accent">Pozzuoli.</span></h1>
     <p class="lead">Stiamo costruendo uno spazio aperto alla città: un luogo dove le persone possano incontrare Dio, trovare amicizia e ricevere aiuto concreto.</p>
-    <div class="btn-row" style="margin-top:24px"><a class="btn btn--sun" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Guarda il video</a><a class="btn btn--ghost" href="#cantiere">Segui il cantiere</a></div>
+    <div class="btn-row u-mt-5"><a class="btn btn--sun" href="#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Guarda il video</a><a class="btn btn--ghost" href="#cantiere">Segui il cantiere</a></div>
   </div>
 </section>
 <section class="section">
@@ -68,7 +67,7 @@
       <p class="lead">Sognamo un luogo dove chiunque si senta a casa: famiglie, ragazzi, anziani, chi è solo e chi sta attraversando un momento difficile.</p>
       <p>Il centro sarà la nuova casa della chiesa Fiume di Vita, ma soprattutto uno spazio aperto a Pozzuoli, sette giorni su sette.</p>
     </div>
-    <div class="reveal" style="--d:.1s"><img style="border-radius:28px;aspect-ratio:4/3;object-fit:cover;width:100%" src="assets/img/costruzione-2.webp" srcset="assets/img/costruzione-2-sm.webp 640w, assets/img/costruzione-2.webp 1218w" sizes="(max-width: 880px) 100vw, 50vw" alt="Un casco da cantiere al sole" loading="lazy" decoding="async"></div>
+    <div class="reveal" style="--d:.1s"><img class="photo photo--lg" src="assets/img/costruzione-2.webp" srcset="assets/img/costruzione-2-sm.webp 640w, assets/img/costruzione-2.webp 1218w" sizes="(max-width: 880px) 100vw, 50vw" alt="Un casco da cantiere al sole" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
@@ -112,7 +111,7 @@
 </section>
 
 <section class="section" id="cantiere">
-  <div class="container split" style="align-items:start">
+  <div class="container split split--top">
     <div class="reveal sticky-col">
       <span class="eyebrow">Diario del cantiere</span>
       <h2>Mattone dopo mattone</h2>
@@ -163,7 +162,7 @@
       <div class="feature reveal" style="--d:.06s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg></div><h3>Dai una mano</h3><p>Hai tempo, competenze o voglia di aiutare? Ogni contributo di lavoro e di idee è prezioso.</p></div>
       <div class="feature reveal" style="--d:.12s"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div><h3>Resta aggiornato</h3><p>Scrivici per ricevere notizie e foto dal cantiere e l'invito all'inaugurazione.</p></div>
     </div>
-    <div class="btn-row" style="margin-top:40px"><a class="btn btn--sun" href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp</a></div>
+    <div class="btn-row u-mt-7"><a class="btn btn--sun" href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp</a></div>
   </div>
 </section>
 </main>
