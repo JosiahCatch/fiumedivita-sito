@@ -654,7 +654,7 @@ a.yt { text-decoration: none; }
 .ahero__meta { color: rgb(255 255 255 / .8); font-size: .98rem; margin-top: var(--s-4); }
 
 .prose { max-width: 720px; margin: 0 auto; font-size: 1.15rem; line-height: 1.75; }
-.prose > * + * { margin-top: 1.1em; }
+.prose > :not(:first-child) { margin-top: 1.1em; }   /* vince su .prose p { margin: 0 } */
 .prose p { margin: 0; }
 .prose h2 { font-size: clamp(1.6rem, 3vw, 2rem); margin-top: 1.8em; }
 .prose h3 { font-size: 1.35rem; margin-top: 1.5em; }
