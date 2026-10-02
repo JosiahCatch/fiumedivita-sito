@@ -1,7 +1,7 @@
 /* Pannello articoli — usa i colori e i caratteri del sito (css/style.css) */
 body.admin { background: var(--c-tint); min-height: 100vh; }
 .adm-bar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; padding: 10px clamp(16px, 3vw, 32px); background: var(--c-surface); box-shadow: 0 1px 0 var(--c-line); color: var(--c-ink); }
-.adm-bar .brand svg { width: 32px; height: 32px; }
+.adm-bar .brand .brand__logo { height: 38px; width: auto; display: block; }
 .adm-bar .brand-word { font-size: 1.15rem; }
 .adm-bar__title { font: 600 .85rem/1 var(--f-head); letter-spacing: .1em; text-transform: uppercase; color: var(--c-muted); padding-left: var(--s-4); border-left: 1px solid var(--c-line); }
 .adm-bar__user { margin-left: auto; display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap; font-size: .95rem; }
