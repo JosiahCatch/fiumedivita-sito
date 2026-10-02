@@ -974,6 +974,89 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .lx-sermons { grid-template-columns: 1fr; }
 }
 
+/* ---------- 9b. Pagina di una predicazione — video in testa, poi il messaggio "in una frase" ----------
+   Stessa griglia di lettura degli articoli (.lx-grid, .lx-text, .lx-note). Il video sporge dalla fascia scura
+   verso la pagina chiara: si guarda, poi si legge. */
+.px, .px-serie { --lx-text: 41rem; --lx-margin: 15.5rem; --lx-gap: clamp(2.5rem, 5vw, 5rem); --sporge: clamp(72px, 11vw, 150px); }
+.px-wide { max-width: calc(var(--lx-text) + var(--lx-margin) + var(--lx-gap)); }
+
+.px-head { background: var(--c-deep); color: var(--c-on-deep); padding: calc(var(--header-h) + clamp(28px, 5vw, 56px)) 0 0; }
+.px-crumbs, .px-crumbs a { color: var(--c-on-deep-muted); }
+.px-crumbs a { color: var(--c-water); }
+.px-head h1 { color: #fff; font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.05; max-width: 16em; margin: 0 0 var(--s-4); text-wrap: balance; }
+.px-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; margin: 0; font-size: var(--fs-md); color: var(--c-on-deep-muted); }
+.px-meta > * { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+.px-meta > * + * { margin-left: 14px; padding-left: 14px; border-left: 1px solid rgb(255 255 255 / .2); }
+.px-meta__chi { font: 600 var(--fs-base)/1.2 var(--f-head); color: #fff; }
+.px-meta__brano { color: var(--c-water); text-decoration: none; font-weight: 500; }
+.px-meta__brano:hover { text-decoration: underline; }
+.px-meta svg { width: 16px; height: 16px; }
+.px-video { margin: clamp(28px, 4vw, 44px) 0 calc(-1 * var(--sporge)); position: relative; z-index: 1; }
+.px-video .yt { border-radius: var(--r-md); box-shadow: 0 24px 60px -24px rgb(10 46 61 / .55); }
+
+/* "in una frase": il cuore del messaggio, grande e in corsivo */
+.px-frase {
+  margin: calc(var(--sporge) + clamp(40px, 6vw, 72px)) 0 clamp(40px, 6vw, 64px); max-width: 27em;
+  font: italic 400 clamp(1.5rem, 3.3vw, 2.35rem)/1.32 var(--f-accent); color: var(--c-deep); text-wrap: pretty;
+}
+.px-frase::before {   /* l'onda gialla del logo, come nel menu */
+  content: ""; display: block; width: 58px; height: 10px; margin-bottom: var(--s-4); background: var(--c-sun);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+/* i punti principali: numerati solo quando sono davvero una sequenza */
+.px-punti { margin-top: clamp(2.5rem, 5vw, 3.5rem); max-width: var(--lx-text); }
+.px-punti h2 { font: 700 clamp(1.45rem, 2.4vw, 1.75rem)/1.2 var(--f-head); letter-spacing: -.015em; margin: 0 0 var(--s-4); }
+.px-punti__lista { list-style: none; margin: 0; padding: 0; counter-reset: punto; }
+.px-punto { display: grid; gap: var(--s-2); padding: var(--s-5) 0; border-top: 1px solid var(--c-line); }
+.px-punti__lista--ol .px-punto { grid-template-columns: 3rem minmax(0, 1fr); column-gap: var(--s-3); }
+.px-punti__lista--ol .px-punto::before {
+  counter-increment: punto; content: counter(punto); grid-row: 1 / span 2;
+  font: italic 400 2.6rem/1 var(--f-accent); color: var(--c-water);
+}
+.px-punto__tit { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.px-punto h3 { margin: 0; font: 650 1.25rem/1.3 var(--f-head); text-transform: none; }
+.px-punto__anti { margin: 0; font: 600 var(--fs-sm)/1.2 var(--f-head); color: var(--c-primary); background: var(--c-tint); padding: 6px 10px; border-radius: var(--r-pill); }
+.px-punto__anti::before { content: "Antidoto: "; font-weight: 400; color: var(--c-muted); }
+.px-punto > p { margin: 0; color: var(--c-ink-soft); font-size: var(--fs-body); line-height: 1.65; }
+.px-punti__lista--ol .px-punto > p { grid-column: 2; }
+
+.px-domande ol { margin: 0; padding-left: 1.2em; display: grid; gap: .7rem; }
+.px-domande li { font: 400 var(--fs-base)/1.5 var(--f-body); color: var(--c-ink-soft); }
+.px-domande li::marker { font-family: var(--f-head); font-weight: 650; color: var(--c-primary); }
+.px-nota { margin: clamp(2rem, 4vw, 3rem) 0 0; padding-top: var(--s-4); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); color: var(--c-muted); max-width: var(--lx-text); }
+.px-vuoto { padding: calc(var(--sporge) + 48px) 0 clamp(3rem, 6vw, 4.5rem); }
+.px-vuoto p { margin: 0; max-width: 40em; font-size: var(--fs-body); color: var(--c-muted); }
+
+/* la serie: precedente e successiva */
+.px-serie { padding: clamp(2.5rem, 5vw, 4rem) 0; background: var(--c-tint); }
+.px-serie h2 { font: 700 clamp(1.3rem, 2.2vw, 1.6rem)/1.2 var(--f-head); margin: 0 0 var(--s-5); }
+.px-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.px-nav__link { display: grid; gap: 4px; padding: var(--s-4) var(--s-5); border-radius: var(--r-md); background: var(--c-surface); color: var(--c-ink); text-decoration: none; border: 1px solid transparent; transition: border-color .2s; }
+.px-nav__link:hover { border-color: var(--c-primary); }
+.px-nav__link--next { grid-column: 2; text-align: right; }
+.px-nav__dir { font: 600 var(--fs-sm)/1.2 var(--f-head); color: var(--c-primary); }
+.px-nav__link strong { font: 650 1.1rem/1.3 var(--f-head); }
+.px-nav__link > span:last-child:not(.px-nav__dir) { font-size: var(--fs-sm); color: var(--c-muted); }
+.px-serie__tutte { margin: var(--s-5) 0 0; }
+
+/* nella pagina Predicazioni: il titolo porta alla pagina, e c'è il link al riassunto */
+.sermon h3 a { color: inherit; text-decoration: none; }
+.sermon h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.sermon__more { display: inline-flex; align-items: center; min-height: 44px; font: 600 var(--fs-sm)/1 var(--f-head); color: var(--c-primary); text-decoration: none; }
+.sermon__more:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .px-meta { gap: 2px 18px; }
+  .px-meta > * + * { margin-left: 0; padding-left: 0; border-left: 0; }
+  .px-video .yt { border-radius: var(--r-sm); }
+  .px-nav { grid-template-columns: minmax(0, 1fr); }
+  .px-nav__link--next { grid-column: 1; }
+  .px-punti__lista--ol .px-punto { grid-template-columns: 2.2rem minmax(0, 1fr); }
+  .px-punti__lista--ol .px-punto::before { font-size: 2.1rem; }
+}
+
 /* ---------- 10. Pagina brand (solo anteprima) ---------- */
 .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: var(--s-3); }
 .swatch { border-radius: var(--r-sm); overflow: hidden; background: var(--c-surface); box-shadow: var(--shadow-1); font: 500 var(--fs-xs)/1.3 var(--f-head); }
