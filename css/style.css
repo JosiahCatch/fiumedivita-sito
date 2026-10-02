@@ -975,12 +975,12 @@ div.mini-photo svg { width: 96px; height: 96px; }
 }
 
 /* ---------- 9b. Pagina di una predicazione — video in testa, poi il messaggio "in una frase" ----------
-   Stessa griglia di lettura degli articoli (.lx-grid, .lx-text, .lx-note). Il video sporge dalla fascia scura
-   verso la pagina chiara: si guarda, poi si legge. */
-.px, .px-serie { --lx-text: 41rem; --lx-margin: 15.5rem; --lx-gap: clamp(2.5rem, 5vw, 5rem); --sporge: clamp(72px, 11vw, 150px); }
+   Stessa griglia di lettura degli articoli (.lx-grid, .lx-text, .lx-note). Il video sta tutto dentro la fascia scura,
+   con spazio sotto: si guarda, poi si legge. */
+.px, .px-serie { --lx-text: 41rem; --lx-margin: 15.5rem; --lx-gap: clamp(2.5rem, 5vw, 5rem); }
 .px-wide { max-width: calc(var(--lx-text) + var(--lx-margin) + var(--lx-gap)); }
 
-.px-head { background: var(--c-deep); color: var(--c-on-deep); padding: calc(var(--header-h) + clamp(28px, 5vw, 56px)) 0 0; }
+.px-head { background: var(--c-deep); color: var(--c-on-deep); padding: calc(var(--header-h) + clamp(28px, 5vw, 56px)) 0 clamp(36px, 6vw, 72px); }
 .px-crumbs, .px-crumbs a { color: var(--c-on-deep-muted); }
 .px-crumbs a { color: var(--c-water); }
 .px-head h1 { color: #fff; font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.05; max-width: 16em; margin: 0 0 var(--s-4); text-wrap: balance; }
@@ -991,12 +991,12 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .px-meta__brano { color: var(--c-water); text-decoration: none; font-weight: 500; }
 .px-meta__brano:hover { text-decoration: underline; }
 .px-meta svg { width: 16px; height: 16px; }
-.px-video { margin: clamp(28px, 4vw, 44px) 0 calc(-1 * var(--sporge)); position: relative; z-index: 1; }
-.px-video .yt { border-radius: var(--r-md); box-shadow: 0 24px 60px -24px rgb(10 46 61 / .55); }
+.px-video { margin-top: clamp(28px, 4vw, 44px); }
+.px-video .yt { border-radius: var(--r-md); box-shadow: 0 0 0 1px rgb(255 255 255 / .08); }
 
 /* "in una frase": il cuore del messaggio, grande e in corsivo */
 .px-frase {
-  margin: calc(var(--sporge) + clamp(40px, 6vw, 72px)) 0 clamp(40px, 6vw, 64px); max-width: 27em;
+  margin: clamp(44px, 7vw, 80px) 0 clamp(40px, 6vw, 64px); max-width: 27em;
   font: italic 400 clamp(1.5rem, 3.3vw, 2.35rem)/1.32 var(--f-accent); color: var(--c-deep); text-wrap: pretty;
 }
 .px-frase::before {   /* l'onda gialla del logo, come nel menu */
@@ -1026,7 +1026,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .px-domande li { font: 400 var(--fs-base)/1.5 var(--f-body); color: var(--c-ink-soft); }
 .px-domande li::marker { font-family: var(--f-head); font-weight: 650; color: var(--c-primary); }
 .px-nota { margin: clamp(2rem, 4vw, 3rem) 0 0; padding-top: var(--s-4); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); color: var(--c-muted); max-width: var(--lx-text); }
-.px-vuoto { padding: calc(var(--sporge) + 48px) 0 clamp(3rem, 6vw, 4.5rem); }
+.px-vuoto { padding: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(3rem, 6vw, 4.5rem); }
 .px-vuoto p { margin: 0; max-width: 40em; font-size: var(--fs-body); color: var(--c-muted); }
 
 /* la serie: precedente e successiva */
