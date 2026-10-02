@@ -537,33 +537,58 @@ main:focus { outline: 0; }
 .progress__bar span { display: block; height: 100%; width: var(--p, 40%); background: linear-gradient(90deg, var(--c-water), var(--c-sun)); border-radius: inherit; }
 .progress__labels { display: flex; justify-content: space-between; font: 600 var(--fs-sm)/1.4 var(--f-head); margin-top: 8px; color: rgb(255 255 255 / .8); gap: 8px; }
 
-/* La nostra storia (Chi siamo): la linea è un fiume sottile che scende da una tappa all'altra */
-.storia { list-style: none; margin: 0; padding: 0; --rail: 44px; }
-.storia__tappa { position: relative; padding: 0 0 var(--s-7) var(--rail); display: grid; gap: var(--s-4); }
-.storia__tappa::before {   /* tratto di fiume fino alla tappa successiva */
-  content: ""; position: absolute; left: 8px; top: 22px; bottom: -2px; width: 12px; background: var(--c-water); opacity: .75;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 28'%3E%3Cpath d='M6 0c5 7 5 7 0 14S1 21 6 28' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") repeat-y 0 0 / 12px 28px;
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 28'%3E%3Cpath d='M6 0c5 7 5 7 0 14S1 21 6 28' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") repeat-y 0 0 / 12px 28px;
+/* La nostra storia (Chi siamo)
+   Un fiume (SVG disegnato da main.js) scende tra le tappe e si "riempie" mentre si scorre la pagina.
+   Su PC: foto e testo si alternano ai lati del fiume. Sul telefono il fiume sta a sinistra. */
+.section-head--storia { margin-bottom: var(--s-8); }
+.storia-wrap { position: relative; --col: 120px; }
+.storia { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: clamp(56px, 8vw, 112px); }
+.storia__tappa { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--col) minmax(0, 1fr); align-items: center; }
+.storia__testo { grid-column: 3; grid-row: 1; max-width: 30em; }
+.storia__foto  { grid-column: 1; grid-row: 1; }
+.storia__tappa--dx .storia__testo { grid-column: 1; justify-self: end; text-align: right; }
+.storia__tappa--dx .storia__foto  { grid-column: 3; }
+.storia__punto {
+  grid-column: 2; grid-row: 1; justify-self: center; position: relative; z-index: 1;
+  width: 18px; height: 18px; border-radius: 50%; background: var(--c-bg); border: 2px solid var(--c-control);
+  transition: background-color .5s, border-color .5s, box-shadow .5s, transform .5s var(--ease-out);
 }
-.storia__tappa::after {    /* il punto della tappa */
-  content: ""; position: absolute; left: 6px; top: 4px; width: 16px; height: 16px; border-radius: 50%;
-  background: var(--c-bg); border: 2.5px solid var(--c-water);
-}
-.storia__tappa--oggi::after { background: var(--c-sun); border-color: var(--c-sun); box-shadow: 0 0 0 6px rgb(244 181 68 / .22); }
-.storia__tappa--futuro { padding-bottom: var(--s-6); }
-.storia__tappa--futuro::before { background: linear-gradient(var(--c-water), transparent); }   /* il fiume continua e sfuma */
-.storia__tappa--futuro::after { border-style: dashed; border-color: var(--c-sun); }
-.storia__quando { margin: 0 0 4px; font: 600 var(--fs-sm)/1.3 var(--f-head); color: var(--c-primary); }
-.storia__testo h3 { margin: 0 0 6px; font-size: clamp(1.2rem, 2.2vw, 1.45rem); text-transform: none; }
-.storia__testo p:last-child, .storia__testo > p:not(.storia__quando) { margin: 0; color: var(--c-muted); }
+.storia__tappa.is-raggiunta .storia__punto { background: var(--c-water); border-color: var(--c-water); box-shadow: 0 0 0 7px rgb(63 182 178 / .16); transform: scale(1.1); }
+.storia__tappa--oggi.is-raggiunta .storia__punto { background: var(--c-sun); border-color: var(--c-sun); box-shadow: 0 0 0 9px rgb(244 181 68 / .22); }
+.storia__tappa--futuro .storia__punto { border-style: dashed; border-color: var(--c-sun); }
+.storia__tappa--futuro.is-raggiunta .storia__punto { background: var(--c-bg); box-shadow: 0 0 0 7px rgb(244 181 68 / .14); }
+
+.storia__quando { margin: 0 0 var(--s-2); font: italic 400 clamp(2rem, 4.2vw, 3.4rem)/1 var(--f-accent); letter-spacing: -.02em; color: var(--c-primary); }
+.storia__tappa--oggi .storia__quando { color: var(--c-ink); }
+.storia__testo h3 { margin: 0 0 var(--s-2); font-size: clamp(1.2rem, 2vw, 1.5rem); text-transform: none; }
+.storia__testo > p:not(.storia__quando) { margin: 0; color: var(--c-muted); }
 .storia__link { display: inline-flex; align-items: center; gap: 6px; margin-top: var(--s-3); min-height: 44px; font: 600 var(--fs-md)/1 var(--f-head); color: var(--c-primary); text-decoration: none; }
 .storia__link svg { width: 18px; height: 18px; }
-.storia__foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-md); display: block; }
-.storia__fine { margin: 0; padding-left: var(--rail); font: italic 400 clamp(1.2rem, 2.4vw, 1.5rem)/1.45 var(--f-accent); color: var(--c-ink-soft); max-width: 34em; }
-@media (min-width: 760px) {
-  .storia__tappa:has(.storia__foto) { grid-template-columns: minmax(0, 1fr) minmax(0, 360px); align-items: start; gap: var(--s-6); }
+.storia__foto img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-lg); }
+
+/* il fiume: base chiara, acqua che si riempie, ultimo tratto a puntini verso il futuro */
+.storia__fiume { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.storia__fiume path { fill: none; stroke-linecap: round; }
+.storia__fiume-base { stroke: var(--c-line); stroke-width: 2; }
+.storia__fiume-acqua { stroke-width: 3.5; }
+.storia__fiume-futuro { stroke: var(--c-sun); stroke-width: 3; stroke-dasharray: .1 10; opacity: .9; }
+/* senza JavaScript: una linea dritta al posto del fiume */
+html.no-js .storia::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--c-line); }
+
+.storia__fine { margin: var(--s-6) auto 0; max-width: 26em; text-align: center; font: italic 400 clamp(1.25rem, 2.6vw, 1.7rem)/1.4 var(--f-accent); color: var(--c-ink-soft); }
+
+@media (max-width: 760px) {
+  .storia-wrap { --col: 40px; }
+  .storia { gap: var(--s-8); }
+  .storia__tappa, .storia__tappa--dx { grid-template-columns: var(--col) minmax(0, 1fr); align-items: start; row-gap: var(--s-4); }
+  .storia__punto { grid-column: 1; grid-row: 1; margin-top: .55rem; }
+  .storia__testo, .storia__tappa--dx .storia__testo { grid-column: 2; grid-row: 1; justify-self: start; text-align: left; }
+  .storia__foto, .storia__tappa--dx .storia__foto { grid-column: 2; grid-row: 2; }
+  .storia__foto img { border-radius: var(--r-md); }
+  html.no-js .storia::before { left: 20px; }
+  .storia__fine { margin-left: var(--col); text-align: left; }
 }
-@media (max-width: 640px) { .storia { --rail: 38px; } .storia__tappa { padding-bottom: var(--s-6); } }
+@media (prefers-reduced-motion: reduce) { .storia__punto { transition: none; } }
 
 /* Timeline (diario del cantiere, come partecipare) */
 .timeline { list-style: none; margin: 0; padding: 0; position: relative; }

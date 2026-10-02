@@ -325,6 +325,56 @@
     document.querySelectorAll('a[href^="https://wa.me"]:not(.fab), .map, .site-footer').forEach((el) => fio.observe(el));
   }
 
+  /* ---- La nostra storia: il fiume che passa per ogni tappa e si riempie scorrendo ---- */
+  const storia = document.querySelector('.storia-wrap');
+  if (storia) {
+    const svg = storia.querySelector('.storia__fiume');
+    const [base, acqua, futuro] = ['base', 'acqua', 'futuro'].map((k) => svg.querySelector(`.storia__fiume-${k}`));
+    const tappe = [...storia.querySelectorAll('.storia__tappa')];
+    let lung = 0, campioni = [], punti = [];
+
+    const disegna = () => {
+      const box = storia.getBoundingClientRect();
+      svg.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+      punti = tappe.map((t) => {
+        const r = t.querySelector('.storia__punto').getBoundingClientRect();
+        return [r.left + r.width / 2 - box.left, r.top + r.height / 2 - box.top];
+      });
+      // anse del fiume: ogni tratto si piega da un lato, il successivo dall'altro
+      const ansa = Math.min(70, box.width * 0.06);
+      let d = `M${punti[0][0]},${punti[0][1]}`;
+      for (let i = 1; i < punti.length; i++) {
+        const [x0, y0] = punti[i - 1], [x1, y1] = punti[i], dy = y1 - y0, s = (i % 2 ? 1 : -1) * ansa;
+        d += ` C${x0 + s},${y0 + dy * 0.4} ${x1 + s},${y1 - dy * 0.4} ${x1},${y1}`;
+      }
+      base.setAttribute('d', d);
+      acqua.setAttribute('d', d);
+      const [xf, yf] = punti[punti.length - 1];
+      futuro.setAttribute('d', `M${xf},${yf + 18} C${xf - ansa / 2},${yf + 70} ${xf + ansa / 2},${yf + 110} ${xf},${box.height + 40}`);
+      lung = acqua.getTotalLength();
+      acqua.style.strokeDasharray = `${lung} ${lung}`;
+      // per sapere quanto fiume serve per arrivare a una certa altezza
+      campioni = Array.from({ length: 121 }, (_, i) => acqua.getPointAtLength((lung * i) / 120).y);
+      riempi();
+    };
+
+    const riempi = () => {
+      const top = storia.getBoundingClientRect().top;
+      const livello = reduce ? Infinity : window.innerHeight * 0.62 - top;   // l'acqua arriva poco sotto metà schermo
+      let i = campioni.findIndex((y) => y > livello);
+      if (i === -1) i = campioni.length - 1;
+      acqua.style.strokeDashoffset = String(lung - (lung * i) / 120);
+      tappe.forEach((t, k) => t.classList.toggle('is-raggiunta', punti[k] && punti[k][1] <= livello));
+    };
+
+    let attesa = 0;
+    const alScroll = () => { if (!attesa) attesa = requestAnimationFrame(() => { attesa = 0; riempi(); }); };
+    disegna();
+    window.addEventListener('scroll', alScroll, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(disegna));
+    window.addEventListener('load', disegna);   // le foto cambiano l'altezza delle tappe
+  }
+
   /* ---- Anno nel footer ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
