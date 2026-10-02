@@ -366,8 +366,10 @@ main:focus { outline: 0; }
 }
 @keyframes hero-zoom { to { transform: scale(var(--hero-zoom)); } }
 .hero::after {
+  --hero-veil: .2;   /* velo uniforme blu scuro su tutta la foto: 0 = nessuno, .3 = foto già spenta */
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
+    linear-gradient(rgb(var(--overlay-deep) / var(--hero-veil)), rgb(var(--overlay-deep) / var(--hero-veil))),
     linear-gradient(180deg, rgb(0 0 0 / .35) 0%, rgb(0 0 0 / 0) 18%),
     linear-gradient(90deg, rgb(8 16 20 / .62) 0%, rgb(8 16 20 / .28) 45%, rgb(8 16 20 / 0) 75%),
     linear-gradient(180deg, rgb(8 16 20 / 0) 55%, rgb(8 16 20 / .55) 100%);
