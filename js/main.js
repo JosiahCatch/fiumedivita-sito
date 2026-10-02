@@ -48,11 +48,15 @@
       if (open) nav.querySelector('a')?.focus();
     });
     nav.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
+    // tocco sul velo accanto al pannello: chiude
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('is-open') && !nav.contains(e.target) && !toggle.contains(e.target)) close();
+    });
     document.addEventListener('keydown', (e) => {
       if (!nav.classList.contains('is-open')) return;
       if (e.key === 'Escape') { close(); toggle.focus(); return; }
       if (e.key === 'Tab') {
-        const items = [toggle, ...nav.querySelectorAll('a')];
+        const items = [toggle, ...[...nav.querySelectorAll('a')].filter((a) => a.offsetParent !== null)];
         const i = items.indexOf(document.activeElement);
         const next = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i === items.length - 1 || i < 0 ? 0 : i + 1);
         e.preventDefault(); items[next].focus();
@@ -101,7 +105,8 @@
     if (iframe) { iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`; return; }
     player.dataset.id = id;
     const img = player.querySelector('img');
-    if (img) { img.removeAttribute('srcset'); img.src = `https://i.ytimg.com/vi/${id}/sddefault.jpg`; }
+    // la copertina scelta da noi (data-cover) resta per tutte le lingue
+    if (img && !img.hasAttribute('data-cover')) { img.removeAttribute('srcset'); img.src = `https://i.ytimg.com/vi/${id}/sddefault.jpg`; }
   }));
 
   /* ---- Scroller orizzontali con frecce ---- */
