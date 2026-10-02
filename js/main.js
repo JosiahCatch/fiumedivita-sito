@@ -45,7 +45,14 @@
       document.body.classList.toggle('nav-open', open);
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
-      if (open) nav.querySelector('a')?.focus();
+      // il primo link riceve il focus appena è davvero visibile (prima il browser lo ignorerebbe)
+      const first = nav.querySelector('a');
+      const focusFirst = (n = 0) => {
+        if (!first || !nav.classList.contains('is-open')) return;
+        if (getComputedStyle(first).visibility === 'visible' || n > 30) first.focus();
+        else requestAnimationFrame(() => focusFirst(n + 1));
+      };
+      if (open) focusFirst();
     });
     nav.addEventListener('click', (e) => { if (e.target.closest('a')) close(); });
     // tocco sul velo accanto al pannello: chiude
@@ -410,4 +417,60 @@
 
   /* ---- Anno nel footer ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* ---- Stile nuovo in prova (?stile=nuovo): vedi STILE_PROVA in _build/build.py e la sezione 12 del CSS ---- */
+  const prova = root.dataset.stileProva;
+  if (prova) {
+    // etichetta in basso a sinistra, solo per chi sta confrontando: dice cosa si vede e permette di cambiare
+    const nuovoStile = prova === 'nuovo';
+    const u = new URL(location.href); u.searchParams.set('stile', nuovoStile ? 'originale' : 'nuovo');
+    const etichetta = document.createElement('p');
+    etichetta.className = 'stile-prova';
+    etichetta.innerHTML = `<span>${nuovoStile ? 'Stile nuovo' : 'Originale'}</span><a href="${u.pathname.split('/').pop() || 'index.html'}${u.search}${u.hash}">${nuovoStile ? "Vedi l'originale" : 'Vedi il nuovo'}</a>`;
+    document.body.append(etichetta);
+  }
+  if (root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
+    root.classList.add('fdv-anim');   // senza JavaScript la barra del cantiere resta già piena
+    // il cantiere: la barra si riempie fino al punto vero quando la vedi
+    document.querySelectorAll('.progress').forEach((p) => {
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { p.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.6 });
+      io.observe(p);
+    });
+    // il vapore del caffè: tre sbuffi quando la striscia degli orari è visibile, poi si ferma
+    const items = [...document.querySelectorAll('.info-strip .info-item')];
+    const caffe = items.find((i) => /caff/i.test(i.textContent));
+    if (caffe) {
+      caffe.classList.add('info-item--caffe');
+      if (!reduce) {
+        const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { caffe.classList.add('is-steaming'); io.disconnect(); } }, { threshold: 0.9 });
+        io.observe(caffe);
+      }
+    }
+    // quanto manca a domenica (ora di Roma). Conosce solo l'orario fisso: culto alle 10:15, caffè dalle 10:00, circa un'ora e mezza
+    const parti = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Rome', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const giorno = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parti.weekday);
+    const min = (+parti.hour) * 60 + (+parti.minute);
+    let testo, oggi = false;
+    if (giorno === 0 && min < 600) { testo = 'Oggi! Il caffè è pronto dalle 10:00'; oggi = true; }
+    else if (giorno === 0 && min < 615) { testo = 'Il caffè è pronto: tra poco si comincia'; oggi = true; }
+    else if (giorno === 0 && min < 705) { testo = 'Il culto è in corso adesso'; oggi = true; }
+    else if (giorno === 0) testo = 'Grazie di essere passato! Ci vediamo domenica prossima';
+    else testo = giorno === 6 ? 'È domani: ti aspettiamo' : `Tra ${7 - giorno} giorni · culto per tutta la famiglia`;
+    const scrivi = (el) => { el.textContent = testo; el.classList.add('fdv-quando'); if (oggi) el.classList.add('fdv-quando--oggi'); };
+    // home: la riga sotto "Domenica, ore 10:15"; Sono nuovo: la riga sotto "Ogni domenica alle 10:15"
+    const culto = items.find((i) => /10:15/.test(i.textContent));
+    const rigaHome = culto && culto.querySelector('span:not(.ico)');
+    if (rigaHome) scrivi(rigaHome);
+    const sotto = [...document.querySelectorAll('main .contact-line')].find((c) => /alle 10:15/.test(c.textContent))?.querySelector('strong + span');
+    if (sotto) { const r = document.createElement('span'); r.style.display = 'block'; sotto.after(r); scrivi(r); }   // qui si aggiunge: l'orario del caffè resta
+    // il riquadro "Ogni domenica" del menu, su tutte le pagine
+    const orari = document.querySelector('.nav-sunday__times');
+    if (orari) { const r = document.createElement('p'); r.className = 'nav-sunday__quando'; orari.after(r); scrivi(r); }
+    // prediche: l'onda sopra la frase-cuore si disegna quando arriva sullo schermo
+    document.querySelectorAll('.px-frase').forEach((f) => {
+      const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { f.classList.add('is-in'); io.disconnect(); } }, { threshold: 0.5 });
+      io.observe(f);
+    });
+  }
 })();
