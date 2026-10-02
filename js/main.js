@@ -331,7 +331,11 @@
     const svg = storia.querySelector('.storia__fiume');
     const [base, acqua, futuro] = ['base', 'acqua', 'futuro'].map((k) => svg.querySelector(`.storia__fiume-${k}`));
     const tappe = [...storia.querySelectorAll('.storia__tappa')];
+    const N = 400;                       // punti di campionamento del fiume
     let lung = 0, campioni = [], punti = [];
+    let mostrato = -1, obiettivo = 0, corsa = 0;
+    let vh = window.innerHeight;          // altezza dello schermo: cambia solo se cambia la larghezza
+    let larghezza = window.innerWidth;
 
     const disegna = () => {
       const box = storia.getBoundingClientRect();
@@ -354,24 +358,53 @@
       lung = acqua.getTotalLength();
       acqua.style.strokeDasharray = `${lung} ${lung}`;
       // per sapere quanto fiume serve per arrivare a una certa altezza
-      campioni = Array.from({ length: 121 }, (_, i) => acqua.getPointAtLength((lung * i) / 120).y);
+      campioni = Array.from({ length: N + 1 }, (_, i) => acqua.getPointAtLength((lung * i) / N).y);
+      mostrato = -1;   // ridisegna subito alla nuova misura
       riempi();
     };
 
-    const riempi = () => {
-      const top = storia.getBoundingClientRect().top;
-      const livello = reduce ? Infinity : window.innerHeight * 0.62 - top;   // l'acqua arriva poco sotto metà schermo
-      let i = campioni.findIndex((y) => y > livello);
-      if (i === -1) i = campioni.length - 1;
-      acqua.style.strokeDashoffset = String(lung - (lung * i) / 120);
-      tappe.forEach((t, k) => t.classList.toggle('is-raggiunta', punti[k] && punti[k][1] <= livello));
+    // quanta acqua serve per arrivare all'altezza y (interpolando tra due campioni: niente scatti)
+    const lunghezzaA = (y) => {
+      if (y <= campioni[0]) return 0;
+      if (y >= campioni[N]) return lung;
+      let lo = 0, hi = N;
+      while (hi - lo > 1) { const m = (lo + hi) >> 1; if (campioni[m] < y) lo = m; else hi = m; }
+      const t = (y - campioni[lo]) / ((campioni[hi] - campioni[lo]) || 1);
+      return (lung * (lo + t)) / N;
     };
 
-    let attesa = 0;
-    const alScroll = () => { if (!attesa) attesa = requestAnimationFrame(() => { attesa = 0; riempi(); }); };
+    const mostra = (l) => {
+      mostrato = l;
+      acqua.style.strokeDashoffset = String(lung - l);
+      const y = acqua.getPointAtLength(Math.max(0, l)).y;   // fin dove è arrivata l'acqua
+      tappe.forEach((t, k) => t.classList.toggle('is-raggiunta', !!punti[k] && punti[k][1] <= y + 1));
+    };
+
+    // l'acqua insegue la posizione dello scroll con una piccola inerzia: il movimento resta morbido
+    const scorri = () => {
+      corsa = 0;
+      const d = obiettivo - mostrato;
+      if (Math.abs(d) < 0.5) { mostra(obiettivo); return; }
+      mostra(mostrato + d * 0.14);
+      corsa = requestAnimationFrame(scorri);
+    };
+
+    const riempi = () => {
+      const livello = reduce ? Infinity : vh * 0.62 - storia.getBoundingClientRect().top;   // poco sotto metà schermo
+      obiettivo = lunghezzaA(livello);
+      if (reduce || mostrato < 0) { mostra(obiettivo); return; }
+      if (!corsa) corsa = requestAnimationFrame(scorri);
+    };
+
     disegna();
-    window.addEventListener('scroll', alScroll, { passive: true });
-    window.addEventListener('resize', () => requestAnimationFrame(disegna));
+    window.addEventListener('scroll', riempi, { passive: true });
+    // sul telefono la barra dell'indirizzo che compare e scompare cambia l'altezza: si ricalcola solo se cambia la larghezza
+    window.addEventListener('resize', () => {
+      if (window.innerWidth === larghezza) return;
+      larghezza = window.innerWidth; vh = window.innerHeight;
+      requestAnimationFrame(disegna);
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(() => requestAnimationFrame(disegna)).observe(storia.querySelector('.storia'));
     window.addEventListener('load', disegna);   // le foto cambiano l'altezza delle tappe
   }
 
