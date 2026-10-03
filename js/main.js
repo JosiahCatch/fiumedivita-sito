@@ -429,6 +429,51 @@
     etichetta.innerHTML = `<span>${nuovoStile ? 'Stile nuovo' : 'Originale'}</span><a href="${u.pathname.split('/').pop() || 'index.html'}${u.search}${u.hash}">${nuovoStile ? "Vedi l'originale" : 'Vedi il nuovo'}</a>`;
     document.body.append(etichetta);
   }
+  // proposte per la sezione predicazioni della home (?prediche=a|b|c), da scegliere con i pastori
+  const sezPrediche = document.querySelector('.home-prediche');
+  if (root.classList.contains('stile-nuovo') && sezPrediche) {
+    const attuale = root.dataset.prediche || '';
+    // D, E, F hanno una forma diversa: il loro markup sta in un <template> e prende il posto del contenuto
+    const tpl = document.getElementById(`prediche-${attuale}`);
+    if (tpl) {
+      const box = sezPrediche.querySelector('.container');
+      box.replaceChildren(tpl.content.cloneNode(true));
+      box.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-in'));
+    }
+    sezPrediche.querySelectorAll('[data-pv]').forEach((pv) => {
+      const pannelli = [...pv.querySelectorAll('[data-pv-pannello]')];
+      const originali = new Map(pannelli.map((p) => [p, p.innerHTML]));   // per fermare il video quando si cambia
+      pv.querySelectorAll('[data-pv-scegli]').forEach((b) => b.addEventListener('click', () => {
+        const scelto = pannelli.find((p) => p.dataset.pvPannello === b.dataset.pvScegli);
+        pv.querySelectorAll('[data-pv-scegli]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        pannelli.forEach((p) => {
+          if (p !== scelto && !p.hidden) { p.hidden = true; p.innerHTML = originali.get(p); }
+        });
+        scelto.hidden = false;
+        const schermo = scelto.closest('.pv-schermo');
+        if (schermo.getBoundingClientRect().top < 0 || schermo.getBoundingClientRect().top > innerHeight * .5) schermo.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        scelto.querySelector('button.yt')?.click();   // un tocco solo: scegli e parte
+      }));
+      const guarda = pv.querySelector('[data-pv-guarda]');
+      if (guarda) guarda.addEventListener('click', () => {
+        const video = document.getElementById(guarda.getAttribute('aria-controls'));
+        video.hidden = false;
+        guarda.setAttribute('aria-expanded', 'true');
+        guarda.hidden = true;
+        video.querySelector('button.yt')?.click();
+      });
+    });
+    const scelte = [['', 'Attuale'], ['a', 'A · Foglio bianco'], ['b', 'B · Luce di domenica'], ['c', 'C · Il libro aperto'], ['d', 'D · La sala'], ['e', 'E · Il fiume di Filippesi'], ['f', 'F · La frase']];
+    const nav = document.createElement('nav');
+    nav.className = 'prediche-prova container';
+    nav.setAttribute('aria-label', 'Proposte per questa sezione');
+    nav.innerHTML = '<span>Proposte per questa sezione:</span>' + scelte.map(([v, nome]) => {
+      const u = new URL(location.href); u.searchParams.set('prediche', v || 'attuale'); u.hash = 'predicazioni-home';
+      return `<a class="chip chip--sm" href="${u.search}${u.hash}"${v === attuale ? ' aria-current="true"' : ''}>${nome}</a>`;
+    }).join('');
+    sezPrediche.id = 'predicazioni-home';
+    sezPrediche.prepend(nav);
+  }
   if (root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
     root.classList.add('fdv-anim');   // senza JavaScript la barra del cantiere resta già piena
     // il cantiere: la barra si riempie fino al punto vero quando la vedi

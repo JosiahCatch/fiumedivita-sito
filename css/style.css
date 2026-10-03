@@ -1253,3 +1253,170 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .stile-nuovo.fdv-anim .px-frase::before { clip-path: none; transition: none; }
   .stile-nuovo .accordion details::details-content { transition: none; }
 }
+
+/* --- proposte per la sezione predicazioni della home (?prediche=a|b|c), solo nello stile nuovo ---
+   Nessuna usa l'azzurro: restano la sabbia, il bianco, l'inchiostro e il sole. Scelta una, si cancellano le altre. */
+.prediche-prova { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: var(--s-6); padding: 12px; border-radius: var(--r-md); outline: 2px dashed #E0A100; outline-offset: -2px; font: 600 var(--fs-md)/1.2 var(--f-head); color: var(--c-ink); }
+.prediche-prova > span { margin-right: 4px; }
+.prediche-prova .chip { display: inline-flex; align-items: center; text-decoration: none; }
+.prediche-prova .chip[aria-current] { background: var(--c-ink); border-color: var(--c-ink); color: var(--c-bg); }
+.hide-todo .prediche-prova { display: none; }
+
+/* in comune: niente azzurro, il riferimento biblico in corsivo, i pulsanti in inchiostro */
+.stile-nuovo[data-prediche] .home-prediche { --focus: var(--c-ink); }
+.stile-nuovo[data-prediche] .home-prediche .sermon .ref { font: italic 500 var(--fs-md)/1.2 var(--f-accent); letter-spacing: 0; text-transform: none; color: var(--c-muted); }
+.stile-nuovo[data-prediche] .home-prediche .series-chip { padding: 0; background: none; border: 0; border-radius: 0; font-weight: 500; color: var(--c-muted); }
+.stile-nuovo[data-prediche] .home-prediche .series-chip b { font-weight: 650; color: var(--c-ink); }
+.stile-nuovo[data-prediche] .home-prediche .btn--sun { --btn-bg: var(--c-ink); --btn-ink: var(--c-bg); }
+.stile-nuovo[data-prediche] .home-prediche .btn--ghost { --btn-ink: var(--c-ink); color: var(--c-ink); background: transparent; border-color: var(--c-control); }
+.stile-nuovo[data-prediche] .home-prediche .btn--ghost:hover { border-color: var(--c-ink); background: var(--c-surface); }
+.stile-nuovo[data-prediche] .home-prediche .lead { color: var(--c-ink); }
+
+/* A · Foglio bianco: un foglio bianco appoggiato sulla sabbia, con la predica in primo piano e le altre sotto una linea */
+.stile-nuovo[data-prediche="a"] .home-prediche { background: var(--c-bg); }
+.stile-nuovo[data-prediche="a"] .home-prediche .container:not(.prediche-prova) {
+  padding: clamp(20px, 4vw, 56px); border-radius: var(--r-lg); background: var(--c-surface);
+  box-shadow: 0 1px 2px rgb(10 46 61 / .05), 0 24px 60px -28px rgb(10 46 61 / .22);
+}
+.stile-nuovo[data-prediche="a"] .home-prediche .sermon-list { margin-top: clamp(32px, 5vw, 56px); padding-top: clamp(24px, 4vw, 40px); border-top: 1px solid var(--c-line); }
+.stile-nuovo[data-prediche="a"] .home-prediche .featured h2 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
+.stile-nuovo[data-prediche="a"] .home-prediche .yt { border-radius: var(--r-sm); }
+@media (max-width: 640px) {
+  .stile-nuovo[data-prediche="a"] .home-prediche .container:not(.prediche-prova) { width: min(100% - 16px, 1200px); padding: 12px 12px 24px; border-radius: var(--r-md); }
+  .stile-nuovo[data-prediche="a"] .home-prediche .featured > :last-child { padding-inline: 8px; }
+}
+
+/* B · Luce di domenica: un fondo color grano, la predica come una foto stampata col bordo bianco e il titolo in corsivo */
+.stile-nuovo[data-prediche="b"] .home-prediche { background: color-mix(in srgb, var(--c-sun) 16%, var(--c-bg)); }
+.stile-nuovo[data-prediche="b"] .home-prediche .featured .yt { border: clamp(6px, 1vw, 12px) solid var(--c-surface); border-radius: var(--r-lg); box-shadow: 0 2px 4px rgb(60 40 0 / .06), 0 22px 50px -24px rgb(60 40 0 / .35); }
+.stile-nuovo[data-prediche="b"] .home-prediche .featured h2 { font: italic 500 clamp(2.1rem, 4vw, 3.3rem)/1.05 var(--f-accent); letter-spacing: -.02em; }
+.stile-nuovo[data-prediche="b"] .home-prediche .series-chip b { position: relative; }
+.stile-nuovo[data-prediche="b"] .home-prediche .series-chip b::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.45em; height: .32em; background: color-mix(in srgb, var(--c-sun), var(--c-sun-ink) 30%);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / auto 100%;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / auto 100%;
+}
+.stile-nuovo[data-prediche="b"] .home-prediche .sermon { padding: 10px 10px 20px; border-radius: var(--r-md); background: var(--c-surface); box-shadow: 0 1px 2px rgb(60 40 0 / .05), 0 10px 30px -18px rgb(60 40 0 / .3); transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.stile-nuovo[data-prediche="b"] .home-prediche .sermon:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(60 40 0 / .05), 0 16px 36px -18px rgb(60 40 0 / .38); }
+.stile-nuovo[data-prediche="b"] .home-prediche .sermon .yt { border-radius: var(--r-sm); }
+.stile-nuovo[data-prediche="b"] .home-prediche .sermon__info { padding-inline: 8px; gap: 8px; }
+.stile-nuovo[data-prediche="b"] .home-prediche .sermon h3 { font: italic 500 1.3rem/1.15 var(--f-accent); letter-spacing: -.01em; }
+@media (max-width: 640px) {
+  .stile-nuovo[data-prediche="b"] .home-prediche .sermon { padding: 8px; }
+  .stile-nuovo[data-prediche="b"] .home-prediche .sermon__info { padding-inline: 4px; gap: 4px; }
+  .stile-nuovo[data-prediche="b"] .home-prediche .sermon h3 { font-size: 1.12rem; }
+}
+
+/* C · Il libro aperto: la serie si legge come l'indice di un libro. Il brano a sinistra, grande, poi titolo e predicatore, la miniatura a destra */
+.stile-nuovo[data-prediche="c"] .home-prediche { background: var(--c-surface); }
+.stile-nuovo[data-prediche="c"] .home-prediche .featured { grid-template-columns: 1fr 1.35fr; }
+.stile-nuovo[data-prediche="c"] .home-prediche .featured > :first-child { order: 2; }
+.stile-nuovo[data-prediche="c"] .home-prediche .featured h2 { font-size: clamp(2.2rem, 4.2vw, 3.4rem); }
+.stile-nuovo[data-prediche="c"] .home-prediche .featured .lead { font: italic 500 clamp(1.2rem, 1.8vw, 1.45rem)/1.3 var(--f-accent); }
+.stile-nuovo[data-prediche="c"] .home-prediche .yt { border-radius: var(--r-sm); }
+.stile-nuovo[data-prediche="c"] .home-prediche .sermon-list { display: block; margin-top: clamp(40px, 6vw, 72px); border-bottom: 1px solid var(--c-line); }
+.stile-nuovo[data-prediche="c"] .home-prediche .sermon {
+  display: grid; grid-template-columns: minmax(9rem, 15rem) 1fr clamp(150px, 18vw, 220px); grid-template-areas: "ref title yt" "ref name yt";
+  grid-template-rows: 1fr 1fr; column-gap: clamp(16px, 3vw, 40px); row-gap: 6px; align-items: start; padding: 20px 0; border-top: 1px solid var(--c-line);
+}
+.stile-nuovo[data-prediche="c"] .home-prediche :is(.sermon__info, .who) { display: contents; }
+.stile-nuovo[data-prediche="c"] .home-prediche .sermon .yt { grid-area: yt; align-self: center; }
+.stile-nuovo[data-prediche="c"] .home-prediche .sermon .ref { grid-area: ref; align-self: center; font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.15; color: var(--c-ink); }
+.stile-nuovo[data-prediche="c"] .home-prediche .sermon h3 { grid-area: title; align-self: end; font-size: clamp(1.15rem, 1.8vw, 1.4rem); }
+.stile-nuovo[data-prediche="c"] .home-prediche .who__name { grid-area: name; align-self: start; color: var(--c-muted); font-size: var(--fs-md); }
+.stile-nuovo[data-prediche="c"] .home-prediche :is(.who__sep, .who__date) { display: none; }
+@media (max-width: 880px) {
+  .stile-nuovo[data-prediche="c"] .home-prediche .featured { grid-template-columns: 1fr; }
+  .stile-nuovo[data-prediche="c"] .home-prediche .featured > :first-child { order: 0; }
+}
+@media (max-width: 640px) {
+  .stile-nuovo[data-prediche="c"] .home-prediche .sermon-list { margin-top: var(--s-6); }
+  .stile-nuovo[data-prediche="c"] .home-prediche .sermon { grid-template-columns: 1fr 38%; grid-template-areas: "ref yt" "title yt" "name yt"; grid-template-rows: auto auto 1fr; row-gap: 4px; padding: 16px 0; }
+  .stile-nuovo[data-prediche="c"] .home-prediche .sermon .ref { font-size: 1.15rem; align-self: start; }
+  .stile-nuovo[data-prediche="c"] .home-prediche .sermon h3 { align-self: start; font-size: var(--fs-base); line-height: 1.25; }
+}
+
+/* --- D, E, F: proposte con una forma diversa (markup nei <template> di build.py, inserito da js/main.js) --- */
+.stile-nuovo[data-prediche="d"] .home-prediche, .stile-nuovo[data-prediche="f"] .home-prediche { background: var(--c-bg); }
+.stile-nuovo[data-prediche="e"] .home-prediche { background: var(--c-surface); }
+.pv .btn:not(.btn--ghost) { --btn-bg: var(--c-ink); --btn-ink: var(--c-bg); }
+.pv-testa { max-width: 720px; margin-bottom: var(--s-6); }
+.pv-testa h2 { margin: 0 0 var(--s-3); }
+.pv-testa .lead { margin: 0; color: var(--c-muted) !important; }
+.pv-azioni { margin-top: var(--s-7); }
+.pv-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 0; color: var(--c-muted); font-size: var(--fs-md); }
+.pv-brano { font: italic 500 1.15rem/1.2 var(--f-accent); color: var(--c-ink); }
+.pv-pannello h3 { margin: 8px 0 0; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.15; }
+.pv-frase { margin: var(--s-4) 0 0; max-width: 34em; font: 400 1.12rem/1.6 var(--f-accent); color: var(--c-ink-soft); }
+.pv-pannello .link-arrow { margin-top: var(--s-3); }
+.pv-schermo { scroll-margin-top: 92px; }
+.pv-pannello .yt { border-radius: var(--r-md); }
+
+/* D · La sala: un solo schermo grande, la serie accanto */
+.pv-sala { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(280px, 1fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.pv--sala .pv-pannello__testo { margin-top: var(--s-5); }
+.pv-elenco { padding: 8px; border-radius: var(--r-md); background: var(--c-surface); box-shadow: 0 0 0 1px var(--c-line), 0 12px 32px -20px rgb(10 46 61 / .25); }
+.pv-elenco__titolo { margin: 0; padding: 12px 12px 8px; font-size: var(--fs-md) !important; font-weight: 600; color: var(--c-muted) !important; }
+.pv-voci { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.pv-voce { display: grid; grid-template-columns: 112px 1fr; gap: 12px; align-items: center; width: 100%; min-height: 72px; padding: 8px; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--c-ink); font: inherit; text-align: left; cursor: pointer; transition: background .2s; }
+.pv-voce img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; }
+.pv-voce__testo { display: grid; gap: 4px; min-width: 0; }
+.pv-voce__titolo { font: 600 1rem/1.25 var(--f-head); }
+.pv-voce__meta { font-size: .95rem; line-height: 1.3; color: var(--c-muted); }
+.pv-voce:hover { background: var(--c-bg); }
+.pv-voce[aria-pressed="true"] { background: var(--c-bg); box-shadow: inset 0 0 0 2px var(--c-ink); }
+.pv-voce[aria-pressed="true"] img { outline: 3px solid var(--c-sun); outline-offset: -3px; }
+@media (max-width: 880px) { .pv-sala { grid-template-columns: 1fr; } }
+
+/* E · Il fiume di Filippesi: le tappe nell'ordine della lettera */
+.pv-fiume { display: grid; margin: 0 0 var(--s-7); }
+.pv-fiume__aiuto { margin: 0 0 var(--s-5); color: var(--c-muted); font-size: var(--fs-md); }
+.pv-fiume__onda { grid-row: 2; grid-column: 1; width: 100%; height: 40px; margin-top: -2px; color: color-mix(in srgb, var(--c-sun) 70%, var(--c-line)); pointer-events: none; }
+.pv-tappe { grid-row: 2; grid-column: 1; position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+.pv-tappa { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; min-height: 44px; padding: 8px 4px 12px; border: 0; border-radius: var(--r-md); background: transparent; color: var(--c-ink); font: inherit; text-align: center; cursor: pointer; transition: background .2s; }
+.pv-tappa:hover { background: var(--c-bg); }
+.pv-tappa__punto { width: 22px; height: 22px; margin-bottom: 8px; border-radius: 50%; background: var(--c-surface); border: 3px solid var(--c-ink); transition: transform .25s var(--ease-out), background .25s; }
+.pv-tappa__brano { font: italic 500 clamp(1.15rem, 1.7vw, 1.45rem)/1.1 var(--f-accent); }
+.pv-tappa__titolo { font: 600 .95rem/1.3 var(--f-head); color: var(--c-muted); }
+.pv-tappa__ultima { margin-top: 2px; padding: 4px 10px; border-radius: var(--r-pill); background: var(--c-ink); color: var(--c-bg); font: 600 .8rem/1 var(--f-head); }
+.pv-tappa[aria-pressed="true"] { background: var(--c-bg); }
+.pv-tappa[aria-pressed="true"] .pv-tappa__punto { background: var(--c-sun); border-color: var(--c-sun-ink); transform: scale(1.3); }
+.pv-tappa[aria-pressed="true"] .pv-tappa__titolo { color: var(--c-ink); }
+.pv--fiume .pv-pannello { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
+@media (max-width: 880px) {
+  .pv-fiume__onda { display: none; }
+  .pv-tappe { grid-auto-flow: row; gap: 0; }
+  .pv-tappe::before { content: ""; position: absolute; left: 20px; top: 24px; bottom: 24px; width: 3px; border-radius: 3px; background: color-mix(in srgb, var(--c-sun) 70%, var(--c-line)); }
+  .pv-tappa { display: grid; grid-template-columns: 26px 1fr auto; column-gap: 14px; row-gap: 2px; align-items: center; padding: 10px 8px; text-align: left; }
+  .pv-tappa__punto { grid-row: 1 / span 2; margin: 0; position: relative; }
+  .pv-tappa__brano { grid-column: 2; }
+  .pv-tappa__titolo { grid-column: 2; font-size: 1rem; }
+  .pv-tappa__ultima { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+  .pv--fiume .pv-pannello { grid-template-columns: 1fr; }
+}
+
+/* F · La frase: prima le parole, poi il video */
+.pv-citazione { margin: 0; max-width: 980px; }
+.pv-citazione blockquote { margin: 0; }
+.pv-citazione blockquote p { margin: 0; max-width: 24em; font: italic 500 clamp(1.6rem, 3.6vw, 2.8rem)/1.28 var(--f-accent); letter-spacing: -.01em; color: var(--c-ink); text-wrap: pretty; }
+.pv-citazione blockquote::before {
+  content: ""; display: block; width: 46px; height: 8px; margin-bottom: var(--s-5); background: var(--c-sun);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.pv-citazione figcaption { display: grid; gap: 4px; margin-top: var(--s-5); }
+.pv-citazione__titolo { font: 650 1.2rem/1.25 var(--f-head); color: var(--c-ink); }
+.pv-citazione__meta { color: var(--c-muted); font-size: var(--fs-md); }
+.pv--frase > .btn-row { margin-top: var(--s-6); }
+.pv-video { max-width: 880px; margin-top: var(--s-6); }
+.pv-altre__titolo { margin: var(--s-8) 0 var(--s-4); font-size: 1.25rem !important; }
+.pv-biglietti { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pv-biglietto { display: flex; flex-direction: column; gap: 12px; height: 100%; padding: 24px; border-radius: var(--r-md); background: var(--c-surface); color: var(--c-ink); text-decoration: none; box-shadow: 0 0 0 1px var(--c-line); transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out); }
+.pv-biglietto:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--c-line), var(--shadow-1); }
+.pv-biglietto__frase { flex: 1; font: italic 400 1.08rem/1.55 var(--f-accent); color: var(--c-ink-soft); display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.pv-biglietto__titolo { padding-top: 12px; border-top: 1px solid var(--c-line); font: 600 1.05rem/1.25 var(--f-head); }
+.pv-biglietto__meta { margin-top: -8px; color: var(--c-muted); font-size: .95rem; }
+@media (max-width: 880px) { .pv-biglietti { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .pv-tappa__punto, .pv-biglietto { transition: none; } }
+.pv-pannello[hidden] { display: none !important; }
+.stile-nuovo .home-prediche .pv .link-arrow { color: var(--c-ink); }
