@@ -338,7 +338,8 @@ main:focus { outline: 0; }
 /* Hero della home */
 .hero {
   --hero-zoom: 1;   /* niente zoom: ingrandire la foto la tagliava in alto e la sgranava */
-  position: relative; min-height: min(100svh, 920px); display: grid; align-items: end;
+  /* tutto lo schermo a ogni misura: con il tetto di 920px sugli schermi grandi si vedeva la sezione dopo */
+  position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: end;
   color: #fff; isolation: isolate; overflow: hidden;
 }
 .hero__media { position: absolute; inset: 0; z-index: -2; }
