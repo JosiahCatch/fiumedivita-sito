@@ -743,8 +743,6 @@ html.hide-todo .todo-note { display: none; }
 /* Testimonianze in home: tutta la sezione entra in una schermata. A sinistra il video della storia scelta;
    a destra la storia, i due pulsanti e i volti di tutte (toccando un volto la sua storia va nel video, js/main.js).
    La larghezza del video dipende dall'altezza dello schermo, così sui portatili bassi non serve scorrere. */
-/* stesso fondo della sezione dei ministeri sopra: niente margine in alto, altrimenti i due margini si sommano */
-.tm-sez { padding-top: 0; }
 .tm-testa h2 { margin: 0; }
 .tm { display: grid; grid-template-columns: minmax(0, min(58%, calc((100svh - var(--header-h) - 300px) * 16 / 9))) minmax(0, 1fr); gap: clamp(24px, 3vw, 48px); align-items: start; }   /* la colonna di destra parte dal bordo alto della foto */
 .tm-video .yt { box-shadow: 0 2px 6px rgb(10 46 61 / .08), 0 24px 48px -28px rgb(10 46 61 / .45); }
@@ -1593,4 +1591,38 @@ div.mini-photo svg { width: 96px; height: 96px; }
 @media (max-width: 860px) and (prefers-reduced-motion: reduce) {
   .fm-aiuto svg { animation: none; }
   .fm-card { transform: none; filter: none; }
+}
+
+/* ================= Ritmo delle sezioni sul telefono =================
+   Ogni sezione ha lo stesso spazio sopra e sotto, e il titolo viene sempre prima di foto e video:
+   così si capisce dove una sezione inizia e dove finisce. */
+@media (max-width: 880px) {
+  .section, .section--tight { padding-block: 56px; }
+
+  /* ultima predicazione: occhiello, titolo e data, poi il video, poi serie, frase e pulsanti */
+  .home-prediche .featured { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+  .home-prediche .hp-testo { display: contents; }
+  .home-prediche .hp-testo > .eyebrow { order: -3; }
+  .home-prediche .hp-testo > h2 { order: -2; }
+  .home-prediche .hp-testo > .hp-meta { order: -1; }
+  .home-prediche .featured > :first-child { order: 0; margin-block: 8px 4px; }
+  .home-prediche .hp-testo > .hp-serie { order: 1; margin-top: 0; }
+  .home-prediche .hp-testo > .hp-frase { order: 2; }
+  .home-prediche .hp-testo > .btn-row { order: 3; }
+
+  /* il nostro progetto: occhiello, titolo e testo, poi la foto «prima e adesso», poi le tappe e i pulsanti */
+  .ch { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .ch .ch-testo { display: contents; }
+  .ch .ch-testo > .eyebrow { order: -3; align-self: flex-start; margin-bottom: var(--s-3); }
+  .ch .ch-testo > h2 { order: -2; }
+  .ch .ch-testo > .lead { order: -1; }
+  .ch .ch-foto { order: 0; margin-bottom: var(--s-6); }
+  .ch .ch-testo > .ch-tappe { order: 1; }
+  .ch .ch-testo > .btn-row { order: 2; }
+
+  /* ci vediamo domenica: prima la scheda con il titolo, sotto la mappa; fondo schiuma per staccarla da «Vita insieme» */
+  .dove { background: var(--c-tint); }
+  .dove-pannello { display: flex; flex-direction: column; gap: var(--s-4); }
+  .dove-scheda { order: -1; margin: 0; }
+  .dove-mappa { border-radius: var(--r-lg); overflow: hidden; }
 }
