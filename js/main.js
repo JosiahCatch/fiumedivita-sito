@@ -3,24 +3,6 @@
   const root = document.documentElement;
   root.classList.remove('no-js');
 
-  /* ---- Palette (anteprima proposte: ?palette=a|b|c|d) ---- */
-  const PALETTES = ['a', 'b', 'c', 'd'];
-  try { localStorage.removeItem('fdv-palette'); } catch (e) {}   // vecchie scelte salvate: non devono più cambiare il sito
-  const setPalette = (p) => {
-    if (p === 'a') root.removeAttribute('data-palette');
-    else root.setAttribute('data-palette', p);
-    document.querySelectorAll('[data-set-palette]').forEach((el) => {
-      const on = el.dataset.setPalette === p;
-      el.setAttribute('aria-pressed', String(on));
-      el.closest('.palette-option')?.classList.toggle('is-active', on);
-    });
-  };
-  const qp = new URLSearchParams(location.search).get('palette');
-  setPalette(PALETTES.includes(qp) ? qp : 'a');
-  document.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-set-palette]');
-    if (b) setPalette(b.dataset.setPalette);
-  });
   if (new URLSearchParams(location.search).has('final')) root.classList.add('hide-todo');
 
   /* ---- Header: solido dopo lo scroll ---- */
@@ -74,6 +56,23 @@
 
   /* ---- Reveal on scroll ---- */
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Stile nuovo: anche i blocchi senza .reveal arrivano morbidi quando li raggiungi scorrendo.
+     Solo quelli ancora sotto lo schermo, così niente sparisce e riappare in cima alla pagina.
+     Le griglie (schede, foto, persone) entrano una scheda alla volta. */
+  if (!reduce && root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
+    const sotto = (el) => el.getBoundingClientRect().top > window.innerHeight;
+    const libero = (el) => !el.matches('.reveal, script, style, template') && !el.querySelector('.reveal') && !el.closest('.reveal');
+    document.querySelectorAll('main section:not(.hero):not(.page-hero) .container > *').forEach((el) => {
+      if (!libero(el) || !sotto(el)) return;
+      const d = getComputedStyle(el).display;
+      const figli = [...el.children].filter((c) => !c.matches('script, style, template'));
+      if (/grid|flex/.test(d) && figli.length >= 3 && figli.length <= 24) {
+        figli.forEach((c, i) => { c.classList.add('reveal'); c.style.setProperty('--d', `${(i % 6) * 0.06}s`); });
+      } else {
+        el.classList.add('reveal');
+      }
+    });
+  }
   const reveals = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -83,6 +82,46 @@
   } else {
     reveals.forEach((el) => el.classList.add('is-in'));
   }
+
+  /* ---- Il nostro progetto (home): il cursore «prima e adesso» sposta la linea tra le due foto ---- */
+  document.querySelectorAll('.ch-confronto').forEach((c) => {
+    const r = c.querySelector('.ch-range');
+    const muovi = () => c.style.setProperty('--x', `${r.value}%`);
+    r.addEventListener('input', muovi);
+    muovi();
+  });
+
+  /* ---- Testimonianze in home: toccando un volto, la sua storia va in grande (anche se un video stava già andando) ---- */
+  document.querySelectorAll('[data-storie]').forEach((box) => {
+    const video = box.querySelector('.tm-video');
+    const serie = box.querySelector('.tm-serie');
+    const nome = box.querySelector('.tm-nome');
+    const desc = box.querySelector('.tm-desc');
+    const playHTML = video.querySelector('.yt__play')?.outerHTML || '';   // il cerchio del play, da rimettere sulla nuova storia
+    box.addEventListener('click', (e) => {
+      if (e.target.closest('.tm-guarda')) { video.querySelector('button.yt')?.click(); return; }
+      const v = e.target.closest('.tm-volto');
+      if (!v || v.getAttribute('aria-pressed') === 'true') return;
+      const d = v.dataset;
+      const btn = document.createElement('button');
+      btn.className = 'yt yt--fotogramma';
+      btn.dataset.id = d.vid;
+      btn.setAttribute('aria-label', `Guarda: la storia di ${d.nome}`);
+      const img = Object.assign(document.createElement('img'), { src: d.grande, alt: '', decoding: 'async', width: 1280, height: 720 });
+      img.setAttribute('style', d.stile);
+      img.addEventListener('error', () => { img.src = d.riserva; }, { once: true });
+      btn.append(img);
+      btn.insertAdjacentHTML('beforeend', playHTML);
+      video.replaceChildren(btn);
+      serie.textContent = d.serie;
+      nome.textContent = `La storia di ${d.nome}`;
+      desc.textContent = d.desc; desc.hidden = !d.desc;
+      box.querySelectorAll('.tm-volto').forEach((x) => x.setAttribute('aria-pressed', String(x === v)));
+      // sul telefono la storia grande sta sopra: la riportiamo in vista
+      const top = video.getBoundingClientRect().top;
+      if (top < 0) video.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
 
   /* ---- YouTube "lite": carica l'iframe solo al click ---- */
   document.addEventListener('click', (e) => {
@@ -162,19 +201,6 @@
     window.addEventListener('hashchange', fromHash);
   }
 
-  /* ---- Galleria che scorre: pulsante pausa ---- */
-  document.querySelectorAll('[data-marquee-toggle]').forEach((btn) => {
-    const wrap = btn.closest('.marquee-wrap');
-    const label = btn.querySelector('span');
-    const set = (paused) => {
-      wrap.classList.toggle('is-paused', paused);
-      btn.setAttribute('aria-pressed', String(paused));
-      label.textContent = paused ? 'Riprendi' : 'Metti in pausa';
-      btn.querySelector('svg').innerHTML = paused ? '<path d="M7 4.5v15l13-7.5z"/>' : '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
-    };
-    if (reduce) set(true);
-    btn.addEventListener('click', () => set(!wrap.classList.contains('is-paused')));
-  });
 
   /* ---- Mappa attiva solo al clic (Google viene contattato solo dopo il consenso) ---- */
   document.addEventListener('click', (e) => {
@@ -418,62 +444,7 @@
   /* ---- Anno nel footer ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  /* ---- Stile nuovo in prova (?stile=nuovo): vedi STILE_PROVA in _build/build.py e la sezione 12 del CSS ---- */
-  const prova = root.dataset.stileProva;
-  if (prova) {
-    // etichetta in basso a sinistra, solo per chi sta confrontando: dice cosa si vede e permette di cambiare
-    const nuovoStile = prova === 'nuovo';
-    const u = new URL(location.href); u.searchParams.set('stile', nuovoStile ? 'originale' : 'nuovo');
-    const etichetta = document.createElement('p');
-    etichetta.className = 'stile-prova';
-    etichetta.innerHTML = `<span>${nuovoStile ? 'Stile nuovo' : 'Originale'}</span><a href="${u.pathname.split('/').pop() || 'index.html'}${u.search}${u.hash}">${nuovoStile ? "Vedi l'originale" : 'Vedi il nuovo'}</a>`;
-    document.body.append(etichetta);
-  }
-  // proposte per la sezione predicazioni della home (?prediche=a|b|c), da scegliere con i pastori
-  const sezPrediche = document.querySelector('.home-prediche');
-  if (root.classList.contains('stile-nuovo') && sezPrediche) {
-    const attuale = root.dataset.prediche || '';
-    // D, E, F hanno una forma diversa: il loro markup sta in un <template> e prende il posto del contenuto
-    const tpl = document.getElementById(`prediche-${attuale}`);
-    if (tpl) {
-      const box = sezPrediche.querySelector('.container');
-      box.replaceChildren(tpl.content.cloneNode(true));
-      box.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-in'));
-    }
-    sezPrediche.querySelectorAll('[data-pv]').forEach((pv) => {
-      const pannelli = [...pv.querySelectorAll('[data-pv-pannello]')];
-      const originali = new Map(pannelli.map((p) => [p, p.innerHTML]));   // per fermare il video quando si cambia
-      pv.querySelectorAll('[data-pv-scegli]').forEach((b) => b.addEventListener('click', () => {
-        const scelto = pannelli.find((p) => p.dataset.pvPannello === b.dataset.pvScegli);
-        pv.querySelectorAll('[data-pv-scegli]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-        pannelli.forEach((p) => {
-          if (p !== scelto && !p.hidden) { p.hidden = true; p.innerHTML = originali.get(p); }
-        });
-        scelto.hidden = false;
-        const schermo = scelto.closest('.pv-schermo');
-        if (schermo.getBoundingClientRect().top < 0 || schermo.getBoundingClientRect().top > innerHeight * .5) schermo.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        scelto.querySelector('button.yt')?.click();   // un tocco solo: scegli e parte
-      }));
-      const guarda = pv.querySelector('[data-pv-guarda]');
-      if (guarda) guarda.addEventListener('click', () => {
-        const video = document.getElementById(guarda.getAttribute('aria-controls'));
-        video.hidden = false;
-        guarda.setAttribute('aria-expanded', 'true');
-        guarda.hidden = true;
-        video.querySelector('button.yt')?.click();
-      });
-    });
-    const scelte = [['', 'Attuale'], ['a', 'A · Foglio bianco'], ['b', 'B · Luce di domenica'], ['c', 'C · Il libro aperto'], ['d', 'D · La sala'], ['e', 'E · Il fiume di Filippesi'], ['f', 'F · La frase']];
-    const nav = document.createElement('nav');
-    nav.className = 'prediche-prova container';
-    nav.setAttribute('aria-label', 'Proposte per questa sezione');
-    nav.innerHTML = '<span>Proposte per questa sezione:</span>' + scelte.map(([v, nome]) => {
-      const u = new URL(location.href); u.searchParams.set('prediche', v || 'attuale'); u.hash = 'predicazioni-home';
-      return `<a class="chip chip--sm" href="${u.search}${u.hash}"${v === attuale ? ' aria-current="true"' : ''}>${nome}</a>`;
-    }).join('');
-    sezPrediche.id = 'predicazioni-home';
-    sezPrediche.prepend(nav);
-  }
+  /* ---- Animazioni dello stile del sito (sezione 12 del CSS) ---- */
   if (root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
     root.classList.add('fdv-anim');   // senza JavaScript la barra del cantiere resta già piena
     // il cantiere: la barra si riempie fino al punto vero quando la vedi
@@ -503,10 +474,11 @@
     else if (giorno === 0) testo = 'Grazie di essere passato! Ci vediamo domenica prossima';
     else testo = giorno === 6 ? 'È domani: ti aspettiamo' : `Tra ${7 - giorno} giorni · culto per tutta la famiglia`;
     const scrivi = (el) => { el.textContent = testo; el.classList.add('fdv-quando'); if (oggi) el.classList.add('fdv-quando--oggi'); };
-    // home: la riga sotto "Domenica, ore 10:15"; Sono nuovo: la riga sotto "Ogni domenica alle 10:15"
-    const culto = items.find((i) => /10:15/.test(i.textContent));
-    const rigaHome = culto && culto.querySelector('span:not(.ico)');
-    if (rigaHome) scrivi(rigaHome);
+    // la riga sotto "Domenica, ore 10:15" nelle strisce degli orari, ma non nella home (lì resta "Culto per tutta la famiglia");
+    // Sono nuovo: la riga sotto "Ogni domenica alle 10:15"
+    const culto = items.find((i) => /10:15/.test(i.textContent) && !i.closest('.hero + .info-strip'));
+    const rigaStriscia = culto && culto.querySelector('span:not(.ico)');
+    if (rigaStriscia) scrivi(rigaStriscia);
     const sotto = [...document.querySelectorAll('main .contact-line')].find((c) => /alle 10:15/.test(c.textContent))?.querySelector('strong + span');
     if (sotto) { const r = document.createElement('span'); r.style.display = 'block'; sotto.after(r); scrivi(r); }   // qui si aggiunge: l'orario del caffè resta
     // il riquadro "Ogni domenica" del menu, su tutte le pagine

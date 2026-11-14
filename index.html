@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it" class="no-js">
+<html lang="it" class="no-js stile-nuovo">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +16,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=4f153ee6">
-<script>(function(){var r=document.documentElement,k='fdv-stile',q=new URLSearchParams(location.search).get('stile');try{if(q==='nuovo'||q==='originale')sessionStorage.setItem(k,q);q=sessionStorage.getItem(k)||q}catch(e){}if(q==='nuovo')r.classList.add('stile-nuovo');if(q)r.dataset.stileProva=q;var v=new URLSearchParams(location.search).get('prediche');try{if(v)sessionStorage.setItem('fdv-prediche',v);v=sessionStorage.getItem('fdv-prediche')||v}catch(e){}if(v&&/^[a-f]$/.test(v))r.dataset.prediche=v})();</script>
+<link rel="stylesheet" href="css/style.css?v=95a26489">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Church","name":"Fiume di Vita","alternateName":"Chiesa Evangelica Pozzuoli - Fiume di Vita",
 "address":{"@type":"PostalAddress","streetAddress":"Via Casalanno, 85","addressLocality":"Pozzuoli","addressRegion":"NA","addressCountry":"IT"},
@@ -38,13 +37,13 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu"><svg class=nav-toggle__open viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class=nav-toggle__close viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     <nav class="site-nav" id="site-nav" aria-label="Principale">
       <ul class="nav-list">
+        <li><a href="index.html" aria-current="page"><span>Home</span><small class="nav-desc">La pagina principale</small></a></li>
         <li><a href="chi-siamo.html"><span>Chi siamo</span><small class="nav-desc">La nostra storia e in cosa crediamo</small></a></li>
         <li><a href="ministeri.html"><span>Ministeri</span><small class="nav-desc">Un posto per ogni età</small></a></li>
         <li><a href="predicazioni.html"><span>Predicazioni</span><small class="nav-desc">I messaggi della domenica</small></a></li>
         <li><a href="articoli.html"><span>Articoli</span><small class="nav-desc">Da leggere con calma</small></a></li>
         <li><a href="eventi.html"><span>Eventi</span><small class="nav-desc">Cosa succede in chiesa</small></a></li>
         <li><a href="centro.html"><span>Il Centro</span><small class="nav-desc">Il cantiere a Pozzuoli</small></a></li>
-        <li class="nav-cta"><a class="btn btn--sun" href="visita.html">Sono nuovo</a></li>
       </ul>
       <div class="nav-extra">
         <div class="nav-sunday">
@@ -57,7 +56,6 @@
           <a href="tel:+393755480132"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> Chiama</a>
           <a href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
         </div>
-        <a class="btn btn--sun nav-extra__cta" href="visita.html">Sono nuovo</a>
       </div>
     </nav>
   </div>
@@ -73,7 +71,7 @@
     <h1>Una famiglia nel cuore di <span class="accent">Pozzuoli.</span></h1>
     <p>Siamo una chiesa dove puoi conoscere Gesù, trovare amicizie vere e un posto a cui appartenere. Così come sei.</p>
     <div class="btn-row">
-      <a class="btn btn--sun" href="visita.html">Vieni a trovarci <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="btn btn--sun" href="#vieni">Vieni a trovarci <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       <a class="btn btn--ghost" href="predicazioni.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda le predicazioni</a>
     </div>
   </div>
@@ -90,339 +88,41 @@
   </div>
 </div>
 
-<section class="section">
-  <div class="container split">
-    <div class="reveal">
+<section class="section benvenuto">
+  <div class="container bv">
+    <div class="bv-testo reveal">
       <span class="eyebrow">Benvenuto</span>
       <h2>Come un fiume, l'amore di Dio porta <span class="accent">vita</span> ovunque passa.</h2>
-      <p class="lead">Fiume di Vita è una comunità di persone semplici, di ogni età e storia, unite da una cosa: Gesù ha cambiato la nostra vita. E crediamo che possa farlo anche con la tua.</p>
-      <ul class="values">
-        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Gesù al centro.</strong> Tutto parte da Lui e porta a Lui.</span></li>
-        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Una famiglia per tutti.</strong> Bambini, ragazzi, famiglie, nonni: c'è posto per ognuno.</span></li>
-        <li><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span><strong>Per la nostra città.</strong> Vogliamo essere una benedizione per Pozzuoli.</span></li>
-      </ul>
+      <p class="lead">Siamo persone semplici, di ogni età e storia, unite da una cosa: Gesù ha cambiato la nostra vita. E crediamo che possa farlo anche con la tua.</p>
       <a class="link-arrow" href="chi-siamo.html">Scopri chi siamo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
-    <div class="collage reveal" style="--d:.1s">
-      <img class="c1" src="assets/img/generale-12.webp" srcset="assets/img/generale-12-sm.webp 640w, assets/img/generale-12.webp 1218w" sizes="(max-width: 640px) 100vw, 50vw" alt="Il gruppo di lode durante il culto" loading="lazy" decoding="async">
-      <img class="c2" src="assets/img/generale-16.webp" srcset="assets/img/generale-16-sm.webp 640w, assets/img/generale-16.webp 1218w" sizes="(max-width: 640px) 50vw, 25vw" alt="Una famiglia della chiesa" loading="lazy" decoding="async">
-      <img class="c3" src="assets/img/generale-7.webp" srcset="assets/img/generale-7-sm.webp 482w, assets/img/generale-7.webp 690w" sizes="(max-width: 640px) 50vw, 25vw" alt="Due membri della chiesa sorridenti" loading="lazy" decoding="async">
-      <div class="collage__badge"><span class="accent">Ti aspettiamo</span>ogni domenica alle 10:15</div>
-    </div>
+    <div class="bv-foto reveal" style="--d:.1s"><img src="assets/img/generale-16.webp" srcset="assets/img/generale-16-sm.webp 640w, assets/img/generale-16.webp 1218w" sizes="(max-width: 880px) 100vw, 40vw" alt="Una famiglia della chiesa Fiume di Vita" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
-<section class="section section--deep home-prediche">
+<section class="section home-prediche">
   <div class="container">
     <div class="featured">
-      <div class="reveal"><button class="yt" data-id="ch__zax0KrU" aria-label="Guarda: Nati di nuovo: la storia di joy">
-  <img src="https://i.ytimg.com/vi_webp/ch__zax0KrU/maxresdefault.webp" srcset="https://i.ytimg.com/vi/ch__zax0KrU/mqdefault.jpg 320w, https://i.ytimg.com/vi/ch__zax0KrU/hqdefault.jpg 480w, https://i.ytimg.com/vi/ch__zax0KrU/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/ch__zax0KrU/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
+      <div class="reveal"><button class="yt yt--fotogramma" data-id="WJHZ446R5-M" aria-label="Guarda: Il frutto del donare">
+  <img src="https://i.ytimg.com/vi/WJHZ446R5-M/maxres2.jpg" srcset="https://i.ytimg.com/vi/WJHZ446R5-M/hq2.jpg 480w, https://i.ytimg.com/vi/WJHZ446R5-M/maxres2.jpg 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/WJHZ446R5-M/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button></div>
-      <div class="reveal" style="--d:.1s">
-        <span class="series-chip">Serie attuale: <b>Filippesi</b></span>
-        <h2>Nati di nuovo: la storia di joy</h2>
-        <p class="lead">Messaggio · Trasformati da Cristo per amare come Cristo</p>
-        <p class="featured__desc">Un viaggio nella lettera della gioia: come vivere con pace e speranza anche quando la vita è difficile.</p>
-        <div class="btn-row u-mt-5">
+      <div class="reveal hp-testo" style="--d:.1s">
+        <span class="eyebrow">Ultima predicazione</span>
+        <h2>Il frutto del donare</h2>
+        <p class="hp-meta"><span class="hp-ref">Filippesi 4:10-20</span> · Alec Catchpole · <span class="nowrap">7 ott 2026</span></p>
+        <div class="hp-serie">
+          <p class="hp-serie__testo"><b>Lettera ai Filippesi</b> <span>· predica 8 di 8</span></p>
+          <div class="hp-serie__barra" role="img" aria-label="Predica 8 di 8 della serie"><span style="--p:100%"></span></div>
+        </div>
+        <p class="px-frase hp-frase">Chi ha capito quanto è costato il Vangelo desidera sostenerlo: un dono per l&#x27;annuncio dà gioia a chi lo riceve, porta frutto eterno a chi lo fa, sale a Dio come un profumo e trova un Dio che non resta debitore di nessuno.</p>
+        <div class="btn-row">
           <a class="btn btn--sun" href="predicazioni.html">Tutte le predicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <a class="btn btn--ghost" href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Canale YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+          <a class="btn btn--ghost" href="predicazione-il-frutto-del-donare.html">Leggi il riassunto</a>
         </div>
       </div>
     </div>
-    <div class="grid grid-3 sermon-list">
-      <article class="sermon reveal">
-  <button class="yt yt--sm" data-id="XSrPuoaN2rc" aria-label="Guarda: In chi devo credere?">
-  <img src="https://i.ytimg.com/vi_webp/XSrPuoaN2rc/maxresdefault.webp" srcset="https://i.ytimg.com/vi/XSrPuoaN2rc/mqdefault.jpg 320w, https://i.ytimg.com/vi/XSrPuoaN2rc/hqdefault.jpg 480w, https://i.ytimg.com/vi/XSrPuoaN2rc/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/XSrPuoaN2rc/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="sermon__info">
-    <span class="ref">Matteo 11:2-5</span>
-    <h3>In chi devo credere?</h3>
-    <p class="who"><span class="who__name">Alec Catchpole</span><span class="who__sep"> · </span><span class="nowrap who__date">9 nov 2026</span></p>
   </div>
-</article><article class="sermon reveal">
-  <button class="yt yt--sm" data-id="vxKKdZPrSnw" aria-label="Guarda: Il tabernacolo, riflesso del divino">
-  <img src="https://i.ytimg.com/vi_webp/vxKKdZPrSnw/maxresdefault.webp" srcset="https://i.ytimg.com/vi/vxKKdZPrSnw/mqdefault.jpg 320w, https://i.ytimg.com/vi/vxKKdZPrSnw/hqdefault.jpg 480w, https://i.ytimg.com/vi/vxKKdZPrSnw/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/vxKKdZPrSnw/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="sermon__info">
-    <span class="ref">Esodo 25:8-9 · Ebrei 9–10</span>
-    <h3>Il tabernacolo, riflesso del divino</h3>
-    <p class="who"><span class="who__name">Lorenzo Piol</span><span class="who__sep"> · </span><span class="nowrap who__date">29 ott 2026</span></p>
-  </div>
-</article><article class="sermon reveal">
-  <button class="yt yt--sm" data-id="niViFpTpjs8" aria-label="Guarda: Non temere, tu sei mio">
-  <img src="https://i.ytimg.com/vi_webp/niViFpTpjs8/maxresdefault.webp" srcset="https://i.ytimg.com/vi/niViFpTpjs8/mqdefault.jpg 320w, https://i.ytimg.com/vi/niViFpTpjs8/hqdefault.jpg 480w, https://i.ytimg.com/vi/niViFpTpjs8/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/niViFpTpjs8/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="sermon__info">
-    <span class="ref">Isaia 43:1-5</span>
-    <h3>Non temere, tu sei mio</h3>
-    <p class="who"><span class="who__name">Stefano Bonavolta</span><span class="who__sep"> · </span><span class="nowrap who__date">20 ott 2026</span></p>
-  </div>
-</article>
-    </div>
-  </div>
-  <template id="prediche-d"><div class="pv pv--sala" data-pv>
-<div class="pv-testa">
-  <h2>Filippesi, la lettera della gioia</h2>
-  <p class="lead">Un viaggio nella lettera della gioia: come vivere con pace e speranza anche quando la vita è difficile.</p>
-</div>
-<div class="pv-sala">
-  <div class="pv-schermo" id="pv-d-schermo" aria-live="polite"><div class="pv-pannello" data-pv-pannello="0">
-  <button class="yt" data-id="WJHZ446R5-M" aria-label="Guarda: Il frutto del donare">
-  <img src="https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp" srcset="https://i.ytimg.com/vi/WJHZ446R5-M/mqdefault.jpg 320w, https://i.ytimg.com/vi/WJHZ446R5-M/hqdefault.jpg 480w, https://i.ytimg.com/vi/WJHZ446R5-M/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:10-20</span> <span>Alec Catchpole</span></p>
-    <h3>Il frutto del donare</h3>
-    <p class="pv-frase">Chi ha capito quanto è costato il Vangelo desidera sostenerlo: un dono per l&#x27;annuncio dà gioia a chi lo riceve, porta frutto eterno a chi lo fa, sale a Dio come un profumo e trova un Dio che non resta debitore di nessuno.</p>
-    
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="1" hidden>
-  <button class="yt" data-id="bgqMGBSZAqQ" aria-label="Guarda: Pace oltre ogni intelligenza">
-  <img src="https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp" srcset="https://i.ytimg.com/vi/bgqMGBSZAqQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/bgqMGBSZAqQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/bgqMGBSZAqQ/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:6-9</span> <span>Josiah Catchpole</span></p>
-    <h3>Pace oltre ogni intelligenza</h3>
-    <p class="pv-frase">Dio non ci chiede di negare le preoccupazioni, ma di non tenerle dentro: portate a lui in preghiera, sono custodite da una pace che supera ogni intelligenza.</p>
-    <a class="link-arrow" href="predicazione-pace-oltre-ogni-intelligenza.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="2" hidden>
-  <button class="yt" data-id="tVdUkKozWus" aria-label="Guarda: Rallegratevi sempre nel Signore">
-  <img src="https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp" srcset="https://i.ytimg.com/vi/tVdUkKozWus/mqdefault.jpg 320w, https://i.ytimg.com/vi/tVdUkKozWus/hqdefault.jpg 480w, https://i.ytimg.com/vi/tVdUkKozWus/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:4-9</span> <span>Lorenzo Piol</span></p>
-    <h3>Rallegratevi sempre nel Signore</h3>
-    <p class="pv-frase">La gioia di cui parla Paolo non dipende da come vanno le cose: nasce da una relazione stabile con Dio, e per questo resiste anche nei giorni difficili.</p>
-    <a class="link-arrow" href="predicazione-rallegratevi-sempre-nel-signore.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="3" hidden>
-  <button class="yt" data-id="T-N96DDAwkE" aria-label="Guarda: Giusti per fede">
-  <img src="https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp" srcset="https://i.ytimg.com/vi/T-N96DDAwkE/mqdefault.jpg 320w, https://i.ytimg.com/vi/T-N96DDAwkE/hqdefault.jpg 480w, https://i.ytimg.com/vi/T-N96DDAwkE/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 3:1-11</span> <span>Alec Catchpole</span></p>
-    <h3>Giusti per fede</h3>
-    <p class="pv-frase">Davanti a Dio non ci salva ciò che abbiamo fatto noi, ma ciò che Cristo ha fatto per noi. Chi è unito a lui per fede può dedicare la vita a conoscerlo.</p>
-    <a class="link-arrow" href="predicazione-giusti-per-fede.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="4" hidden>
-  <button class="yt" data-id="oIXgFedOV6w" aria-label="Guarda: Adoperatevi con timore e tremore">
-  <img src="https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp" srcset="https://i.ytimg.com/vi/oIXgFedOV6w/mqdefault.jpg 320w, https://i.ytimg.com/vi/oIXgFedOV6w/hqdefault.jpg 480w, https://i.ytimg.com/vi/oIXgFedOV6w/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 2:1-18</span> <span>Stefano Bonavolta</span></p>
-    <h3>Adoperatevi con timore e tremore</h3>
-    <p class="pv-frase">Il Vangelo non è un biglietto per il paradiso ma una vita nuova da prendere sul serio. E lo viviamo in modo degno insieme, come popolo unito, senza mormorii né dispute.</p>
-    <a class="link-arrow" href="predicazione-adoperatevi-con-timore-e-tremore.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="5" hidden>
-  <button class="yt" data-id="e1by37jZkvQ" aria-label="Guarda: Il Vangelo inarrestabile">
-  <img src="https://i.ytimg.com/vi_webp/e1by37jZkvQ/maxresdefault.webp" srcset="https://i.ytimg.com/vi/e1by37jZkvQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/e1by37jZkvQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/e1by37jZkvQ/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/e1by37jZkvQ/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 1</span> <span>Stefano Bonavolta</span></p>
-    <h3>Il Vangelo inarrestabile</h3>
-    <p class="pv-frase">Il Vangelo è inarrestabile: non solo supera gli ostacoli, ma li usa come una catapulta. Dio lo farà avanzare comunque; noi possiamo scegliere di farne parte.</p>
-    <a class="link-arrow" href="predicazione-il-vangelo-inarrestabile.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="6" hidden>
-  <button class="yt" data-id="61Up8HQ6To4" aria-label="Guarda: La forma di Cristo">
-  <img src="https://i.ytimg.com/vi_webp/61Up8HQ6To4/maxresdefault.webp" srcset="https://i.ytimg.com/vi/61Up8HQ6To4/mqdefault.jpg 320w, https://i.ytimg.com/vi/61Up8HQ6To4/hqdefault.jpg 480w, https://i.ytimg.com/vi/61Up8HQ6To4/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/61Up8HQ6To4/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 2</span> <span>Josiah Catchpole</span></p>
-    <h3>La forma di Cristo</h3>
-    <p class="pv-frase">Gesù si è svuotato non nonostante fosse Dio, ma proprio perché è Dio. Chi stima Cristo sopra ogni cosa prende la sua forma, si svuota per gli altri e viene riempito da Dio.</p>
-    <a class="link-arrow" href="predicazione-la-forma-di-cristo.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div></div>
-  <div class="pv-elenco"><h3 class="pv-elenco__titolo">Tutta la serie</h3><ol class="pv-voci"><li><button type="button" class="pv-voce" data-pv-scegli="0" aria-pressed="true" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/WJHZ446R5-M/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Il frutto del donare</span><span class="pv-voce__meta">4:10-20 · Alec Catchpole</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="1" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/bgqMGBSZAqQ/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Pace oltre ogni intelligenza</span><span class="pv-voce__meta">4:6-9 · Josiah Catchpole</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="2" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/tVdUkKozWus/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Rallegratevi sempre nel Signore</span><span class="pv-voce__meta">4:4-9 · Lorenzo Piol</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="3" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/T-N96DDAwkE/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Giusti per fede</span><span class="pv-voce__meta">3:1-11 · Alec Catchpole</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="4" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/oIXgFedOV6w/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Adoperatevi con timore e tremore</span><span class="pv-voce__meta">2:1-18 · Stefano Bonavolta</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="5" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/e1by37jZkvQ/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">Il Vangelo inarrestabile</span><span class="pv-voce__meta">Capitolo 1 · Stefano Bonavolta</span></span>
-</button></li><li><button type="button" class="pv-voce" data-pv-scegli="6" aria-pressed="false" aria-controls="pv-d-schermo">
-  <img src="https://i.ytimg.com/vi/61Up8HQ6To4/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
-  <span class="pv-voce__testo"><span class="pv-voce__titolo">La forma di Cristo</span><span class="pv-voce__meta">Capitolo 2 · Josiah Catchpole</span></span>
-</button></li></ol></div>
-</div>
-<div class="btn-row pv-azioni">
-  <a class="btn btn--sun" href="predicazioni.html">Tutte le predicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  <a class="btn btn--ghost" href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Canale YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-</div>
-</div></template><template id="prediche-e"><div class="pv pv--fiume" data-pv>
-<div class="pv-testa">
-  <h2>Filippesi, la lettera della gioia</h2>
-  <p class="lead">Un viaggio nella lettera della gioia: come vivere con pace e speranza anche quando la vita è difficile.</p>
-</div>
-<div class="pv-fiume"><svg class="pv-fiume__onda" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 20 C 100 0, 200 40, 300 20 S 500 0, 600 20 S 800 40, 900 20 S 1100 0, 1200 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg><p class="pv-fiume__aiuto">Da Filippesi 1 a Filippesi 4, nell’ordine in cui si legge la lettera. Tocca una tappa.</p><ol class="pv-tappe"><li><button type="button" class="pv-tappa" data-pv-scegli="5" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">Capitolo 1</span>
-  <span class="pv-tappa__titolo">Il Vangelo inarrestabile</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="6" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">Capitolo 2</span>
-  <span class="pv-tappa__titolo">La forma di Cristo</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="4" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">2:1-18</span>
-  <span class="pv-tappa__titolo">Adoperatevi con timore e tremore</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="3" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">3:1-11</span>
-  <span class="pv-tappa__titolo">Giusti per fede</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="2" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">4:4-9</span>
-  <span class="pv-tappa__titolo">Rallegratevi sempre nel Signore</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="1" aria-pressed="false" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">4:6-9</span>
-  <span class="pv-tappa__titolo">Pace oltre ogni intelligenza</span>
-</button></li><li><button type="button" class="pv-tappa" data-pv-scegli="0" aria-pressed="true" aria-controls="pv-e-schermo">
-  <span class="pv-tappa__punto" aria-hidden="true"></span>
-  <span class="pv-tappa__brano">4:10-20</span>
-  <span class="pv-tappa__titolo">Il frutto del donare</span><span class="pv-tappa__ultima">L’ultima</span>
-</button></li></ol></div>
-<div class="pv-schermo" id="pv-e-schermo" aria-live="polite"><div class="pv-pannello" data-pv-pannello="0">
-  <button class="yt" data-id="WJHZ446R5-M" aria-label="Guarda: Il frutto del donare">
-  <img src="https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp" srcset="https://i.ytimg.com/vi/WJHZ446R5-M/mqdefault.jpg 320w, https://i.ytimg.com/vi/WJHZ446R5-M/hqdefault.jpg 480w, https://i.ytimg.com/vi/WJHZ446R5-M/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:10-20</span> <span>Alec Catchpole</span></p>
-    <h3>Il frutto del donare</h3>
-    <p class="pv-frase">Chi ha capito quanto è costato il Vangelo desidera sostenerlo: un dono per l&#x27;annuncio dà gioia a chi lo riceve, porta frutto eterno a chi lo fa, sale a Dio come un profumo e trova un Dio che non resta debitore di nessuno.</p>
-    
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="1" hidden>
-  <button class="yt" data-id="bgqMGBSZAqQ" aria-label="Guarda: Pace oltre ogni intelligenza">
-  <img src="https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp" srcset="https://i.ytimg.com/vi/bgqMGBSZAqQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/bgqMGBSZAqQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/bgqMGBSZAqQ/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/bgqMGBSZAqQ/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:6-9</span> <span>Josiah Catchpole</span></p>
-    <h3>Pace oltre ogni intelligenza</h3>
-    <p class="pv-frase">Dio non ci chiede di negare le preoccupazioni, ma di non tenerle dentro: portate a lui in preghiera, sono custodite da una pace che supera ogni intelligenza.</p>
-    <a class="link-arrow" href="predicazione-pace-oltre-ogni-intelligenza.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="2" hidden>
-  <button class="yt" data-id="tVdUkKozWus" aria-label="Guarda: Rallegratevi sempre nel Signore">
-  <img src="https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp" srcset="https://i.ytimg.com/vi/tVdUkKozWus/mqdefault.jpg 320w, https://i.ytimg.com/vi/tVdUkKozWus/hqdefault.jpg 480w, https://i.ytimg.com/vi/tVdUkKozWus/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/tVdUkKozWus/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 4:4-9</span> <span>Lorenzo Piol</span></p>
-    <h3>Rallegratevi sempre nel Signore</h3>
-    <p class="pv-frase">La gioia di cui parla Paolo non dipende da come vanno le cose: nasce da una relazione stabile con Dio, e per questo resiste anche nei giorni difficili.</p>
-    <a class="link-arrow" href="predicazione-rallegratevi-sempre-nel-signore.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="3" hidden>
-  <button class="yt" data-id="T-N96DDAwkE" aria-label="Guarda: Giusti per fede">
-  <img src="https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp" srcset="https://i.ytimg.com/vi/T-N96DDAwkE/mqdefault.jpg 320w, https://i.ytimg.com/vi/T-N96DDAwkE/hqdefault.jpg 480w, https://i.ytimg.com/vi/T-N96DDAwkE/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/T-N96DDAwkE/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 3:1-11</span> <span>Alec Catchpole</span></p>
-    <h3>Giusti per fede</h3>
-    <p class="pv-frase">Davanti a Dio non ci salva ciò che abbiamo fatto noi, ma ciò che Cristo ha fatto per noi. Chi è unito a lui per fede può dedicare la vita a conoscerlo.</p>
-    <a class="link-arrow" href="predicazione-giusti-per-fede.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="4" hidden>
-  <button class="yt" data-id="oIXgFedOV6w" aria-label="Guarda: Adoperatevi con timore e tremore">
-  <img src="https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp" srcset="https://i.ytimg.com/vi/oIXgFedOV6w/mqdefault.jpg 320w, https://i.ytimg.com/vi/oIXgFedOV6w/hqdefault.jpg 480w, https://i.ytimg.com/vi/oIXgFedOV6w/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/oIXgFedOV6w/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 2:1-18</span> <span>Stefano Bonavolta</span></p>
-    <h3>Adoperatevi con timore e tremore</h3>
-    <p class="pv-frase">Il Vangelo non è un biglietto per il paradiso ma una vita nuova da prendere sul serio. E lo viviamo in modo degno insieme, come popolo unito, senza mormorii né dispute.</p>
-    <a class="link-arrow" href="predicazione-adoperatevi-con-timore-e-tremore.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="5" hidden>
-  <button class="yt" data-id="e1by37jZkvQ" aria-label="Guarda: Il Vangelo inarrestabile">
-  <img src="https://i.ytimg.com/vi_webp/e1by37jZkvQ/maxresdefault.webp" srcset="https://i.ytimg.com/vi/e1by37jZkvQ/mqdefault.jpg 320w, https://i.ytimg.com/vi/e1by37jZkvQ/hqdefault.jpg 480w, https://i.ytimg.com/vi/e1by37jZkvQ/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/e1by37jZkvQ/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 1</span> <span>Stefano Bonavolta</span></p>
-    <h3>Il Vangelo inarrestabile</h3>
-    <p class="pv-frase">Il Vangelo è inarrestabile: non solo supera gli ostacoli, ma li usa come una catapulta. Dio lo farà avanzare comunque; noi possiamo scegliere di farne parte.</p>
-    <a class="link-arrow" href="predicazione-il-vangelo-inarrestabile.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div><div class="pv-pannello" data-pv-pannello="6" hidden>
-  <button class="yt" data-id="61Up8HQ6To4" aria-label="Guarda: La forma di Cristo">
-  <img src="https://i.ytimg.com/vi_webp/61Up8HQ6To4/maxresdefault.webp" srcset="https://i.ytimg.com/vi/61Up8HQ6To4/mqdefault.jpg 320w, https://i.ytimg.com/vi/61Up8HQ6To4/hqdefault.jpg 480w, https://i.ytimg.com/vi/61Up8HQ6To4/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/61Up8HQ6To4/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="pv-pannello__testo">
-    <p class="pv-meta"><span class="pv-brano">Filippesi 2</span> <span>Josiah Catchpole</span></p>
-    <h3>La forma di Cristo</h3>
-    <p class="pv-frase">Gesù si è svuotato non nonostante fosse Dio, ma proprio perché è Dio. Chi stima Cristo sopra ogni cosa prende la sua forma, si svuota per gli altri e viene riempito da Dio.</p>
-    <a class="link-arrow" href="predicazione-la-forma-di-cristo.html">Leggi il riassunto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
-</div></div>
-<div class="btn-row pv-azioni">
-  <a class="btn btn--sun" href="predicazioni.html">Tutte le predicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  <a class="btn btn--ghost" href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Canale YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-</div>
-</div></template><template id="prediche-f"><div class="pv pv--frase" data-pv>
-<figure class="pv-citazione">
-  <blockquote><p>Chi ha capito quanto è costato il Vangelo desidera sostenerlo: un dono per l&#x27;annuncio dà gioia a chi lo riceve, porta frutto eterno a chi lo fa, sale a Dio come un profumo e trova un Dio che non resta debitore di nessuno.</p></blockquote>
-  <figcaption><span class="pv-citazione__titolo">Il frutto del donare</span> <span class="pv-citazione__meta">Filippesi 4:10-20 · Alec Catchpole</span></figcaption>
-</figure>
-<div class="btn-row">
-  <button type="button" class="btn" data-pv-guarda aria-expanded="false" aria-controls="pv-f-video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg> Guarda la predicazione</button>
-  
-</div>
-<div class="pv-video" id="pv-f-video" hidden><button class="yt" data-id="WJHZ446R5-M" aria-label="Guarda: Il frutto del donare">
-  <img src="https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp" srcset="https://i.ytimg.com/vi/WJHZ446R5-M/mqdefault.jpg 320w, https://i.ytimg.com/vi/WJHZ446R5-M/hqdefault.jpg 480w, https://i.ytimg.com/vi/WJHZ446R5-M/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/WJHZ446R5-M/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button></div>
-<h3 class="pv-altre__titolo">Dalle predicazioni precedenti</h3>
-<ul class="pv-biglietti"><li><a class="pv-biglietto" href="predicazione-pace-oltre-ogni-intelligenza.html">
-  <span class="pv-biglietto__frase">Dio non ci chiede di negare le preoccupazioni, ma di non tenerle dentro: portate a lui in preghiera, sono custodite da una pace che supera ogni intelligenza.</span>
-  <span class="pv-biglietto__titolo">Pace oltre ogni intelligenza</span>
-  <span class="pv-biglietto__meta">4:6-9 · Josiah Catchpole</span>
-</a></li><li><a class="pv-biglietto" href="predicazione-rallegratevi-sempre-nel-signore.html">
-  <span class="pv-biglietto__frase">La gioia di cui parla Paolo non dipende da come vanno le cose: nasce da una relazione stabile con Dio, e per questo resiste anche nei giorni difficili.</span>
-  <span class="pv-biglietto__titolo">Rallegratevi sempre nel Signore</span>
-  <span class="pv-biglietto__meta">4:4-9 · Lorenzo Piol</span>
-</a></li><li><a class="pv-biglietto" href="predicazione-giusti-per-fede.html">
-  <span class="pv-biglietto__frase">Davanti a Dio non ci salva ciò che abbiamo fatto noi, ma ciò che Cristo ha fatto per noi. Chi è unito a lui per fede può dedicare la vita a conoscerlo.</span>
-  <span class="pv-biglietto__titolo">Giusti per fede</span>
-  <span class="pv-biglietto__meta">3:1-11 · Alec Catchpole</span>
-</a></li></ul>
-<div class="btn-row pv-azioni">
-  <a class="btn btn--sun" href="predicazioni.html">Tutte le predicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  <a class="btn btn--ghost" href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Canale YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-</div>
-</div></template>
 </section>
 
 <section class="section" data-scroller>
@@ -476,158 +176,156 @@
   </div>
 </section>
 
-<section class="section section--white" id="storie">
+<section class="section section--white tm-sez" id="storie">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head tm-testa">
       <div class="reveal">
         <span class="eyebrow">Testimonianze</span>
         <h2>Vite <span class="accent">trasformate</span> da Cristo</h2>
-        <p class="lead">Persone della nostra comunità raccontano, con le loro parole, cosa Gesù ha fatto nella loro vita.</p>
       </div>
-      <a class="btn btn--outline" href="predicazioni.html#testimonianze">Tutte le testimonianze</a>
     </div>
-    <div class="stories">
-      <article class="story story--big reveal">
-  <button class="yt" data-id="-bn-kulV4iw" aria-label="Guarda: La storia di Gigi — Nati di nuovo">
-  <img src="https://i.ytimg.com/vi_webp/-bn-kulV4iw/maxresdefault.webp" srcset="https://i.ytimg.com/vi/-bn-kulV4iw/mqdefault.jpg 320w, https://i.ytimg.com/vi/-bn-kulV4iw/hqdefault.jpg 480w, https://i.ytimg.com/vi/-bn-kulV4iw/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/-bn-kulV4iw/maxresdefault.webp 1280w" sizes="(max-width: 880px) 100vw, 60vw" alt="" loading="lazy" decoding="async" width="1280" height="720">
+    <div class="tm" data-storie>
+      <div class="tm-video"><button class="yt yt--fotogramma" data-id="ch__zax0KrU" aria-label="Guarda: la storia di Joy">
+  <img src="https://i.ytimg.com/vi/ch__zax0KrU/maxres3.jpg" alt="" loading="lazy" decoding="async" width="1280" height="720" style="object-position:70% 30%" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/ch__zax0KrU/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="story__body"><span class="story__tag">Nati di nuovo</span><h3>La storia di Gigi</h3></div>
-</article>
-      <div class="stories__grid"><article class="story reveal">
-  <button class="yt yt--sm" data-id="LifjToTklk4" aria-label="Guarda: Hans — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/LifjToTklk4/maxresdefault.webp" srcset="https://i.ytimg.com/vi/LifjToTklk4/mqdefault.jpg 320w, https://i.ytimg.com/vi/LifjToTklk4/hqdefault.jpg 480w, https://i.ytimg.com/vi/LifjToTklk4/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/LifjToTklk4/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Hans</h3></div>
-</article><article class="story reveal">
-  <button class="yt yt--sm" data-id="F9zjP8wGIqM" aria-label="Guarda: Rosario e Imma — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/F9zjP8wGIqM/maxresdefault.webp" srcset="https://i.ytimg.com/vi/F9zjP8wGIqM/mqdefault.jpg 320w, https://i.ytimg.com/vi/F9zjP8wGIqM/hqdefault.jpg 480w, https://i.ytimg.com/vi/F9zjP8wGIqM/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/F9zjP8wGIqM/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Rosario e Imma</h3></div>
-</article><article class="story reveal">
-  <button class="yt yt--sm" data-id="8LLRVKMcJaE" aria-label="Guarda: Michele — Grati a Dio">
-  <img src="https://i.ytimg.com/vi_webp/8LLRVKMcJaE/maxresdefault.webp" srcset="https://i.ytimg.com/vi/8LLRVKMcJaE/mqdefault.jpg 320w, https://i.ytimg.com/vi/8LLRVKMcJaE/hqdefault.jpg 480w, https://i.ytimg.com/vi/8LLRVKMcJaE/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/8LLRVKMcJaE/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="story__body"><span class="story__tag">Grati a Dio</span><h3>Michele</h3></div>
-</article><article class="story reveal">
-  <button class="yt yt--sm" data-id="OT9Fo7Zbgwo" aria-label="Guarda: La storia di Antonio — Nati di nuovo">
-  <img src="https://i.ytimg.com/vi_webp/OT9Fo7Zbgwo/maxresdefault.webp" srcset="https://i.ytimg.com/vi/OT9Fo7Zbgwo/mqdefault.jpg 320w, https://i.ytimg.com/vi/OT9Fo7Zbgwo/hqdefault.jpg 480w, https://i.ytimg.com/vi/OT9Fo7Zbgwo/sddefault.jpg 640w, https://i.ytimg.com/vi_webp/OT9Fo7Zbgwo/maxresdefault.webp 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720">
-  <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
-</button>
-  <div class="story__body"><span class="story__tag">Nati di nuovo</span><h3>La storia di Antonio</h3></div>
-</article></div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--tint">
-  <div class="container">
-    <div class="section-head">
-      <div class="reveal">
-        <span class="eyebrow">Prima volta?</span>
-        <h2>Ecco cosa ti aspetta domenica</h2>
-      </div>
-      <a class="btn btn--outline" href="visita.html">Vieni a trovarci</a>
-    </div>
-    <div class="grid grid-3 steps">
-      <div class="step reveal"><span class="time">10:00</span><h3>Un caffè insieme</h3><p>Arriva qualche minuto prima: c'è un caffè e qualcuno pronto ad accoglierti.</p></div>
-      <div class="step reveal" style="--d:.08s"><span class="time">10:15</span><h3>Lode e Parola</h3><p>Cantiamo insieme e ascoltiamo un messaggio dalla Bibbia, chiaro e concreto per la vita di tutti i giorni.</p></div>
-      <div class="step reveal" style="--d:.16s"><span class="time">Per i bambini</span><h3>Scuola domenicale</h3><p>I più piccoli hanno il loro spazio, con insegnanti che li conoscono e li amano.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="centro-teaser reveal">
-      <img src="assets/img/costruzione-6.webp" srcset="assets/img/costruzione-6-sm.webp 640w, assets/img/costruzione-6.webp 1218w" sizes="100vw" alt="La struttura del nuovo centro in costruzione" loading="lazy" decoding="async">
-      <div class="centro-teaser__body">
-        <span class="eyebrow eyebrow--sun">Il nostro progetto</span>
-        <h2>Stiamo costruendo un centro nel cuore di Pozzuoli</h2>
-        <p>Un luogo aperto alla città: per il culto, per i ragazzi, per le famiglie e per chi ha bisogno. Mattone dopo mattone, lo vediamo prendere forma.</p>
-        <div class="progress todo" aria-label="Avanzamento dei lavori">
-          <div class="progress__bar"><span style="--p:50%"></span></div>
-          <div class="progress__labels"><span>Fondamenta ✓</span><span>Struttura</span><span>Finiture</span><span>Apertura</span></div>
+</button></div>
+      <div class="tm-testo">
+        <div class="tm-storia" aria-live="polite">
+          <p class="tm-serie">Nati di nuovo</p>
+          <h3 class="tm-nome">La storia di Joy</h3>
+          <p class="tm-desc">Trasformati da Cristo per amare come Cristo</p>
         </div>
-        <a class="btn btn--sun" href="centro.html">Scopri il progetto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <div class="btn-row tm-azioni">
+          <button type="button" class="btn btn--sun tm-guarda">Guarda la storia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+          <a class="btn btn--outline" href="predicazioni.html#testimonianze">Tutte le testimonianze</a>
+        </div>
+        <div class="tm-altri">
+          <p class="tm-altri__titolo">Scegli una storia</p>
+          <ul class="tm-volti"><li><button type="button" class="tm-volto" aria-pressed="true" aria-label="Mostra la storia di Joy"
+      data-vid="ch__zax0KrU" data-nome="Joy" data-serie="Nati di nuovo" data-desc="Trasformati da Cristo per amare come Cristo"
+      data-grande="https://i.ytimg.com/vi/ch__zax0KrU/maxres3.jpg" data-riserva="https://i.ytimg.com/vi/ch__zax0KrU/hqdefault.jpg" data-stile="object-position:70% 30%">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/ch__zax0KrU/hq3.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:70% 30%;transform-origin:70% 30%"></span>
+      <span class="tm-volto__nome">Joy</span></button></li><li><button type="button" class="tm-volto" aria-pressed="false" aria-label="Mostra la storia di Hans"
+      data-vid="LifjToTklk4" data-nome="Hans" data-serie="Grati a Dio" data-desc=""
+      data-grande="https://i.ytimg.com/vi/LifjToTklk4/maxres2.jpg" data-riserva="https://i.ytimg.com/vi/LifjToTklk4/hqdefault.jpg" data-stile="object-position:45% 30%">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/LifjToTklk4/hq2.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:45% 30%;transform-origin:45% 30%"></span>
+      <span class="tm-volto__nome">Hans</span></button></li><li><button type="button" class="tm-volto" aria-pressed="false" aria-label="Mostra la storia di Rosario e Imma"
+      data-vid="F9zjP8wGIqM" data-nome="Rosario e Imma" data-serie="Grati a Dio" data-desc=""
+      data-grande="https://i.ytimg.com/vi/F9zjP8wGIqM/maxres2.jpg" data-riserva="https://i.ytimg.com/vi/F9zjP8wGIqM/hqdefault.jpg" data-stile="object-position:62% 30%">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/F9zjP8wGIqM/hq2.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:62% 30%;transform-origin:62% 30%"></span>
+      <span class="tm-volto__nome">Rosario e Imma</span></button></li><li><button type="button" class="tm-volto" aria-pressed="false" aria-label="Mostra la storia di Gigi"
+      data-vid="-bn-kulV4iw" data-nome="Gigi" data-serie="Nati di nuovo" data-desc=""
+      data-grande="https://i.ytimg.com/vi/-bn-kulV4iw/maxres2.jpg" data-riserva="https://i.ytimg.com/vi/-bn-kulV4iw/hqdefault.jpg" data-stile="object-position:50% 35%">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/-bn-kulV4iw/hq2.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:50% 35%;transform-origin:50% 35%"></span>
+      <span class="tm-volto__nome">Gigi</span></button></li><li><button type="button" class="tm-volto" aria-pressed="false" aria-label="Mostra la storia di Michele"
+      data-vid="8LLRVKMcJaE" data-nome="Michele" data-serie="Grati a Dio" data-desc=""
+      data-grande="https://i.ytimg.com/vi/8LLRVKMcJaE/hq2.jpg" data-riserva="https://i.ytimg.com/vi/8LLRVKMcJaE/hqdefault.jpg" data-stile="object-position:50% 40%;transform:scale(1.35)">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/8LLRVKMcJaE/hq2.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:50% 40%;transform:scale(1.35);transform-origin:50% 40%"></span>
+      <span class="tm-volto__nome">Michele</span></button></li><li><button type="button" class="tm-volto" aria-pressed="false" aria-label="Mostra la storia di Antonio"
+      data-vid="OT9Fo7Zbgwo" data-nome="Antonio" data-serie="Nati di nuovo" data-desc=""
+      data-grande="https://i.ytimg.com/vi/OT9Fo7Zbgwo/maxres3.jpg" data-riserva="https://i.ytimg.com/vi/OT9Fo7Zbgwo/hqdefault.jpg" data-stile="object-position:58% 40%;transform:scale(1.6)">
+      <span class="tm-volto__foto"><img src="https://i.ytimg.com/vi/OT9Fo7Zbgwo/hq3.jpg" alt="" loading="lazy" decoding="async" width="480" height="360" style="object-position:58% 40%;transform:scale(1.6);transform-origin:58% 40%"></span>
+      <span class="tm-volto__nome">Antonio</span></button></li></ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--white" id="articoli">
+<section class="section centro-home">
   <div class="container">
-    <div class="section-head">
-      <div class="reveal"><span class="eyebrow">Articoli</span><h2>Spunti per la <span class="accent">fede</span> di ogni giorno</h2>
-        <p class="lead">Riflessioni sulla Bibbia, sulla famiglia, sul lavoro e sulle domande della vita.</p></div>
-      <a class="btn btn--outline" href="articoli.html">Tutti gli articoli</a>
+    <div class="ch">
+      <div class="ch-testo reveal">
+        <span class="eyebrow">Il nostro progetto</span>
+        <h2>Stiamo costruendo un centro nel cuore di Pozzuoli</h2>
+        <p class="lead">Un luogo aperto alla città: per il culto, per i ragazzi, per le famiglie e per chi ha bisogno. Mattone dopo mattone, lo vediamo prendere forma.</p>
+        <ol class="ch-tappe">
+          <li><b>Ottobre 2025</b> Le fondamenta</li>
+          <li class="ch-tappe__ora"><b>Maggio 2026</b> La struttura prende forma</li>
+          <li class="ch-tappe__poi"><b>Prossimamente</b> Copertura, impianti e finiture</li>
+        </ol>
+        <div class="btn-row">
+          <a class="btn btn--sun" href="centro.html">Scopri il progetto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a class="btn btn--outline" href="centro.html#video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda il video</a>
+        </div>
+      </div>
+      <div class="ch-foto">
+        <div class="ch-confronto">
+          <img class="ch-dopo" src="assets/img/costruzione-6.webp" srcset="assets/img/costruzione-6-sm.webp 640w, assets/img/costruzione-6.webp 1218w" sizes="(max-width: 880px) 100vw, 58vw" alt="Il cantiere a maggio 2026: la struttura con i ponteggi" loading="lazy" decoding="async">
+          <img class="ch-prima" src="assets/img/costruzione-1.webp" srcset="assets/img/costruzione-1-sm.webp 640w, assets/img/costruzione-1.webp 1218w" sizes="(max-width: 880px) 100vw, 58vw" alt="Il cantiere a ottobre 2025: le fondamenta" loading="lazy" decoding="async">
+          <span class="ch-linea" aria-hidden="true"></span>
+          <span class="ch-tag ch-tag--prima" aria-hidden="true"><em>Ottobre 2025</em><span> le fondamenta</span></span>
+          <span class="ch-tag ch-tag--dopo" aria-hidden="true"><em>Maggio 2026</em><span> la struttura</span></span>
+          <input class="ch-range" type="range" min="0" max="100" value="50" aria-label="Confronta il cantiere di ottobre 2025 con quello di maggio 2026">
+          <span class="ch-maniglia" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6"/><path d="m15 6 6 6-6 6"/></svg></span>
+        </div>
+        <p class="ch-aiuto">Trascina il cerchio giallo per vedere quanto è cresciuto in sette mesi.</p>
+      </div>
     </div>
-    <div class="grid agrid agrid--few"><article class="acard acard--big" data-cat="vita-cristiana" data-sub="preghiera" data-ref="filippesi 4:6-7; filippesi 4:8" data-cerca="la pace che supera ogni intelligenza tre passi da filippesi 4 per quando l ansia bussa alla porta redazione fiume di vita vita cristiana preghiera filippesi 4:6 7 filippesi 4:8 bollette, esami, salute, figli, lavoro: l ansia trova sempre una porta da cui entrare. l apostolo paolo scrive ai credenti di filippi da una prigione, eppure la sua lettera e piena di gioia. nel capitolo 4 ci lascia un invito che vale anche per noi, oggi, a pozzuoli. non angustiatevi di nulla, ma in ogni cosa fate conoscere le vostre richieste a dio in preghiere e suppliche, accompagnate da ringraziamenti; e la pace di dio, che supera ogni intelligenza, custodira i vostri cuori e i vostri pensieri in cristo gesu. filippesi 4:6 7 1\. porta tutto a dio in preghiera paolo non dice di far finta che i problemi non esistano. dice di portarli a dio, in ogni cosa . la preghiera non e l ultima spiaggia quando tutto il resto ha fallito: e il primo passo. possiamo parlare a dio con parole semplici, come un figlio parla al padre. 2\. ringrazia, anche oggi le richieste vanno accompagnate da ringraziamenti. ringraziare sposta lo sguardo da cio che manca a cio che dio ha gia fatto. prova a farlo questa sera, prima di dormire: ricorda tre cose belle di oggi affida a dio quella che ti preoccupa di piu ringrazialo perche ti ascolta 3\. riempi la mente di cio che e vero subito dopo paolo aggiunge: tutte le cose vere, onorevoli, giuste, pure, amabili, di buona fama, quelle occupino i vostri pensieri. la pace di dio non e solo un sentimento: e il frutto di una mente che si nutre della sua parola. non sei solo in questo cammino. ogni domenica alle 10:15 ci ritroviamo per pregare, lodare dio e ascoltare la bibbia insieme. c e un posto anche per te.">
-  <div class="acard__media"><img src="assets/articoli/la-pace-che-supera-ogni-intelligenza/pace-golfo-di-pozzuoli.webp" alt="Il mare calmo del golfo di Pozzuoli al tramonto, con il Castello di Baia" loading="lazy" decoding="async"></div>
-  <div class="acard__body">
-    <span class="acard__tag">Vita cristiana · Preghiera</span>
-    <h3><a class="stretched" href="articolo-la-pace-che-supera-ogni-intelligenza.html">La pace che supera ogni intelligenza</a></h3>
-    <p>Tre passi da Filippesi 4 per quando l&#x27;ansia bussa alla porta</p>
-    <span class="acard__meta">1 ottobre 2026 · 2 min di lettura</span>
-  </div>
-</article></div>
   </div>
 </section>
 
 <section class="section section--tight section--white">
-  <div class="container u-mb-6">
-    <span class="eyebrow">La nostra comunità</span>
-    <h2>Vita insieme</h2>
+  <div class="container">
+    <div class="section-head">
+      <div class="reveal">
+        <span class="eyebrow">La nostra comunità</span>
+        <h2>Vita insieme</h2>
+      </div>
+    </div>
   </div>
   <div class="marquee-wrap">
   <div class="marquee" aria-label="Foto della nostra comunità" role="region" tabindex="0">
     <div class="marquee__track"><img src="assets/img/generale-17-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-12-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-3-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/giovanissimi-4-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-7-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/calcetto-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-16-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/chiesa-in-casa-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-19-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-6-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/donne-1-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-5-sm.webp" alt="" loading="lazy" decoding="async"><img src="assets/img/generale-17-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-12-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-3-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/giovanissimi-4-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-7-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/calcetto-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-16-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/chiesa-in-casa-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-19-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-6-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/donne-1-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><img src="assets/img/generale-5-sm.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"></div>
   </div>
-  <button class="marquee-toggle" type="button" data-marquee-toggle aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>Metti in pausa</span></button>
 </div>
 </section>
 
-<section class="section">
-  <div class="container split">
-    <div class="reveal">
-      <span class="eyebrow">Vieni a trovarci</span>
-      <h2>Ci vediamo domenica?</h2>
-      <p class="lead">Non serve conoscere nessuno, né sapere cosa dire. Vieni così come sei: ti accoglieremo con un caffè e un sorriso.</p>
-      <div class="contact-box u-mt-6">
-        <a class="contact-line" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><strong>Via Casalanno, 85 — Pozzuoli (NA)</strong><span>Apri le indicazioni stradali</span></span><span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-        <a class="contact-line" href="https://wa.me/393755480132" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span><strong>Scrivici su WhatsApp</strong><span>Rispondiamo volentieri a ogni domanda</span></span><span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-        <a class="contact-line" href="tel:+393755480132"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><span><strong>375 548 0132</strong><span>Chiamaci</span></span></a>
+<section class="section dove" id="vieni">
+  <div class="container">
+    <div class="dove-pannello">
+      <div class="map dove-mappa">
+        <img src="assets/img/mappa.webp" srcset="assets/img/mappa-sm.webp 800w, assets/img/mappa.webp 1600w" sizes="(max-width: 880px) 100vw, 1200px" alt="Mappa: la chiesa si trova in Via Casalanno 85, Pozzuoli" loading="lazy" decoding="async" width="1600" height="1200">
+        <span class="dove-pin" aria-hidden="true">Fiume di Vita</span>
+        <span class="dove-credito">© OpenStreetMap</span>
+      </div>
+      <div class="dove-scheda reveal">
+        <span class="eyebrow">Vieni a trovarci</span>
+        <h2>Ci vediamo domenica?</h2>
+        <p class="dove-testo">Non serve conoscere nessuno, né sapere cosa dire. Vieni così come sei: ti accoglieremo con un caffè e un sorriso.</p>
+        <ul class="dove-orari">
+          <li><span class="dove-ora">10:00</span> Caffè insieme</li>
+          <li><span class="dove-ora">10:15</span> Culto per tutta la famiglia</li>
+        </ul>
+        <p class="dove-indirizzo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span><strong>Via Casalanno, 85</strong> Pozzuoli (NA)</span></p>
+        <div class="btn-row">
+          <a class="btn btn--sun" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener">Indicazioni <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg><span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+          <a class="btn btn--outline" href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> WhatsApp<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+        </div>
+        <p class="dove-tel">Preferisci chiamare? <a href="tel:+393755480132">375 548 0132</a></p>
       </div>
     </div>
-    <div class="map map--click reveal" style="--d:.1s" data-map-src="https://maps.google.com/maps?q=Via%20Casalanno%2085%2C%20Pozzuoli%20NA&z=15&output=embed">
-  <img src="assets/img/mappa.webp" srcset="assets/img/mappa-sm.webp 800w, assets/img/mappa.webp 1600w" sizes="(max-width: 880px) 100vw, 50vw" alt="Mappa: la chiesa si trova in Via Casalanno 85" loading="lazy" decoding="async" width="800" height="600">
-  <div class="map__overlay">
-    <button class="btn" type="button" data-map-load><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Mostra la mappa interattiva</button>
-    <a class="btn btn--light" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener">Apri in Google Maps<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
-    <p class="map__note">Immagine © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>. La mappa interattiva è fornita da Google: caricandola, Google può raccogliere dati di navigazione.</p>
-  </div>
-</div>
   </div>
 </section>
 </main>
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-top">
       <div class="footer-brand">
         <a class="brand" href="index.html" aria-label="Fiume di Vita — home"><span class="brand__mark" aria-hidden="true"><img class="brand__logo" src="assets/logo/logo.webp" width="46" height="56" alt=""><img class="brand__logo brand__logo--chiaro" src="assets/logo/logo-chiaro.webp" width="46" height="56" alt=""></span><span class="brand-word">fiume<i>di</i>vita</span></a>
         <p>Una chiesa evangelica nel cuore di Pozzuoli. Una famiglia dove c'è posto anche per te.</p>
-        <div class="socials">
-          <a href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener" aria-label="YouTube (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
-          <a href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="WhatsApp (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
-          <a href="tel:+393755480132" aria-label="Telefono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></a>
-        </div>
       </div>
+      <div class="footer-domenica">
+        <p class="footer-domenica__titolo">Ogni domenica</p>
+        <p class="footer-domenica__orari"><span><strong>10:00</strong> caffè insieme</span><span><strong>10:15</strong> culto per tutta la famiglia</span></p>
+        <a class="footer-domenica__dove" href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Via Casalanno, 85 — Pozzuoli (NA)<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+      </div>
+    </div>
+    <div class="footer-grid">
       <div>
         <h2 class="footer-title">Esplora</h2>
-        <ul>
+        <ul class="footer-esplora">
+          <li><a href="index.html">Home</a></li>
           <li><a href="chi-siamo.html">Chi siamo</a></li>
           <li><a href="ministeri.html">Ministeri</a></li>
           <li><a href="predicazioni.html">Predicazioni</a></li>
@@ -637,30 +335,22 @@
         </ul>
       </div>
       <div>
-        <h2 class="footer-title">Domenica</h2>
-        <ul>
-          <li>Caffè dalle 10:00</li>
-          <li>Culto alle 10:15</li>
-          <li><a href="visita.html">Sono nuovo</a></li>
-        </ul>
-      </div>
-      <div>
         <h2 class="footer-title">Contatti</h2>
         <ul>
-          <li><a href="https://www.google.com/maps/dir/?api=1&destination=Via+Casalanno+85+Pozzuoli+NA" target="_blank" rel="noopener">Via Casalanno, 85 — Pozzuoli (NA)<span class="visually-hidden"> (si apre in una nuova scheda)</span></a></li>
-          <li><a href="tel:+393755480132">375 548 0132</a></li>
-          <li><a href="https://wa.me/393755480132" target="_blank" rel="noopener">Scrivici su WhatsApp<span class="visually-hidden"> (si apre in una nuova scheda)</span></a></li>
+          <li><a href="tel:+393755480132"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> 375 548 0132</a></li>
+          <li><a href="https://wa.me/393755480132" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Scrivici su WhatsApp<span class="visually-hidden"> (si apre in una nuova scheda)</span></a></li>
+          <li><a href="https://www.youtube.com/@fiumedivita1997" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Le predicazioni su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Fiume di Vita · Chiesa evangelica a Pozzuoli</span>
-      <span class="footer-links"><a href="admin/">Area riservata</a><a href="#main">Torna su ↑</a></span>
+      <span>© <span data-year>2026</span> Fiume di Vita, chiesa evangelica a Pozzuoli</span>
+      <span class="footer-links"><a href="admin/">Area riservata</a><a href="#main">Torna su</a></span>
     </div>
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=79216254" defer></script>
+<script src="js/main.js?v=d6e8044c" defer></script>
 
 </body>
 </html>
