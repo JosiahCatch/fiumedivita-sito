@@ -270,8 +270,35 @@
       if (focus) tab.focus();
       tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
       history.replaceState(null, '', '#' + tab.dataset.tab);
+      // telefono: il bottone e il pannello dicono cosa stai ascoltando
+      const nome = document.querySelector('[data-ps-nome]');
+      if (nome) nome.textContent = tab.firstChild.textContent.trim();
+      document.querySelectorAll('.ps-f-voce').forEach((v) => v.setAttribute('aria-checked', String(v.dataset.tab === tab.dataset.tab)));
     };
-    tablist.addEventListener('click', (e) => { const t = e.target.closest('[role="tab"]'); if (t) select(t); });
+    // telefono: pannello dal basso per scegliere la serie
+    const foglio = document.querySelector('.ps-foglio');
+    const apri = document.querySelector('[data-ps-apri]');
+    if (foglio && apri) {
+      apri.addEventListener('click', () => { foglio.showModal(); foglio.querySelector('[aria-checked="true"]')?.focus(); });
+      foglio.querySelector('[data-ps-chiudi]').addEventListener('click', () => foglio.close());
+      foglio.addEventListener('click', (e) => {
+        if (e.target === foglio) { foglio.close(); return; }   // tocco fuori dal pannello
+        const v = e.target.closest('.ps-f-voce');
+        if (!v) return;
+        const cerca = document.querySelector('[data-pcerca] input');
+        if (cerca && cerca.value) { cerca.value = ''; cerca.dispatchEvent(new Event('input')); }
+        select(tabs.find((t) => t.dataset.tab === v.dataset.tab));
+        setTimeout(() => foglio.close(), 160);
+        apri.focus();
+      });
+    }
+    tablist.addEventListener('click', (e) => {
+      const t = e.target.closest('[role="tab"]');
+      if (!t) return;
+      const cerca = document.querySelector('[data-pcerca] input');
+      if (cerca && cerca.value) { cerca.value = ''; cerca.dispatchEvent(new Event('input')); }
+      select(t);
+    });
     tablist.addEventListener('keydown', (e) => {
       const i = tabs.indexOf(document.activeElement);
       if (i < 0) return;
@@ -396,7 +423,7 @@
   if (pForm) {
     const input = pForm.querySelector('input');
     const pulisci = pForm.querySelector('[data-pcerca-clear]');
-    const esito = pForm.querySelector('[data-pcerca-esito]');
+    const esito = document.querySelector('[data-pcerca-esito]');
     const box = document.querySelector('[data-pcerca-risultati]');
     const griglia = box.querySelector('.grid');
     const vuoto = box.querySelector('.pcerca-vuoto');
@@ -409,7 +436,7 @@
       pulisci.hidden = !trova;
       fdvUrlCerca(input.value.trim());
       if (!trova) {
-        box.hidden = true; tablistP.hidden = false; esito.textContent = '';
+        box.hidden = true; tablistP.closest('[data-ps]')?.classList.remove('ps-cercando'); esito.textContent = '';
         const sel = tablistP.querySelector('[aria-selected="true"]');
         pannelli.forEach((p) => { p.hidden = p.id !== sel?.getAttribute('aria-controls'); });
         return;
@@ -421,7 +448,7 @@
         if (ok) visti.add(c.dataset.vid);
         return ok;
       });
-      tablistP.hidden = true; pannelli.forEach((p) => { p.hidden = true; }); box.hidden = false;
+      tablistP.closest('[data-ps]')?.classList.add('ps-cercando'); pannelli.forEach((p) => { p.hidden = true; }); box.hidden = false;
       griglia.replaceChildren(...trovate.map((c) => {
         const copia = c.cloneNode(true);
         const etichetta = document.createElement('span'); etichetta.className = 'pcerca__serie'; etichetta.textContent = c.dataset.serie;

@@ -16,7 +16,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=ed62b37c">
+<link rel="stylesheet" href="css/style.css?v=6cefec95">
 <link rel="canonical" href="https://www.chiesaevangelicapozzuoli.it/predicazioni.html">
 <meta property="og:url" content="https://www.chiesaevangelicapozzuoli.it/predicazioni.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,30 +73,43 @@
     </div>
   </div>
 </section>
-<section class="section">
+<section class="section ps" data-ps>
   <div class="container">
-    <div class="section-head"><div>
-      <span class="eyebrow">Serie e playlist</span>
+    <div class="ps-testa">
       <h2>Scegli cosa ascoltare</h2>
-    </div></div>
-    <form class="pcerca" role="search" data-pcerca onsubmit="return false">
-      <label for="pcerca-input" class="pcerca__label">Cerca una predicazione</label>
-      <div class="pcerca__box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        <input id="pcerca-input" type="search" placeholder="Parola, brano o predicatore, es. perdono, Matteo 5, Filippesi 4:6" autocomplete="off" enterkeyhint="search">
-        <button type="button" class="pcerca__clear" data-pcerca-clear aria-label="Cancella la ricerca" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+      <form class="pcerca" role="search" data-pcerca onsubmit="return false">
+        <label for="pcerca-input" class="visually-hidden">Cerca una predicazione</label>
+        <div class="pcerca__box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="pcerca-input" type="search" placeholder="Cerca titolo, brano o predicatore" autocomplete="off" enterkeyhint="search">
+          <button type="button" class="pcerca__clear" data-pcerca-clear aria-label="Cancella la ricerca" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+        </div>
+      </form>
+    </div>
+    <!-- PC: il filtro, solo scritte. Telefono: un bottone che apre il pannello dal basso -->
+    <div class="ps-filtro" role="tablist" aria-label="Serie e playlist"><span class="ps-filtro__nome" aria-hidden="true">Serie</span>
+      <div class="ps-filtro__riga" role="presentation"><button class="ps-op" role="tab" id="tab-filippesi" aria-controls="pl-filippesi" aria-selected="true" tabindex="0" data-tab="filippesi">Lettera ai Filippesi<span class="ps-n">8</span></button><button class="ps-op" role="tab" id="tab-sermone-sul-monte" aria-controls="pl-sermone-sul-monte" aria-selected="false" tabindex="-1" data-tab="sermone-sul-monte">Il sermone sul monte<span class="ps-n">33</span></button><button class="ps-op" role="tab" id="tab-cuore-del-discorso" aria-controls="pl-cuore-del-discorso" aria-selected="false" tabindex="-1" data-tab="cuore-del-discorso">Il cuore del discorso<span class="ps-n">33</span></button><button class="ps-op" role="tab" id="tab-gesu-e-la-storia" aria-controls="pl-gesu-e-la-storia" aria-selected="false" tabindex="-1" data-tab="gesu-e-la-storia">Gesù uomo e i Vangeli<span class="ps-n">2</span></button></div><span class="ps-filtro__nome" aria-hidden="true">Altro</span>
+      <div class="ps-filtro__riga" role="presentation"><button class="ps-op" role="tab" id="tab-altri-messaggi" aria-controls="pl-altri-messaggi" aria-selected="false" tabindex="-1" data-tab="altri-messaggi">Altre predicazioni<span class="ps-n">28</span></button><button class="ps-op" role="tab" id="tab-testimonianze" aria-controls="pl-testimonianze" aria-selected="false" tabindex="-1" data-tab="testimonianze">Testimonianze<span class="ps-n">12</span></button><button class="ps-op" role="tab" id="tab-musica" aria-controls="pl-musica" aria-selected="false" tabindex="-1" data-tab="musica">Cantate all'Eterno<span class="ps-n">6</span></button></div></div>
+    <button type="button" class="ps-scelta" data-ps-apri aria-haspopup="dialog">
+      <span><small>Stai ascoltando</small><strong data-ps-nome>Lettera ai Filippesi</strong></span>
+      <span class="ps-cambia">Cambia <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+    </button>
+    <dialog class="ps-foglio" aria-labelledby="ps-ft">
+      <div class="ps-f-testa">
+        <span class="ps-maniglia" aria-hidden="true"></span>
+        <h2 id="ps-ft">Cosa vuoi ascoltare?</h2>
+        <button type="button" class="ps-chiudi" data-ps-chiudi aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
       </div>
-      <p class="pcerca__esito" aria-live="polite" data-pcerca-esito></p>
-    </form>
-    <div class="filter-bar tabs" role="tablist" aria-label="Playlist"><button class="chip" role="tab" id="tab-filippesi" aria-controls="pl-filippesi" aria-selected="true" tabindex="0" data-tab="filippesi">Lettera ai Filippesi <span class="chip__count">8</span></button><button class="chip" role="tab" id="tab-sermone-sul-monte" aria-controls="pl-sermone-sul-monte" aria-selected="false" tabindex="-1" data-tab="sermone-sul-monte">Il sermone sul monte <span class="chip__count">33</span></button><button class="chip" role="tab" id="tab-cuore-del-discorso" aria-controls="pl-cuore-del-discorso" aria-selected="false" tabindex="-1" data-tab="cuore-del-discorso">Il cuore del discorso <span class="chip__count">33</span></button><button class="chip" role="tab" id="tab-gesu-e-la-storia" aria-controls="pl-gesu-e-la-storia" aria-selected="false" tabindex="-1" data-tab="gesu-e-la-storia">Gesù uomo e i Vangeli <span class="chip__count">2</span></button><button class="chip" role="tab" id="tab-altri-messaggi" aria-controls="pl-altri-messaggi" aria-selected="false" tabindex="-1" data-tab="altri-messaggi">Altre predicazioni <span class="chip__count">28</span></button><button class="chip" role="tab" id="tab-testimonianze" aria-controls="pl-testimonianze" aria-selected="false" tabindex="-1" data-tab="testimonianze">Testimonianze <span class="chip__count">12</span></button><button class="chip" role="tab" id="tab-musica" aria-controls="pl-musica" aria-selected="false" tabindex="-1" data-tab="musica">Cantate all'Eterno <span class="chip__count">6</span></button></div>
+      <div class="ps-f-corpo"><h3>Serie</h3><ul role="radiogroup" aria-label="Serie"><li><button type="button" class="ps-f-voce" role="radio" aria-checked="true" data-tab="filippesi"><span>Lettera ai Filippesi</span><span class="ps-n">8 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="sermone-sul-monte"><span>Il sermone sul monte</span><span class="ps-n">33 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="cuore-del-discorso"><span>Il cuore del discorso</span><span class="ps-n">33 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="gesu-e-la-storia"><span>Gesù uomo e i Vangeli</span><span class="ps-n">2 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li></ul><h3>Altro</h3><ul role="radiogroup" aria-label="Altro"><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="altri-messaggi"><span>Altre predicazioni</span><span class="ps-n">28 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="testimonianze"><span>Testimonianze</span><span class="ps-n">12 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-tab="musica"><span>Cantate all'Eterno</span><span class="ps-n">6 video</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li></ul></div>
+    </dialog>
+    <p class="pcerca__esito" aria-live="polite" data-pcerca-esito></p>
     <section class="playlist" role="tabpanel" id="pl-filippesi" aria-labelledby="tab-filippesi">
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Serie attuale · 8 video</span>
       <h2>Lettera ai Filippesi</h2>
       <p class="lead">Un viaggio nella lettera della gioia: come vivere con pace, umiltà e speranza in Cristo, in ogni circostanza.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2Ahn4fo045EorpgPohGPK7X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2Ahn4fo045EorpgPohGPK7X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="e1by37jZkvQ" data-serie="Lettera ai Filippesi" data-ref="filippesi 1" data-cerca="il vangelo inarrestabile filippesi 1 stefano bonavolta lettera ai filippesi">
@@ -104,7 +117,7 @@
   <img src="https://i.ytimg.com/vi/e1by37jZkvQ/maxres2.jpg" srcset="https://i.ytimg.com/vi/e1by37jZkvQ/hq2.jpg 480w, https://i.ytimg.com/vi/e1by37jZkvQ/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/e1by37jZkvQ/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 1 · Filippesi 1</span>
+  <span class="ref">1ª predicazione · Filippesi 1</span>
   <h3><a href="predicazione-il-vangelo-inarrestabile.html">Il Vangelo inarrestabile</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-il-vangelo-inarrestabile.html">Leggi il riassunto</a>
@@ -113,7 +126,7 @@
   <img src="https://i.ytimg.com/vi/LjJl0UcPRoo/maxres2.jpg" srcset="https://i.ytimg.com/vi/LjJl0UcPRoo/hq2.jpg 480w, https://i.ytimg.com/vi/LjJl0UcPRoo/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/LjJl0UcPRoo/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 2 · Filippesi 1:27-30</span>
+  <span class="ref">2ª predicazione · Filippesi 1:27-30</span>
   <h3><a href="predicazione-degni-del-vangelo.html">Degni del Vangelo</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-degni-del-vangelo.html">Leggi il riassunto</a>
@@ -122,7 +135,7 @@
   <img src="https://i.ytimg.com/vi/61Up8HQ6To4/maxres2.jpg" srcset="https://i.ytimg.com/vi/61Up8HQ6To4/hq2.jpg 480w, https://i.ytimg.com/vi/61Up8HQ6To4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/61Up8HQ6To4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 3 · Filippesi 2</span>
+  <span class="ref">3ª predicazione · Filippesi 2</span>
   <h3><a href="predicazione-la-forma-di-cristo.html">La forma di Cristo</a></h3>
   <p class="who">Josiah Catchpole</p>
   <a class="sermon__more" href="predicazione-la-forma-di-cristo.html">Leggi il riassunto</a>
@@ -131,7 +144,7 @@
   <img src="https://i.ytimg.com/vi/oIXgFedOV6w/maxres2.jpg" srcset="https://i.ytimg.com/vi/oIXgFedOV6w/hq2.jpg 480w, https://i.ytimg.com/vi/oIXgFedOV6w/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/oIXgFedOV6w/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 4 · Filippesi 2:1-18</span>
+  <span class="ref">4ª predicazione · Filippesi 2:1-18</span>
   <h3><a href="predicazione-adoperatevi-con-timore-e-tremore.html">Adoperatevi con timore e tremore</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-adoperatevi-con-timore-e-tremore.html">Leggi il riassunto</a>
@@ -140,7 +153,7 @@
   <img src="https://i.ytimg.com/vi/T-N96DDAwkE/maxres2.jpg" srcset="https://i.ytimg.com/vi/T-N96DDAwkE/hq2.jpg 480w, https://i.ytimg.com/vi/T-N96DDAwkE/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/T-N96DDAwkE/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 5 · Filippesi 3:1-11</span>
+  <span class="ref">5ª predicazione · Filippesi 3:1-11</span>
   <h3><a href="predicazione-giusti-per-fede.html">Giusti per fede</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-giusti-per-fede.html">Leggi il riassunto</a>
@@ -149,7 +162,7 @@
   <img src="https://i.ytimg.com/vi/tVdUkKozWus/maxres2.jpg" srcset="https://i.ytimg.com/vi/tVdUkKozWus/hq2.jpg 480w, https://i.ytimg.com/vi/tVdUkKozWus/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/tVdUkKozWus/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 6 · Filippesi 4:4-9</span>
+  <span class="ref">6ª predicazione · Filippesi 4:4-9</span>
   <h3><a href="predicazione-rallegratevi-sempre-nel-signore.html">Rallegratevi sempre nel Signore</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-rallegratevi-sempre-nel-signore.html">Leggi il riassunto</a>
@@ -158,7 +171,7 @@
   <img src="https://i.ytimg.com/vi/bgqMGBSZAqQ/maxres2.jpg" srcset="https://i.ytimg.com/vi/bgqMGBSZAqQ/hq2.jpg 480w, https://i.ytimg.com/vi/bgqMGBSZAqQ/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/bgqMGBSZAqQ/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 7 · Filippesi 4:6-9</span>
+  <span class="ref">7ª predicazione · Filippesi 4:6-9</span>
   <h3><a href="predicazione-pace-oltre-ogni-intelligenza.html">Pace oltre ogni intelligenza</a></h3>
   <p class="who">Josiah Catchpole</p>
   <a class="sermon__more" href="predicazione-pace-oltre-ogni-intelligenza.html">Leggi il riassunto</a>
@@ -167,7 +180,7 @@
   <img src="https://i.ytimg.com/vi/WJHZ446R5-M/maxres2.jpg" srcset="https://i.ytimg.com/vi/WJHZ446R5-M/hq2.jpg 480w, https://i.ytimg.com/vi/WJHZ446R5-M/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/WJHZ446R5-M/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 8 · Filippesi 4:10-20</span>
+  <span class="ref">8ª predicazione · Filippesi 4:10-20</span>
   <h3><a href="predicazione-il-frutto-del-donare.html">Il frutto del donare</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-il-frutto-del-donare.html">Leggi il riassunto</a>
@@ -176,11 +189,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-sermone-sul-monte" aria-labelledby="tab-sermone-sul-monte" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Ciclo di studi · 33 video</span>
       <h2>Il sermone sul monte</h2>
       <p class="lead">Matteo 5–7, versetto dopo versetto: le Beatitudini, il Padre nostro e l'insegnamento di Gesù che capovolge la vita.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2AlkwdxvE7Npgy_XeMqz0gp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2AlkwdxvE7Npgy_XeMqz0gp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="U1VgHC5JGig" data-serie="Il sermone sul monte" data-ref="matteo 4:23-25, 5-7" data-cerca="venti minuti per essere trasformati matteo 4:23-25, 5-7 alec catchpole il sermone sul monte">
@@ -188,7 +200,7 @@
   <img src="https://i.ytimg.com/vi/U1VgHC5JGig/maxres2.jpg" srcset="https://i.ytimg.com/vi/U1VgHC5JGig/hq2.jpg 480w, https://i.ytimg.com/vi/U1VgHC5JGig/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/U1VgHC5JGig/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 1 · Matteo 4:23-25, 5-7</span>
+  <span class="ref">1ª predicazione · Matteo 4:23-25, 5-7</span>
   <h3><a href="predicazione-venti-minuti-per-essere-trasformati.html">Venti minuti per essere trasformati</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-venti-minuti-per-essere-trasformati.html">Leggi il riassunto</a>
@@ -197,7 +209,7 @@
   <img src="https://i.ytimg.com/vi/bVjY6qofih0/maxres2.jpg" srcset="https://i.ytimg.com/vi/bVjY6qofih0/hq2.jpg 480w, https://i.ytimg.com/vi/bVjY6qofih0/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/bVjY6qofih0/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 2 · Matteo 5:3</span>
+  <span class="ref">2ª predicazione · Matteo 5:3</span>
   <h3><a href="predicazione-beati-i-poveri-in-spirito.html">Beati i poveri in spirito</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-beati-i-poveri-in-spirito.html">Leggi il riassunto</a>
@@ -206,7 +218,7 @@
   <img src="https://i.ytimg.com/vi/4PXlRDyxS6c/maxres2.jpg" srcset="https://i.ytimg.com/vi/4PXlRDyxS6c/hq2.jpg 480w, https://i.ytimg.com/vi/4PXlRDyxS6c/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/4PXlRDyxS6c/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 3 · Matteo 5:4</span>
+  <span class="ref">3ª predicazione · Matteo 5:4</span>
   <h3><a href="predicazione-beati-quelli-che-sono-afflitti.html">Beati quelli che sono afflitti</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-beati-quelli-che-sono-afflitti.html">Leggi il riassunto</a>
@@ -215,7 +227,7 @@
   <img src="https://i.ytimg.com/vi/AwU71TAW9V0/maxres2.jpg" srcset="https://i.ytimg.com/vi/AwU71TAW9V0/hq2.jpg 480w, https://i.ytimg.com/vi/AwU71TAW9V0/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/AwU71TAW9V0/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 4 · Matteo 5:5</span>
+  <span class="ref">4ª predicazione · Matteo 5:5</span>
   <h3><a href="predicazione-beati-i-mansueti.html">Beati i mansueti</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-beati-i-mansueti.html">Leggi il riassunto</a>
@@ -224,7 +236,7 @@
   <img src="https://i.ytimg.com/vi/LDL21GzmqkE/maxres2.jpg" srcset="https://i.ytimg.com/vi/LDL21GzmqkE/hq2.jpg 480w, https://i.ytimg.com/vi/LDL21GzmqkE/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/LDL21GzmqkE/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 5 · Matteo 5:6</span>
+  <span class="ref">5ª predicazione · Matteo 5:6</span>
   <h3><a href="predicazione-beati-quelli-che-sono-affamati-e-assetati-di-giustizia.html">Beati quelli che sono affamati e assetati di giustizia</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-beati-quelli-che-sono-affamati-e-assetati-di-giustizia.html">Leggi il riassunto</a>
@@ -233,7 +245,7 @@
   <img src="https://i.ytimg.com/vi/bGGOiQD8L1Y/maxres2.jpg" srcset="https://i.ytimg.com/vi/bGGOiQD8L1Y/hq2.jpg 480w, https://i.ytimg.com/vi/bGGOiQD8L1Y/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/bGGOiQD8L1Y/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 6 · Matteo 5:7</span>
+  <span class="ref">6ª predicazione · Matteo 5:7</span>
   <h3><a href="predicazione-beati-i-misericordiosi.html">Beati i misericordiosi</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-beati-i-misericordiosi.html">Leggi il riassunto</a>
@@ -242,7 +254,7 @@
   <img src="https://i.ytimg.com/vi/4sk63BmXduw/maxres2.jpg" srcset="https://i.ytimg.com/vi/4sk63BmXduw/hq2.jpg 480w, https://i.ytimg.com/vi/4sk63BmXduw/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/4sk63BmXduw/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 7 · Matteo 5:8</span>
+  <span class="ref">7ª predicazione · Matteo 5:8</span>
   <h3><a href="predicazione-beati-i-puri-di-cuore.html">Beati i puri di cuore</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-beati-i-puri-di-cuore.html">Leggi il riassunto</a>
@@ -251,7 +263,7 @@
   <img src="https://i.ytimg.com/vi/lLHRm_-X7d4/maxres2.jpg" srcset="https://i.ytimg.com/vi/lLHRm_-X7d4/hq2.jpg 480w, https://i.ytimg.com/vi/lLHRm_-X7d4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/lLHRm_-X7d4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 8 · Matteo 5:9</span>
+  <span class="ref">8ª predicazione · Matteo 5:9</span>
   <h3><a href="predicazione-beati-quelli-che-si-adoperano-per-la-pace.html">Beati quelli che si adoperano per la pace</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-beati-quelli-che-si-adoperano-per-la-pace.html">Leggi il riassunto</a>
@@ -260,7 +272,7 @@
   <img src="https://i.ytimg.com/vi/S3dxJN3s7Oc/maxres2.jpg" srcset="https://i.ytimg.com/vi/S3dxJN3s7Oc/hq2.jpg 480w, https://i.ytimg.com/vi/S3dxJN3s7Oc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/S3dxJN3s7Oc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 9 · Matteo 5:10</span>
+  <span class="ref">9ª predicazione · Matteo 5:10</span>
   <h3><a href="predicazione-beati-i-perseguitati-per-motivo-di-giustizia.html">Beati i perseguitati per motivo di giustizia</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-beati-i-perseguitati-per-motivo-di-giustizia.html">Leggi il riassunto</a>
@@ -269,7 +281,7 @@
   <img src="https://i.ytimg.com/vi/R9_wJTP5fec/maxres2.jpg" srcset="https://i.ytimg.com/vi/R9_wJTP5fec/hq2.jpg 480w, https://i.ytimg.com/vi/R9_wJTP5fec/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/R9_wJTP5fec/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 10 · Matteo 5:13-16</span>
+  <span class="ref">10ª predicazione · Matteo 5:13-16</span>
   <h3><a href="predicazione-sale-della-terra-e-luce-del-mondo.html">Sale della terra e luce del mondo</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-sale-della-terra-e-luce-del-mondo.html">Leggi il riassunto</a>
@@ -278,7 +290,7 @@
   <img src="https://i.ytimg.com/vi/jeqKbmhVlqo/maxres2.jpg" srcset="https://i.ytimg.com/vi/jeqKbmhVlqo/hq2.jpg 480w, https://i.ytimg.com/vi/jeqKbmhVlqo/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/jeqKbmhVlqo/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 11 · Matteo 5:17-20</span>
+  <span class="ref">11ª predicazione · Matteo 5:17-20</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-legge.html">Cosa pensava Gesù della legge?</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-della-legge.html">Leggi il riassunto</a>
@@ -287,7 +299,7 @@
   <img src="https://i.ytimg.com/vi/lKZ8QCu7JCs/maxres2.jpg" srcset="https://i.ytimg.com/vi/lKZ8QCu7JCs/hq2.jpg 480w, https://i.ytimg.com/vi/lKZ8QCu7JCs/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/lKZ8QCu7JCs/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 12 · Matteo 5:21-26</span>
+  <span class="ref">12ª predicazione · Matteo 5:21-26</span>
   <h3><a href="predicazione-adirarsi-con-qualcuno-e-come-uccidere.html">Adirarsi con qualcuno è come uccidere?</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-adirarsi-con-qualcuno-e-come-uccidere.html">Leggi il riassunto</a>
@@ -296,7 +308,7 @@
   <img src="https://i.ytimg.com/vi/07oRtgVd5bk/maxres2.jpg" srcset="https://i.ytimg.com/vi/07oRtgVd5bk/hq2.jpg 480w, https://i.ytimg.com/vi/07oRtgVd5bk/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/07oRtgVd5bk/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 13 · Matteo 5:27-30</span>
+  <span class="ref">13ª predicazione · Matteo 5:27-30</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-concupiscenza.html">Cosa pensava Gesù della concupiscenza?</a></h3>
   <p class="who">Josiah Catchpole</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-della-concupiscenza.html">Leggi il riassunto</a>
@@ -305,7 +317,7 @@
   <img src="https://i.ytimg.com/vi/kuoSoleEmyo/maxres2.jpg" srcset="https://i.ytimg.com/vi/kuoSoleEmyo/hq2.jpg 480w, https://i.ytimg.com/vi/kuoSoleEmyo/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/kuoSoleEmyo/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 14 · Matteo 5:31-32</span>
+  <span class="ref">14ª predicazione · Matteo 5:31-32</span>
   <h3><a href="predicazione-cosa-pensava-gesu-del-divorzio.html">Cosa pensava Gesù del divorzio?</a></h3>
   <p class="who">Stefano Bonavolta</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-del-divorzio.html">Leggi il riassunto</a>
@@ -314,7 +326,7 @@
   <img src="https://i.ytimg.com/vi/NufRmWAN7f8/maxres2.jpg" srcset="https://i.ytimg.com/vi/NufRmWAN7f8/hq2.jpg 480w, https://i.ytimg.com/vi/NufRmWAN7f8/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/NufRmWAN7f8/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 15 · Matteo 5:33-36</span>
+  <span class="ref">15ª predicazione · Matteo 5:33-36</span>
   <h3><a href="predicazione-cosa-pensava-gesu-dei-giuramenti.html">Cosa pensava Gesù dei giuramenti?</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-dei-giuramenti.html">Leggi il riassunto</a>
@@ -323,7 +335,7 @@
   <img src="https://i.ytimg.com/vi/8En-aycHK1A/maxres2.jpg" srcset="https://i.ytimg.com/vi/8En-aycHK1A/hq2.jpg 480w, https://i.ytimg.com/vi/8En-aycHK1A/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/8En-aycHK1A/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 16 · Matteo 5:38-42</span>
+  <span class="ref">16ª predicazione · Matteo 5:38-42</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-vendetta.html">Cosa pensava Gesù della vendetta?</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-della-vendetta.html">Leggi il riassunto</a>
@@ -332,7 +344,7 @@
   <img src="https://i.ytimg.com/vi/hGpLD5ZDF6M/maxres2.jpg" srcset="https://i.ytimg.com/vi/hGpLD5ZDF6M/hq2.jpg 480w, https://i.ytimg.com/vi/hGpLD5ZDF6M/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/hGpLD5ZDF6M/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 17 · Matteo 5:43-48</span>
+  <span class="ref">17ª predicazione · Matteo 5:43-48</span>
   <h3><a href="predicazione-cosa-pensava-gesu-dell-odiare.html">Cosa pensava Gesù dell&#x27;odiare?</a></h3>
   <p class="who">Lorenzo Piol</p>
   <a class="sermon__more" href="predicazione-cosa-pensava-gesu-dell-odiare.html">Leggi il riassunto</a>
@@ -341,7 +353,7 @@
   <img src="https://i.ytimg.com/vi/w56tRX99jH4/maxres2.jpg" srcset="https://i.ytimg.com/vi/w56tRX99jH4/hq2.jpg 480w, https://i.ytimg.com/vi/w56tRX99jH4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/w56tRX99jH4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 18 · Matteo 6:1-4</span>
+  <span class="ref">18ª predicazione · Matteo 6:1-4</span>
   <h3><a href="predicazione-donare-senza-ipocrisia.html">Donare senza ipocrisia</a></h3>
   <p class="who">Alec Catchpole</p>
   <a class="sermon__more" href="predicazione-donare-senza-ipocrisia.html">Leggi il riassunto</a>
@@ -350,7 +362,7 @@
   <img src="https://i.ytimg.com/vi/DnrNnPUebvs/maxres2.jpg" srcset="https://i.ytimg.com/vi/DnrNnPUebvs/hq2.jpg 480w, https://i.ytimg.com/vi/DnrNnPUebvs/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/DnrNnPUebvs/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 19 · Matteo 6:5-8</span>
+  <span class="ref">19ª predicazione · Matteo 6:5-8</span>
   <h3><a href="predicazione-pregare-senza-ipocrisia.html">Pregare senza ipocrisia</a></h3>
   <p class="who">Stefano Bonavolta</p>
   
@@ -359,7 +371,7 @@
   <img src="https://i.ytimg.com/vi/4h6M7EfHU40/maxres2.jpg" srcset="https://i.ytimg.com/vi/4h6M7EfHU40/hq2.jpg 480w, https://i.ytimg.com/vi/4h6M7EfHU40/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/4h6M7EfHU40/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 20 · Matteo 6:7-9</span>
+  <span class="ref">20ª predicazione · Matteo 6:7-9</span>
   <h3><a href="predicazione-padre-nostro-sia-santificato-il-tuo-nome.html">Padre nostro: sia santificato il tuo nome</a></h3>
   <p class="who">Lorenzo Piol</p>
   
@@ -368,7 +380,7 @@
   <img src="https://i.ytimg.com/vi/wfiOFVIch5A/maxres2.jpg" srcset="https://i.ytimg.com/vi/wfiOFVIch5A/hq2.jpg 480w, https://i.ytimg.com/vi/wfiOFVIch5A/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/wfiOFVIch5A/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 21 · Matteo 6:10</span>
+  <span class="ref">21ª predicazione · Matteo 6:10</span>
   <h3><a href="predicazione-padre-nostro-venga-il-tuo-regno.html">Padre nostro: venga il tuo regno</a></h3>
   <p class="who">Josiah Catchpole</p>
   
@@ -377,7 +389,7 @@
   <img src="https://i.ytimg.com/vi/Ei1J-ZNjIgA/maxres2.jpg" srcset="https://i.ytimg.com/vi/Ei1J-ZNjIgA/hq2.jpg 480w, https://i.ytimg.com/vi/Ei1J-ZNjIgA/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/Ei1J-ZNjIgA/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 22 · Matteo 6:10</span>
+  <span class="ref">22ª predicazione · Matteo 6:10</span>
   <h3><a href="predicazione-padre-nostro-sia-fatta-la-tua-volonta.html">Padre nostro: sia fatta la tua volontà</a></h3>
   <p class="who">Alec Catchpole</p>
   
@@ -386,7 +398,7 @@
   <img src="https://i.ytimg.com/vi/pSz-7xvM2vU/maxres2.jpg" srcset="https://i.ytimg.com/vi/pSz-7xvM2vU/hq2.jpg 480w, https://i.ytimg.com/vi/pSz-7xvM2vU/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/pSz-7xvM2vU/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 23 · Matteo 6:11</span>
+  <span class="ref">23ª predicazione · Matteo 6:11</span>
   <h3><a href="predicazione-padre-nostro-dacci-oggi-il-nostro-pane-quotidiano.html">Padre nostro: dacci oggi il nostro pane quotidiano</a></h3>
   <p class="who">Stefano Bonavolta</p>
   
@@ -395,7 +407,7 @@
   <img src="https://i.ytimg.com/vi/6bKlJlpEZoQ/maxres2.jpg" srcset="https://i.ytimg.com/vi/6bKlJlpEZoQ/hq2.jpg 480w, https://i.ytimg.com/vi/6bKlJlpEZoQ/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/6bKlJlpEZoQ/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 24 · Matteo 6:12;14</span>
+  <span class="ref">24ª predicazione · Matteo 6:12;14</span>
   <h3><a href="predicazione-padre-nostro-il-perdono.html">Padre nostro: il perdono</a></h3>
   <p class="who">Lorenzo Piol</p>
   
@@ -404,7 +416,7 @@
   <img src="https://i.ytimg.com/vi/pciID8Ak0Cc/maxres2.jpg" srcset="https://i.ytimg.com/vi/pciID8Ak0Cc/hq2.jpg 480w, https://i.ytimg.com/vi/pciID8Ak0Cc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/pciID8Ak0Cc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 25 · Matteo 6:13</span>
+  <span class="ref">25ª predicazione · Matteo 6:13</span>
   <h3><a href="predicazione-padre-nostro-la-tentazione.html">Padre nostro: la tentazione</a></h3>
   <p class="who">Alec Catchpole</p>
   
@@ -413,7 +425,7 @@
   <img src="https://i.ytimg.com/vi/TFL5zjHpW28/maxres2.jpg" srcset="https://i.ytimg.com/vi/TFL5zjHpW28/hq2.jpg 480w, https://i.ytimg.com/vi/TFL5zjHpW28/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/TFL5zjHpW28/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 26 · Matteo 6:16-18</span>
+  <span class="ref">26ª predicazione · Matteo 6:16-18</span>
   <h3><a href="predicazione-digiunare-senza-ipocrisia.html">Digiunare senza ipocrisia</a></h3>
   <p class="who">Stefano Bonavolta</p>
   
@@ -422,7 +434,7 @@
   <img src="https://i.ytimg.com/vi/7WR-YndEtQI/maxres2.jpg" srcset="https://i.ytimg.com/vi/7WR-YndEtQI/hq2.jpg 480w, https://i.ytimg.com/vi/7WR-YndEtQI/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/7WR-YndEtQI/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 27 · Matteo 6:19-24</span>
+  <span class="ref">27ª predicazione · Matteo 6:19-24</span>
   <h3><a href="predicazione-cosa-pensava-gesu-del-denaro.html">Cosa pensava Gesù del denaro?</a></h3>
   <p class="who">Lorenzo Piol</p>
   
@@ -431,7 +443,7 @@
   <img src="https://i.ytimg.com/vi/1Xt8Yxs7igs/maxres2.jpg" srcset="https://i.ytimg.com/vi/1Xt8Yxs7igs/hq2.jpg 480w, https://i.ytimg.com/vi/1Xt8Yxs7igs/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/1Xt8Yxs7igs/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 28 · Matteo 6:25-34</span>
+  <span class="ref">28ª predicazione · Matteo 6:25-34</span>
   <h3><a href="predicazione-non-siate-in-ansia.html">Non siate in ansia</a></h3>
   <p class="who">Alec Catchpole</p>
   
@@ -440,7 +452,7 @@
   <img src="https://i.ytimg.com/vi/Qab99valS0Q/maxres2.jpg" srcset="https://i.ytimg.com/vi/Qab99valS0Q/hq2.jpg 480w, https://i.ytimg.com/vi/Qab99valS0Q/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/Qab99valS0Q/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 29 · Matteo 6:19-34; 10:34-38</span>
+  <span class="ref">29ª predicazione · Matteo 6:19-34; 10:34-38</span>
   <h3><a href="predicazione-il-cuore-radicalmente.html">Il cuore, radicalmente</a></h3>
   <p class="who">Stefano Bonavolta</p>
   
@@ -449,7 +461,7 @@
   <img src="https://i.ytimg.com/vi/HC9D8ka9Ynk/maxres2.jpg" srcset="https://i.ytimg.com/vi/HC9D8ka9Ynk/hq2.jpg 480w, https://i.ytimg.com/vi/HC9D8ka9Ynk/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/HC9D8ka9Ynk/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 30 · Matteo 7:1-6</span>
+  <span class="ref">30ª predicazione · Matteo 7:1-6</span>
   <h3><a href="predicazione-non-giudicate.html">Non giudicate!</a></h3>
   <p class="who">Stefano Bonavolta</p>
   
@@ -458,7 +470,7 @@
   <img src="https://i.ytimg.com/vi/AFjeYwx78sE/maxres2.jpg" srcset="https://i.ytimg.com/vi/AFjeYwx78sE/hq2.jpg 480w, https://i.ytimg.com/vi/AFjeYwx78sE/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/AFjeYwx78sE/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 31 · Matteo 7:7-11</span>
+  <span class="ref">31ª predicazione · Matteo 7:7-11</span>
   <h3><a href="predicazione-chiedete-e-vi-sara-dato.html">Chiedete e vi sarà dato</a></h3>
   <p class="who">Lorenzo Piol</p>
   
@@ -467,7 +479,7 @@
   <img src="https://i.ytimg.com/vi/8PtDLnyJtKo/maxres2.jpg" srcset="https://i.ytimg.com/vi/8PtDLnyJtKo/hq2.jpg 480w, https://i.ytimg.com/vi/8PtDLnyJtKo/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/8PtDLnyJtKo/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 32 · Matteo 7:12</span>
+  <span class="ref">32ª predicazione · Matteo 7:12</span>
   <h3><a href="predicazione-fatele-anche-voi-a-loro.html">...fatele anche voi a loro</a></h3>
   <p class="who">Alec Catchpole</p>
   
@@ -476,7 +488,7 @@
   <img src="https://i.ytimg.com/vi/CxBpGTuUCc4/maxres2.jpg" srcset="https://i.ytimg.com/vi/CxBpGTuUCc4/hq2.jpg 480w, https://i.ytimg.com/vi/CxBpGTuUCc4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/CxBpGTuUCc4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 33 · Matteo 7:13-14</span>
+  <span class="ref">33ª predicazione · Matteo 7:13-14</span>
   <h3><a href="predicazione-le-due-vie.html">Le due vie</a></h3>
   <p class="who">Lorenzo Piol</p>
   
@@ -485,11 +497,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-cuore-del-discorso" aria-labelledby="tab-cuore-del-discorso" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Sermone sul monte in breve · 33 video</span>
       <h2>Il cuore del discorso</h2>
       <p class="lead">I messaggi del sermone sul monte in pochi minuti: il cuore di ogni predicazione, da ascoltare quando vuoi.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2C0eh7HG5dSz2iDq4dKfmbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2C0eh7HG5dSz2iDq4dKfmbY" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="2ZHx3eJy7Is" data-serie="Il cuore del discorso" data-ref="" data-cerca="venti minuti per essere trasformati il cuore del discorso">
@@ -497,7 +508,7 @@
   <img src="https://i.ytimg.com/vi/2ZHx3eJy7Is/maxres2.jpg" srcset="https://i.ytimg.com/vi/2ZHx3eJy7Is/hq2.jpg 480w, https://i.ytimg.com/vi/2ZHx3eJy7Is/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/2ZHx3eJy7Is/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 1</span>
+  <span class="ref">1ª predicazione</span>
   <h3><a href="predicazione-venti-minuti-per-essere-trasformati-il-cuore-del-discorso.html">Venti minuti per essere trasformati</a></h3>
   
   
@@ -506,7 +517,7 @@
   <img src="https://i.ytimg.com/vi/e3Zu4TXmKWc/maxres2.jpg" srcset="https://i.ytimg.com/vi/e3Zu4TXmKWc/hq2.jpg 480w, https://i.ytimg.com/vi/e3Zu4TXmKWc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/e3Zu4TXmKWc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 2</span>
+  <span class="ref">2ª predicazione</span>
   <h3><a href="predicazione-beati-i-poveri-in-spirito-il-cuore-del-discorso.html">Beati i poveri in spirito</a></h3>
   
   
@@ -515,7 +526,7 @@
   <img src="https://i.ytimg.com/vi/6eLmMHWZxeg/maxres2.jpg" srcset="https://i.ytimg.com/vi/6eLmMHWZxeg/hq2.jpg 480w, https://i.ytimg.com/vi/6eLmMHWZxeg/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/6eLmMHWZxeg/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 3</span>
+  <span class="ref">3ª predicazione</span>
   <h3><a href="predicazione-beati-quelli-che-sono-afflitti-il-cuore-del-discorso.html">Beati quelli che sono afflitti</a></h3>
   
   
@@ -524,7 +535,7 @@
   <img src="https://i.ytimg.com/vi/cFeQZ2k3Quc/maxres2.jpg" srcset="https://i.ytimg.com/vi/cFeQZ2k3Quc/hq2.jpg 480w, https://i.ytimg.com/vi/cFeQZ2k3Quc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/cFeQZ2k3Quc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 4</span>
+  <span class="ref">4ª predicazione</span>
   <h3><a href="predicazione-beati-i-mansueti-il-cuore-del-discorso.html">Beati i mansueti</a></h3>
   
   
@@ -533,7 +544,7 @@
   <img src="https://i.ytimg.com/vi/tD2i-4uqnEQ/maxres2.jpg" srcset="https://i.ytimg.com/vi/tD2i-4uqnEQ/hq2.jpg 480w, https://i.ytimg.com/vi/tD2i-4uqnEQ/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/tD2i-4uqnEQ/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 5</span>
+  <span class="ref">5ª predicazione</span>
   <h3><a href="predicazione-beati-quelli-che-sono-affamati-e-assetati-di-giustizia-il-cuore-del-discorso.html">Beati quelli che sono affamati e assetati di giustizia</a></h3>
   
   
@@ -542,7 +553,7 @@
   <img src="https://i.ytimg.com/vi/vDY8uwIb298/maxres2.jpg" srcset="https://i.ytimg.com/vi/vDY8uwIb298/hq2.jpg 480w, https://i.ytimg.com/vi/vDY8uwIb298/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/vDY8uwIb298/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 6</span>
+  <span class="ref">6ª predicazione</span>
   <h3><a href="predicazione-beati-i-misericordiosi-il-cuore-del-discorso.html">Beati i misericordiosi</a></h3>
   
   
@@ -551,7 +562,7 @@
   <img src="https://i.ytimg.com/vi/bxchwALj9PU/maxres2.jpg" srcset="https://i.ytimg.com/vi/bxchwALj9PU/hq2.jpg 480w, https://i.ytimg.com/vi/bxchwALj9PU/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/bxchwALj9PU/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 7</span>
+  <span class="ref">7ª predicazione</span>
   <h3><a href="predicazione-beati-i-puri-di-cuore-il-cuore-del-discorso.html">Beati i puri di cuore</a></h3>
   
   
@@ -560,7 +571,7 @@
   <img src="https://i.ytimg.com/vi/5BEtpMynR2g/maxres2.jpg" srcset="https://i.ytimg.com/vi/5BEtpMynR2g/hq2.jpg 480w, https://i.ytimg.com/vi/5BEtpMynR2g/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/5BEtpMynR2g/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 8</span>
+  <span class="ref">8ª predicazione</span>
   <h3><a href="predicazione-beati-quelli-che-si-adoperano-per-la-pace-il-cuore-del-discorso.html">Beati quelli che si adoperano per la pace</a></h3>
   
   
@@ -569,7 +580,7 @@
   <img src="https://i.ytimg.com/vi/6q39fUdDx8c/maxres2.jpg" srcset="https://i.ytimg.com/vi/6q39fUdDx8c/hq2.jpg 480w, https://i.ytimg.com/vi/6q39fUdDx8c/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/6q39fUdDx8c/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 9</span>
+  <span class="ref">9ª predicazione</span>
   <h3><a href="predicazione-beati-i-perseguitati-per-motivo-di-giustizia-il-cuore-del-discorso.html">Beati i perseguitati per motivo di giustizia</a></h3>
   
   
@@ -578,7 +589,7 @@
   <img src="https://i.ytimg.com/vi/bi_0pLoIR3g/maxres2.jpg" srcset="https://i.ytimg.com/vi/bi_0pLoIR3g/hq2.jpg 480w, https://i.ytimg.com/vi/bi_0pLoIR3g/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/bi_0pLoIR3g/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 10</span>
+  <span class="ref">10ª predicazione</span>
   <h3><a href="predicazione-sale-della-terra-e-luce-del-mondo-il-cuore-del-discorso.html">Sale della terra e luce del mondo</a></h3>
   
   
@@ -587,7 +598,7 @@
   <img src="https://i.ytimg.com/vi/mFP0FZ9O5p4/maxres2.jpg" srcset="https://i.ytimg.com/vi/mFP0FZ9O5p4/hq2.jpg 480w, https://i.ytimg.com/vi/mFP0FZ9O5p4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/mFP0FZ9O5p4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 11</span>
+  <span class="ref">11ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-legge-il-cuore-del-discorso.html">Cosa pensava Gesù della legge?</a></h3>
   
   
@@ -596,7 +607,7 @@
   <img src="https://i.ytimg.com/vi/VDdZGLX11QI/maxres2.jpg" srcset="https://i.ytimg.com/vi/VDdZGLX11QI/hq2.jpg 480w, https://i.ytimg.com/vi/VDdZGLX11QI/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/VDdZGLX11QI/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 12</span>
+  <span class="ref">12ª predicazione</span>
   <h3><a href="predicazione-adirarsi-con-qualcuno-e-come-uccidere-il-cuore-del-discorso.html">Adirarsi con qualcuno è come uccidere?</a></h3>
   
   
@@ -605,7 +616,7 @@
   <img src="https://i.ytimg.com/vi/c_FKXuwaVPE/maxres2.jpg" srcset="https://i.ytimg.com/vi/c_FKXuwaVPE/hq2.jpg 480w, https://i.ytimg.com/vi/c_FKXuwaVPE/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/c_FKXuwaVPE/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 13</span>
+  <span class="ref">13ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-concupiscenza-il-cuore-del-discorso.html">Cosa pensava Gesù della concupiscenza?</a></h3>
   
   
@@ -614,7 +625,7 @@
   <img src="https://i.ytimg.com/vi/jFksSol07TU/maxres2.jpg" srcset="https://i.ytimg.com/vi/jFksSol07TU/hq2.jpg 480w, https://i.ytimg.com/vi/jFksSol07TU/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/jFksSol07TU/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 14</span>
+  <span class="ref">14ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-del-divorzio-il-cuore-del-discorso.html">Cosa pensava Gesù del divorzio?</a></h3>
   
   
@@ -623,7 +634,7 @@
   <img src="https://i.ytimg.com/vi/a-TZ3N7vaaA/maxres2.jpg" srcset="https://i.ytimg.com/vi/a-TZ3N7vaaA/hq2.jpg 480w, https://i.ytimg.com/vi/a-TZ3N7vaaA/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/a-TZ3N7vaaA/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 15</span>
+  <span class="ref">15ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-dei-giuramenti-il-cuore-del-discorso.html">Cosa pensava Gesù dei giuramenti?</a></h3>
   
   
@@ -632,7 +643,7 @@
   <img src="https://i.ytimg.com/vi/35xMCdLmac4/maxres2.jpg" srcset="https://i.ytimg.com/vi/35xMCdLmac4/hq2.jpg 480w, https://i.ytimg.com/vi/35xMCdLmac4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/35xMCdLmac4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 16</span>
+  <span class="ref">16ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-della-vendetta-il-cuore-del-discorso.html">Cosa pensava Gesù della vendetta?</a></h3>
   
   
@@ -641,7 +652,7 @@
   <img src="https://i.ytimg.com/vi/OE9W6-g-hHY/maxres2.jpg" srcset="https://i.ytimg.com/vi/OE9W6-g-hHY/hq2.jpg 480w, https://i.ytimg.com/vi/OE9W6-g-hHY/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/OE9W6-g-hHY/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 17</span>
+  <span class="ref">17ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-dell-odiare-il-cuore-del-discorso.html">Cosa pensava Gesù dell&#x27;odiare?</a></h3>
   
   
@@ -650,7 +661,7 @@
   <img src="https://i.ytimg.com/vi/LJUtBn4VxuY/maxres2.jpg" srcset="https://i.ytimg.com/vi/LJUtBn4VxuY/hq2.jpg 480w, https://i.ytimg.com/vi/LJUtBn4VxuY/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/LJUtBn4VxuY/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 18</span>
+  <span class="ref">18ª predicazione</span>
   <h3><a href="predicazione-donare-senza-ipocrisia-il-cuore-del-discorso.html">Donare senza ipocrisia</a></h3>
   
   
@@ -659,7 +670,7 @@
   <img src="https://i.ytimg.com/vi/vaIRxOriZn4/maxres2.jpg" srcset="https://i.ytimg.com/vi/vaIRxOriZn4/hq2.jpg 480w, https://i.ytimg.com/vi/vaIRxOriZn4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/vaIRxOriZn4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 19</span>
+  <span class="ref">19ª predicazione</span>
   <h3><a href="predicazione-pregare-senza-ipocrisia-il-cuore-del-discorso.html">Pregare senza ipocrisia</a></h3>
   
   
@@ -668,7 +679,7 @@
   <img src="https://i.ytimg.com/vi/-NAGhrvU29c/maxres2.jpg" srcset="https://i.ytimg.com/vi/-NAGhrvU29c/hq2.jpg 480w, https://i.ytimg.com/vi/-NAGhrvU29c/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/-NAGhrvU29c/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 20</span>
+  <span class="ref">20ª predicazione</span>
   <h3><a href="predicazione-padre-nostro-sia-santificato-il-tuo-nome-il-cuore-del-discorso.html">Padre nostro: sia santificato il tuo nome</a></h3>
   
   
@@ -677,7 +688,7 @@
   <img src="https://i.ytimg.com/vi/QibmjirK7ZQ/maxres2.jpg" srcset="https://i.ytimg.com/vi/QibmjirK7ZQ/hq2.jpg 480w, https://i.ytimg.com/vi/QibmjirK7ZQ/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/QibmjirK7ZQ/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 21</span>
+  <span class="ref">21ª predicazione</span>
   <h3><a href="predicazione-padre-nostro-venga-il-tuo-regno-il-cuore-del-discorso.html">Padre nostro: venga il tuo regno</a></h3>
   
   <a class="sermon__more" href="predicazione-padre-nostro-venga-il-tuo-regno-il-cuore-del-discorso.html">Leggi il riassunto</a>
@@ -686,7 +697,7 @@
   <img src="https://i.ytimg.com/vi/DmlX0BMyxbM/maxres2.jpg" srcset="https://i.ytimg.com/vi/DmlX0BMyxbM/hq2.jpg 480w, https://i.ytimg.com/vi/DmlX0BMyxbM/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/DmlX0BMyxbM/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 22</span>
+  <span class="ref">22ª predicazione</span>
   <h3><a href="predicazione-sia-fatta-la-tua-volonta.html">Sia fatta la tua volontà</a></h3>
   
   
@@ -695,7 +706,7 @@
   <img src="https://i.ytimg.com/vi/ymqz9-0BH0Y/maxres2.jpg" srcset="https://i.ytimg.com/vi/ymqz9-0BH0Y/hq2.jpg 480w, https://i.ytimg.com/vi/ymqz9-0BH0Y/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/ymqz9-0BH0Y/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 23</span>
+  <span class="ref">23ª predicazione</span>
   <h3><a href="predicazione-dacci-oggi-il-nostro-pane-quotidiano.html">Dacci oggi il nostro pane quotidiano</a></h3>
   
   
@@ -704,7 +715,7 @@
   <img src="https://i.ytimg.com/vi/TLPvjbhXNR4/maxres2.jpg" srcset="https://i.ytimg.com/vi/TLPvjbhXNR4/hq2.jpg 480w, https://i.ytimg.com/vi/TLPvjbhXNR4/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/TLPvjbhXNR4/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 24</span>
+  <span class="ref">24ª predicazione</span>
   <h3><a href="predicazione-il-perdono.html">Il perdono</a></h3>
   
   
@@ -713,7 +724,7 @@
   <img src="https://i.ytimg.com/vi/T1JzjQqgZ0s/maxres2.jpg" srcset="https://i.ytimg.com/vi/T1JzjQqgZ0s/hq2.jpg 480w, https://i.ytimg.com/vi/T1JzjQqgZ0s/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/T1JzjQqgZ0s/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 25</span>
+  <span class="ref">25ª predicazione</span>
   <h3><a href="predicazione-la-tentazione.html">La tentazione</a></h3>
   
   
@@ -722,7 +733,7 @@
   <img src="https://i.ytimg.com/vi/CmilANKiLoY/maxres2.jpg" srcset="https://i.ytimg.com/vi/CmilANKiLoY/hq2.jpg 480w, https://i.ytimg.com/vi/CmilANKiLoY/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/CmilANKiLoY/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 26</span>
+  <span class="ref">26ª predicazione</span>
   <h3><a href="predicazione-digiunare-senza-ipocrisia-il-cuore-del-discorso.html">Digiunare senza ipocrisia</a></h3>
   
   
@@ -731,7 +742,7 @@
   <img src="https://i.ytimg.com/vi/N1Kd7n7eH5g/maxres2.jpg" srcset="https://i.ytimg.com/vi/N1Kd7n7eH5g/hq2.jpg 480w, https://i.ytimg.com/vi/N1Kd7n7eH5g/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/N1Kd7n7eH5g/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 27</span>
+  <span class="ref">27ª predicazione</span>
   <h3><a href="predicazione-cosa-pensava-gesu-del-denaro-il-cuore-del-discorso.html">Cosa pensava Gesù del denaro?</a></h3>
   
   
@@ -740,7 +751,7 @@
   <img src="https://i.ytimg.com/vi/zTfXFRI1OjY/maxres2.jpg" srcset="https://i.ytimg.com/vi/zTfXFRI1OjY/hq2.jpg 480w, https://i.ytimg.com/vi/zTfXFRI1OjY/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/zTfXFRI1OjY/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 28</span>
+  <span class="ref">28ª predicazione</span>
   <h3><a href="predicazione-non-siate-in-ansia-il-cuore-del-discorso.html">Non siate in ansia</a></h3>
   
   
@@ -749,7 +760,7 @@
   <img src="https://i.ytimg.com/vi/4U1C6Nt1fPc/maxres2.jpg" srcset="https://i.ytimg.com/vi/4U1C6Nt1fPc/hq2.jpg 480w, https://i.ytimg.com/vi/4U1C6Nt1fPc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/4U1C6Nt1fPc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 29</span>
+  <span class="ref">29ª predicazione</span>
   <h3><a href="predicazione-il-cuore-radicalmente-il-cuore-del-discorso.html">Il cuore, radicalmente</a></h3>
   
   
@@ -758,7 +769,7 @@
   <img src="https://i.ytimg.com/vi/ReY-dQyKHqU/maxres2.jpg" srcset="https://i.ytimg.com/vi/ReY-dQyKHqU/hq2.jpg 480w, https://i.ytimg.com/vi/ReY-dQyKHqU/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/ReY-dQyKHqU/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 30</span>
+  <span class="ref">30ª predicazione</span>
   <h3><a href="predicazione-non-giudicare.html">Non giudicare!</a></h3>
   
   
@@ -767,7 +778,7 @@
   <img src="https://i.ytimg.com/vi/I21eWXZ-xw8/maxres2.jpg" srcset="https://i.ytimg.com/vi/I21eWXZ-xw8/hq2.jpg 480w, https://i.ytimg.com/vi/I21eWXZ-xw8/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/I21eWXZ-xw8/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 31</span>
+  <span class="ref">31ª predicazione</span>
   <h3><a href="predicazione-chiedete-e-vi-sara-dato-il-cuore-del-discorso.html">Chiedete e vi sarà dato</a></h3>
   
   
@@ -776,7 +787,7 @@
   <img src="https://i.ytimg.com/vi/DJ65UZLUb3U/maxres2.jpg" srcset="https://i.ytimg.com/vi/DJ65UZLUb3U/hq2.jpg 480w, https://i.ytimg.com/vi/DJ65UZLUb3U/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/DJ65UZLUb3U/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 32</span>
+  <span class="ref">32ª predicazione</span>
   <h3><a href="predicazione-fatele-anche-voi-a-loro-il-cuore-del-discorso.html">...fatele anche voi a loro</a></h3>
   
   
@@ -785,7 +796,7 @@
   <img src="https://i.ytimg.com/vi/mC6SBFoKkaw/maxres2.jpg" srcset="https://i.ytimg.com/vi/mC6SBFoKkaw/hq2.jpg 480w, https://i.ytimg.com/vi/mC6SBFoKkaw/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/mC6SBFoKkaw/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 33</span>
+  <span class="ref">33ª predicazione</span>
   <h3><a href="predicazione-le-due-vie-il-cuore-del-discorso.html">Le due vie</a></h3>
   
   
@@ -794,11 +805,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-gesu-e-la-storia" aria-labelledby="tab-gesu-e-la-storia" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Approfondimento · 2 video</span>
       <h2>Gesù uomo e i Vangeli</h2>
       <p class="lead">Cosa dice la storia su Gesù e sui Vangeli? Un approfondimento in due parti.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2DimXE_72NXsQpGmm5P0NmE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2DimXE_72NXsQpGmm5P0NmE" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="fcmuQIut1wc" data-serie="Gesù uomo e i Vangeli" data-ref="" data-cerca="gesu uomo e i vangeli: cosa dice la storia? — prima parte giovanni somma gesu uomo e i vangeli">
@@ -806,7 +816,7 @@
   <img src="https://i.ytimg.com/vi/fcmuQIut1wc/maxres2.jpg" srcset="https://i.ytimg.com/vi/fcmuQIut1wc/hq2.jpg 480w, https://i.ytimg.com/vi/fcmuQIut1wc/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/fcmuQIut1wc/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 1</span>
+  <span class="ref">1ª predicazione</span>
   <h3><a href="predicazione-gesu-uomo-e-i-vangeli-cosa-dice-la-storia-prima-parte.html">Gesù uomo e i Vangeli: cosa dice la storia? — Prima parte</a></h3>
   <p class="who">Giovanni Somma</p>
   
@@ -815,7 +825,7 @@
   <img src="https://i.ytimg.com/vi/B12fm7MaA5w/maxres2.jpg" srcset="https://i.ytimg.com/vi/B12fm7MaA5w/hq2.jpg 480w, https://i.ytimg.com/vi/B12fm7MaA5w/maxres2.jpg 1280w" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 50vw, 400px" alt="" loading="lazy" decoding="async" width="1280" height="720" onerror="this.onerror=null;this.removeAttribute('srcset');this.src='https://i.ytimg.com/vi/B12fm7MaA5w/hqdefault.jpg'">
   <span class="yt__play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span></span>
 </button>
-  <span class="ref">Episodio 2</span>
+  <span class="ref">2ª predicazione</span>
   <h3><a href="predicazione-gesu-uomo-e-i-vangeli-cosa-dice-la-storia-seconda-parte.html">Gesù uomo e i Vangeli: cosa dice la storia? — Seconda parte</a></h3>
   <p class="who">Giovanni Somma</p>
   
@@ -824,11 +834,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-altri-messaggi" aria-labelledby="tab-altri-messaggi" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Prediche domenicali · 28 video</span>
       <h2>Altre predicazioni</h2>
       <p class="lead">Messaggi della domenica su tanti brani della Bibbia, anche da predicatori ospiti.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2Ahn4fo045EorpgPohGPK7X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2Ahn4fo045EorpgPohGPK7X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="XSrPuoaN2rc" data-serie="Altre predicazioni" data-ref="matteo 11:2-5" data-cerca="in chi devo credere? matteo 11:2-5 alec catchpole altre predicazioni">
@@ -1088,11 +1097,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-testimonianze" aria-labelledby="tab-testimonianze" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Storie vere · 12 video</span>
       <h2>Testimonianze</h2>
       <p class="lead">Vite trasformate da Cristo: storie di persone della nostra chiesa e della nostra comunità.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2D0eCm_J837g-9P6BnzXW4d" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2D0eCm_J837g-9P6BnzXW4d" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="ch__zax0KrU" data-serie="Testimonianze" data-ref="" data-cerca="nati di nuovo: la storia di joy trasformati da cristo per amare come cristo testimonianze">
@@ -1208,11 +1216,10 @@
 </section><section class="playlist" role="tabpanel" id="pl-musica" aria-labelledby="tab-musica" hidden>
   <div class="playlist__head">
     <div>
-      <span class="card__meta">Musica e lode · 6 video</span>
       <h2>Cantate all'Eterno</h2>
       <p class="lead">Inni e canti di lode della nostra comunità.</p>
     </div>
-    <a class="btn btn--outline" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2AZ_WCSU5Cg1Wm-Y9nPac3H" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Apri la playlist<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
+    <a class="ps-yt" href="https://www.youtube.com/playlist?list=PL8Bv_9qr5j2AZ_WCSU5Cg1Wm-Y9nPac3H" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg> Guarda su YouTube<span class="visually-hidden"> (si apre in una nuova scheda)</span></a>
   </div>
   <div class="grid grid-3">
     <article class="sermon" data-vid="5pj7fy06I7Y" data-serie="Cantate all&#x27;Eterno" data-ref="" data-cerca="tu vedi piu lontano di me (live) · antonio fanara cantate all eterno">
@@ -1327,7 +1334,7 @@
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=38fb83de" defer></script>
+<script src="js/main.js?v=27367a3a" defer></script>
 
 </body>
 </html>
