@@ -1472,3 +1472,74 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .cx-tappa img { display: block; order: -1; border-radius: 10px; aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
   .cx-coda { display: none; }
 }
+
+/* ================= Home, «Trova il tuo posto»: il fiume delle età con la vetrina =================
+   Un ministero è sempre aperto nella vetrina: si capisce subito che ogni bolla porta da qualche parte. */
+.fv { background: var(--c-tint); }
+.fv-testa { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+.fv-testa .lead { margin-bottom: 0; }
+.fv-aiuto { display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 10px 16px; border-radius: 999px; background: var(--c-surface); font: 500 .95rem/1.2 var(--f-head); color: var(--c-deep); box-shadow: 0 0 0 1px rgb(14 90 115 / .15); }
+.fv-aiuto svg { width: 20px; height: 20px; color: var(--c-primary); flex: none; }
+.fv-aiuto [data-dito] { display: none; }
+@media (hover: none) { .fv-aiuto [data-mouse] { display: none; } .fv-aiuto [data-dito] { display: inline; } }
+.fv-fiume { position: relative; margin-top: 44px; }
+.fv-onda { position: absolute; left: 0; right: 0; top: 34px; height: 40px; width: 100%; color: var(--c-water); pointer-events: none; }
+.fv-fasce { display: grid; grid-template-columns: 1fr 1fr 4fr 3fr; position: relative; }
+.fv-fascia { display: grid; justify-items: center; align-content: start; gap: 12px; border-left: 1px dashed rgb(14 90 115 / .25); padding: 0 4px; }
+.fv-fascia:first-child { border-left: 0; }
+.fv-eta { order: 2; margin: 0; font: italic 400 1.15rem/1 var(--f-accent); color: var(--c-primary); }
+.fv-bolle { display: flex; justify-content: space-around; width: 100%; }
+.fv-bolla { position: relative; display: grid; justify-items: center; gap: 8px; width: 104px; padding-bottom: 18px; text-decoration: none; color: var(--c-deep); }
+.fv-cerchio { position: relative; width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 4px solid var(--c-surface); box-shadow: 0 6px 18px rgb(10 46 61 / .18); background: var(--c-deep); color: var(--c-sun); display: grid; place-items: center; transition: transform .3s var(--ease-out), border-color .3s, box-shadow .3s; }
+.fv-cerchio img { width: 100%; height: 100%; object-fit: cover; }
+.fv-cerchio svg { width: 34px; height: 34px; }
+.fv-piu { position: absolute; right: 6px; top: 58px; width: 26px; height: 26px; border-radius: 50%; background: var(--c-sun); color: var(--c-deep); display: grid; place-items: center; box-shadow: 0 2px 6px rgb(10 46 61 / .25); transition: transform .3s var(--ease-out), opacity .3s; }
+.fv-piu svg { width: 14px; height: 14px; }
+.fv-nome { font: 600 .95rem/1.2 var(--f-head); text-align: center; }
+.fv-bolla:hover .fv-cerchio { transform: scale(1.08); border-color: var(--c-sun); }
+.fv-bolla[aria-current] .fv-cerchio { transform: scale(1.12); border-color: var(--c-sun); box-shadow: 0 0 0 5px rgb(244 181 68 / .35), 0 8px 22px rgb(10 46 61 / .22); }
+.fv-bolla[aria-current] .fv-piu { opacity: 0; transform: scale(.5); }
+.fv-bolla[aria-current]::after { content: ""; position: absolute; bottom: -14px; left: 50%; width: 22px; height: 22px; background: var(--c-surface); transform: translateX(-50%) rotate(45deg); border-radius: 3px; }
+.fv-bolla:focus-visible { outline: none; }
+.fv-bolla:focus-visible .fv-cerchio { outline: 3px solid var(--focus); outline-offset: 3px; }
+.fv-bolla.fv-saluta .fv-cerchio { animation: fv-saluta 1.6s var(--ease-out) 2; }
+@keyframes fv-saluta { 40% { transform: scale(1.14); box-shadow: 0 0 0 10px rgb(244 181 68 / .3); } }
+.fv-vetrina { margin-top: 14px; }
+.fv-scheda { background: var(--c-surface); border-radius: 16px; box-shadow: 0 20px 50px rgb(10 46 61 / .12); display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); overflow: hidden; min-height: 340px; }
+.fv-scheda[hidden] { display: none; }
+.fv-scheda.fv-entra > * { animation: fv-entra .45s var(--ease-out); }
+@keyframes fv-entra { from { opacity: 0; transform: translateY(8px); } }
+.fv-scheda__foto { position: relative; background: var(--c-deep); min-height: 260px; }
+.fv-scheda__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fv-scheda__foto--icona { display: grid; place-items: center; color: var(--c-sun); background: var(--c-primary); }
+.fv-scheda__foto--icona svg { width: 72px; height: 72px; }
+.fv-scheda__testo { padding: clamp(24px, 3vw, 40px); display: grid; gap: 10px; align-content: center; }
+.fv-scheda__testo > * { margin: 0; }
+.fv-tag { font: 500 .95rem/1.2 var(--f-head); color: var(--c-primary); }
+.fv-scheda h3 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -.02em; }
+.fv-motto { font: italic 400 1.3rem/1.25 var(--f-accent); color: var(--c-primary); }
+.fv-scheda__testo p:not(.fv-motto) { color: var(--c-muted); }
+.fv-info { display: flex; flex-wrap: wrap; gap: 6px; }
+.fv-info span { padding: 6px 12px; border-radius: 999px; background: var(--c-tint); font: 500 .9rem/1.3 var(--f-head); color: var(--c-deep); }
+.fv-piede { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; }
+.fv-frecce { display: flex; align-items: center; gap: 8px; font: 500 .9rem/1 var(--f-head); color: var(--c-muted); font-variant-numeric: tabular-nums; }
+.fv-tutti { margin: var(--s-5) 0 0; }
+@media (max-width: 860px) {
+  .fv-onda { display: none; }
+  .fv-fasce { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * 16px); padding: 4px 16px 6px; }
+  .fv-fasce::-webkit-scrollbar { display: none; }
+  .fv-fascia { border-left: 0; padding: 0; justify-items: start; gap: 6px; flex: none; }
+  .fv-fascia + .fv-fascia { border-left: 1px dashed rgb(14 90 115 / .3); padding-left: 6px; }
+  .fv-eta { order: -1; font-size: 1rem; padding-left: 8px; }
+  .fv-bolle { gap: 2px; }
+  .fv-bolla { width: 86px; scroll-snap-align: start; }
+  .fv-cerchio { width: 70px; height: 70px; }
+  .fv-piu { top: 48px; right: 4px; width: 22px; height: 22px; }
+  .fv-nome { font-size: .85rem; }
+  .fv-scheda { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .fv-scheda__foto { aspect-ratio: 16 / 10; min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fv-bolla.fv-saluta .fv-cerchio, .fv-scheda.fv-entra > * { animation: none; }
+  .fv-cerchio, .fv-piu { transition: none; }
+}

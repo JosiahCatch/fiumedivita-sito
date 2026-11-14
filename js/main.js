@@ -169,6 +169,45 @@
   const sette = document.querySelector('.cx-sette .container');
   if (sette) sette.scrollLeft = sette.scrollWidth;
 
+  /* ---- Home, «Trova il tuo posto»: la vetrina mostra il ministero della bolla scelta ---- */
+  const fv = document.querySelector('.fv');
+  if (fv) {
+    const bolle = [...fv.querySelectorAll('.fv-bolla')];
+    const schede = [...fv.querySelectorAll('.fv-scheda')];
+    const ordine = schede.map((s) => s.dataset.slug);
+    const dito = window.matchMedia('(hover: none)');
+    let attuale = ordine[0];
+    const mostra = (slug) => {
+      if (slug === attuale) return;
+      attuale = slug;
+      bolle.forEach((b) => b.toggleAttribute('aria-current', b.dataset.slug === slug));
+      schede.forEach((s) => { s.hidden = s.dataset.slug !== slug; if (!s.hidden) { s.classList.remove('fv-entra'); void s.offsetWidth; s.classList.add('fv-entra'); } });
+    };
+    bolle.forEach((b) => {
+      if (b.dataset.slug === attuale) b.setAttribute('aria-current', 'true');
+      b.addEventListener('mouseenter', () => { if (!dito.matches) mostra(b.dataset.slug); });
+      b.addEventListener('focus', () => mostra(b.dataset.slug));
+      // col dito: il primo tocco mostra la vetrina, il secondo apre la pagina del ministero
+      b.addEventListener('click', (e) => {
+        if (!dito.matches || b.dataset.slug === attuale) return;
+        e.preventDefault(); mostra(b.dataset.slug);
+        fv.querySelector('.fv-vetrina').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+    });
+    fv.querySelector('.fv-vetrina').addEventListener('click', (e) => {
+      const v = e.target.closest('[data-fv]'); if (!v) return;
+      const i = (ordine.indexOf(attuale) + Number(v.dataset.fv) + ordine.length) % ordine.length;
+      mostra(ordine[i]);
+      bolle[i].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+      fv.querySelector(`.fv-scheda:not([hidden]) [data-fv="${v.dataset.fv}"]`).focus();
+    });
+    // un solo invito, la prima volta che il fiume entra nello schermo: la seconda bolla «saluta»
+    if (!reduce && 'IntersectionObserver' in window && bolle[1]) {
+      const io2 = new IntersectionObserver((v) => { if (v[0].isIntersecting) { bolle[1].classList.add('fv-saluta'); io2.disconnect(); } }, { threshold: 0.6 });
+      io2.observe(fv.querySelector('.fv-fasce'));
+    }
+  }
+
   /* ---- Scroller orizzontali con frecce ---- */
   document.querySelectorAll('[data-scroller]').forEach((wrap) => {
     const track = wrap.querySelector('.scroller');
