@@ -240,6 +240,13 @@
     segui();
   }
 
+  /* ---- Home, «Benvenuto»: il fiume si disegna quando la sezione arriva sullo schermo ---- */
+  const bw = document.querySelector('.benvenuto');
+  if (bw) {
+    if (reduce || !('IntersectionObserver' in window)) bw.classList.add('visto');
+    else { const ioBw = new IntersectionObserver((v) => { if (v[0].isIntersecting) { bw.classList.add('visto'); ioBw.disconnect(); } }, { threshold: 0.3 }); ioBw.observe(bw); }
+  }
+
   /* ---- Scroller orizzontali con frecce ---- */
   document.querySelectorAll('[data-scroller]').forEach((wrap) => {
     const track = wrap.querySelector('.scroller');

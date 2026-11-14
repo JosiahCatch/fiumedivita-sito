@@ -16,7 +16,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=7f25cd9e">
+<link rel="stylesheet" href="css/style.css?v=5efba829">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Church","name":"Fiume di Vita","alternateName":"Chiesa Evangelica Pozzuoli - Fiume di Vita",
 "address":{"@type":"PostalAddress","streetAddress":"Via Casalanno, 85","addressLocality":"Pozzuoli","addressRegion":"NA","addressCountry":"IT"},
@@ -94,19 +94,47 @@
   </div>
 </div>
 
-<section class="section benvenuto">
-  <div class="container bv">
-    <div class="bv-testo reveal">
-      <span class="eyebrow">Benvenuto</span>
-      <h2>Come un fiume, l'amore di Dio porta <span class="accent">vita</span> ovunque passa.</h2>
-      <p class="lead">Siamo persone semplici, di ogni età e storia, unite da una cosa: Gesù ha cambiato la nostra vita. E crediamo che possa farlo anche con la tua.</p>
-      <a class="link-arrow" href="chi-siamo.html">Scopri chi siamo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<section class="section benvenuto" aria-labelledby="bw-titolo" data-fermo>
+  <div class="container">
+    <div class="bw-testa">
+      <h2 id="bw-titolo">Siamo una chiesa evangelica a Pozzuoli.<span>Una famiglia di famiglie.</span></h2>
+      <div class="bw-dx">
+        <p>Persone semplici, di ogni età e storia, unite da una cosa: Gesù ha cambiato la nostra vita. E crediamo che possa farlo anche con la tua.</p>
+        <a class="link-arrow" href="chi-siamo.html">Scopri chi siamo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
     </div>
-    <div class="bv-foto reveal" style="--d:.1s"><img src="assets/img/generale-16.webp" srcset="assets/img/generale-16-sm.webp 640w, assets/img/generale-16.webp 1218w" sizes="(max-width: 880px) 100vw, 40vw" alt="Una famiglia della chiesa Fiume di Vita" loading="lazy" decoding="async"></div>
+    <!-- cosa facciamo, in tre punti: il fiume passa per le tre foto e ognuna porta alla sua sezione qui sotto -->
+    <div class="bw-corso">
+      <svg class="bw-fiume" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+        <path class="bw-disegna" pathLength="1" d="M-400 30 C -200 30, 0 80, 200 80 S 450 150, 600 80 S 850 10, 1000 80 S 1400 140, 1600 110" fill="none" stroke="#CFE9E6" stroke-width="64" stroke-linecap="round"/>
+        <path class="bw-disegna" pathLength="1" d="M-400 30 C -200 30, 0 80, 200 80 S 450 150, 600 80 S 850 10, 1000 80 S 1400 140, 1600 110" fill="none" stroke="#3FB6B2" stroke-opacity=".35" stroke-width="26" stroke-linecap="round"/>
+        <path class="bw-disegna" pathLength="1" d="M-400 26 C -200 26, 0 76, 200 76 S 450 146, 600 76 S 850 6, 1000 76 S 1400 136, 1600 106" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <ul class="bw-punti">
+        <li><a class="bw-punto" href="#predica">
+          <span class="bw-tondo"><img src="assets/img/chiesa-in-casa-2-sm.webp" alt="" loading="lazy" decoding="async"></span>
+          <div class="bw-testo"><h3>Spieghiamo la Bibbia, in modo semplice</h3>
+          <p>Predicazioni chiare e utili per la vita di tutti i giorni, da ascoltare la domenica o quando vuoi.</p>
+          <span class="bw-vai">Ascolta l'ultima predicazione <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></span></div>
+        </a></li>
+        <li><a class="bw-punto" href="#ministeri">
+          <span class="bw-tondo"><img src="assets/img/generale-16-sm.webp" alt="" loading="lazy" decoding="async"></span>
+          <div class="bw-testo"><h3>Viviamo come una famiglia</h3>
+          <p>Dai bambini della scuola domenicale agli adulti: a ogni età c'è un posto, e amicizie vere.</p>
+          <span class="bw-vai">Trova il tuo posto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></span></div>
+        </a></li>
+        <li><a class="bw-punto" href="#progetto">
+          <span class="bw-tondo"><img src="assets/img/costruzione-6-sm.webp" alt="" loading="lazy" decoding="async"></span>
+          <div class="bw-testo"><h3>Costruiamo un centro per Pozzuoli</h3>
+          <p>Un luogo aperto a tutta la città, per il culto, i ragazzi, le famiglie e chi ha bisogno.</p>
+          <span class="bw-vai">Segui il cantiere <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg></span></div>
+        </a></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="section home-prediche">
+<section class="section home-prediche" id="predica">
   <div class="container">
     <div class="featured">
       <div class="reveal"><button class="yt yt--fotogramma" data-id="WJHZ446R5-M" aria-label="Guarda: Il frutto del donare">
@@ -131,7 +159,7 @@
   </div>
 </section>
 
-<section class="section fv" aria-labelledby="fv-titolo" data-fermo>
+<section class="section fv" id="ministeri" aria-labelledby="fv-titolo" data-fermo>
   <div class="container">
     <div class="fv-testa">
       <div>
@@ -329,7 +357,7 @@
   </div>
 </section>
 
-<section class="section centro-home">
+<section class="section centro-home" id="progetto">
   <div class="container">
     <div class="ch">
       <div class="ch-testo reveal">
@@ -447,7 +475,7 @@
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=3d2baf6a" defer></script>
+<script src="js/main.js?v=014fb900" defer></script>
 
 </body>
 </html>

@@ -707,11 +707,6 @@ html.hide-todo .todo-note { display: none; }
 /* ---------- 7. Sezioni della home ---------- */
 
 /* Benvenuto (home): minimal, una frase e una sola foto. Tanto spazio, nessun elenco. */
-.bv { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(32px, 6vw, 88px); align-items: center; }
-.bv-testo h2 { margin: 0 0 var(--s-4); }
-.bv-testo .lead { margin: 0 0 var(--s-4); max-width: 42ch; }
-.bv-foto img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-md); }
-@media (max-width: 880px) { .bv { grid-template-columns: 1fr; } .bv-foto img { aspect-ratio: 3 / 2; } }
 
 /* Ultima predicazione in home: una sola predica su fondo sabbia calda. Il giallo sole solo sull'onda,
    sull'avanzamento della serie e sul pulsante principale; testo blu notte. */
@@ -1648,4 +1643,55 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .hero-riga a { flex: none; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; font: 600 1rem/1 var(--f-head); color: var(--c-primary); text-decoration: none; }
   .hero-riga a svg { width: 18px; height: 18px; }
   .hero-riga a:hover { text-decoration: underline; text-underline-offset: 3px; }
+}
+
+/* ================= Home, «Benvenuto»: chi siamo in una frase, cosa facciamo in tre punti =================
+   Il fiume passa per il centro delle tre foto (1/6, 1/2 e 5/6 della larghezza) e si disegna una volta, quando arriva sullo schermo.
+   Ogni punto porta alla sua sezione qui sotto: ultima predicazione, ministeri, il nostro progetto. */
+.benvenuto { overflow: hidden; }
+.home-prediche, .fv, .centro-home { scroll-margin-top: var(--header-h); }
+.bw-testa { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(32px, 5vw, 64px); align-items: end; }
+.bw-testa h2 { margin: 0; font-size: clamp(2.2rem, 4.2vw, 3.5rem); font-weight: 750; line-height: 1.04; letter-spacing: -.025em; color: var(--c-deep); }
+.bw-testa h2 span { display: block; font-family: var(--f-accent); font-style: italic; font-weight: 400; color: var(--c-primary); letter-spacing: -.01em; margin-top: 6px; }
+.bw-dx { display: grid; gap: var(--s-4); justify-items: start; padding-bottom: 6px; }
+.bw-dx p { margin: 0; font-size: 1.15rem; line-height: 1.6; color: var(--c-muted); max-width: 30em; }
+.bw-corso { position: relative; margin-top: clamp(48px, 6vw, 72px); }
+.bw-fiume { position: absolute; left: 0; top: 0; width: 100%; height: 160px; overflow: visible; pointer-events: none; }
+.bw-disegna { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.benvenuto.visto .bw-disegna { animation: bw-scorre 2.6s var(--ease-out) forwards; }
+@keyframes bw-scorre { to { stroke-dashoffset: 0; } }
+.bw-punti { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.bw-punti > li { padding-inline: 20px; }   /* niente gap fra le colonne: i centri delle foto cadono dove passa il fiume */
+.bw-punto { display: grid; justify-items: center; text-align: center; text-decoration: none; color: inherit; border-radius: 16px; padding-bottom: 8px; }
+.bw-tondo { position: relative; width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 6px solid var(--c-bg); background: var(--c-tint); box-shadow: 0 0 0 2px rgb(63 182 178 / .55), 0 14px 30px rgb(10 46 61 / .18); transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out); }
+.bw-tondo img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease-out); }
+.bw-testo { display: grid; justify-items: center; }
+.bw-punto h3 { margin: 22px 0 0; font-size: clamp(1.25rem, 1.8vw, 1.4rem); font-weight: 650; letter-spacing: -.01em; color: var(--c-deep); line-height: 1.2; }
+.bw-punto p { margin: 8px 0 0; color: var(--c-muted); max-width: 19em; line-height: 1.55; }
+.bw-vai { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font: 600 .98rem/1 var(--f-head); color: var(--c-primary); }
+.bw-vai svg { width: 16px; height: 16px; transition: transform .25s var(--ease-out); }
+.bw-punto:hover .bw-tondo { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--c-sun), 0 18px 36px rgb(10 46 61 / .22); }
+.bw-punto:hover .bw-tondo img { transform: scale(1.06); }
+.bw-punto:hover .bw-vai svg { transform: translateY(3px); }
+.bw-punto:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px; }
+/* telefono e tablet: in colonna, il fiume scende accanto alle tre foto */
+@media (max-width: 880px) {
+  .bw-testa { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
+  .bw-testa h2 { font-size: 2rem; }
+  .bw-dx p { font-size: 1.05rem; }
+  .bw-fiume { display: none; }
+  .bw-punti { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .bw-punti::before { content: ""; position: absolute; left: 38px; top: 30px; bottom: 30px; width: 6px; border-radius: 3px; background: linear-gradient(180deg, #CFE9E6, #9BD7D3); }
+  .bw-punti > li { padding-inline: 0; }
+  .bw-punto { grid-template-columns: 82px minmax(0, 1fr); gap: 16px; align-items: center; justify-items: start; text-align: left; padding-bottom: 0; }
+  .bw-tondo { width: 82px; height: 82px; border-width: 4px; }
+  .bw-testo { justify-items: start; }
+  .bw-punto h3 { margin-top: 0; font-size: 1.12rem; }
+  .bw-punto p { margin-top: 3px; font-size: .95rem; line-height: 1.45; }
+  .bw-vai { margin-top: 6px; font-size: .92rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bw-disegna { stroke-dashoffset: 0; }
+  .benvenuto.visto .bw-disegna { animation: none; }
+  .bw-tondo, .bw-tondo img, .bw-vai svg { transition: none; }
 }
