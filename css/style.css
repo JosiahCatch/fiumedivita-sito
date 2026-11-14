@@ -1367,8 +1367,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 /* apertura */
 .cx-apertura { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: end; color: #fff; isolation: isolate; overflow: hidden; }
 .cx-apertura__media { position: absolute; inset: 0; z-index: -2; }
-.cx-apertura__media img { width: 100%; height: 100%; object-fit: cover; animation: cx-respiro 18s var(--ease-out) both; }
-@keyframes cx-respiro { from { transform: scale(1.08); } to { transform: scale(1); } }
+.cx-apertura__media img { width: 100%; height: 100%; object-fit: cover; }
 .cx-apertura::after { content: ""; position: absolute; inset: 0; z-index: -1; background:
   linear-gradient(90deg, rgb(10 46 61 / .78) 0%, rgb(10 46 61 / .45) 50%, rgb(10 46 61 / .1) 85%),
   linear-gradient(180deg, rgb(10 46 61 / 0) 55%, rgb(10 46 61 / .7) 100%); }
@@ -1410,8 +1409,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .cx-palco { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .cx-palco figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1s var(--ease-out); }
 .cx-palco figure.qui { opacity: 1; }
-.cx-palco img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 6s linear; }
-.cx-palco figure.qui img { transform: scale(1); }
+.cx-palco img { width: 100%; height: 100%; object-fit: cover; }
 .cx-palco::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(10 46 61 / .35) 0%, rgb(10 46 61 / 0) 35%); pointer-events: none; }
 .cx-palco__futuro { background: var(--c-deep); display: grid; place-items: center; }
 .cx-palco__futuro svg { width: min(60vw, 560px); height: auto; color: var(--c-sun); }
@@ -1421,15 +1419,15 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .cx-intro h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); font-weight: 700; letter-spacing: -.025em; line-height: 1; color: var(--c-deep); margin: 0; }
 .cx-intro p { margin: 16px 0 0; color: var(--c-muted); }
 .cx-tappa { min-height: 120vh; display: grid; align-items: end; padding-bottom: 12vh; }
-.cx-tappa .cx-pannello { display: grid; gap: 4px; max-width: 340px; padding: 16px 20px 18px; border-radius: 10px; background: rgb(251 247 240 / .93); box-shadow: 0 10px 30px rgb(10 46 61 / .25); }
-.cx-tappa__conta { font: 500 .8rem/1 var(--f-head); color: var(--c-muted); display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 4px; }
+.cx-tappa .cx-pannello { display: grid; gap: 8px; max-width: 460px; padding: 24px 28px 26px; border-radius: 12px; background: rgb(251 247 240 / .93); box-shadow: 0 10px 30px rgb(10 46 61 / .25); }
+.cx-tappa__conta { font: 500 .9rem/1 var(--f-head); color: var(--c-muted); display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 4px; }
 .cx-punti { display: flex; gap: 4px; }
-.cx-punti i { width: 18px; height: 4px; border-radius: 2px; background: var(--c-line); }
+.cx-punti i { width: 22px; height: 5px; border-radius: 2px; background: var(--c-line); }
 .cx-punti i.on { background: var(--c-primary); }
 .cx-punti i.dopo { background: repeating-linear-gradient(90deg, var(--c-sun) 0 4px, transparent 4px 7px); }
-.cx-tappa time { font: italic 400 1.2rem/1.1 var(--f-accent); color: var(--c-primary); }
-.cx-tappa h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.2; color: var(--c-ink); margin: 0; }
-.cx-tappa p { color: var(--c-muted); font-size: .95rem; line-height: 1.5; margin: 0; }
+.cx-tappa time { font: italic 400 1.5rem/1.1 var(--f-accent); color: var(--c-primary); }
+.cx-tappa h3 { font-size: clamp(1.4rem, 2vw, 1.75rem); font-weight: 600; letter-spacing: -.015em; line-height: 1.15; color: var(--c-ink); margin: 0; }
+.cx-tappa p { color: var(--c-muted); font-size: 1.0625rem; line-height: 1.55; margin: 0; }
 .cx-tappa img { display: none; }
 .cx-tappa--futura time { color: #8A5C0C; }
 .cx-coda { height: 40vh; }
@@ -1465,7 +1463,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 }
 /* senza animazioni: tutto fermo e in fila, leggibile */
 @media (prefers-reduced-motion: reduce) {
-  .cx-apertura__media img, .cx-riga, .cx-apertura p, .cx-scendi { animation: none !important; }
+  .cx-riga, .cx-apertura p, .cx-scendi { animation: none !important; }
   .cx-palco { display: none; }
   .cx-cantiere { background: var(--c-bg); }
   .cx-tappe { margin-top: 0; padding-block: 72px; }
