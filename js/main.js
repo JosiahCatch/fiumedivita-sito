@@ -62,7 +62,7 @@
   if (!reduce && root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
     const sotto = (el) => el.getBoundingClientRect().top > window.innerHeight;
     const libero = (el) => !el.matches('.reveal, script, style, template') && !el.querySelector('.reveal') && !el.closest('.reveal');
-    document.querySelectorAll('main section:not(.hero):not(.page-hero) .container > *').forEach((el) => {
+    document.querySelectorAll('main section:not(.hero):not(.page-hero):not([data-fermo]) .container > *').forEach((el) => {
       if (!libero(el) || !sotto(el)) return;
       const d = getComputedStyle(el).display;
       const figli = [...el.children].filter((c) => !c.matches('script, style, template'));
@@ -154,6 +154,20 @@
     // la copertina scelta da noi (data-cover) resta per tutte le lingue
     if (img && !img.hasAttribute('data-cover')) { img.removeAttribute('srcset'); img.src = `https://i.ytimg.com/vi/${id}/sddefault.jpg`; }
   }));
+
+  /* ---- Il Centro: la foto a tutto schermo segue la tappa del cantiere che stai leggendo ---- */
+  const palco = [...document.querySelectorAll('.cx-palco figure')];
+  if (palco.length && 'IntersectionObserver' in window) {
+    const ioPalco = new IntersectionObserver((voci) => voci.forEach((v) => {
+      if (!v.isIntersecting) return;
+      const n = +v.target.dataset.mostra;
+      palco.forEach((f, i) => f.classList.toggle('qui', i === n));
+    }), { rootMargin: '-45% 0px -45% 0px' });
+    document.querySelectorAll('.cx-tappe [data-mostra]').forEach((el) => ioPalco.observe(el));
+  }
+  /* la striscia delle case, sul telefono, parte dalla fine: lì c'è il centro */
+  const sette = document.querySelector('.cx-sette .container');
+  if (sette) sette.scrollLeft = sette.scrollWidth;
 
   /* ---- Scroller orizzontali con frecce ---- */
   document.querySelectorAll('[data-scroller]').forEach((wrap) => {
