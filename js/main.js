@@ -440,7 +440,8 @@
       entries.forEach((en) => { if (en.isIntersecting) visibili.add(en.target); else visibili.delete(en.target); });
       fab.classList.toggle('is-hidden', visibili.size > 0);
     });
-    document.querySelectorAll('a[href^="https://wa.me"]:not(.fab), .map, .site-footer').forEach((el) => fio.observe(el));
+    // .hero-riga: sul telefono la riga sotto la foto della home sta in fondo allo schermo, il tondo coprirebbe «Come arrivare»
+    document.querySelectorAll('a[href^="https://wa.me"]:not(.fab), .map, .site-footer, .hero-riga').forEach((el) => fio.observe(el));
   }
 
   /* ---- La nostra storia: il fiume che passa per ogni tappa e si riempie scorrendo ---- */
