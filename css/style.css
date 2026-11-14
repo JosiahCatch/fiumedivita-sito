@@ -1587,7 +1587,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .fm-piede { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
   .fm-conto { font: 500 .9rem/1 var(--f-head); color: var(--c-muted); font-variant-numeric: tabular-nums; }
   .fm-punti { display: flex; gap: 5px; }
-  .fm-punti i { width: 6px; height: 6px; border-radius: 3px; background: rgb(14 90 115 / .25); transition: width .3s var(--ease-out), background .3s; }
+  .fm-punti i { width: 6px; height: 6px; border-radius: 3px; background: rgb(14 90 115 / .25); transition: background .3s; }
   .fm-punti i.on { width: 18px; background: var(--c-primary); }
 }
 @media (max-width: 860px) and (prefers-reduced-motion: reduce) {
