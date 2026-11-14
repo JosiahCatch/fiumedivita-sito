@@ -1626,3 +1626,25 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .dove-scheda { order: -1; margin: 0; }
   .dove-mappa { border-radius: var(--r-lg); overflow: hidden; }
 }
+
+/* ================= Apertura della home sul telefono: solo l'essenziale =================
+   Sulla foto resta il titolo; sotto, una riga chiara con giorno, indirizzo e «Come arrivare».
+   Via l'occhiello, il paragrafo, i due pulsanti (le predicazioni hanno la loro sezione più giù) e la striscia blu. */
+.hero-riga { display: none; }
+@media (max-width: 880px) {
+  .stile-nuovo .hero { min-height: 70vh; min-height: 70svh; }
+  .stile-nuovo .hero__content { padding-bottom: 32px; }
+  .stile-nuovo .hero__content > .eyebrow, .stile-nuovo .hero__content > p, .stile-nuovo .hero__content > .btn-row { display: none; }
+  .stile-nuovo .hero h1 { margin-bottom: 0; }
+  .stile-nuovo .hero::after { background:
+    linear-gradient(180deg, rgb(10 46 61 / .35) 0%, rgb(10 46 61 / 0) 28%, rgb(10 46 61 / .15) 50%, rgb(10 46 61 / .82) 100%); }
+  .stile-nuovo .hero + .info-strip { display: none; }
+  .hero-riga { display: block; background: var(--c-surface); border-bottom: 1px solid var(--c-line); }
+  .hero-riga .container { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding-block: 18px; }
+  .hero-riga p { margin: 0; display: grid; gap: 2px; min-width: 0; }
+  .hero-riga strong { font: 650 1.05rem/1.25 var(--f-head); color: var(--c-deep); }
+  .hero-riga span { font-size: var(--fs-md); line-height: 1.3; color: var(--c-muted); }
+  .hero-riga a { flex: none; display: inline-flex; align-items: center; gap: 4px; min-height: 44px; font: 600 1rem/1 var(--f-head); color: var(--c-primary); text-decoration: none; }
+  .hero-riga a svg { width: 18px; height: 18px; }
+  .hero-riga a:hover { text-decoration: underline; text-underline-offset: 3px; }
+}
