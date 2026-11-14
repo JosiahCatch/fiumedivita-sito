@@ -99,7 +99,6 @@
     const desc = box.querySelector('.tm-desc');
     const playHTML = video.querySelector('.yt__play')?.outerHTML || '';   // il cerchio del play, da rimettere sulla nuova storia
     box.addEventListener('click', (e) => {
-      if (e.target.closest('.tm-guarda')) { video.querySelector('button.yt')?.click(); return; }
       const v = e.target.closest('.tm-volto');
       if (!v || v.getAttribute('aria-pressed') === 'true') return;
       const d = v.dataset;
