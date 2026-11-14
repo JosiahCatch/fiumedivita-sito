@@ -208,6 +208,38 @@
     }
   }
 
+  /* ---- Home, «Trova il tuo posto» sul telefono: le bolle seguono le card e viceversa ---- */
+  const fmFila = document.querySelector('.fm-fila');
+  if (fmFila) {
+    const fmBolle = document.querySelector('.fm-bolle');
+    const bol = [...fmBolle.children], carte = [...fmFila.querySelectorAll('.fm-card')];
+    const pti = [...document.querySelectorAll('.fm-punti i')], conto = document.querySelector('.fm-conto'), aiuto = document.querySelector('.fm-aiuto');
+    const passo = () => fmFila.children[0].getBoundingClientRect().width + 10;
+    let ultima = -1, rif = 0;
+    const segui = () => {
+      rif = 0;
+      const pos = fmFila.scrollLeft / passo();
+      // la card al centro è piena, le vicine si rimpiccioliscono e si scuriscono un poco
+      if (!reduce) carte.forEach((c, k) => { const d = Math.min(1, Math.abs(k - pos)); c.style.setProperty('--s', (1 - d * 0.06).toFixed(3)); c.style.setProperty('--b', (1 - d * 0.18).toFixed(3)); });
+      const i = Math.min(carte.length - 1, Math.round(pos));
+      if (i === ultima) return;
+      ultima = i;
+      if (i > 0) aiuto.classList.add('via');
+      bol.forEach((b, k) => b.toggleAttribute('aria-current', k === i));
+      pti.forEach((p, k) => p.classList.toggle('on', k === i));
+      conto.textContent = `${i + 1} di ${carte.length}`;
+      const b = bol[i];
+      fmBolle.scrollTo({ left: b.offsetLeft - fmBolle.offsetLeft - fmBolle.clientWidth / 2 + b.offsetWidth / 2, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    fmFila.addEventListener('scroll', () => { if (!rif) rif = requestAnimationFrame(segui); }, { passive: true });
+    fmBolle.addEventListener('click', (e) => {
+      const b = e.target.closest('.fm-bolla'); if (!b) return;
+      aiuto.classList.add('via');
+      fmFila.scrollTo({ left: passo() * Number(b.dataset.i), behavior: reduce ? 'auto' : 'smooth' });
+    });
+    segui();
+  }
+
   /* ---- Scroller orizzontali con frecce ---- */
   document.querySelectorAll('[data-scroller]').forEach((wrap) => {
     const track = wrap.querySelector('.scroller');
