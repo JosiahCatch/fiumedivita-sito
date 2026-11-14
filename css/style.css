@@ -1478,7 +1478,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .fv-fiume { position: relative; margin-top: 44px; }
 .fv-onda { position: absolute; left: 0; right: 0; top: 34px; height: 40px; width: 100%; color: var(--c-water); pointer-events: none; }
 .fv-fasce { display: grid; grid-template-columns: 1fr 1fr 4fr 3fr; position: relative; }
-.fv-fascia { display: grid; justify-items: center; align-content: start; gap: 12px; border-left: 1px dashed rgb(14 90 115 / .25); padding: 0 4px; }
+.fv-fascia { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: 12px; border-left: 1px dashed rgb(14 90 115 / .25); padding: 0 4px; }   /* l'età sempre nell'ultima riga: tutte alla stessa altezza, anche se un nome va su due righe */
 .fv-fascia:first-child { border-left: 0; }
 .fv-eta { order: 2; margin: 0; font: italic 400 1.15rem/1 var(--f-accent); color: var(--c-primary); }
 .fv-bolle { display: flex; justify-content: space-around; width: 100%; }
@@ -1492,7 +1492,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .fv-bolla:hover .fv-cerchio { transform: scale(1.08); border-color: var(--c-sun); }
 .fv-bolla[aria-current] .fv-cerchio { transform: scale(1.12); border-color: var(--c-sun); box-shadow: 0 0 0 5px rgb(244 181 68 / .35), 0 8px 22px rgb(10 46 61 / .22); }
 .fv-bolla[aria-current] .fv-piu { opacity: 0; transform: scale(.5); }
-.fv-bolla[aria-current]::after { content: ""; position: absolute; bottom: -14px; left: 50%; width: 22px; height: 22px; background: var(--c-surface); transform: translateX(-50%) rotate(45deg); border-radius: 3px; }
 .fv-bolla:focus-visible { outline: none; }
 .fv-bolla:focus-visible .fv-cerchio { outline: 3px solid var(--focus); outline-offset: 3px; }
 .fv-bolla.fv-saluta .fv-cerchio { animation: fv-saluta 1.6s var(--ease-out) 2; }
@@ -1521,7 +1520,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .fv-onda { display: none; }
   .fv-fasce { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * 16px); padding: 4px 16px 6px; }
   .fv-fasce::-webkit-scrollbar { display: none; }
-  .fv-fascia { border-left: 0; padding: 0; justify-items: start; gap: 6px; flex: none; }
+  .fv-fascia { grid-template-rows: auto auto; border-left: 0; padding: 0; justify-items: start; gap: 6px; flex: none; }
   .fv-fascia + .fv-fascia { border-left: 1px dashed rgb(14 90 115 / .3); padding-left: 6px; }
   .fv-eta { order: -1; font-size: 1rem; padding-left: 8px; }
   .fv-bolle { gap: 2px; }
