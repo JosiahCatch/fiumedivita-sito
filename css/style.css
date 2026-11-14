@@ -527,7 +527,7 @@ main:focus { outline: 0; }
    Un fiume (SVG disegnato da main.js) scende tra le tappe e si "riempie" mentre si scorre la pagina.
    Su PC: foto e testo si alternano ai lati del fiume. Sul telefono il fiume sta a sinistra. */
 .section-head--storia { margin-bottom: var(--s-8); }
-.storia-wrap { position: relative; --col: 120px; }
+.storia-wrap { position: relative; --col: 180px; }
 .storia { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: clamp(56px, 8vw, 112px); }
 .storia__tappa { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--col) minmax(0, 1fr); align-items: center; }
 .storia__testo { grid-column: 3; grid-row: 1; max-width: 30em; }
@@ -536,11 +536,11 @@ main:focus { outline: 0; }
 .storia__tappa--dx .storia__foto  { grid-column: 3; }
 .storia__punto {
   grid-column: 2; grid-row: 1; justify-self: center; position: relative; z-index: 1;
-  width: 18px; height: 18px; border-radius: 50%; background: var(--c-bg); border: 2px solid var(--c-control);
+  width: 22px; height: 22px; border-radius: 50%; background: var(--c-bg); border: 3px solid #9BD7D3; box-shadow: 0 0 0 4px var(--c-bg);
   transition: background-color .5s, border-color .5s, box-shadow .5s, transform .5s var(--ease-out);
 }
-.storia__tappa.is-raggiunta .storia__punto { background: var(--c-water); border-color: var(--c-water); box-shadow: 0 0 0 7px rgb(63 182 178 / .16); transform: scale(1.1); }
-.storia__tappa--oggi.is-raggiunta .storia__punto { background: var(--c-sun); border-color: var(--c-sun); box-shadow: 0 0 0 9px rgb(244 181 68 / .22); }
+.storia__tappa.is-raggiunta .storia__punto { background: var(--c-primary); border-color: #fff; box-shadow: 0 0 0 4px var(--c-water), 0 6px 16px rgb(10 46 61 / .25); transform: scale(1.15); }
+.storia__tappa--oggi.is-raggiunta .storia__punto { background: var(--c-sun); border-color: #fff; box-shadow: 0 0 0 4px var(--c-sun), 0 0 0 12px rgb(244 181 68 / .25); }
 .storia__tappa--futuro .storia__punto { border-style: dashed; border-color: var(--c-sun); }
 .storia__tappa--futuro.is-raggiunta .storia__punto { background: var(--c-bg); box-shadow: 0 0 0 7px rgb(244 181 68 / .14); }
 
@@ -555,23 +555,29 @@ main:focus { outline: 0; }
 /* il fiume: base chiara, acqua che si riempie, ultimo tratto a puntini verso il futuro */
 .storia__fiume { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .storia__fiume path { fill: none; stroke-linecap: round; }
-.storia__fiume-base { stroke: var(--c-line); stroke-width: 2; }
-.storia__fiume-acqua { stroke-width: 3.5; }
-.storia__fiume-futuro { stroke: var(--c-sun); stroke-width: 3; stroke-dasharray: .1 10; opacity: .9; }
+/* come il fiume della home: letto chiaro e largo, acqua che lo riempie scorrendo, un filo di luce in mezzo */
+.storia__fiume-base { stroke: #CFE9E6; stroke-width: 46; }
+.storia__fiume-acqua { stroke-width: 20; opacity: .9; }
+.storia__fiume-luce { stroke: #fff; stroke-width: 2.5; opacity: .85; }
+.storia__fiume-futuro { stroke: var(--c-sun); stroke-width: 7; stroke-dasharray: .1 16; opacity: .9; }
 /* senza JavaScript: una linea dritta al posto del fiume */
 html.no-js .storia::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; background: var(--c-line); }
 
 .storia__fine { margin: var(--s-6) auto 0; max-width: 26em; text-align: center; font: italic 400 clamp(1.25rem, 2.6vw, 1.7rem)/1.4 var(--f-accent); color: var(--c-ink-soft); }
 
 @media (max-width: 760px) {
-  .storia-wrap { --col: 40px; }
+  .storia-wrap { --col: 56px; }
+  .storia__fiume-base { stroke-width: 24; }
+  .storia__fiume-acqua { stroke-width: 10; }
+  .storia__fiume-luce { stroke-width: 1.5; }
+  .storia__fiume-futuro { stroke-width: 5; stroke-dasharray: .1 12; }
   .storia { gap: var(--s-8); }
   .storia__tappa, .storia__tappa--dx { grid-template-columns: var(--col) minmax(0, 1fr); align-items: start; row-gap: var(--s-4); }
   .storia__punto { grid-column: 1; grid-row: 1; margin-top: .55rem; }
   .storia__testo, .storia__tappa--dx .storia__testo { grid-column: 2; grid-row: 1; justify-self: start; text-align: left; }
   .storia__foto, .storia__tappa--dx .storia__foto { grid-column: 2; grid-row: 2; }
   .storia__foto img { border-radius: var(--r-md); }
-  html.no-js .storia::before { left: 20px; }
+  html.no-js .storia::before { left: 28px; }
   .storia__fine { margin-left: var(--col); text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) { .storia__punto { transition: none; } }

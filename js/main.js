@@ -481,7 +481,7 @@
   const storia = document.querySelector('.storia-wrap');
   if (storia) {
     const svg = storia.querySelector('.storia__fiume');
-    const [base, acqua, futuro] = ['base', 'acqua', 'futuro'].map((k) => svg.querySelector(`.storia__fiume-${k}`));
+    const [base, acqua, luce, futuro] = ['base', 'acqua', 'luce', 'futuro'].map((k) => svg.querySelector(`.storia__fiume-${k}`));
     const tappe = [...storia.querySelectorAll('.storia__tappa')];
     const N = 400;                       // punti di campionamento del fiume
     let lung = 0, campioni = [], punti = [];
@@ -505,10 +505,12 @@
       }
       base.setAttribute('d', d);
       acqua.setAttribute('d', d);
+      if (luce) luce.setAttribute('d', d);
       const [xf, yf] = punti[punti.length - 1];
       futuro.setAttribute('d', `M${xf},${yf + 18} C${xf - ansa / 2},${yf + 70} ${xf + ansa / 2},${yf + 110} ${xf},${box.height + 40}`);
       lung = acqua.getTotalLength();
       acqua.style.strokeDasharray = `${lung} ${lung}`;
+      if (luce) luce.style.strokeDasharray = `${lung} ${lung}`;
       // per sapere quanto fiume serve per arrivare a una certa altezza
       campioni = Array.from({ length: N + 1 }, (_, i) => acqua.getPointAtLength((lung * i) / N).y);
       mostrato = -1;   // ridisegna subito alla nuova misura
@@ -528,6 +530,7 @@
     const mostra = (l) => {
       mostrato = l;
       acqua.style.strokeDashoffset = String(lung - l);
+      if (luce) luce.style.strokeDashoffset = String(lung - l);   // il filo di luce corre insieme all'acqua
       const y = acqua.getPointAtLength(Math.max(0, l)).y;   // fin dove è arrivata l'acqua
       tappe.forEach((t, k) => t.classList.toggle('is-raggiunta', !!punti[k] && punti[k][1] <= y + 1));
     };
