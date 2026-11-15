@@ -431,25 +431,12 @@ main:focus { outline: 0; }
 .card a.stretched { color: inherit; text-decoration: none; }
 .card a.stretched::after { content: ""; position: absolute; inset: 0; }
 
-/* Card a tutta immagine (ministeri nello scroller): tutte della stessa altezza */
-.mcard { position: relative; border-radius: var(--r-md); overflow: hidden; aspect-ratio: 3 / 4; color: #fff; isolation: isolate; display: flex; align-items: flex-end; text-decoration: none; background: var(--c-deep); }
-.mcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .7s var(--ease-out); }
-.mcard::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(var(--overlay-deep) / 0) 25%, rgb(var(--overlay-deep) / .78) 58%, rgb(var(--overlay-deep) / .96) 100%); }
-.mcard:hover img { transform: scale(1.06); }
-.mcard__body { width: 100%; padding: var(--s-5); }
-.mcard__body h3 { color: #fff; margin: 0 0 4px; font-size: 1.3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mcard__body p { margin: 0; color: rgb(255 255 255 / .85); font-size: var(--fs-md); line-height: 1.45; min-height: calc(2 * 1.45em); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.mcard__tag { display: inline-block; font: 600 var(--fs-2xs)/1 var(--f-head); letter-spacing: .12em; text-transform: uppercase; color: var(--c-sun); margin-bottom: 8px; white-space: nowrap; }
-/* senza foto: gradiente e icona in alto */
-.mcard--art { background: linear-gradient(160deg, var(--c-primary), var(--c-deep)); }
-.mcard--art .mcard__body { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; }
-.mcard__icon { color: var(--c-sun); width: 56px; }
-
 /* Scroller orizzontale con frecce */
 .scroller { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 22%); gap: var(--s-4); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--s-4); scrollbar-width: thin; overscroll-behavior-x: contain; }
 .scroller > * { scroll-snap-align: start; }
 .scroller-controls { display: flex; gap: var(--s-2); }
 @media (max-width: 640px) { .scroller { grid-auto-columns: 78%; } }
+.scroller:has(> .ms-card) { padding-top: 6px; }   /* le card dei ministeri si alzano un poco al passaggio del mouse */
 
 /* Video "lite": miniatura che diventa player al clic */
 .yt {
@@ -1209,7 +1196,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .stile-nuovo .yt__play span { background: rgb(255 255 255 / .92); color: var(--c-deep); box-shadow: 0 4px 16px rgb(0 0 0 / .18); }
 .stile-nuovo .yt:hover .yt__play span { transform: scale(1.04); }
 .stile-nuovo .progress__bar span { background: var(--c-water); }
-.stile-nuovo .mcard__tag { color: rgb(255 255 255 / .85); }
 /* le fasce blu scuro diventano chiare (restano scuri la fascia finale d'invito, il footer e le foto) */
 .stile-nuovo .section--deep:not(.cta-band) { background: var(--c-tint); color: var(--c-ink); --focus: var(--c-deep); }
 .stile-nuovo .section--deep:not(.cta-band) :is(h2, h3) { color: var(--c-ink); }
@@ -1233,7 +1219,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .stile-nuovo :is(.card, .acard):hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--c-line), var(--shadow-1); }
 .stile-nuovo .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-1); }
 .stile-nuovo .info-strip__card { box-shadow: 0 8px 30px rgb(10 46 61 / .08); }
-.stile-nuovo .mcard::after { background: linear-gradient(180deg, rgb(var(--overlay-deep) / 0) 35%, rgb(var(--overlay-deep) / .62) 65%, rgb(var(--overlay-deep) / .88) 100%); }
 .stile-nuovo .hero__media img { animation: none; transform: scale(var(--hero-zoom)); }
 .stile-nuovo .marquee__track { animation-duration: 100s; }
 
