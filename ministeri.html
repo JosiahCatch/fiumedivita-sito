@@ -16,7 +16,7 @@
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=e78b779f">
+<link rel="stylesheet" href="css/style.css?v=ce20611b">
 <link rel="canonical" href="https://www.chiesaevangelicapozzuoli.it/ministeri.html">
 <meta property="og:url" content="https://www.chiesaevangelicapozzuoli.it/ministeri.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -70,8 +70,21 @@
       <h2>Chi sei?</h2>
       <p>Scegli quello che ti somiglia di più: ti mostriamo i posti pensati per te.</p>
       <div class="ms-scelte" role="group" aria-label="Chi sei"><button type="button" aria-pressed="true" data-ms-scelta="tutti">Tutti</button><button type="button" aria-pressed="false" data-ms-scelta="bambino">Ho dei bambini</button><button type="button" aria-pressed="false" data-ms-scelta="ragazzo">Sono un ragazzo o una ragazza</button><button type="button" aria-pressed="false" data-ms-scelta="coppia">Siamo una coppia</button><button type="button" aria-pressed="false" data-ms-scelta="donna">Sono una donna</button><button type="button" aria-pressed="false" data-ms-scelta="uomo">Sono un uomo</button><button type="button" aria-pressed="false" data-ms-scelta="servire">Voglio dare una mano</button><button type="button" aria-pressed="false" data-ms-scelta="inglese">Parlo o studio inglese</button></div>
-      <p class="ms-esito" aria-live="polite"></p>
     </div>
+    <!-- telefono: al posto del riquadro, un bottone che apre il pannello dal basso (come nelle predicazioni) -->
+    <button type="button" class="ms-tel" data-ms-apri aria-haspopup="dialog">
+      <span><small>Chi sei?</small><strong data-ms-nome>Tutti i ministeri</strong></span>
+      <span class="ms-tel__cambia">Cambia <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+    </button>
+    <dialog class="ps-foglio" aria-labelledby="ms-ft">
+      <div class="ps-f-testa">
+        <span class="ps-maniglia" aria-hidden="true"></span>
+        <h2 id="ms-ft">Chi sei?</h2>
+        <button type="button" class="ps-chiudi" data-ms-chiudi aria-label="Chiudi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
+      </div>
+      <div class="ps-f-corpo"><ul role="radiogroup" aria-label="Chi sei"><li><button type="button" class="ps-f-voce" role="radio" aria-checked="true" data-ms-voce="tutti"><span>Tutti</span><span class="ps-n">9 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="bambino"><span>Ho dei bambini</span><span class="ps-n">2 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="ragazzo"><span>Sono un ragazzo o una ragazza</span><span class="ps-n">3 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="coppia"><span>Siamo una coppia</span><span class="ps-n">2 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="donna"><span>Sono una donna</span><span class="ps-n">2 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="uomo"><span>Sono un uomo</span><span class="ps-n">3 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="servire"><span>Voglio dare una mano</span><span class="ps-n">2 posti</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li><li><button type="button" class="ps-f-voce" role="radio" aria-checked="false" data-ms-voce="inglese"><span>Parlo o studio inglese</span><span class="ps-n">1 posto</span><span class="ps-spunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></button></li></ul></div>
+    </dialog>
+    <p class="ms-esito" aria-live="polite"></p>
     <ul class="ms-lista" aria-label="Tutti i ministeri">
       <li class="ms-card" data-gruppi="bambino servire">
         <span class="ms-perte" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg> Per te</span>
@@ -208,7 +221,7 @@
   </div>
   <a class="fab" href="https://wa.me/393755480132" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp (si apre in una nuova scheda)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 </footer>
-<script src="js/main.js?v=7aaba8d4" defer></script>
+<script src="js/main.js?v=c0f76bd9" defer></script>
 
 </body>
 </html>

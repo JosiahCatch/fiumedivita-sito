@@ -419,13 +419,20 @@
   });
 
   /* ---- Ministeri, «Chi sei?»: i ministeri giusti salgono in cima con «Per te», gli altri si sbiadiscono ---- */
+  //      Su PC i pulsanti stanno nel riquadro; sul telefono un bottone apre il pannello dal basso con le stesse scelte.
   const msScelte = [...document.querySelectorAll('[data-ms-scelta]')];
   if (msScelte.length) {
     const msCard = [...document.querySelectorAll('.ms-card')];
     const msEsito = document.querySelector('.ms-esito');
-    msScelte.forEach((b) => b.addEventListener('click', () => {
-      msScelte.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      const k = b.dataset.msScelta;
+    const msVoci = [...document.querySelectorAll('[data-ms-voce]')];
+    const msFoglio = document.querySelector('[data-ms-apri] + .ps-foglio');
+    const msApri = document.querySelector('[data-ms-apri]');
+    const msNome = document.querySelector('[data-ms-nome]');
+    const scegli = (k) => {
+      msScelte.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.msScelta === k)));
+      msVoci.forEach((v) => v.setAttribute('aria-checked', String(v.dataset.msVoce === k)));
+      const scelta = msScelte.find((x) => x.dataset.msScelta === k);
+      if (msNome) msNome.textContent = k === 'tutti' ? 'Tutti i ministeri' : scelta.textContent;
       let n = 0;
       msCard.forEach((c) => {
         const ok = k === 'tutti' || c.dataset.gruppi.split(' ').includes(k);
@@ -435,7 +442,19 @@
         if (ok) n++;
       });
       msEsito.textContent = k === 'tutti' ? '' : (n === 1 ? 'Ecco il posto pensato per te.' : `Ecco ${n} posti pensati per te.`);
-    }));
+    };
+    msScelte.forEach((b) => b.addEventListener('click', () => scegli(b.dataset.msScelta)));
+    if (msFoglio && msApri) {
+      msApri.addEventListener('click', () => { msFoglio.showModal(); msFoglio.querySelector('[aria-checked="true"]')?.focus(); });
+      msFoglio.querySelector('[data-ms-chiudi]').addEventListener('click', () => msFoglio.close());
+      msFoglio.addEventListener('click', (e) => {
+        if (e.target === msFoglio) { msFoglio.close(); return; }   // tocco fuori dal pannello
+        const v = e.target.closest('[data-ms-voce]');
+        if (!v) return;
+        scegli(v.dataset.msVoce);
+        setTimeout(() => { msFoglio.close(); msApri.focus(); }, 160);
+      });
+    }
   }
 
   /* ---- Predicazioni «Per data»: dal più recente o dal meno recente (gira l'ordine delle schede) ---- */

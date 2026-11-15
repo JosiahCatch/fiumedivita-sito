@@ -1509,8 +1509,20 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .ms-scelte button { min-height: 52px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--c-control); background: var(--c-bg); font: 600 1.05rem/1.2 var(--f-head); color: var(--c-deep); cursor: pointer; transition: background-color .2s, border-color .2s, color .2s; }
 .ms-scelte button:hover { border-color: var(--c-primary); }
 .ms-scelte button[aria-pressed="true"] { background: var(--c-primary); border-color: var(--c-primary); color: #fff; }
-.ms-esito { margin: 18px 0 0; font: italic 500 1.2rem/1.3 var(--f-accent); color: var(--c-primary); min-height: 1.3em; }
-.ms-esito:empty { margin-top: 0; min-height: 0; }
+.ms-esito { margin: calc(-1 * clamp(12px, 2vw, 20px)) 0 24px; font: italic 500 1.2rem/1.3 var(--f-accent); color: var(--c-primary); }
+.ms-esito:empty { display: none; }
+/* telefono: il riquadro diventa un bottone che apre il pannello dal basso (.ps-foglio, lo stesso delle predicazioni) */
+.ms-tel { display: none; }
+@media (max-width: 760px) {
+  .ms-domanda { display: none; }
+  .ms-tel { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 60px; margin: 0 0 20px; padding: 8px 12px 8px 18px; border-radius: 16px; border: 1.5px solid var(--c-line); background: var(--c-surface); text-align: left; cursor: pointer; color: inherit; font: inherit; box-shadow: var(--shadow-1); }
+  .ms-tel small { display: block; font: 500 .85rem/1.2 var(--f-body); color: var(--c-muted); }
+  .ms-tel strong { display: block; margin-top: 2px; font: 650 1.1rem/1.2 var(--f-head); color: var(--c-deep); }
+  .ms-tel__cambia { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; padding: 0 12px; border-radius: 999px; background: var(--c-tint); font: 600 .9rem var(--f-head); color: var(--c-primary); white-space: nowrap; }
+  .ms-tel__cambia svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .ms-tel:focus-visible { outline: 3px solid var(--c-sun); outline-offset: 2px; }
+  .ms-esito { margin: -6px 0 18px; font-size: 1.1rem; }
+}
 .ms-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .ms-card { position: relative; display: flex; flex-direction: column; background: var(--c-surface); border-radius: 20px; box-shadow: 0 1px 2px rgb(10 46 61 / .06), 0 4px 16px rgb(10 46 61 / .05); transition: transform .3s var(--ease-out), box-shadow .3s, opacity .35s; }
 .ms-card:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgb(10 46 61 / .06), 0 10px 26px rgb(10 46 61 / .08); }
