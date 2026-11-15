@@ -418,6 +418,26 @@
     });
   });
 
+  /* ---- Ministeri, «Chi sei?»: i ministeri giusti salgono in cima con «Per te», gli altri si sbiadiscono ---- */
+  const msScelte = [...document.querySelectorAll('[data-ms-scelta]')];
+  if (msScelte.length) {
+    const msCard = [...document.querySelectorAll('.ms-card')];
+    const msEsito = document.querySelector('.ms-esito');
+    msScelte.forEach((b) => b.addEventListener('click', () => {
+      msScelte.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const k = b.dataset.msScelta;
+      let n = 0;
+      msCard.forEach((c) => {
+        const ok = k === 'tutti' || c.dataset.gruppi.split(' ').includes(k);
+        c.classList.toggle('is-spento', !ok);
+        c.classList.toggle('is-acceso', ok && k !== 'tutti');
+        c.style.order = ok ? 0 : 1;
+        if (ok) n++;
+      });
+      msEsito.textContent = k === 'tutti' ? '' : (n === 1 ? 'Ecco il posto pensato per te.' : `Ecco ${n} posti pensati per te.`);
+    }));
+  }
+
   /* ---- Predicazioni «Per data»: dal più recente o dal meno recente (gira l'ordine delle schede) ---- */
   document.querySelectorAll('[data-ordine]').forEach((b) => b.addEventListener('click', () => {
     if (b.getAttribute('aria-pressed') === 'true') return;
