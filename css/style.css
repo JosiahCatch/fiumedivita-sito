@@ -857,36 +857,33 @@ html.hide-todo .todo-note { display: none; }
 .marquee-wrap { position: relative; }
 /* «Vita insieme»: il nastro scorre da solo (js/main.js muove lo scroll orizzontale, così si può anche trascinare col dito
    per andare più veloce); si ferma col mouse sopra o mentre lo tocchi, poi riparte */
-.marquee { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; padding-block: var(--s-2); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; padding-block: 44px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .marquee::-webkit-scrollbar { display: none; }
-.marquee__track { display: flex; gap: var(--s-4); width: max-content; }
-.marquee img { height: clamp(200px, 26vw, 320px); width: auto; aspect-ratio: auto; border-radius: var(--r-md); object-fit: cover; }
-.marquee__foto { flex: none; display: block; padding: 0; border: 0; background: none; border-radius: var(--r-md); cursor: zoom-in; }
-.marquee__foto img { display: block; }
-.marquee__foto:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-/* sul telefono (niente mouse): foto un po' più piccole, niente sfumatura ai lati, toccarle non apre niente */
-@media (hover: none) {
-  .marquee { mask-image: none; padding-inline: 16px; }
-  .marquee__foto { cursor: default; }
-  .marquee img { height: 240px; max-width: 82vw; }
+/* le foto sono cartoline lungo il fiume: il fiume (la stessa onda del benvenuto) sta dietro e scorre insieme a loro */
+.marquee__track {
+  display: flex; align-items: center; gap: 56px; width: max-content; padding-inline: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 120' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 100 20, 300 20, 400 60 S 700 100, 800 60' fill='none' stroke='%23CFE9E6' stroke-width='64' stroke-linecap='round'/%3E%3Cpath d='M0 60 C 100 20, 300 20, 400 60 S 700 100, 800 60' fill='none' stroke='%233FB6B2' stroke-opacity='.4' stroke-width='24'/%3E%3Cpath d='M0 56 C 100 16, 300 16, 400 56 S 700 96, 800 56' fill='none' stroke='white' stroke-opacity='.85' stroke-width='2.5'/%3E%3C/svg%3E") 0 50% / 800px 140px repeat-x;
 }
-/* foto in grande (PC): fondo scuro, frecce ai lati, contatore in basso */
-.lb { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; }
-.lb[open] { display: grid; place-items: center; animation: lb-entra .25s var(--ease-out); }
-.lb::backdrop { background: rgb(8 20 26 / .9); }
-.lb__foto { max-width: min(92vw, 1400px); max-height: 84dvh; width: auto; height: auto; border-radius: var(--r-md); box-shadow: 0 20px 60px rgb(0 0 0 / .4); }
-.lb__conta { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); margin: 0; padding: 6px 14px; border-radius: 999px; background: rgb(255 255 255 / .12); font: 600 .95rem/1 var(--f-head); font-variant-numeric: tabular-nums; }
-.lb__btn { position: absolute; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 0; background: rgb(255 255 255 / .14); color: #fff; cursor: pointer; transition: background-color .2s; }
-.lb__btn:hover { background: rgb(255 255 255 / .28); }
-.lb__btn:focus-visible { outline: 3px solid var(--c-sun); outline-offset: 2px; }
-.lb__btn svg { width: 26px; height: 26px; }
-.lb__chiudi { top: 20px; right: 20px; width: 48px; height: 48px; }
-.lb__chiudi svg { transform: rotate(45deg); }
-.lb__prec { left: 24px; top: 50%; transform: translateY(-50%); }
-.lb__succ { right: 24px; top: 50%; transform: translateY(-50%); }
-@keyframes lb-entra { from { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .lb[open] { animation: none; } }
-
+.marquee img {
+  height: clamp(200px, 23vw, 290px); width: auto; aspect-ratio: auto; object-fit: cover;
+  padding: 10px 10px 32px; background: #fff; border-radius: 6px; box-shadow: 0 12px 28px rgb(10 46 61 / .18);
+}
+.marquee__foto { flex: none; display: block; }
+.marquee__foto:nth-child(4n+1) { rotate: -3deg; translate: 0 -16px; }
+.marquee__foto:nth-child(4n+2) { rotate: 2deg; translate: 0 10px; }
+.marquee__foto:nth-child(4n+3) { rotate: -1.5deg; translate: 0 18px; }
+.marquee__foto:nth-child(4n) { rotate: 2.5deg; translate: 0 -8px; }
+/* PC: passando col mouse sopra una cartolina il nastro si ferma, lei si raddrizza e si ingrandisce un poco */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .marquee .marquee__foto { transition: transform .4s var(--ease-out), rotate .4s var(--ease-out), box-shadow .4s var(--ease-out); }
+  .marquee .marquee__foto:hover { rotate: 0deg; transform: scale(1.08); box-shadow: 0 16px 36px rgb(10 46 61 / .25); position: relative; z-index: 1; }
+}
+/* sul telefono (niente mouse): niente sfumatura ai lati, fiume un po' più stretto, toccarle non apre niente */
+@media (hover: none) {
+  .marquee { mask-image: none; }
+  .marquee__track { gap: 40px; background-size: 600px 110px; }
+  .marquee img { height: 220px; max-width: 78vw; }
+}
 /* ---------- 8. Pagine interne ---------- */
 
 /* Pagine ministero */
@@ -1702,6 +1699,11 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .home-prediche .hp-testo > .hp-serie { order: 1; margin-top: 0; }
   .home-prediche .hp-testo > .hp-frase { order: 2; }
   .home-prediche .hp-testo > .btn-row { order: 3; }
+  /* i due pulsanti uno accanto all'altro, metà larghezza ciascuno (ultima predicazione e il nostro progetto) */
+  .home-prediche .hp-testo > .btn-row, .ch .ch-testo > .btn-row { flex-wrap: nowrap; gap: 8px; }
+  .home-prediche .hp-testo > .btn-row .btn, .ch .ch-testo > .btn-row .btn { flex: 1 1 0; min-width: 0; justify-content: center; padding-inline: 10px; font-size: .95rem; white-space: nowrap; }
+  .home-prediche .hp-testo > .btn-row .btn svg, .ch .ch-testo > .btn-row .btn--sun svg { display: none; }
+  @media (max-width: 360px) { .home-prediche .hp-testo > .btn-row .btn, .ch .ch-testo > .btn-row .btn { white-space: normal; text-align: center; line-height: 1.2; } }
 
   /* il nostro progetto: occhiello, titolo e testo, poi la foto «prima e adesso», poi le tappe e i pulsanti */
   .ch { display: flex; flex-direction: column; align-items: stretch; gap: 0; }

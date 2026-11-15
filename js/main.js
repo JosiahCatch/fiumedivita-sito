@@ -417,7 +417,7 @@
 
   /* ---- «Vita insieme»: il nastro scorre da solo, su PC e sul telefono ----
      Muove lo scroll orizzontale (non una animazione CSS), così col dito si può trascinare per andare più veloce.
-     Si ferma col mouse sopra, mentre lo tocchi o con la tastiera, e riparte da dove l'hai lasciato.
+     Si ferma col mouse sopra (e la foto sotto il mouse si ingrandisce), mentre lo tocchi o con la tastiera, e riparte da dove l'hai lasciato.
      Le foto sono ripetute due volte: arrivato a metà torna all'inizio senza che si veda. */
   const nastro = document.querySelector('.marquee');
   if (nastro && !reduce) {
@@ -454,33 +454,6 @@
     if ('IntersectionObserver' in window) new IntersectionObserver((v) => { visibile = v[0].isIntersecting; }).observe(nastro);
     else visibile = true;
     requestAnimationFrame(passo);
-  }
-
-  /* ---- «Vita insieme»: su PC una foto cliccata si apre in grande; frecce (anche da tastiera) per andare avanti e indietro ---- */
-  const lb = document.querySelector('.lb');
-  if (lb && matchMedia('(hover: hover)').matches) {
-    const foto = [...document.querySelectorAll('.marquee__foto:not([aria-hidden])')];
-    const big = lb.querySelector('.lb__foto');
-    const conta = lb.querySelector('.lb__conta');
-    let cur = 0;
-    const mostra = (i) => {
-      cur = (i + foto.length) % foto.length;
-      const f = foto[cur].dataset;
-      big.srcset = f.srcset; big.sizes = '92vw'; big.src = f.grande;
-      big.alt = `Foto ${cur + 1} di ${foto.length} della nostra comunità`;
-      conta.textContent = `${cur + 1} / ${foto.length}`;
-    };
-    document.querySelectorAll('.marquee__foto').forEach((b) => b.addEventListener('click', () => {
-      mostra(+b.dataset.i);
-      lb.showModal();
-    }));
-    lb.querySelectorAll('[data-lb-dir]').forEach((b) => b.addEventListener('click', () => mostra(cur + +b.dataset.lbDir)));
-    lb.querySelector('[data-lb-chiudi]').addEventListener('click', () => lb.close());
-    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });   // clic sullo sfondo scuro
-    lb.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { mostra(cur + 1); e.preventDefault(); }
-      if (e.key === 'ArrowLeft') { mostra(cur - 1); e.preventDefault(); }
-    });
   }
 
   /* ---- Ministeri, «Chi sei?»: i ministeri giusti salgono in cima con «Per te», gli altri si sbiadiscono ---- */
