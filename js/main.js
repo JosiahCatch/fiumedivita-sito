@@ -425,14 +425,17 @@
     const foto0 = nastro.querySelector('.marquee__foto');
     const copia0 = nastro.querySelector('.marquee__foto[aria-hidden]');
     const giro = () => (copia0 ? copia0.offsetLeft - foto0.offsetLeft : 0);   // lunghezza di un giro completo
-    let pos = 0, prima = 0, sopra = false, tocco = false, riparti = 0, visibile = false, mio = -1;
+    // ATTESA: dopo l'ultimo movimento del dito (anche la spinta che continua da sola) riparte quasi subito, in modo morbido
+    const ATTESA = 120;
+    let pos = 0, prima = 0, sopra = false, tocco = false, riparti = 0, visibile = false, mio = -1, slancio = 1;
     const fermo = () => sopra || tocco || Date.now() < riparti || !!nastro.querySelector(':focus-visible');
     const passo = (t) => {
       const dt = prima ? Math.min((t - prima) / 1000, .1) : 0;
       prima = t;
       if (visibile && !fermo()) {
         const L = giro();
-        pos += VEL * dt;
+        slancio = Math.min(1, slancio + dt / .4);   // riparte accelerando in 0,4 secondi, senza scatti
+        pos += VEL * slancio * dt;
         if (L && pos >= L) pos -= L;
         nastro.scrollLeft = pos;
         mio = nastro.scrollLeft;
@@ -445,12 +448,12 @@
       pos = nastro.scrollLeft;
       const L = giro();
       if (L && pos >= L) { pos -= L; nastro.scrollLeft = pos; }
-      riparti = Date.now() + 1500;
+      riparti = Date.now() + ATTESA; slancio = 0;
     }, { passive: true });
     nastro.addEventListener('mouseenter', () => { sopra = true; });
     nastro.addEventListener('mouseleave', () => { sopra = false; });
     nastro.addEventListener('touchstart', () => { tocco = true; }, { passive: true });
-    nastro.addEventListener('touchend', () => { tocco = false; riparti = Date.now() + 1500; });
+    nastro.addEventListener('touchend', () => { tocco = false; riparti = Date.now() + ATTESA; slancio = 0; });
     if ('IntersectionObserver' in window) new IntersectionObserver((v) => { visibile = v[0].isIntersecting; }).observe(nastro);
     else visibile = true;
     requestAnimationFrame(passo);
