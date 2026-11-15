@@ -855,20 +855,19 @@ html.hide-todo .todo-note { display: none; }
 
 /* Galleria che scorre, con pausa */
 .marquee-wrap { position: relative; }
-.marquee { overflow: hidden; padding-block: var(--s-2); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.marquee__track { display: flex; gap: var(--s-4); width: max-content; animation: marquee 60s linear infinite; }
-.marquee:hover .marquee__track, .marquee:focus-within .marquee__track, .marquee:active .marquee__track { animation-play-state: paused; }   /* si ferma col mouse sopra, col dito o con la tastiera */
+/* «Vita insieme»: il nastro scorre da solo (js/main.js muove lo scroll orizzontale, così si può anche trascinare col dito
+   per andare più veloce); si ferma col mouse sopra o mentre lo tocchi, poi riparte */
+.marquee { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; padding-block: var(--s-2); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee::-webkit-scrollbar { display: none; }
+.marquee__track { display: flex; gap: var(--s-4); width: max-content; }
 .marquee img { height: clamp(200px, 26vw, 320px); width: auto; aspect-ratio: auto; border-radius: var(--r-md); object-fit: cover; }
 .marquee__foto { flex: none; display: block; padding: 0; border: 0; background: none; border-radius: var(--r-md); cursor: zoom-in; }
 .marquee__foto img { display: block; }
 .marquee__foto:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-/* sul telefono (niente mouse) il nastro è fermo e si scorre col dito, una foto alla volta */
+/* sul telefono (niente mouse): foto un po' più piccole, niente sfumatura ai lati, toccarle non apre niente */
 @media (hover: none) {
-  .marquee { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; mask-image: none; padding-inline: 16px; scroll-padding-inline: 16px; }
-  .marquee::-webkit-scrollbar { display: none; }
-  .marquee__track { animation: none; }
-  .marquee__foto[aria-hidden="true"] { display: none; }
-  .marquee__foto { scroll-snap-align: start; cursor: default; }
+  .marquee { mask-image: none; padding-inline: 16px; }
+  .marquee__foto { cursor: default; }
   .marquee img { height: 240px; max-width: 82vw; }
 }
 /* foto in grande (PC): fondo scuro, frecce ai lati, contatore in basso */
@@ -887,7 +886,6 @@ html.hide-todo .todo-note { display: none; }
 .lb__succ { right: 24px; top: 50%; transform: translateY(-50%); }
 @keyframes lb-entra { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .lb[open] { animation: none; } }
-@keyframes marquee { to { transform: translateX(calc(-50% - var(--s-2))); } }
 
 /* ---------- 8. Pagine interne ---------- */
 
@@ -1204,8 +1202,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
-  .marquee__track { animation: none; flex-wrap: nowrap; }
-  .marquee { overflow-x: auto; }
 }
 
 /* ---------- 12. Stile del sito (quieter + animate + delight) ----------
@@ -1246,7 +1242,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .stile-nuovo .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-1); }
 .stile-nuovo .info-strip__card { box-shadow: 0 8px 30px rgb(10 46 61 / .08); }
 .stile-nuovo .hero__media img { animation: none; transform: scale(var(--hero-zoom)); }
-.stile-nuovo .marquee__track { animation-duration: 100s; }
 
 /* animate: un solo momento firmato, l'onda del logo che si disegna piano sotto la parola in corsivo dell'hero.
    Una sola linea continua (non più un motivo ripetuto, che lasciava dei tagli) allungata quanto la parola. */

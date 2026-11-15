@@ -415,6 +415,47 @@
     });
   });
 
+  /* ---- «Vita insieme»: il nastro scorre da solo, su PC e sul telefono ----
+     Muove lo scroll orizzontale (non una animazione CSS), così col dito si può trascinare per andare più veloce.
+     Si ferma col mouse sopra, mentre lo tocchi o con la tastiera, e riparte da dove l'hai lasciato.
+     Le foto sono ripetute due volte: arrivato a metà torna all'inizio senza che si veda. */
+  const nastro = document.querySelector('.marquee');
+  if (nastro && !reduce) {
+    const VEL = 34;                    // pixel al secondo
+    const foto0 = nastro.querySelector('.marquee__foto');
+    const copia0 = nastro.querySelector('.marquee__foto[aria-hidden]');
+    const giro = () => (copia0 ? copia0.offsetLeft - foto0.offsetLeft : 0);   // lunghezza di un giro completo
+    let pos = 0, prima = 0, sopra = false, tocco = false, riparti = 0, visibile = false, mio = -1;
+    const fermo = () => sopra || tocco || Date.now() < riparti || !!nastro.querySelector(':focus-visible');
+    const passo = (t) => {
+      const dt = prima ? Math.min((t - prima) / 1000, .1) : 0;
+      prima = t;
+      if (visibile && !fermo()) {
+        const L = giro();
+        pos += VEL * dt;
+        if (L && pos >= L) pos -= L;
+        nastro.scrollLeft = pos;
+        mio = nastro.scrollLeft;
+      }
+      requestAnimationFrame(passo);
+    };
+    // se lo scroll lo muovi tu (dito, rotellina, trackpad), il nastro riparte da lì
+    nastro.addEventListener('scroll', () => {
+      if (Math.abs(nastro.scrollLeft - mio) < 2) return;
+      pos = nastro.scrollLeft;
+      const L = giro();
+      if (L && pos >= L) { pos -= L; nastro.scrollLeft = pos; }
+      riparti = Date.now() + 1500;
+    }, { passive: true });
+    nastro.addEventListener('mouseenter', () => { sopra = true; });
+    nastro.addEventListener('mouseleave', () => { sopra = false; });
+    nastro.addEventListener('touchstart', () => { tocco = true; }, { passive: true });
+    nastro.addEventListener('touchend', () => { tocco = false; riparti = Date.now() + 1500; });
+    if ('IntersectionObserver' in window) new IntersectionObserver((v) => { visibile = v[0].isIntersecting; }).observe(nastro);
+    else visibile = true;
+    requestAnimationFrame(passo);
+  }
+
   /* ---- «Vita insieme»: su PC una foto cliccata si apre in grande; frecce (anche da tastiera) per andare avanti e indietro ---- */
   const lb = document.querySelector('.lb');
   if (lb && matchMedia('(hover: hover)').matches) {
