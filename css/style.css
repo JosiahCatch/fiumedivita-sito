@@ -1771,10 +1771,8 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .bw-punto h3 { margin: 22px 0 0; font-size: clamp(1.25rem, 1.8vw, 1.4rem); font-weight: 650; letter-spacing: -.01em; color: var(--c-deep); line-height: 1.2; }
 .bw-punto p { margin: 8px 0 0; color: var(--c-muted); max-width: 19em; line-height: 1.55; }
 .bw-vai { margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; font: 600 .98rem/1 var(--f-head); color: var(--c-primary); }
-.bw-vai svg { width: 16px; height: 16px; transition: transform .25s var(--ease-out); }
 .bw-punto:hover .bw-tondo { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--c-sun), 0 18px 36px rgb(10 46 61 / .22); }
 .bw-punto:hover .bw-tondo img { transform: scale(1.06); }
-.bw-punto:hover .bw-vai svg { transform: translateY(3px); }
 .bw-punto:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px; }
 /* nomi brevi dei tre punti: solo sul telefono */
 .bw-corto { display: none; }
@@ -1808,7 +1806,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .bw-disegna { stroke-dashoffset: 0; }
   .benvenuto.visto .bw-disegna { animation: none; }
-  .bw-tondo, .bw-tondo img, .bw-vai svg { transition: none; }
+  .bw-tondo, .bw-tondo img { transition: none; }
 }
 
 /* ================= Predicazioni: ricerca e filtro delle serie =================
