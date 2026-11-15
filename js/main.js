@@ -418,6 +418,14 @@
     });
   });
 
+  /* ---- Predicazioni «Per data»: dal più recente o dal meno recente (gira l'ordine delle schede) ---- */
+  document.querySelectorAll('[data-ordine]').forEach((b) => b.addEventListener('click', () => {
+    if (b.getAttribute('aria-pressed') === 'true') return;
+    b.parentElement.querySelectorAll('[data-ordine]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    const griglia = b.closest('.playlist').querySelector('.grid');
+    [...griglia.children].reverse().forEach((c) => griglia.appendChild(c));
+  }));
+
   /* ---- Predicazioni: ricerca per parola, brano o predicatore ---- */
   const pForm = document.querySelector('[data-pcerca]');
   if (pForm) {
