@@ -582,6 +582,32 @@ html.no-js .storia::before { content: ""; position: absolute; top: 0; bottom: 0;
 }
 @media (prefers-reduced-motion: reduce) { .storia__punto { transition: none; } }
 
+/* Dio ama Pozzuoli: la storia comincia con Paolo (in marroncino), poi un salto di 2000 anni,
+   le vite cambiate di oggi e un ritornello che chiude le tappe principali */
+.storia { --c-antico: #94650F; --c-antico-chiaro: #F6EBD3; }
+.storia__tappa--antica .storia__quando, .storia__tappa--antica h3 { color: var(--c-antico); }
+.storia__tappa--antica .storia__punto, .storia__tappa--antica.is-raggiunta .storia__punto { background: var(--c-antico); border-color: #fff; box-shadow: 0 0 0 4px #D9B36A, 0 0 0 12px rgb(148 101 15 / .14); }
+.storia__pergamena { background: var(--c-antico-chiaro); border-radius: var(--r-lg); padding: clamp(24px, 3vw, 36px); }
+.storia__versetto { margin: 0; }
+.storia__versetto p { margin: 0 0 12px; font: 400 clamp(1.25rem, 2vw, 1.6rem)/1.45 var(--f-accent); color: var(--c-ink-soft); text-wrap: pretty; }
+.storia__versetto cite { font: 600 1rem/1 var(--f-head); font-style: normal; }
+.storia__versetto cite a { color: var(--c-antico); text-underline-offset: 4px; }
+.storia__salto { position: relative; z-index: 2; display: flex; justify-content: center; margin: calc(-1 * clamp(20px, 3vw, 48px)) 0; }
+.storia__salto span { background: var(--c-bg); border: 1.5px dashed #D9B36A; color: var(--c-antico); border-radius: 999px; padding: 10px 20px; font: italic 500 1.15rem/1 var(--f-accent); white-space: nowrap; }
+.storia__testo > p.storia__ritornello { margin: var(--s-3) 0 0; font: italic 500 clamp(1.15rem, 1.6vw, 1.35rem)/1.3 var(--f-accent); color: var(--c-primary); }
+.storia__tappa--antica .storia__testo > p.storia__ritornello, .storia__tappa--futuro .storia__testo > p.storia__ritornello { color: var(--c-antico); }
+.storia__testo > p.storia__altre { margin-top: var(--s-3); font-size: var(--fs-md); }
+.storia__altre a { color: var(--c-primary); font-weight: 600; }
+.storia__tappa--vite .storia__foto .yt { border-radius: var(--r-lg); box-shadow: var(--shadow-2); }
+.storia__firma { display: block; margin-top: 10px; font-style: normal; font-family: var(--f-head); font-weight: 750; color: var(--c-deep); }
+@media (max-width: 760px) { .storia__salto { justify-content: flex-start; margin: calc(-1 * var(--s-5)) 0; } }
+
+/* Apertura di Chi siamo: invito a scendere nella storia */
+.hero-storia { display: inline-flex; align-items: center; gap: 14px; margin-top: var(--s-6); min-height: 48px; color: #fff; font: 600 1.06rem/1.2 var(--f-head); text-decoration: none; text-shadow: 0 1px 12px rgb(10 46 61 / .55); }
+.hero-storia__ico { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgb(255 255 255 / .7); background: rgb(255 255 255 / .12); transition: background-color .25s, color .25s, border-color .25s; }
+.hero-storia__ico svg { width: 20px; height: 20px; }
+.hero-storia:hover .hero-storia__ico { background: var(--c-sun); border-color: var(--c-sun); color: var(--c-deep); }
+
 /* Timeline (diario del cantiere, come partecipare) */
 .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
 .timeline::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: var(--c-line); }
