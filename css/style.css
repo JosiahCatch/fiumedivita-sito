@@ -762,7 +762,6 @@ html.hide-todo .todo-note { display: none; }
 .tm-video .yt { box-shadow: 0 2px 6px rgb(10 46 61 / .08), 0 24px 48px -28px rgb(10 46 61 / .45); }
 .tm-testo { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-4); min-width: 0; }
 .tm-storia { display: grid; gap: 6px; }
-.tm-serie { margin: 0; font: italic 400 1.15rem/1.2 var(--f-accent); color: var(--c-primary); }
 .tm-nome { margin: 0; font-size: clamp(1.6rem, 2.6vw, 2.2rem); line-height: 1.1; text-wrap: balance; }
 .tm-desc { margin: 2px 0 0; color: var(--c-muted); max-width: 32ch; }
 .tm-azioni { gap: var(--s-3); }
@@ -820,7 +819,6 @@ html.hide-todo .todo-note { display: none; }
 .ch-tag { position: absolute; bottom: 12px; padding: 6px 10px; border-radius: var(--r-xs); background: rgb(10 46 61 / .78); color: #fff; font: 500 var(--fs-sm)/1.2 var(--f-head); pointer-events: none; }
 .ch-tag em { font: italic 400 var(--fs-sm) var(--f-accent); color: var(--c-sun); }
 .ch-tag--prima { left: 12px; } .ch-tag--dopo { right: 12px; }
-.ch-aiuto { margin: var(--s-3) 0 0; font-size: var(--fs-md); color: var(--c-muted); }
 @media (max-width: 880px) { .ch { grid-template-columns: 1fr; } .ch-foto { order: -1; } }   /* sul telefono la foto subito sotto il titolo */
 @media (max-width: 520px) { .ch-tag > span { display: none; } }
 @media (prefers-reduced-motion: reduce) { .ch-maniglia { transition: none; } }
@@ -861,6 +859,34 @@ html.hide-todo .todo-note { display: none; }
 .marquee__track { display: flex; gap: var(--s-4); width: max-content; animation: marquee 60s linear infinite; }
 .marquee:hover .marquee__track, .marquee:focus-within .marquee__track, .marquee:active .marquee__track { animation-play-state: paused; }   /* si ferma col mouse sopra, col dito o con la tastiera */
 .marquee img { height: clamp(200px, 26vw, 320px); width: auto; aspect-ratio: auto; border-radius: var(--r-md); object-fit: cover; }
+.marquee__foto { flex: none; display: block; padding: 0; border: 0; background: none; border-radius: var(--r-md); cursor: zoom-in; }
+.marquee__foto img { display: block; }
+.marquee__foto:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+/* sul telefono (niente mouse) il nastro è fermo e si scorre col dito, una foto alla volta */
+@media (hover: none) {
+  .marquee { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; mask-image: none; padding-inline: 16px; scroll-padding-inline: 16px; }
+  .marquee::-webkit-scrollbar { display: none; }
+  .marquee__track { animation: none; }
+  .marquee__foto[aria-hidden="true"] { display: none; }
+  .marquee__foto { scroll-snap-align: start; cursor: default; }
+  .marquee img { height: 240px; max-width: 82vw; }
+}
+/* foto in grande (PC): fondo scuro, frecce ai lati, contatore in basso */
+.lb { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; }
+.lb[open] { display: grid; place-items: center; animation: lb-entra .25s var(--ease-out); }
+.lb::backdrop { background: rgb(8 20 26 / .9); }
+.lb__foto { max-width: min(92vw, 1400px); max-height: 84dvh; width: auto; height: auto; border-radius: var(--r-md); box-shadow: 0 20px 60px rgb(0 0 0 / .4); }
+.lb__conta { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); margin: 0; padding: 6px 14px; border-radius: 999px; background: rgb(255 255 255 / .12); font: 600 .95rem/1 var(--f-head); font-variant-numeric: tabular-nums; }
+.lb__btn { position: absolute; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 0; background: rgb(255 255 255 / .14); color: #fff; cursor: pointer; transition: background-color .2s; }
+.lb__btn:hover { background: rgb(255 255 255 / .28); }
+.lb__btn:focus-visible { outline: 3px solid var(--c-sun); outline-offset: 2px; }
+.lb__btn svg { width: 26px; height: 26px; }
+.lb__chiudi { top: 20px; right: 20px; width: 48px; height: 48px; }
+.lb__chiudi svg { transform: rotate(45deg); }
+.lb__prec { left: 24px; top: 50%; transform: translateY(-50%); }
+.lb__succ { right: 24px; top: 50%; transform: translateY(-50%); }
+@keyframes lb-entra { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .lb[open] { animation: none; } }
 @keyframes marquee { to { transform: translateX(calc(-50% - var(--s-2))); } }
 
 /* ---------- 8. Pagine interne ---------- */
@@ -1557,10 +1583,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
 @media (max-width: 760px) { .fv { --onda-l: 492px; --onda-h: 24px; } }
 .fv-testa { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
 .fv-testa .lead { margin-bottom: 0; }
-.fv-aiuto { display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 10px 16px; border-radius: 999px; background: var(--c-surface); font: 500 .95rem/1.2 var(--f-head); color: var(--c-deep); box-shadow: 0 0 0 1px rgb(14 90 115 / .15); }
-.fv-aiuto svg { width: 20px; height: 20px; color: var(--c-primary); flex: none; }
-.fv-aiuto [data-dito] { display: none; }
-@media (hover: none) { .fv-aiuto [data-mouse] { display: none; } .fv-aiuto [data-dito] { display: inline; } }
 .fv-fiume { position: relative; margin-top: 44px; }
 .fv-onda { position: absolute; left: 0; right: 0; top: 34px; height: 40px; width: 100%; color: var(--c-water); pointer-events: none; }
 .fv-fasce { display: grid; grid-template-columns: 1fr 1fr 4fr 3fr; position: relative; }
@@ -1568,16 +1590,13 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .fv-fascia:first-child { border-left: 0; }
 .fv-eta { order: 2; margin: 0; font: italic 400 1.15rem/1 var(--f-accent); color: var(--c-primary); }
 .fv-bolle { display: flex; justify-content: space-around; width: 100%; }
-.fv-bolla { position: relative; display: grid; justify-items: center; gap: 8px; width: 104px; padding-bottom: 18px; text-decoration: none; color: var(--c-deep); }
+.fv-bolla { position: relative; display: grid; justify-items: center; gap: 8px; width: 104px; padding: 0 0 18px; border: 0; background: none; font: inherit; text-decoration: none; color: var(--c-deep); cursor: pointer; }
 .fv-cerchio { position: relative; width: 84px; height: 84px; border-radius: 50%; overflow: hidden; border: 4px solid var(--c-surface); box-shadow: 0 6px 18px rgb(10 46 61 / .18); background: var(--c-deep); color: var(--c-sun); display: grid; place-items: center; transition: transform .3s var(--ease-out), border-color .3s, box-shadow .3s; }
 .fv-cerchio img { width: 100%; height: 100%; object-fit: cover; }
 .fv-cerchio svg { width: 34px; height: 34px; }
-.fv-piu { position: absolute; right: 6px; top: 58px; width: 26px; height: 26px; border-radius: 50%; background: var(--c-sun); color: var(--c-deep); display: grid; place-items: center; box-shadow: 0 2px 6px rgb(10 46 61 / .25); transition: transform .3s var(--ease-out), opacity .3s; }
-.fv-piu svg { width: 14px; height: 14px; }
 .fv-nome { font: 600 .95rem/1.2 var(--f-head); text-align: center; }
 .fv-bolla:hover .fv-cerchio { transform: scale(1.08); border-color: var(--c-sun); }
 .fv-bolla[aria-current] .fv-cerchio { transform: scale(1.12); border-color: var(--c-sun); box-shadow: 0 0 0 5px rgb(244 181 68 / .35), 0 8px 22px rgb(10 46 61 / .22); }
-.fv-bolla[aria-current] .fv-piu { opacity: 0; transform: scale(.5); }
 .fv-bolla:focus-visible { outline: none; }
 .fv-bolla:focus-visible .fv-cerchio { outline: 3px solid var(--focus); outline-offset: 3px; }
 .fv-bolla.fv-saluta .fv-cerchio { animation: fv-saluta 1.6s var(--ease-out) 2; }
@@ -1612,21 +1631,20 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .fv-bolle { gap: 2px; }
   .fv-bolla { width: 86px; scroll-snap-align: start; }
   .fv-cerchio { width: 70px; height: 70px; }
-  .fv-piu { top: 48px; right: 4px; width: 22px; height: 22px; }
   .fv-nome { font-size: .85rem; }
   .fv-scheda { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .fv-scheda__foto { aspect-ratio: 16 / 10; min-height: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .fv-bolla.fv-saluta .fv-cerchio, .fv-scheda.fv-entra > * { animation: none; }
-  .fv-cerchio, .fv-piu { transition: none; }
+  .fv-cerchio { transition: none; }
 }
 
 /* «Trova il tuo posto» sul telefono: piccole foto in alto come indice, sotto le card da sfogliare col dito
    (una spinta = una card; le vicine più piccole e un po' più scure). Sul PC resta il fiume con la vetrina. */
 .fm { display: none; }
 @media (max-width: 860px) {
-  .fv .fv-aiuto, .fv .fv-fiume, .fv .fv-vetrina { display: none; }
+  .fv .fv-fiume, .fv .fv-vetrina { display: none; }
   .fm { display: block; }
   .fm-bolle { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin: 20px -16px 0; padding: 8px 16px 4px; scroll-padding-inline: 16px; overscroll-behavior-x: contain; }
   .fm-bolle::-webkit-scrollbar { display: none; }
@@ -1758,21 +1776,34 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .bw-punto:hover .bw-tondo img { transform: scale(1.06); }
 .bw-punto:hover .bw-vai svg { transform: translateY(3px); }
 .bw-punto:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px; }
-/* telefono e tablet: in colonna, il fiume scende accanto alle tre foto */
+/* nomi brevi dei tre punti: solo sul telefono */
+.bw-corto { display: none; }
+/* telefono e tablet: titolo e testo in colonna; le tre foto in fila, unite dal fiume che si disegna come su PC */
 @media (max-width: 880px) {
+  .benvenuto { padding-block: 40px 36px; }
   .bw-testa { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
-  .bw-testa h2 { font-size: 2rem; }
-  .bw-dx p { font-size: 1.05rem; }
-  .bw-fiume { display: none; }
-  .bw-punti { grid-template-columns: minmax(0, 1fr); gap: 22px; }
-  .bw-punti::before { content: ""; position: absolute; left: 38px; top: 30px; bottom: 30px; width: 6px; border-radius: 3px; background: linear-gradient(180deg, #CFE9E6, #9BD7D3); }
-  .bw-punti > li { padding-inline: 0; }
-  .bw-punto { grid-template-columns: 82px minmax(0, 1fr); gap: 16px; align-items: center; justify-items: start; text-align: left; padding-bottom: 0; }
-  .bw-tondo { width: 82px; height: 82px; border-width: 4px; }
-  .bw-testo { justify-items: start; }
-  .bw-punto h3 { margin-top: 0; font-size: 1.12rem; }
-  .bw-punto p { margin-top: 3px; font-size: .95rem; line-height: 1.45; }
-  .bw-vai { margin-top: 6px; font-size: .92rem; }
+  .bw-testa h2 { font-size: 1.85rem; }
+  .bw-testa h2 span { font-size: 1.45rem; }
+  .bw-dx p { font-size: 1rem; }
+  .bw-corso { margin-top: 28px; }
+  /* il fiume ha l'altezza delle foto (84px): passa per il centro di ognuna */
+  .bw-fiume { height: 84px; }
+  /* il disegno è schiacciato in altezza (160 → 84): spessori ricalcolati per avere un fiume di circa 30px */
+  .bw-fiume path:nth-child(1) { stroke-width: 58; }
+  .bw-fiume path:nth-child(2) { stroke-width: 23; }
+  .bw-fiume path:nth-child(3) { stroke-width: 3; }
+  /* il disegno comincia e finisce fuori dallo schermo (circa un quinto per lato): sul telefono si anima solo il tratto
+     visibile, così il fiume si vede muovere subito; lento e regolare, per vederlo passare da una foto all'altra */
+  .benvenuto.visto .bw-disegna { animation: bw-scorre-tel 3.2s cubic-bezier(.2, .4, .4, 1) forwards; }
+  @keyframes bw-scorre-tel { from { stroke-dashoffset: .8; } to { stroke-dashoffset: 0; } }
+  .bw-punti { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+  .bw-punti > li { padding-inline: 4px; }
+  .bw-punto { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 10px; padding-bottom: 0; }
+  .bw-tondo { width: 84px; height: 84px; border-width: 4px; }
+  .bw-testo { justify-items: center; }
+  .bw-punto h3 { margin-top: 0; font-size: .98rem; line-height: 1.2; }
+  .bw-lungo, .bw-punto p, .bw-vai { display: none; }
+  .bw-corto { display: inline; }
 }
 @media (prefers-reduced-motion: reduce) {
   .bw-disegna { stroke-dashoffset: 0; }

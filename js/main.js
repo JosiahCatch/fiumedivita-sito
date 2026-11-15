@@ -94,7 +94,6 @@
   /* ---- Testimonianze in home: toccando un volto, la sua storia va in grande (anche se un video stava già andando) ---- */
   document.querySelectorAll('[data-storie]').forEach((box) => {
     const video = box.querySelector('.tm-video');
-    const serie = box.querySelector('.tm-serie');
     const nome = box.querySelector('.tm-nome');
     const desc = box.querySelector('.tm-desc');
     const playHTML = video.querySelector('.yt__play')?.outerHTML || '';   // il cerchio del play, da rimettere sulla nuova storia
@@ -112,7 +111,6 @@
       btn.append(img);
       btn.insertAdjacentHTML('beforeend', playHTML);
       video.replaceChildren(btn);
-      serie.textContent = d.serie;
       nome.textContent = `La storia di ${d.nome}`;
       desc.textContent = d.desc; desc.hidden = !d.desc;
       box.querySelectorAll('.tm-volto').forEach((x) => x.setAttribute('aria-pressed', String(x === v)));
@@ -186,11 +184,10 @@
       if (b.dataset.slug === attuale) b.setAttribute('aria-current', 'true');
       b.addEventListener('mouseenter', () => { if (!dito.matches) mostra(b.dataset.slug); });
       b.addEventListener('focus', () => mostra(b.dataset.slug));
-      // col dito: il primo tocco mostra la vetrina, il secondo apre la pagina del ministero
-      b.addEventListener('click', (e) => {
-        if (!dito.matches || b.dataset.slug === attuale) return;
-        e.preventDefault(); mostra(b.dataset.slug);
-        fv.querySelector('.fv-vetrina').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      // il clic sceglie soltanto: la pagina del ministero si apre con «Scopri» nella card
+      b.addEventListener('click', () => {
+        mostra(b.dataset.slug);
+        if (dito.matches) fv.querySelector('.fv-vetrina').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
       });
     });
     fv.querySelector('.fv-vetrina').addEventListener('click', (e) => {
@@ -239,11 +236,11 @@
     segui();
   }
 
-  /* ---- Home, «Benvenuto»: il fiume si disegna quando la sezione arriva sullo schermo ---- */
+  /* ---- Home, «Benvenuto»: il fiume si disegna quando le tre foto (non solo il titolo) arrivano sullo schermo ---- */
   const bw = document.querySelector('.benvenuto');
   if (bw) {
     if (reduce || !('IntersectionObserver' in window)) bw.classList.add('visto');
-    else { const ioBw = new IntersectionObserver((v) => { if (v[0].isIntersecting) { bw.classList.add('visto'); ioBw.disconnect(); } }, { threshold: 0.3 }); ioBw.observe(bw); }
+    else { const ioBw = new IntersectionObserver((v) => { if (v[0].isIntersecting) { bw.classList.add('visto'); ioBw.disconnect(); } }, { threshold: 0.5 }); ioBw.observe(bw.querySelector('.bw-corso') || bw); }
   }
 
   /* ---- Scroller orizzontali con frecce ---- */
@@ -417,6 +414,33 @@
       setTimeout(() => { e.target.textContent = 'Copia il link'; }, 2500);
     });
   });
+
+  /* ---- «Vita insieme»: su PC una foto cliccata si apre in grande; frecce (anche da tastiera) per andare avanti e indietro ---- */
+  const lb = document.querySelector('.lb');
+  if (lb && matchMedia('(hover: hover)').matches) {
+    const foto = [...document.querySelectorAll('.marquee__foto:not([aria-hidden])')];
+    const big = lb.querySelector('.lb__foto');
+    const conta = lb.querySelector('.lb__conta');
+    let cur = 0;
+    const mostra = (i) => {
+      cur = (i + foto.length) % foto.length;
+      const f = foto[cur].dataset;
+      big.srcset = f.srcset; big.sizes = '92vw'; big.src = f.grande;
+      big.alt = `Foto ${cur + 1} di ${foto.length} della nostra comunità`;
+      conta.textContent = `${cur + 1} / ${foto.length}`;
+    };
+    document.querySelectorAll('.marquee__foto').forEach((b) => b.addEventListener('click', () => {
+      mostra(+b.dataset.i);
+      lb.showModal();
+    }));
+    lb.querySelectorAll('[data-lb-dir]').forEach((b) => b.addEventListener('click', () => mostra(cur + +b.dataset.lbDir)));
+    lb.querySelector('[data-lb-chiudi]').addEventListener('click', () => lb.close());
+    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });   // clic sullo sfondo scuro
+    lb.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { mostra(cur + 1); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { mostra(cur - 1); e.preventDefault(); }
+    });
+  }
 
   /* ---- Ministeri, «Chi sei?»: i ministeri giusti salgono in cima con «Per te», gli altri si sbiadiscono ---- */
   //      Su PC i pulsanti stanno nel riquadro; sul telefono un bottone apre il pannello dal basso con le stesse scelte.
