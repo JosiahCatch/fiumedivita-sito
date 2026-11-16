@@ -1098,26 +1098,55 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .px, .px-serie { --lx-text: 41rem; --lx-margin: 15.5rem; --lx-gap: clamp(2.5rem, 5vw, 5rem); }
 .px-wide { max-width: calc(var(--lx-text) + var(--lx-margin) + var(--lx-gap)); }
 
-.px-head { background: var(--c-deep); color: var(--c-on-deep); padding: calc(var(--header-h) + clamp(28px, 5vw, 56px)) 0 clamp(36px, 6vw, 72px); }
-.px-crumbs, .px-crumbs a { color: var(--c-on-deep-muted); }
-.px-crumbs a { color: var(--c-water); }
-.px-head h1 { color: #fff; font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.05; max-width: 16em; margin: 0 0 var(--s-4); text-wrap: balance; }
-.px-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; margin: 0; font-size: var(--fs-md); color: var(--c-on-deep-muted); }
+/* testa chiara: titolo, chi la predica, e subito la frase. Il video non apre più la pagina. */
+.px-head { background: var(--c-bg); color: var(--c-ink); padding: calc(var(--header-h) + clamp(24px, 4vw, 48px)) 0 clamp(8px, 2vw, 16px); }
+.px-crumbs, .px-crumbs span { color: var(--c-muted); }
+.px-crumbs a { color: var(--c-primary); }
+.px-head h1 { color: var(--c-ink); font-size: clamp(2rem, 4.6vw, 3.3rem); letter-spacing: -.025em; line-height: 1.05; max-width: 16em; margin: 0 0 var(--s-4); text-wrap: balance; }
+.px-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; margin: 0; font-size: var(--fs-md); color: var(--c-muted); }
 .px-meta > * { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
 .px-meta > a { min-height: 44px; }   /* il brano si tocca facilmente anche col dito */
-.px-meta > * + * { margin-left: 14px; padding-left: 14px; border-left: 1px solid rgb(255 255 255 / .2); }
-.px-meta__chi { font: 600 var(--fs-base)/1.2 var(--f-head); color: #fff; }
-.px-meta__brano { color: var(--c-water); text-decoration: none; font-weight: 500; }
+.px-meta > * + * { margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--c-line); }
+.px-meta__chi { font: 600 var(--fs-base)/1.2 var(--f-head); color: var(--c-ink); }
+.px-meta__brano { color: var(--c-primary); text-decoration: none; font-weight: 500; }
 .px-meta__brano:hover { text-decoration: underline; }
 .px-meta svg { width: 16px; height: 16px; }
-.px-video { margin-top: clamp(28px, 4vw, 44px); }
-.px-video .yt { border-radius: var(--r-md); box-shadow: 0 0 0 1px rgb(255 255 255 / .08); }
+.px-video { margin: 0; }
+.px-video .yt { border-radius: var(--r-md); box-shadow: 0 2px 6px rgb(10 46 61 / .08), 0 24px 48px -28px rgb(10 46 61 / .45); }
+.px-video--grande { margin: clamp(28px, 4vw, 44px) 0 clamp(28px, 4vw, 48px); }   /* senza riassunto il video è il contenuto */
+
+/* PC: il video sta a margine, tra le note; avviato, si apre grande in cima al testo */
+.px-video-nota .px-video { margin-bottom: .5rem; }
+.px-video-nota .yt { border-radius: var(--r-sm); box-shadow: none; }
+.px-video-nota .yt__play span { width: 46px; height: 46px; }
+.px-video-nota .yt__play svg { width: 18px; height: 18px; margin-left: 3px; }
+.px-video-aperto { margin: 0 0 clamp(2rem, 4vw, 3rem); }
+.px-video-chiudi { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; padding: 0; border: 0; background: none; font: 600 var(--fs-md)/1 var(--f-head); color: var(--c-primary); cursor: pointer; }
+.px-video-chiudi:hover { text-decoration: underline; }
+
+/* telefono e tablet: una riga sotto la frase, miniatura e scritta; avviato, prende tutta la larghezza */
+.px-video-riga { display: none; }
+@media (max-width: 1020px) {
+  .px-video-nota { display: none; }
+  .px-video-riga { display: grid; grid-template-columns: 44% minmax(0, 1fr); gap: 14px; align-items: center; max-width: 34rem; margin: 0 0 clamp(32px, 5vw, 48px); padding: 10px; border-radius: var(--r-md); background: var(--c-surface); box-shadow: 0 0 0 1px var(--c-line); }
+  .px-video-riga .yt { border-radius: var(--r-sm); box-shadow: none; }
+  .px-video-riga .yt__play span { width: 40px; height: 40px; }
+  .px-video-riga .yt__play svg { width: 16px; height: 16px; margin-left: 2px; }
+  .px-video-riga figcaption { display: grid; gap: 2px; cursor: pointer; }
+  .px-video-riga figcaption strong { font: 650 var(--fs-base)/1.3 var(--f-head); color: var(--c-ink); }
+  .px-video-riga figcaption span { font-size: var(--fs-md); color: var(--c-muted); }
+  .px-video-riga.is-on { display: block; max-width: none; padding: 0; background: none; box-shadow: none; }
+  .px-video-riga.is-on .yt { border-radius: var(--r-sm); }
+  .px-video-riga.is-on figcaption { display: none; }
+}
 
 /* "in una frase": il cuore del messaggio, grande e in corsivo */
 .px-frase {
   margin: clamp(44px, 7vw, 80px) 0 clamp(40px, 6vw, 64px); max-width: 27em;
   font: italic 400 clamp(1.5rem, 3.3vw, 2.35rem)/1.32 var(--f-accent); color: var(--c-deep); text-wrap: pretty;
 }
+.px-head .px-frase { margin-top: clamp(28px, 4vw, 44px); }
+@media (max-width: 1020px) { .px-head .px-frase:has(+ .px-video-riga) { margin-bottom: 24px; } }
 .px-frase::before {   /* l'onda gialla del logo, come nel menu */
   content: ""; display: block; width: 58px; height: 10px; margin-bottom: var(--s-4); background: var(--c-sun);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 46 8'%3E%3Cpath d='M1 4c3.5-3 7-3 10.5 0s7 3 10.5 0 7-3 10.5 0 7 3 10.5 0' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
@@ -1148,17 +1177,79 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .px-vuoto { padding: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(3rem, 6vw, 4.5rem); }
 .px-vuoto p { margin: 0; max-width: 40em; font-size: var(--fs-body); color: var(--c-muted); }
 
-/* la serie: precedente e successiva */
-.px-serie { padding: clamp(2.5rem, 5vw, 4rem) 0; background: var(--c-tint); }
-.px-serie h2 { font: 700 clamp(1.3rem, 2.2vw, 1.6rem)/1.2 var(--f-head); margin: 0 0 var(--s-5); }
-.px-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
-.px-nav__link { display: grid; gap: 4px; padding: var(--s-4) var(--s-5); border-radius: var(--r-md); background: var(--c-surface); color: var(--c-ink); text-decoration: none; border: 1px solid transparent; transition: border-color .2s; }
-.px-nav__link:hover { border-color: var(--c-primary); }
-.px-nav__link--next { grid-column: 2; text-align: right; }
-.px-nav__dir { font: 600 var(--fs-md)/1.2 var(--f-head); color: var(--c-primary); }
-.px-nav__link strong { font: 650 1.1rem/1.3 var(--f-head); }
-.px-nav__link > span:last-child:not(.px-nav__dir) { font-size: var(--fs-md); color: var(--c-muted); }
-.px-serie__tutte { margin: var(--s-5) 0 0; }
+/* la serie: tappe numerate lungo una linea d'acqua e la prossima da leggere.
+   Il fondo a onde è quello di «Trova il tuo posto» in home (regole .fv, .sr più sotto). */
+.sr { padding: calc(var(--onda-h) + clamp(2.5rem, 5vw, 4rem)) 0; }
+.rs-tit { margin: 0 0 6px; font: 700 clamp(1.35rem, 2.4vw, 1.7rem)/1.2 var(--f-head); letter-spacing: -.015em; color: var(--c-ink); text-wrap: balance; }
+.rs-sotto { margin: 0 0 var(--s-5); max-width: 40em; color: var(--c-muted); font-size: var(--fs-body); line-height: 1.5; }
+.rs-tutte { margin: var(--s-4) 0 0; }
+.rs-tit + .rs2-pross { margin-top: var(--s-5); }   /* senza tappe (gruppi che non sono serie) */
+.rs2-fiume { --n: 8; position: relative; list-style: none; margin: 0 0 var(--s-6); padding: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+/* il letto del fiume: una linea d'acqua che si riempie fino alla tappa attuale */
+.rs2-fiume::before { content: ""; position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: 21px; height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--c-water) 25%, #fff); }
+.rs2-fiume::after { content: ""; position: absolute; left: calc(50% / var(--n)); top: 21px; height: 4px; border-radius: 4px; width: calc((var(--qui) - 1) * 100% / var(--n)); background: var(--c-water); }
+.rs2-tappa { position: relative; z-index: 1; display: flex; justify-content: center; }
+.rs2-tappa a { display: grid; justify-items: center; gap: 8px; min-width: 44px; padding: 0 4px; color: var(--c-ink); text-decoration: none; text-align: center; }
+.rs2-punto { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-water) 35%, #fff); font: 650 var(--fs-base)/1 var(--f-head); color: var(--c-primary); transition: transform .2s; }
+.rs2-tappa--fatta .rs2-punto { background: var(--c-water); color: #fff; box-shadow: none; }
+.rs2-tappa--qui .rs2-punto { background: var(--c-sun); color: var(--c-sun-ink); box-shadow: 0 0 0 5px color-mix(in srgb, var(--c-sun) 30%, transparent); }
+.rs2-tappa a:hover .rs2-punto { transform: scale(1.08); }
+.rs2-tappa--qui .rs2-nome { color: var(--c-ink); font-weight: 650; }
+/* l'arrivo: le tappe compaiono tutte insieme, poi l'acqua scorre fino alla tua e colora i pallini mentre passa.
+   .anima la mette main.js solo se si può animare: senza JS o con meno movimento tutto è già al suo posto. */
+.rs2-fiume.anima:not(.is-in)::after { width: 0; }
+.rs2-fiume.anima:not(.is-in) .rs2-tappa { opacity: 0; }
+.rs2-fiume.anima.is-in::after { animation: rs2-scorre var(--durata, 1s) linear .35s both; }
+.rs2-fiume.anima.is-in .rs2-tappa { animation: rs2-appare .35s var(--ease-out) calc(var(--i) * 30ms) both; }
+.rs2-fiume.anima.is-in :is(.rs2-tappa--fatta, .rs2-tappa--qui) .rs2-punto { animation: rs2-riempi .3s ease-out calc(var(--t) + .35s) both; }
+.rs2-fiume.anima.is-in .rs2-tappa--qui .rs2-punto { animation-name: rs2-arriva; animation-duration: .5s; }
+@keyframes rs2-scorre { from { width: 0; } }
+@keyframes rs2-appare { from { opacity: 0; transform: translateY(6px); } }
+@keyframes rs2-riempi { from { background: #fff; color: var(--c-primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-water) 35%, #fff); } }
+@keyframes rs2-arriva { 0% { background: #fff; color: var(--c-primary); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c-water) 35%, #fff); } 60% { transform: scale(1.12); } }
+.rs2-tappa a:focus-visible { outline: none; }
+.rs2-tappa a:focus-visible .rs2-punto { outline: 3px solid var(--focus); outline-offset: 3px; }
+.rs2-nome { font: 500 .82rem/1.25 var(--f-body); color: var(--c-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.rs2-pross { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--s-5); align-items: center; max-width: 52rem; padding: 12px; border-radius: var(--r-lg); background: #fff; color: var(--c-ink); text-decoration: none; box-shadow: 0 0 0 1px var(--c-line); transition: box-shadow .2s; }
+.rs2-pross:hover { box-shadow: 0 0 0 2px var(--c-primary); }
+.rs2-pross img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--r-sm); display: block; }
+.rs2-pross__testo { display: grid; gap: 6px; padding-right: 8px; }
+.rs2-pross__lab { font: 600 var(--fs-md)/1.2 var(--f-head); color: var(--c-primary); }
+.rs2-pross strong { font: 700 1.25rem/1.25 var(--f-head); }
+.rs2-pross__frase { font: italic 400 1.02rem/1.45 var(--f-accent); color: var(--c-ink-soft); }
+.rs2-pross__chi { font-size: var(--fs-md); color: var(--c-muted); }
+/* sul telefono la serie diventa una fila di card da scorrere col dito, con sotto la linea che dice a che numero sei */
+.sr-tel { display: none; }
+@media (max-width: 760px) {
+  .sr .rs2-fiume, .sr .rs2-pross--pc, .sr .rs-sotto { display: none; }
+  .sr-tel { display: block; }
+  .sr-fila { list-style: none; display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin: 18px -16px 0; padding: 4px 16px 10px; scroll-padding-inline: 16px; overscroll-behavior-x: contain; }
+  .sr-fila::-webkit-scrollbar { display: none; }
+  .sr-fila li { scroll-snap-align: start; display: grid; }
+  .sr-card { display: grid; align-content: start; gap: 4px; padding: 0 0 14px; border-radius: 14px; overflow: hidden; background: #fff; color: var(--c-ink); text-decoration: none; box-shadow: 0 0 0 1px var(--c-line), 0 8px 18px rgb(10 46 61 / .07); -webkit-tap-highlight-color: transparent; }
+  .sr-card:active { transform: scale(.98); }
+  .sr-card--qui { box-shadow: 0 0 0 3px var(--c-sun), 0 8px 18px rgb(10 46 61 / .07); }
+  .sr-card__foto { position: relative; display: block; margin-bottom: 8px; background: var(--c-deep); }
+  .sr-card__foto img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .sr-card__n { position: absolute; top: 8px; left: 8px; min-width: 28px; height: 28px; padding: 0 7px; border-radius: 999px; display: grid; place-items: center; background: rgb(255 255 255 / .92); color: var(--c-deep); font: 650 .85rem/1 var(--f-head); }
+  .sr-card--qui .sr-card__n { background: var(--c-sun); color: var(--c-sun-ink); }
+  .sr-card > :not(.sr-card__foto) { padding: 0 12px; }
+  .sr-card__dir { font: 600 .85rem/1.2 var(--f-head); color: var(--c-primary); }
+  .sr-card--qui .sr-card__dir { color: var(--c-deep); }
+  .sr-card b { font: 650 1.05rem/1.25 var(--f-head); }
+  .sr-card__chi { font-size: .88rem; color: var(--c-muted); }
+  .sr-piede { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+  .sr-conto { font: 600 .95rem/1 var(--f-head); color: var(--c-deep); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sr-barra { position: relative; flex: 1; height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--c-water) 25%, #fff); overflow: hidden; }
+  .sr-barra i { position: absolute; inset: 0 auto 0 0; width: calc(var(--i) * 100% / var(--n)); border-radius: 4px; background: var(--c-water); transition: width .35s var(--ease-out); }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) { .sr-barra i { transition: none; } }
+@media (max-width: 760px) {
+  .rs2-nome { display: none; }   /* sul telefono restano i numeri; il titolo della tappa attuale è già in pagina */
+  .rs2-punto { width: 38px; height: 38px; font-size: .95rem; }
+  .rs2-fiume::before, .rs2-fiume::after { top: 17px; }
+  .rs2-pross { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* nella pagina Predicazioni: il titolo porta alla pagina, e c'è il link al riassunto */
 .sermon h3 a { color: inherit; text-decoration: none; padding-block: 11px; }   /* area di tocco più alta, senza cambiare l'impaginazione (padding su un elemento in linea) */
@@ -1170,8 +1261,6 @@ div.mini-photo svg { width: 96px; height: 96px; }
   .px-meta { gap: 2px 18px; }
   .px-meta > * + * { margin-left: 0; padding-left: 0; border-left: 0; }
   .px-video .yt { border-radius: var(--r-sm); }
-  .px-nav { grid-template-columns: minmax(0, 1fr); }
-  .px-nav__link--next { grid-column: 1; }
   .px-punti__lista--ol .px-punto { grid-template-columns: 2.2rem minmax(0, 1fr); }
   .px-punti__lista--ol .px-punto::before { font-size: 2.1rem; }
 }
@@ -1562,7 +1651,7 @@ div.mini-photo svg { width: 96px; height: 96px; }
 /* ================= Home, «Trova il tuo posto»: il fiume delle età con la vetrina =================
    Un ministero è sempre aperto nella vetrina: si capisce subito che ogni bolla porta da qualche parte. */
 /* l'unica sezione colorata della home: acqua con i bordi a onde morbide, più intensa lungo la riva */
-.fv {
+.fv, .sr {
   --onda-l: 820px; --onda-h: 30px;
   --riva: color-mix(in srgb, var(--c-water) 22%, var(--c-tint));
   position: relative; z-index: 1;
@@ -1572,10 +1661,10 @@ div.mini-photo svg { width: 96px; height: 96px; }
 }
 /* i bordi a onde: due strisce disegnate sopra e sotto, piene del colore della riva.
    (Prima erano una maschera CSS, ma Firefox non la applicava e mostrava il bordo dritto.) */
-.fv::before, .fv::after { content: ""; position: absolute; left: 0; right: 0; height: var(--onda-h); pointer-events: none; }
-.fv::before { top: 0; background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"%3E%3Cpath fill="%23C4E6E4" d="M0 38.3L11 35.3L22 32.5L33 30.0L44 27.9L56 26.0L67 24.4L78 23.1L89 22.1L100 21.4L111 21.0L122 20.8L133 20.9L144 21.2L156 21.6L167 22.2L178 23.0L189 23.8L200 24.7L211 25.7L222 26.6L233 27.5L244 28.4L256 29.3L267 30.0L278 30.7L289 31.3L300 31.7L311 32.1L322 32.4L333 32.6L344 32.7L356 32.7L367 32.7L378 32.7L389 32.7L400 32.7L411 32.8L422 33.0L433 33.2L444 33.6L456 34.2L467 34.9L478 35.8L489 36.9L500 38.3L511 39.9L522 41.7L533 43.7L544 46.0L556 48.4L567 51.1L578 53.9L589 56.9L600 60.0L611 63.2L622 66.5L633 69.7L644 72.9L656 76.1L667 79.1L678 82.0L689 84.7L700 87.2L711 89.4L722 91.3L733 92.9L744 94.1L756 94.9L767 95.4L778 95.4L789 95.0L800 94.2L811 93.0L822 91.4L833 89.5L844 87.2L856 84.5L867 81.6L878 78.4L889 75.0L900 71.4L911 67.6L922 63.8L933 60.0L944 56.1L956 52.3L967 48.6L978 45.0L989 41.5L1000 38.3V100H0Z"/%3E%3C/svg%3E') left top / var(--onda-l) var(--onda-h) repeat-x; }
-.fv::after { bottom: 0; background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"%3E%3Cpath fill="%23C4E6E4" d="M0 43.2L11 42.6L22 42.0L33 41.6L44 41.2L56 40.8L67 40.5L78 40.1L89 39.7L100 39.3L111 38.8L122 38.2L133 37.5L144 36.7L156 35.7L167 34.7L178 33.5L189 32.2L200 30.9L211 29.4L222 27.9L233 26.3L244 24.7L256 23.1L267 21.6L278 20.2L289 18.8L300 17.6L311 16.6L322 15.8L333 15.2L344 14.9L356 14.8L367 15.1L378 15.7L389 16.6L400 17.9L411 19.5L422 21.4L433 23.7L444 26.3L456 29.2L467 32.4L478 35.8L489 39.4L500 43.2L511 47.2L522 51.2L533 55.2L544 59.3L556 63.3L567 67.2L578 71.0L589 74.6L600 77.9L611 81.0L622 83.8L633 86.3L644 88.5L656 90.2L667 91.6L678 92.6L689 93.2L700 93.3L711 93.2L722 92.6L733 91.6L744 90.4L756 88.8L767 87.0L778 84.9L789 82.6L800 80.1L811 77.5L822 74.8L833 72.1L844 69.3L856 66.6L867 63.9L878 61.3L889 58.9L900 56.5L911 54.3L922 52.3L933 50.5L944 48.8L956 47.3L967 46.1L978 45.0L989 44.0L1000 43.2V0H0Z"/%3E%3C/svg%3E') left calc(var(--onda-l) / 2) bottom / var(--onda-l) var(--onda-h) repeat-x; }
-@media (max-width: 760px) { .fv { --onda-l: 492px; --onda-h: 24px; } }
+.fv::before, .fv::after, .sr::before, .sr::after { content: ""; position: absolute; left: 0; right: 0; height: var(--onda-h); pointer-events: none; }
+.fv::before, .sr::before { top: 0; background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"%3E%3Cpath fill="%23C4E6E4" d="M0 38.3L11 35.3L22 32.5L33 30.0L44 27.9L56 26.0L67 24.4L78 23.1L89 22.1L100 21.4L111 21.0L122 20.8L133 20.9L144 21.2L156 21.6L167 22.2L178 23.0L189 23.8L200 24.7L211 25.7L222 26.6L233 27.5L244 28.4L256 29.3L267 30.0L278 30.7L289 31.3L300 31.7L311 32.1L322 32.4L333 32.6L344 32.7L356 32.7L367 32.7L378 32.7L389 32.7L400 32.7L411 32.8L422 33.0L433 33.2L444 33.6L456 34.2L467 34.9L478 35.8L489 36.9L500 38.3L511 39.9L522 41.7L533 43.7L544 46.0L556 48.4L567 51.1L578 53.9L589 56.9L600 60.0L611 63.2L622 66.5L633 69.7L644 72.9L656 76.1L667 79.1L678 82.0L689 84.7L700 87.2L711 89.4L722 91.3L733 92.9L744 94.1L756 94.9L767 95.4L778 95.4L789 95.0L800 94.2L811 93.0L822 91.4L833 89.5L844 87.2L856 84.5L867 81.6L878 78.4L889 75.0L900 71.4L911 67.6L922 63.8L933 60.0L944 56.1L956 52.3L967 48.6L978 45.0L989 41.5L1000 38.3V100H0Z"/%3E%3C/svg%3E') left top / var(--onda-l) var(--onda-h) repeat-x; }
+.fv::after, .sr::after { bottom: 0; background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"%3E%3Cpath fill="%23C4E6E4" d="M0 43.2L11 42.6L22 42.0L33 41.6L44 41.2L56 40.8L67 40.5L78 40.1L89 39.7L100 39.3L111 38.8L122 38.2L133 37.5L144 36.7L156 35.7L167 34.7L178 33.5L189 32.2L200 30.9L211 29.4L222 27.9L233 26.3L244 24.7L256 23.1L267 21.6L278 20.2L289 18.8L300 17.6L311 16.6L322 15.8L333 15.2L344 14.9L356 14.8L367 15.1L378 15.7L389 16.6L400 17.9L411 19.5L422 21.4L433 23.7L444 26.3L456 29.2L467 32.4L478 35.8L489 39.4L500 43.2L511 47.2L522 51.2L533 55.2L544 59.3L556 63.3L567 67.2L578 71.0L589 74.6L600 77.9L611 81.0L622 83.8L633 86.3L644 88.5L656 90.2L667 91.6L678 92.6L689 93.2L700 93.3L711 93.2L722 92.6L733 91.6L744 90.4L756 88.8L767 87.0L778 84.9L789 82.6L800 80.1L811 77.5L822 74.8L833 72.1L844 69.3L856 66.6L867 63.9L878 61.3L889 58.9L900 56.5L911 54.3L922 52.3L933 50.5L944 48.8L956 47.3L967 46.1L978 45.0L989 44.0L1000 43.2V0H0Z"/%3E%3C/svg%3E') left calc(var(--onda-l) / 2) bottom / var(--onda-l) var(--onda-h) repeat-x; }
+@media (max-width: 760px) { .fv, .sr { --onda-l: 492px; --onda-h: 24px; } }
 .fv-testa { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
 .fv-testa .lead { margin-bottom: 0; }
 .fv-fiume { position: relative; margin-top: 44px; }

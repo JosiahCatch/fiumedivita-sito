@@ -61,7 +61,7 @@
      Le griglie (schede, foto, persone) entrano una scheda alla volta. */
   if (!reduce && root.classList.contains('stile-nuovo') && 'IntersectionObserver' in window) {
     const sotto = (el) => el.getBoundingClientRect().top > window.innerHeight;
-    const libero = (el) => !el.matches('.reveal, script, style, template') && !el.querySelector('.reveal') && !el.closest('.reveal');
+    const libero = (el) => !el.matches('.reveal, .rs2-fiume, script, style, template') && !el.querySelector('.reveal') && !el.closest('.reveal');   // il fiume della serie ha la sua entrata
     document.querySelectorAll('main section:not(.hero):not(.page-hero):not([data-fermo]) .container > *').forEach((el) => {
       if (!libero(el) || !sotto(el)) return;
       const d = getComputedStyle(el).display;
@@ -72,6 +72,39 @@
         el.classList.add('reveal');
       }
     });
+  }
+  /* Pagina di una predica, la serie sul telefono: card da scorrere; la linea e il numero seguono la card in vista.
+     All'apertura la fila parte dalla predica che stai leggendo, e la linea si riempie quando la sezione arriva. */
+  const fila = document.querySelector('.sr-fila');
+  if (fila) {
+    const carte = [...fila.children];
+    const conto = document.querySelector('.sr-conto');
+    const barra = document.querySelector('.sr-barra');
+    const qui = fila.querySelector('[data-qui]');
+    const vedi = (n) => { conto.textContent = `${n} di ${barra.style.getPropertyValue('--n')}`; barra.style.setProperty('--i', n); };
+    let vista = false;
+    const segui = () => {
+      if (!vista || !fila.offsetWidth) return;
+      const passo = carte[1] ? carte[1].offsetLeft - carte[0].offsetLeft : 1;
+      const fine = fila.scrollLeft >= fila.scrollWidth - fila.clientWidth - 2;   // in fondo alla fila conta l'ultima
+      const i = fine ? carte.length - 1 : Math.max(0, Math.min(carte.length - 1, Math.round(fila.scrollLeft / passo)));
+      vedi(carte[i].dataset.n);
+    };
+    if (qui) fila.scrollLeft = qui.offsetLeft - carte[0].offsetLeft;
+    if (!reduce && 'IntersectionObserver' in window) {
+      barra.style.setProperty('--i', 0);
+      const ioT = new IntersectionObserver(([en]) => { if (en.isIntersecting) { vista = true; requestAnimationFrame(() => vedi(qui ? qui.dataset.n : carte[0].dataset.n)); ioT.disconnect(); } }, { threshold: 0.6 });   // all'arrivo la linea si ferma sulla tua
+      ioT.observe(fila);
+    } else { vista = true; }
+    fila.addEventListener('scroll', segui, { passive: true });
+  }
+
+  /* Pagina di una predica, la serie: quando il fiume entra nello schermo l'acqua scorre fino alla tappa attuale */
+  const fiumeSerie = document.querySelector('.rs2-fiume');
+  if (fiumeSerie && !reduce && 'IntersectionObserver' in window) {
+    fiumeSerie.classList.add('anima');
+    const ioF = new IntersectionObserver(([en]) => { if (en.isIntersecting) { fiumeSerie.classList.add('is-in'); ioF.disconnect(); } }, { threshold: 0.6 });
+    ioF.observe(fiumeSerie);
   }
   const reveals = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
@@ -119,6 +152,35 @@
       if (top < 0) video.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     });
   });
+
+  /* ---- Pagina di una predica: il video si apre dove si legge ----
+     PC: il video a margine si apre grande in cima al testo. Telefono: la riga «Guarda la predicazione» si allarga.
+     Ascolta in fase di cattura, prima del caricatore qui sotto. */
+  const riduciMoto = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  document.addEventListener('click', (e) => {
+    const nota = e.target.closest('.px-video-nota button.yt');
+    if (nota) {
+      e.preventDefault(); e.stopPropagation();
+      const testo = document.querySelector('.px-grid > div');
+      const box = document.createElement('div');
+      box.className = 'px-video-aperto';
+      box.innerHTML = nota.closest('.px-video').outerHTML + '<button type="button" class="px-video-chiudi">Chiudi il video</button>';
+      testo.prepend(box);
+      const sezione = nota.closest('.px-video-nota');
+      sezione.hidden = true;
+      box.querySelector('.px-video-chiudi').addEventListener('click', () => { box.remove(); sezione.hidden = false; sezione.querySelector('button.yt')?.focus(); });
+      box.scrollIntoView({ behavior: riduciMoto(), block: 'center' });
+      box.querySelector('button.yt').click();
+      return;
+    }
+    const riga = e.target.closest('[data-video-riga]');
+    if (riga && !riga.classList.contains('is-on')) {
+      const btn = riga.querySelector('button.yt');
+      if (!e.target.closest('button.yt')) { e.preventDefault(); btn?.click(); return; }   // anche la scritta avvia il video
+      riga.classList.add('is-on');
+      requestAnimationFrame(() => riga.scrollIntoView({ behavior: riduciMoto(), block: 'center' }));
+    }
+  }, true);
 
   /* ---- YouTube "lite": carica l'iframe solo al click ---- */
   document.addEventListener('click', (e) => {
