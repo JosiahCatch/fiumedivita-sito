@@ -1,0 +1,718 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive"><meta name="referrer" content="no-referrer"><link rel="icon" href="../favicon.png" type="image/png"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><meta name="apple-mobile-web-app-title" content="Checklist IG"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style></head><body>
+<title>Checklist Instagram Pozzuoli</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: lista a una colonna pensata per il pollice; ogni post è una riga con data, titolo e due spunte grandi. Palette del sito Fiume di Vita. */
+  :root {
+    --paper: #FFFFFF;
+    --sand: #FDF5EB;
+    --sea: #0B6E8A;
+    --sea-soft: #E3F1F5;
+    --sun: #9A5A0C;
+    --sun-soft: #FFE7C9;
+    --ink: #23323C;
+    --muted: #5C6B74;
+    --line: #E6DDD0;
+    --ok: #2F7A4B;
+    --ok-soft: #E2F2E7;
+    --warn: #9E3520;
+    --warn-soft: #FBE6E0;
+    --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --f-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1A1C1F; --sand: #23262A; --sea: #5FB8D3; --sea-soft: #173540; --sun: #E3A55A; --sun-soft: #3A2A16;
+      --ink: #E9ECEE; --muted: #A3ADB3; --line: #34383D; --ok: #7FD39C; --ok-soft: #1C3426;
+      --warn: #F0937C; --warn-soft: #3B211B; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1A1C1F; --sand: #23262A; --sea: #5FB8D3; --sea-soft: #173540; --sun: #E3A55A; --sun-soft: #3A2A16;
+    --ink: #E9ECEE; --muted: #A3ADB3; --line: #34383D; --ok: #7FD39C; --ok-soft: #1C3426;
+    --warn: #F0937C; --warn-soft: #3B211B; color-scheme: dark;
+  }
+  body { background: var(--sand); color: var(--ink); font: 15px/1.5 var(--f-body); }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+  .wrap { max-width: 640px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+
+  header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line);
+    margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px 10px; display: grid; gap: 8px; }
+  .eyebrow { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--sun); font-weight: 600; }
+  h1 { margin: 0; font-family: var(--f-display); font-size: 22px; line-height: 1.15; text-wrap: balance; }
+  .progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .bar { flex: 1; height: 8px; border-radius: 99px; background: var(--sea-soft); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--ok); transition: width .3s; }
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+  .seg button, .btn { font: 600 13px var(--f-body); border: 0; background: transparent; color: var(--muted); padding: 7px 12px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--sea); color: var(--paper); }
+  .btn { border: 1px solid var(--line); border-radius: 99px; color: var(--sea); }
+  button:focus-visible, summary:focus-visible, input:focus-visible { outline: 2px solid var(--sea); outline-offset: 2px; }
+  .sync { font-size: 12px; color: var(--muted); }
+  .sync.off { color: var(--warn); }
+
+  .week { display: grid; gap: 8px; margin-top: 20px; }
+  .week h2 { margin: 0; font-family: var(--f-display); font-size: 17px; }
+  .week .prep { font-size: 12px; color: var(--sun); font-weight: 600; }
+  .week.now h2::after { content: "questa settimana"; margin-left: 8px; font: 600 11px var(--f-body); color: var(--paper); background: var(--sun); padding: 2px 8px; border-radius: 99px; vertical-align: 2px; }
+
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+  .card.done { background: var(--ok-soft); border-color: transparent; }
+  .row { display: grid; grid-template-columns: 44px 1fr; gap: 10px; padding: 10px 12px 8px; }
+  .date { text-align: center; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .date .dow { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .date .day { display: block; font-family: var(--f-display); font-size: 22px; font-weight: 700; color: var(--sea); }
+  .date .mon { display: block; font-size: 11px; color: var(--muted); }
+  .card.done .date .day { color: var(--ok); }
+  .main { min-width: 0; display: grid; gap: 4px; }
+  .main h3 { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.3; }
+  .card.done h3 { text-decoration: line-through; color: var(--muted); }
+  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 99px; background: var(--sea-soft); color: var(--sea); }
+  .pill.rub { background: var(--sun-soft); color: var(--sun); }
+  .pill.pin { background: var(--warn-soft); color: var(--warn); }
+  .checks { display: flex; gap: 8px; padding: 0 12px 10px 66px; flex-wrap: wrap; }
+  .chk { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); font-size: 14px; font-weight: 500; cursor: pointer; user-select: none; }
+  .chk input { width: 20px; height: 20px; accent-color: var(--ok); margin: 0; }
+  .chk:has(input:checked) { border-color: var(--ok); color: var(--ok); }
+  details { border-top: 1px solid var(--line); }
+  details summary { cursor: pointer; padding: 8px 12px 8px 66px; font-size: 13px; color: var(--sea); font-weight: 600; list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: "▸ "; }
+  details[open] summary::before { content: "▾ "; }
+  .det { padding: 0 12px 12px 66px; display: grid; gap: 6px; font-size: 14px; }
+  .det p { margin: 0; }
+  .det b { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; display: block; }
+  .hook { font-style: italic; }
+  .alert { background: var(--warn-soft); color: var(--warn); border-radius: 8px; padding: 6px 10px; }
+
+  .task { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; cursor: pointer; }
+  .task + .task { border-top: 1px solid var(--line); }
+  .task input { width: 20px; height: 20px; accent-color: var(--ok); margin: 1px 0 0; flex: none; }
+  .task:has(input:checked) span { text-decoration: line-through; color: var(--muted); }
+  .stories { font-size: 13px; background: var(--sea-soft); border-radius: 10px; padding: 8px 12px; margin: 0; }
+  .stories b { color: var(--sea); }
+  .empty { text-align: center; color: var(--muted); padding: 24px 0; }
+  @media (max-width: 380px) { .checks, details summary, .det { padding-left: 12px; } }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Fiume di Vita · Instagram</span>
+    <h1>Dio ama Pozzuoli · checklist</h1>
+    <div class="progress"><div class="bar"><i id="barFill"></i></div><span>Pubblicati <b id="countDone">0</b>/<b id="countTot">0</b></span></div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Mostra">
+        <button type="button" id="fTodo" aria-pressed="true">Da fare</button>
+        <button type="button" id="fAll" aria-pressed="false">Tutto</button>
+      </div>
+      <button type="button" class="btn" id="goNow">Vai a oggi</button>
+    </div>
+    <span class="sync" id="sync"></span>
+  </header>
+  <div id="weeks"></div>
+</div>
+
+<script>
+var WEEKS = [
+  {
+    title: "Settimana 1 · 16–22 novembre",
+    prep: "Rinnovo pagina: entro giovedì 19",
+    note: "Prima si sistema la vetrina, poi si pubblica.",
+    tasks: [
+      { id: "t1", text: "Mandarmi 2-3 screenshot della griglia: ti dico quali post tenere e quali archiviare" },
+      { id: "t2", text: "Correggere la località «Cafone» nell'indirizzo" },
+      { id: "t3", text: "Nuova bio: «Amiamo Pozzuoli. Dio la ama ancora di più. / Una chiesa nella tua città dal 1997 / Via Casalanno 85 · Domenica 10:30 / Vieni a trovarci»" },
+      { id: "t4", text: "Archiviare (non eliminare) i post fuori linea" },
+      { id: "t5", text: "Storie in evidenza: Pozzuoli · Chi siamo · Vieni · Eventi · Prediche (in quest'ordine)" },
+      { id: "t6", text: "Togliere dai fissati il culto sul palco e la foto di gruppo; lasciare «Il progetto per la città»" },
+      { id: "t7", text: "Installare Meta Business Suite per programmare i post" }
+    ],
+    posts: [
+      { id: "p1", dow: "Ven", day: 20, mon: "nov", format: "Carosello", rub: "Storia di Pozzuoli", pin: true,
+        title: "Paolo è sbarcato qui",
+        hook: "Prima che a Roma, a Pozzuoli c'era già una chiesa.",
+        idea: "Il porto di Puteoli nel I secolo, la nave di Paolo, i «fratelli» che lo accolgono e lo ospitano per sette giorni. Ultima slide: noi siamo una chiesa che vive ancora in questa città.",
+        vangelo: "Atti 28,13-14. Paolo era in catene perché annunciava che Gesù è risorto: quella notizia è arrivata a Roma passando da Pozzuoli.",
+        foto: "Il porto, il Serapeo, il mare visto dal Rione Terra." }
+    ],
+    stories: "Fai vedere il «prima e dopo» del profilo e annuncia che la pagina cambia: «Da oggi raccontiamo Pozzuoli»."
+  },
+  {
+    title: "Settimana 2 · 23–29 novembre",
+    prep: "Preparazione: domenica 22",
+    posts: [
+      { id: "p2", dow: "Mar", day: 24, mon: "nov", format: "Carosello", rub: "Porte aperte", pin: true,
+        title: "Vieni a trovarci",
+        hook: "La prima volta in una chiesa evangelica? Ecco cosa ti aspetta.",
+        idea: "Dove siamo, quando (domenica 10:30), dove parcheggiare, quanto dura, cosa fanno i bambini, come vestirsi (come vuoi). Volti veri e sorridenti, niente palco.",
+        vangelo: "Una frase sola: «Gesù accoglieva tutti, e noi proviamo a fare lo stesso.»",
+        foto: "L'ingresso, la sala prima del culto, qualcuno che accoglie alla porta (con consenso)." },
+      { id: "p3", dow: "Ven", day: 27, mon: "nov", format: "Reel", rub: "Lavori in corso #1",
+        title: "Perché costruiamo un centro a Pozzuoli",
+        hook: "Stiamo costruendo qualcosa per Pozzuoli.",
+        idea: "Video a piedi nel cantiere, 30-45 secondi, voce fuori campo: cosa ospiterà il centro e per chi è pensato (doposcuola? sport? corsi?). Chiudi con «Ti terremo aggiornato».",
+        vangelo: "Marco 10,45: Gesù «non è venuto per essere servito, ma per servire». Il centro nasce da lì.",
+        foto: "Cantiere, mani al lavoro, il quartiere intorno." }
+    ],
+    stories: "Sondaggio: «Cosa manca di più a Pozzuoli?» con due opzioni (spazi per i ragazzi / posti dove incontrarsi). Le risposte ti danno idee per i post."
+  },
+  {
+    title: "Settimana 3 · 30 novembre – 6 dicembre",
+    prep: "Preparazione: domenica 29",
+    posts: [
+      { id: "p4", dow: "Mar", day: 1, mon: "dic", format: "Carosello", rub: "Pozzuoli com'è",
+        title: "Tutta la notte in mare",
+        hook: "Tutta la notte in mare. Reti vuote.",
+        idea: "Il porto all'alba, le barche che rientrano. Ogni pescatore di Pozzuoli conosce quella notte. Pietro l'ha vissuta.",
+        vangelo: "Luca 5,1-11. Gesù va da Pietro proprio dopo la notte peggiore: Dio non aspetta che tu sia in forma per cercarti.",
+        foto: "Porto di Pozzuoli all'alba, reti, mani dei pescatori." },
+      { id: "p5", dow: "Ven", day: 4, mon: "dic", format: "Foto + storia", rub: "Volti di Pozzuoli #1",
+        title: "Una persona, una storia",
+        hook: "Lui/lei è Pozzuoli.",
+        idea: "Una persona della città (un commerciante, un pescatore, un allievo del corso di inglese): 3-4 righe sulla sua vita, con le sue parole. Il post è per lei, non per noi.",
+        vangelo: "In didascalia, breve: ogni persona di questa città ha un valore enorme agli occhi di Dio.",
+        foto: "Ritratto naturale sul posto di lavoro. Consenso scritto o vocale prima di pubblicare." }
+    ],
+    stories: "Dietro le quinte del ritratto: com'è andata l'intervista."
+  },
+  {
+    title: "Settimana 4 · 7–13 dicembre",
+    prep: "Preparazione: domenica 6",
+    posts: [
+      { id: "p6", dow: "Mar", day: 8, mon: "dic", format: "Carosello", rub: "Pozzuoli ci tocca",
+        title: "Quando la terra trema",
+        hook: "A Pozzuoli lo sappiamo: anche la terra può muoversi.",
+        idea: "Il bradisismo ci ricorda quanto è fragile ciò su cui contiamo: casa, lavoro, salute. Tono di vicinanza, nessuna paura alimentata.",
+        vangelo: "Matteo 7,24-27: la casa sulla roccia. Gesù non promette che la terra smetterà di tremare, ma che c'è qualcuno che non crolla: lui ha vinto anche la morte.",
+        foto: "Una crepa su un muro, una strada di Pozzuoli, poi il mare calmo.",
+        alert: "Se quella settimana ci sono scosse forti, rinvia e pubblica il post del Monte Nuovo. In quei giorni servono vicinanza e informazioni pratiche, non riflessioni." },
+      { id: "p7", dow: "Ven", day: 11, mon: "dic", format: "Reel", rub: "Lavori in corso #2",
+        title: "Il centro cresce, e a Natale vi aspettiamo",
+        hook: "Due settimane dopo: guarda quanto è cambiato.",
+        idea: "Confronto prima/dopo del cantiere, poi l'invito agli appuntamenti di Natale della chiesa.",
+        vangelo: "Una frase: «A Natale festeggiamo un Dio che è venuto ad abitare in mezzo a noi.» (Giovanni 1,14)",
+        foto: "Stesse inquadrature del reel #1, per il confronto.",
+        alert: "Date e orari degli eventi di Natale: da confermare." }
+    ],
+    stories: "Conto alla rovescia per gli eventi di Natale (sticker «conto alla rovescia»)."
+  },
+  {
+    title: "Settimana 5 · 14–20 dicembre",
+    prep: "Preparazione: domenica 13",
+    posts: [
+      { id: "p8", dow: "Mar", day: 15, mon: "dic", format: "Carosello", rub: "Luoghi di Pozzuoli",
+        title: "La montagna nata in una settimana",
+        hook: "Nel 1538 qui è nata una montagna. In pochi giorni.",
+        idea: "Il Monte Nuovo, la montagna più giovane d'Europa: dove prima c'era un villaggio, in una settimana è sorto un monte. Racconto breve, foto di oggi dal sentiero.",
+        vangelo: "Salmo 90,2: «Prima che i monti fossero nati… tu sei Dio.» Tutto qui cambia, anche le montagne; Dio no. E ci tiene a noi.",
+        foto: "Il Monte Nuovo dal lago Lucrino o dal sentiero dell'oasi." },
+      { id: "p9", dow: "Ven", day: 18, mon: "dic", format: "Reel", rub: "Pozzuoli com'è",
+        title: "Le luci di Natale in città",
+        hook: "Pozzuoli si accende.",
+        idea: "Passeggiata serale tra le luci di Natale della città, 20-30 secondi con musica tranquilla. In fondo l'invito al culto di Natale.",
+        vangelo: "Isaia 9,1 e Giovanni 8,12: «Il popolo che camminava nelle tenebre vede una gran luce.» Gesù è quella luce.",
+        foto: "Luci, vetrine, persone a passeggio (senza volti riconoscibili se non hai il consenso).",
+        alert: "Orario del culto di Natale: da confermare." }
+    ],
+    stories: "Ricondividi i commenti più belli ai post della settimana."
+  },
+  {
+    title: "Settimana 6 · 21–27 dicembre",
+    prep: "Preparazione: domenica 20 (prepara tutti e tre)",
+    posts: [
+      { id: "p10", dow: "Mar", day: 22, mon: "dic", format: "Carosello", rub: "Pozzuoli ci tocca",
+        title: "Chi passa il Natale da solo",
+        hook: "Non tutti a Pozzuoli avranno una tavola piena.",
+        idea: "Anziani soli, famiglie in difficoltà. Cosa fa la chiesa (aiuto ai bisognosi) e come chiunque può dare una mano o chiedere aiuto.",
+        vangelo: "Matteo 1,23: Emmanuele, «Dio con noi». A Natale Dio ha scelto di non lasciarci soli.",
+        foto: "Mani che preparano pacchi, una tavola apparecchiata, niente volti di chi riceve aiuto." },
+      { id: "p11", dow: "Gio", day: 24, mon: "dic", format: "Storia", rub: "Vigilia",
+        title: "Stasera a Pozzuoli",
+        hook: "Stasera, in tante case di Pozzuoli…",
+        idea: "3-4 storie la sera della Vigilia: la città illuminata, un augurio semplice, l'invito per domani.",
+        vangelo: "Luca 2,10-11: «Oggi vi è nato un Salvatore». Spiegato in una riga: qualcuno che ti tira fuori da dove da solo non esci.",
+        foto: "La città la sera della Vigilia." },
+      { id: "p12", dow: "Ven", day: 25, mon: "dic", format: "Foto + didascalia", rub: "Natale",
+        title: "Buon Natale, Pozzuoli",
+        hook: "Buon Natale, Pozzuoli.",
+        idea: "La foto più bella della città raccolta in questi mesi. Didascalia breve e chiara.",
+        vangelo: "Il vangelo intero in quattro frasi: Dio ama questa città. Ha mandato Gesù. Gesù è morto e risorto per noi. Chiunque si fida di lui riceve vita nuova.",
+        foto: "Scegli tra il materiale raccolto: il mare di Pozzuoli funziona sempre." }
+    ],
+    stories: "Il giorno di Natale: un momento del culto (breve) e gli auguri della chiesa."
+  },
+  {
+    title: "Settimana 7 · 28 dicembre – 3 gennaio",
+    prep: "Preparazione: domenica 27",
+    posts: [
+      { id: "p13", dow: "Mar", day: 29, mon: "dic", format: "Carosello", rub: "Pozzuoli ci tocca",
+        title: "Il nostro anno a Pozzuoli",
+        hook: "Il 2026 di Pozzuoli in 5 momenti.",
+        idea: "Cinque momenti dell'anno, della città e della chiesa insieme: li scegli tu. Belli e difficili.",
+        vangelo: "Lamentazioni 3,22-23: le compassioni di Dio «si rinnovano ogni mattina». Anche dopo un anno difficile.",
+        foto: "Il meglio del materiale dell'anno." },
+      { id: "p14", dow: "Gio", day: 31, mon: "dic", format: "Reel", rub: "Porte aperte",
+        title: "Ricominciare",
+        hook: "Domani si ricomincia. Da dove?",
+        idea: "Il mare all'alba, una voce calma. Molti propositi durano una settimana: c'è un nuovo inizio che non dipende dalle nostre forze.",
+        vangelo: "2 Corinzi 5,17: «Se uno è in Cristo, egli è una nuova creatura.» Invito al primo culto del 2027, domenica 3 gennaio alle 10:30.",
+        foto: "Alba sul golfo di Pozzuoli." }
+    ],
+    stories: "Ringrazia chi ha seguito la pagina e chiedi: «Quale posto di Pozzuoli vorresti vedere raccontato nel 2027?» Le risposte diventano post."
+  },
+  {
+    title: "Settimana 8 · 4–10 gennaio 2027",
+    prep: "Preparazione: domenica 3",
+    posts: [
+      { id: "p15", dow: "Mar", day: 5, mon: "gen", format: "Carosello", rub: "Luoghi di Pozzuoli",
+        title: "Chi ti dice il futuro?",
+        hook: "Qui, alle porte di Pozzuoli, si veniva a chiedere il futuro.",
+        idea: "L'Antro della Sibilla a Cuma: per secoli la gente veniva a sentire l'oracolo. Oggi abbiamo gli oroscopi di inizio anno. Il bisogno è lo stesso: sapere cosa ci aspetta.",
+        vangelo: "Ebrei 1,1-2: Dio ha parlato tante volte, alla fine ci ha parlato in Gesù. Non ti dice tutto del futuro, ma ti dice chi lo tiene in mano.",
+        foto: "Il corridoio trapezoidale dell'Antro, la luce che entra di lato." },
+      { id: "p16", dow: "Ven", day: 8, mon: "gen", format: "Foto + storia", rub: "Volti di Pozzuoli #2",
+        title: "Una persona, una storia",
+        hook: "Lui/lei è Pozzuoli.",
+        idea: "Seconda storia della serie. Una persona diversa dalla prima: età, lavoro, quartiere.",
+        vangelo: "Una riga in didascalia, mai una predica.",
+        foto: "Ritratto sul posto di lavoro, con consenso." }
+    ],
+    stories: "Sondaggio: «Sei mai entrato nell'Antro della Sibilla?» Sì / No, ci vado."
+  },
+  {
+    title: "Settimana 9 · 11–17 gennaio",
+    prep: "Preparazione: domenica 10",
+    posts: [
+      { id: "p17", dow: "Mar", day: 12, mon: "gen", format: "Reel", rub: "Luoghi di Pozzuoli",
+        title: "La porta dell'inferno è a Pozzuoli",
+        hook: "Per gli antichi, l'ingresso dell'inferno era qui.",
+        idea: "Il Lago d'Averno: i Romani lo credevano la porta degli inferi, Virgilio ci fa scendere Enea. Il nome viene dal greco «senza uccelli», per i vapori. La frase famosa: «È facile scendere all'Averno; il difficile è risalire.»",
+        vangelo: "Apocalisse 1,18: Gesù dice «Ho le chiavi della morte». È sceso nella morte ed è risalito. Quello che per Virgilio era quasi impossibile, lui l'ha fatto. Per te.",
+        foto: "Il lago all'alba o con la nebbia, ripresa lenta, voce fuori campo calma." },
+      { id: "p18", dow: "Ven", day: 15, mon: "gen", format: "Reel", rub: "Lavori in corso #3",
+        title: "Il centro a gennaio",
+        hook: "Un mese dopo: a che punto siamo.",
+        idea: "Stesse inquadrature dei reel precedenti, più un volto: chi ci lavora o chi lo userà.",
+        vangelo: "Una frase sul perché: servire la città come Gesù ha servito noi.",
+        foto: "Stesse inquadrature di novembre e dicembre." }
+    ],
+    stories: "Quiz: «Perché si chiama Averno?» (a) senza uccelli (b) lago profondo (c) lago di fuoco."
+  },
+  {
+    title: "Settimana 10 · 18–24 gennaio",
+    prep: "Preparazione: domenica 17",
+    posts: [
+      { id: "p19", dow: "Mar", day: 19, mon: "gen", format: "Carosello", rub: "Pozzuoli ci tocca",
+        title: "I pendolari del mare",
+        hook: "Ore 6:30, porto di Pozzuoli. Si parte per Ischia e Procida.",
+        idea: "Chi prende il traghetto ogni mattina per lavorare: stanchezza, orari, famiglia lontana tutto il giorno. Un pensiero per loro.",
+        vangelo: "Matteo 11,28: «Venite a me, voi tutti che siete affaticati e oppressi, e io vi darò riposo.»",
+        foto: "Il porto all'alba, la fila al traghetto, la scia della nave." },
+      { id: "p20", dow: "Ven", day: 22, mon: "gen", format: "Foto + didascalia", rub: "Luoghi di Pozzuoli",
+        title: "Imparare a volare",
+        hook: "A Pozzuoli si impara a volare.",
+        idea: "L'Accademia Aeronautica sulla collina: ragazzi che arrivano da tutta Italia per imparare a volare. E chi si sente incapace anche solo di rialzarsi?",
+        vangelo: "Isaia 40,31: «Quelli che sperano nel Signore… si alzano a volo come aquile.» La forza non viene da noi.",
+        foto: "L'Accademia vista dal golfo, il cielo, un gabbiano in volo." }
+    ],
+    stories: "Ricondividi i commenti dei pendolari, se arrivano."
+  },
+  {
+    title: "Settimana 11 · 25–31 gennaio",
+    prep: "Preparazione: domenica 24",
+    posts: [
+      { id: "p21", dow: "Mar", day: 26, mon: "gen", format: "Carosello", rub: "Luoghi di Pozzuoli",
+        title: "Le colonne che raccontano il mare",
+        hook: "Guarda bene queste colonne: il mare è arrivato fin qui.",
+        idea: "Il Serapeo (Macellum): i buchi dei molluschi sulle colonne mostrano che il terreno è sceso sotto il mare e poi è risalito. È il «metro» del bradisismo.",
+        vangelo: "Ebrei 13,8: «Gesù Cristo è lo stesso ieri, oggi e in eterno.» La terra sale e scende, lui resta.",
+        foto: "Dettaglio dei fori sulle colonne, poi il Serapeo intero." },
+      { id: "p22", dow: "Ven", day: 29, mon: "gen", format: "Reel", rub: "Porte aperte",
+        title: "Il corso di inglese",
+        hook: "Impara l'inglese a Pozzuoli, gratis.",
+        idea: "Breve video della lezione: chi insegna, chi impara, come iscriversi. Il servizio alla città mostrato com'è.",
+        vangelo: "Una frase: «Lo facciamo perché amiamo questa città.» Niente di più: qui è il gesto a parlare.",
+        foto: "Una lezione, la lavagna, le risate (con consenso).",
+        alert: "Giorni e orari del corso: da confermare." }
+    ]
+  },
+  {
+    title: "Settimana 12 · 1–7 febbraio",
+    prep: "Preparazione: domenica 31 gennaio",
+    posts: [
+      { id: "p23", dow: "Mar", day: 2, mon: "feb", format: "Reel", rub: "Luoghi di Pozzuoli",
+        title: "Uno spettacolo per la folla",
+        hook: "Qui 40.000 persone urlavano per decidere chi viveva e chi moriva.",
+        idea: "L'Anfiteatro Flavio, il terzo d'Italia per grandezza. Gladiatori, belve e la folla che giudica. Secondo la tradizione qui furono condannati alle belve anche dei cristiani di questa terra. Oggi la folla sono i social: like, giudizi, commenti.",
+        vangelo: "Anche Gesù ha avuto una folla che urlava «Crocifiggilo». E ha scelto di morire per quella folla. Davanti a Dio non sei uno spettacolo da giudicare, sei una persona amata.",
+        foto: "Le gradinate vuote, i sotterranei, una ripresa dal centro dell'arena verso gli spalti." },
+      { id: "p24", dow: "Ven", day: 5, mon: "feb", format: "Foto + storia", rub: "Volti di Pozzuoli #3",
+        title: "Una persona, una storia",
+        hook: "Lui/lei è Pozzuoli.",
+        idea: "Terza storia: magari una persona anziana che ricorda la Pozzuoli di una volta.",
+        vangelo: "Una riga in didascalia.",
+        foto: "Ritratto, con consenso." }
+    ],
+    stories: "Sondaggio: «Ci sei mai entrato, nell'Anfiteatro?»"
+  },
+  {
+    title: "Settimana 13 · 8–14 febbraio",
+    prep: "Preparazione: domenica 7",
+    posts: [
+      { id: "p25", dow: "Mar", day: 9, mon: "feb", format: "Carosello", rub: "Pozzuoli com'è",
+        title: "Colazione sulla spiaggia",
+        hook: "Pesce alla brace, all'alba, sulla riva.",
+        idea: "Il mercato ittico e la Pozzuoli che vive di pesce. C'è un episodio del vangelo quasi identico: Gesù risorto che cucina il pesce per i suoi amici pescatori.",
+        vangelo: "Giovanni 21,9-13: dopo la risurrezione, Gesù prepara la colazione a chi lo aveva abbandonato. Il perdono, servito caldo.",
+        foto: "Il mercato ittico, le cassette di pesce, una griglia." },
+      { id: "p26", dow: "Ven", day: 12, mon: "feb", format: "Carosello", rub: "Il cuore della pagina", pin: true,
+        title: "Lettera d'amore a Pozzuoli",
+        hook: "Cara Pozzuoli, ti scriviamo una lettera d'amore.",
+        idea: "Per San Valentino: una lettera alla città, slide dopo slide, con i luoghi raccontati nei mesi precedenti. Il post-manifesto della pagina, da fissare in alto.",
+        vangelo: "Giovanni 3,16, detto per noi: «Dio ha tanto amato Pozzuoli che ha dato il suo unico Figlio, perché chiunque crede in lui non perisca, ma abbia vita eterna.»",
+        foto: "Il meglio raccolto in questi mesi." }
+    ],
+    stories: "Chiedi: «Cosa ami di più di Pozzuoli?» e ricondividi le risposte."
+  },
+  {
+    title: "Settimana 14 · 15–21 febbraio",
+    prep: "Preparazione: domenica 14",
+    posts: [
+      { id: "p27", dow: "Mar", day: 16, mon: "feb", format: "Carosello", rub: "Storia di Pozzuoli",
+        title: "La ragazza di Pozzuoli",
+        hook: "Da bambina, a Pozzuoli, la prendevano in giro perché era magrissima.",
+        idea: "Sophia Loren è cresciuta qui, nella povertà del dopoguerra. Nessuno avrebbe scommesso su di lei. Racconto breve, senza usare foto sue (diritti d'autore).",
+        vangelo: "1 Samuele 16,7: «L'uomo guarda all'apparenza, ma il Signore guarda al cuore.» Dio vede in te quello che gli altri non vedono.",
+        foto: "Il quartiere dove è cresciuta, una strada di Pozzuoli negli anni '40 (foto d'archivio libera)." },
+      { id: "p28", dow: "Ven", day: 19, mon: "feb", format: "Reel", rub: "Lavori in corso #4",
+        title: "Il centro a febbraio",
+        hook: "Tre mesi di lavori: guarda.",
+        idea: "Confronto novembre → febbraio, stesse inquadrature.",
+        vangelo: "Una frase sul perché lo facciamo.",
+        foto: "Stesse inquadrature dei mesi precedenti." }
+    ]
+  },
+  {
+    title: "Settimana 15 · 22–28 febbraio",
+    prep: "Preparazione: domenica 21",
+    posts: [
+      { id: "p29", dow: "Mar", day: 23, mon: "feb", format: "Reel", rub: "Luoghi di Pozzuoli",
+        title: "La terra che respira",
+        hook: "A Pozzuoli la terra respira.",
+        idea: "Le fumarole dei Campi Flegrei: il vapore che esce dal terreno, l'odore di zolfo che i pozzolani conoscono da sempre. Tono di stupore, non di paura.",
+        vangelo: "Genesi 2,7: Dio soffiò nell'uomo «un alito di vita». Anche il tuo respiro viene da lui.",
+        foto: "Le fumarole di Pisciarelli o il vapore visibile da fuori.",
+        alert: "La Solfatara è chiusa dal 2017 dopo la morte di una famiglia: non usarla come sfondo e non nominare la tragedia." },
+      { id: "p30", dow: "Ven", day: 26, mon: "feb", format: "Reel", rub: "Porte aperte",
+        title: "Il calcetto",
+        hook: "Ogni settimana, a Pozzuoli, una partita aperta a tutti.",
+        idea: "Video del calcetto: gol, risate, il momento insieme dopo. Come partecipare.",
+        vangelo: "Una frase: «Qui nessuno resta in panchina.»",
+        foto: "Partita, spogliatoio, foto di gruppo (con consenso).",
+        alert: "Giorno e orario: da confermare." }
+    ]
+  },
+  {
+    title: "Settimana 16 · 1–7 marzo",
+    prep: "Preparazione: domenica 28 febbraio",
+    posts: [
+      { id: "p31", dow: "Mar", day: 2, mon: "mar", format: "Carosello", rub: "Storia di Pozzuoli",
+        title: "Il Rione Terra è rinato",
+        hook: "2 marzo 1970: il Rione Terra si svuota in una notte.",
+        idea: "Esce proprio nell'anniversario. Per decenni case vuote e porte murate, oggi è di nuovo vivo. Foto d'epoca accanto a quella di oggi.",
+        vangelo: "2 Corinzi 5,17: nessuno è troppo rovinato per essere restaurato. Gesù è morto e risorto proprio per questo.",
+        foto: "Il Rione Terra oggi, dallo stesso punto di una foto d'epoca." },
+      { id: "p32", dow: "Ven", day: 5, mon: "mar", format: "Foto + storia", rub: "Volti di Pozzuoli #4",
+        title: "Una persona, una storia",
+        hook: "Lui/lei è Pozzuoli.",
+        idea: "Se possibile, qualcuno che ha vissuto lo sgombero del Rione Terra: si lega al post di martedì.",
+        vangelo: "Una riga in didascalia.",
+        foto: "Ritratto, con consenso." }
+    ]
+  },
+  {
+    title: "Settimana 17 · 8–14 marzo",
+    prep: "Preparazione: domenica 7",
+    posts: [
+      { id: "p33", dow: "Mar", day: 9, mon: "mar", format: "Carosello", rub: "Luoghi di Pozzuoli",
+        title: "Un tempio dentro un tempio",
+        hook: "Nel 1964 un incendio ha rivelato un tempio romano nascosto da secoli.",
+        idea: "Il Tempio di Augusto dentro il Duomo del Rione Terra: le colonne romane riapparse dopo l'incendio. Tono rispettoso verso il luogo di culto.",
+        vangelo: "1 Pietro 2,5: Dio non cerca solo edifici, costruisce con «pietre viventi», cioè persone. Si lega al centro che stiamo costruendo: le mura servono, ma la chiesa sono le persone.",
+        foto: "Le colonne del tempio visibili nel Duomo (rispettando le regole del luogo)." },
+      { id: "p34", dow: "Ven", day: 12, mon: "mar", format: "Reel", rub: "Lavori in corso #5",
+        title: "Il centro a marzo",
+        hook: "Quattro mesi dopo.",
+        idea: "Confronto e, se c'è una data, annuncio dell'apertura o del prossimo passo.",
+        vangelo: "Una frase sul perché lo facciamo.",
+        foto: "Stesse inquadrature." }
+    ]
+  },
+  {
+    title: "Settimana 18 · 15–21 marzo",
+    prep: "Preparazione: domenica 14",
+    posts: [
+      { id: "p35", dow: "Mar", day: 16, mon: "mar", format: "Foto + didascalia", rub: "Pozzuoli com'è",
+        title: "Il golfo al tramonto",
+        hook: "Ogni sera Pozzuoli ha questo spettacolo gratis.",
+        idea: "Il tramonto sul golfo verso Capo Miseno. Didascalia breve, quasi una poesia.",
+        vangelo: "Salmo 19,1: «I cieli raccontano la gloria di Dio.» Chi ha fatto questo ha fatto anche te.",
+        foto: "Tramonto dal lungomare." },
+      { id: "p36", dow: "Ven", day: 19, mon: "mar", format: "Carosello", rub: "Porte aperte",
+        title: "Pasqua: vieni con noi",
+        hook: "Tra una settimana è Pasqua. Cosa festeggiamo davvero?",
+        idea: "Invito agli incontri della settimana di Pasqua, spiegando in parole semplici cosa ricordiamo il venerdì e la domenica.",
+        vangelo: "1 Corinzi 15,3-4: Cristo è morto per i nostri peccati, è stato sepolto, è risuscitato il terzo giorno.",
+        foto: "La sala, l'ingresso, volti della chiesa.",
+        alert: "Programma di Pasqua: da confermare." }
+    ]
+  },
+  {
+    title: "Settimana 19 · 22–28 marzo · Pasqua",
+    prep: "Preparazione: domenica 21 (prepara tutti e tre)",
+    posts: [
+      { id: "p37", dow: "Mar", day: 23, mon: "mar", format: "Carosello", rub: "Storia di Pozzuoli",
+        title: "Le catene di Paolo",
+        hook: "Paolo arrivò a Pozzuoli in catene. Eppure era l'uomo più libero sulla nave.",
+        idea: "Si riprende il primo post della pagina (Paolo sbarcato qui): si chiude il cerchio. Prigioniero fuori, libero dentro.",
+        vangelo: "Galati 5,1: «Cristo ci ha liberati perché fossimo liberi.» Ci sono catene che non si vedono: Gesù è venuto a toglierle.",
+        foto: "Il porto, una catena d'ormeggio, il mare aperto." },
+      { id: "p38", dow: "Ven", day: 26, mon: "mar", format: "Foto + didascalia", rub: "Venerdì Santo",
+        title: "Il venerdì più buio",
+        hook: "Oggi ricordiamo il giorno più buio della storia.",
+        idea: "Immagine sobria, poche parole. Nessun effetto, nessuna musica.",
+        vangelo: "Isaia 53,5: «Egli è stato trafitto a causa delle nostre trasgressioni… per le sue lividure noi siamo stati guariti.»",
+        foto: "Il mare grigio, una croce semplice, o solo testo su sfondo scuro." },
+      { id: "p39", dow: "Dom", day: 28, mon: "mar", format: "Reel", rub: "Pasqua",
+        title: "La tomba è vuota",
+        hook: "Virgilio diceva: risalire dall'Averno è quasi impossibile.",
+        idea: "Si riprende il reel del Lago d'Averno: gli antichi pensavano che dalla morte non si tornasse. A Pasqua festeggiamo l'unico che è tornato. Chiude l'arco iniziato a gennaio.",
+        vangelo: "1 Corinzi 15,55: «O morte, dov'è la tua vittoria?» Gesù è risorto, e chi si fida di lui risorgerà con lui. Buona Pasqua, Pozzuoli.",
+        foto: "Il Lago d'Averno all'alba, poi la luce che sale." }
+    ],
+    stories: "Pasqua: un momento del culto e gli auguri della chiesa alla città."
+  }
+];
+
+/* Domenica: la chiesa da vicino. Settimane alterne: clip della predica / un ministero. */
+var CLIP_FOTO = "Dalla diretta YouTube di oggi: 30-60 secondi, sottotitoli sempre (quasi tutti guardano senza audio), una scritta forte nei primi 2 secondi, link alla predica intera in didascalia.";
+var MIN_KIDS = "Bambini e ragazzi: niente volti riconoscibili senza il consenso scritto dei genitori. Riprendi mani, disegni, persone di spalle.";
+var SUNDAYS = [
+  { w: 1, p: { id: "s1", dow: "Dom", day: 29, mon: "nov", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Scegli il passaggio che risponde a una domanda che si fa chiunque: paura, colpa, solitudine, senso. Evita i passaggi che si capiscono solo se si conosce la Bibbia.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 2, p: { id: "s2", dow: "Dom", day: 6, mon: "dic", format: "Carosello", rub: "Ministeri",
+    title: "La scuola domenicale",
+    hook: "Mentre i genitori sono al culto, qui succede questo.",
+    idea: "Cosa fanno i bambini la domenica: storie, canti, lavoretti. Pensato per le famiglie di Pozzuoli: «I tuoi figli sono i benvenuti, ecco come funziona.»",
+    vangelo: "Marco 10,14: «Lasciate che i bambini vengano a me.»",
+    foto: "Lavoretti, disegni, mani che colorano, la stanza preparata.",
+    alert: MIN_KIDS } },
+  { w: 3, p: { id: "s3", dow: "Dom", day: 13, mon: "dic", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Verso Natale: un passaggio su chi è davvero Gesù, oltre al presepe.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 4, p: { id: "s4", dow: "Dom", day: 20, mon: "dic", format: "Reel", rub: "Ministeri",
+    title: "I giovanissimi",
+    hook: "Il venerdì sera di questi ragazzi non è come te lo immagini.",
+    idea: "Il gruppo dei ragazzi: giochi, domande vere, amicizie. Per i genitori di Pozzuoli che cercano un posto sano per i figli adolescenti.",
+    vangelo: "1 Timoteo 4,12: «Nessuno disprezzi la tua giovane età.»",
+    foto: "Giochi di gruppo, risate, ripresi di spalle o da lontano.",
+    alert: MIN_KIDS + " Giorno e orario del gruppo: da confermare." } },
+  { w: 5, p: { id: "s5", dow: "Dom", day: 27, mon: "dic", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip dal culto di Natale",
+    hook: "Il messaggio di Natale in un minuto.",
+    idea: "Il passaggio centrale della predica di Natale. Se c'è un canto bello, usa 10 secondi del canto come apertura.",
+    vangelo: "Il cuore del Natale: Dio è venuto a salvarci.",
+    foto: CLIP_FOTO } },
+  { w: 6, p: { id: "s6", dow: "Dom", day: 3, mon: "gen", format: "Carosello", rub: "Ministeri",
+    title: "La chiesa in casa",
+    hook: "Un divano, un caffè, otto persone. Anche questa è chiesa.",
+    idea: "I gruppi nelle case durante la settimana: si mangia, si parla, si legge la Bibbia, si prega l'uno per l'altro. Per chi non se la sente di entrare in una chiesa: si può cominciare da un salotto.",
+    vangelo: "Atti 2,46: i primi cristiani «rompevano il pane nelle case» con gioia.",
+    foto: "Tazzine, una tavola, Bibbie aperte, persone che ridono (con consenso)." } },
+  { w: 7, p: { id: "s7", dow: "Dom", day: 10, mon: "gen", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Inizio anno: un passaggio sul ricominciare, sulla speranza, sul perdono.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 8, p: { id: "s8", dow: "Dom", day: 17, mon: "gen", format: "Carosello", rub: "Ministeri",
+    title: "Aiuto a chi ha bisogno",
+    hook: "Le feste sono finite. Il bisogno no.",
+    idea: "Cosa fa la chiesa durante tutto l'anno: pacchi alimentari, vestiti, ascolto. Come chiedere aiuto senza vergogna e come dare una mano. Si collega al post del 22 dicembre.",
+    vangelo: "Matteo 25,40: «Quello che avete fatto a uno di questi miei minimi fratelli, lo avete fatto a me.»",
+    foto: "Mani che preparano pacchi, scaffali, volontari al lavoro. Mai i volti di chi riceve aiuto.",
+    alert: "Come e quando chiedere aiuto: da confermare." } },
+  { w: 9, p: { id: "s9", dow: "Dom", day: 24, mon: "gen", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Un passaggio che risponde a una domanda universale. Varia il predicatore, se ce n'è più di uno: si vede una comunità, non una persona sola.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 10, p: { id: "s10", dow: "Dom", day: 31, mon: "gen", format: "Reel", rub: "Ministeri",
+    title: "Il doposcuola",
+    hook: "Compiti difficili? A Pozzuoli c'è chi ti aiuta.",
+    idea: "Chi segue i ragazzi nei compiti, per quali classi, quando. Partire dal bisogno: famiglie che lavorano tutto il giorno e non riescono a seguire i figli.",
+    vangelo: "Una frase: «Ogni ragazzo di Pozzuoli merita qualcuno che creda in lui.»",
+    foto: "Quaderni, mani che spiegano, una lavagna.",
+    alert: MIN_KIDS + " Il doposcuola esiste già o partirà nel centro? Se partirà, il post diventa un annuncio." } },
+  { w: 11, p: { id: "s11", dow: "Dom", day: 7, mon: "feb", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Verso San Valentino: se la predica tocca l'amore, il perdono o le relazioni, è il momento giusto.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 12, p: { id: "s12", dow: "Dom", day: 14, mon: "feb", format: "Carosello", rub: "Ministeri",
+    title: "Giovani famiglie",
+    hook: "San Valentino con due bambini piccoli: istruzioni per sopravvivere.",
+    idea: "Il gruppo delle giovani coppie e famiglie: stanchezza, ironia, sostegno a vicenda. Tono leggero, poi la sostanza: qui nessuno affronta le difficoltà da solo.",
+    vangelo: "Ecclesiaste 4,12: «La corda a tre capi non si rompe tanto presto.» Due più Dio.",
+    foto: "Coppie insieme, passeggini, una cena di gruppo (con consenso)." } },
+  { w: 13, p: { id: "s13", dow: "Dom", day: 21, mon: "feb", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Un passaggio che risponde a una domanda universale.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 14, p: { id: "s14", dow: "Dom", day: 28, mon: "feb", format: "Carosello", rub: "Ministeri",
+    title: "Le donne",
+    hook: "Mamme, lavoratrici, nonne: uno spazio tutto loro.",
+    idea: "Il gruppo delle donne: incontri, amicizia, preghiera, sostegno pratico. Esce vicino all'8 marzo.",
+    vangelo: "Gesù trattava le donne con una dignità rara per il suo tempo: la samaritana, Marta e Maria, Maria Maddalena prima testimone della risurrezione.",
+    foto: "Un incontro, una tavola, sorrisi (con consenso)." } },
+  { w: 15, p: { id: "s15", dow: "Dom", day: 7, mon: "mar", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Verso Pasqua: un passaggio sulla croce o sul perdono.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } },
+  { w: 16, p: { id: "s16", dow: "Dom", day: 14, mon: "mar", format: "Reel", rub: "Ministeri",
+    title: "Gli uomini",
+    hook: "Gli uomini non parlano mai di come stanno. Qui sì.",
+    idea: "Il gruppo degli uomini: lavoro, famiglia, fatica, fede. Tono diretto. Si lega al calcetto per chi vuole cominciare da lì.",
+    vangelo: "Proverbi 27,17: «Il ferro forbisce il ferro.» Ci si fa forti insieme.",
+    foto: "Un incontro, una grigliata, una partita (con consenso)." } },
+  { w: 17, p: { id: "s17", dow: "Dom", day: 21, mon: "mar", format: "Reel", rub: "La domenica in 60 secondi",
+    title: "Clip della predica",
+    hook: "Una frase forte, scritta sui primi 2 secondi.",
+    idea: "Domenica prima di Pasqua: il passaggio più chiaro su perché Gesù è morto. In didascalia l'invito per Pasqua.",
+    vangelo: "Il pezzo giusto è quello in cui si capisce chi è Gesù e cosa offre.",
+    foto: CLIP_FOTO } }
+];
+SUNDAYS.forEach(function (s) { WEEKS[s.w].posts.push(s.p); });
+
+/* Versione da file: le spunte restano salvate nel browser di questo telefono. */
+var MONTHS = { nov: 10, dic: 11, gen: 0, feb: 1, mar: 2 };
+function postDate(p) { var m = MONTHS[p.mon]; return new Date(m >= 10 ? 2026 : 2027, m, p.day); }
+WEEKS.forEach(function (w) { w.posts.sort(function (a, b) { return postDate(a) - postDate(b); }); });
+
+var START = new Date(2026, 10, 16);
+var today = new Date(); today.setHours(0, 0, 0, 0);
+var nowWeek = Math.floor((today - START) / (7 * 864e5));
+
+var state = {};
+var LOCAL = "cal-pozzuoli-check-v1";
+var coll = null, filterTodo = true;
+try { state = JSON.parse(localStorage.getItem(LOCAL) || "{}") || {}; } catch (e) { state = {}; }
+function saveLocal() { try { localStorage.setItem(LOCAL, JSON.stringify(state)); } catch (e) {} }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+function chk(k, label) {
+  return '<label class="chk"><input type="checkbox" id="c-' + k + '" data-k="' + k + '"' + (state[k] ? ' checked' : '') + '>' + label + '</label>';
+}
+
+function render() {
+  var html = "", shown = 0;
+  WEEKS.forEach(function (w, i) {
+    var tasks = (w.tasks || []).filter(function (t) { return !filterTodo || !state[t.id]; });
+    var posts = w.posts.filter(function (p) { return !filterTodo || !state[p.id + "-pub"]; });
+    if (filterTodo && !tasks.length && !posts.length) return;
+    shown++;
+    html += '<section class="week' + (i === nowWeek ? ' now' : '') + '" id="w' + i + '"><div><h2>' + esc(w.title) + '</h2><span class="prep">' + esc(w.prep || "") + '</span></div>';
+    if (tasks.length) {
+      html += '<div class="card">';
+      tasks.forEach(function (t) {
+        html += '<label class="task"><input type="checkbox" id="c-' + t.id + '" data-k="' + t.id + '"' + (state[t.id] ? ' checked' : '') + '><span>' + esc(t.text) + '</span></label>';
+      });
+      html += '</div>';
+    }
+    posts.forEach(function (p) {
+      var pub = !!state[p.id + "-pub"];
+      html += '<article class="card' + (pub ? ' done' : '') + '">' +
+        '<div class="row"><div class="date"><span class="dow">' + p.dow + '</span><span class="day">' + p.day + '</span><span class="mon">' + p.mon + '</span></div>' +
+        '<div class="main"><h3>' + esc(p.title) + '</h3><div class="pills"><span class="pill">' + esc(p.format) + '</span><span class="pill rub">' + esc(p.rub) + '</span>' + (p.pin ? '<span class="pill pin">Da fissare</span>' : '') + '</div></div></div>' +
+        '<div class="checks">' + chk(p.id + "-ready", "Programmato") + chk(p.id + "-pub", "Pubblicato") + '</div>' +
+        '<details><summary>Dettagli</summary><div class="det">' +
+        '<p class="hook">«' + esc(p.hook) + '»</p>' +
+        '<p><b>L\'idea</b>' + esc(p.idea) + '</p><p><b>Gesù</b>' + esc(p.vangelo) + '</p><p><b>Da fotografare</b>' + esc(p.foto) + '</p>' +
+        (p.alert ? '<p class="alert">' + esc(p.alert) + '</p>' : '') +
+        '</div></details></article>';
+    });
+    if (w.stories) html += '<p class="stories"><b>Storie:</b> ' + esc(w.stories) + '</p>';
+    html += '</section>';
+  });
+  if (!shown) html = '<p class="empty">Tutto fatto fino a Pasqua. Bravo!</p>';
+  document.getElementById("weeks").innerHTML = html;
+  updateCount();
+}
+
+function updateCount() {
+  var tot = 0, done = 0;
+  WEEKS.forEach(function (w) { w.posts.forEach(function (p) { tot++; if (state[p.id + "-pub"]) done++; }); });
+  document.getElementById("countTot").textContent = tot;
+  document.getElementById("countDone").textContent = done;
+  document.getElementById("barFill").style.width = (tot ? done / tot * 100 : 0) + "%";
+}
+
+function setSync(text, off) { var s = document.getElementById("sync"); s.textContent = text; s.classList.toggle("off", !!off); }
+
+document.getElementById("weeks").addEventListener("change", function (e) {
+  var k = e.target.getAttribute("data-k");
+  if (!k) return;
+  var on = e.target.checked;
+  state[k] = on;
+  saveLocal();
+  updateCount();
+  var card = e.target.closest("article.card");
+  if (card && /-pub$/.test(k)) card.classList.toggle("done", on);
+  if (coll) {
+    coll.doc(k).set({ on: on, at: new Date().toISOString() }).catch(function () {
+      setSync("Spunta non salvata online: resta su questo dispositivo.", true);
+    });
+  }
+});
+
+function setFilter(todo) {
+  filterTodo = todo;
+  document.getElementById("fTodo").setAttribute("aria-pressed", String(todo));
+  document.getElementById("fAll").setAttribute("aria-pressed", String(!todo));
+  render();
+}
+document.getElementById("fTodo").addEventListener("click", function () { setFilter(true); });
+document.getElementById("fAll").addEventListener("click", function () { setFilter(false); });
+function goNow() {
+  var target = document.getElementById("w" + Math.max(0, nowWeek)) || document.querySelector(".week");
+  if (target) target.scrollIntoView({ block: "start" });
+}
+document.getElementById("goNow").addEventListener("click", goNow);
+render();
+
+(function () {
+  var ok = false;
+  try { localStorage.setItem("cal-test", "1"); ok = localStorage.getItem("cal-test") === "1"; localStorage.removeItem("cal-test"); } catch (e) {}
+  setSync(ok ? "Le spunte restano salvate su questo telefono." : "Qui le spunte non si salvano: apri il file con Chrome o Safari.", !ok);
+})();
+</script>
+
+</body></html>
