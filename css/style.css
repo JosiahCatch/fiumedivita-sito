@@ -900,6 +900,9 @@ div.mini-photo svg { width: 96px; height: 96px; }
 .playlist__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--s-5); margin: var(--s-6) 0 var(--s-6); padding-bottom: var(--s-5); border-bottom: 1px solid var(--c-line); }
 .playlist__head > div { max-width: 680px; }
 .playlist__head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin: 6px 0 8px; }
+.ps-carica { display: flex; flex-direction: column; align-items: center; gap: var(--s-3); margin-top: var(--s-6); text-align: center; }   /* «Per data»: carica altri 2 mesi */
+.ps-carica[hidden], .ps-carica [hidden], .playlist .sermon[hidden] { display: none; }
+.ps-carica__conta { margin: 0; color: var(--c-muted); font-size: var(--fs-sm); }
 .ps-ordine { display: flex; flex-wrap: wrap; gap: 8px; }   /* «Per data»: dal più recente / dal meno recente */
 .playlist__head .lead { margin: 0; font-size: var(--fs-body); }
 /* telefono e tablet piccolo: ogni predicazione è una scheda chiusa, si vede dove inizia e finisce */

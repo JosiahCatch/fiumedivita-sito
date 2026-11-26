@@ -108,9 +108,15 @@
   }
   const reveals = document.querySelectorAll('.reveal');
   if (!reduce && 'IntersectionObserver' in window) {
+    // entra quando se ne vede l'8%; i blocchi lunghissimi (es. Predicazioni «Per data», 100+ schede) appena spuntano,
+    // altrimenti l'8% sarebbe più alto dello schermo e non entrerebbero mai. L'altezza si guarda qui, non al caricamento.
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        if (en.intersectionRatio < 0.08 && en.boundingClientRect.height * 0.08 < window.innerHeight * 0.5) return;
+        en.target.classList.add('is-in'); io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.08] });
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('is-in'));
@@ -560,12 +566,50 @@
     }
   }
 
-  /* ---- Predicazioni «Per data»: dal più recente o dal meno recente (gira l'ordine delle schede) ---- */
+  /* ---- Predicazioni «Per data»: si vedono 2 mesi alla volta, «Carica altri» ne aggiunge altri 2 ---- */
+  const caricaMesi = document.querySelector('[data-carica-mesi]');
+  const ricominciaMesi = (() => {
+    if (!caricaMesi) return () => {};
+    const griglia = caricaMesi.closest('.playlist').querySelector('.grid');
+    const conta = caricaMesi.querySelector('.ps-carica__conta');
+    const bott = caricaMesi.querySelector('button');
+    const MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
+    const nomi = (mesi) => {   // ['2026-09', '2026-08'] → «settembre e agosto 2026»
+      const p = mesi.map((m) => ({ a: m.slice(0, 4), m: MESI[+m.slice(5) - 1] }));
+      if (p.length === 2 && p[0].a === p[1].a) return `${p[0].m} e ${p[1].m} ${p[0].a}`;
+      return p.map((x) => `${x.m} ${x.a}`).join(' e ');
+    };
+    const PASSO = 2;
+    let quanti = PASSO;
+    const disegna = (dopoClic) => {
+      const schede = [...griglia.children];
+      const mesi = [...new Set(schede.map((c) => c.dataset.mese))];
+      const aperti = new Set(mesi.slice(0, quanti));
+      let primaNuova = null;
+      schede.forEach((c) => {
+        const on = aperti.has(c.dataset.mese);
+        if (on && c.hidden && !primaNuova) primaNuova = c;
+        c.hidden = !on;
+      });
+      const viste = schede.filter((c) => !c.hidden).length;
+      const prossimi = mesi.slice(quanti, quanti + PASSO);
+      conta.textContent = prossimi.length ? `${viste} prediche su ${schede.length} · poi ${nomi(prossimi)}` : `Tutte le ${schede.length} prediche`;
+      bott.hidden = !prossimi.length;
+      caricaMesi.hidden = false;
+      if (dopoClic) (primaNuova?.querySelector('h3 a, button.yt') || bott).focus({ preventScroll: true });
+    };
+    bott.addEventListener('click', () => { quanti += PASSO; disegna(true); });
+    disegna();
+    return () => { quanti = PASSO; disegna(); };
+  })();
+
+  /* ---- Predicazioni «Per data»: dal più recente o dal meno recente (gira l'ordine delle schede, poi di nuovo 2 mesi) ---- */
   document.querySelectorAll('[data-ordine]').forEach((b) => b.addEventListener('click', () => {
     if (b.getAttribute('aria-pressed') === 'true') return;
     b.parentElement.querySelectorAll('[data-ordine]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     const griglia = b.closest('.playlist').querySelector('.grid');
     [...griglia.children].reverse().forEach((c) => griglia.appendChild(c));
+    ricominciaMesi();
   }));
 
   /* ---- Predicazioni: ricerca per parola, brano o predicatore ---- */
@@ -601,6 +645,7 @@
       tablistP.closest('[data-ps]')?.classList.add('ps-cercando'); pannelli.forEach((p) => { p.hidden = true; }); box.hidden = false;
       griglia.replaceChildren(...trovate.map((c) => {
         const copia = c.cloneNode(true);
+        copia.hidden = false;   // in «Per data» i mesi non ancora caricati sono nascosti, ma nella ricerca si vedono
         const etichetta = document.createElement('span'); etichetta.className = 'pcerca__serie'; etichetta.textContent = c.dataset.serie;
         copia.append(etichetta);
         return copia;
